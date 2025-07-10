@@ -24,18 +24,22 @@
                 <h2  class="text-center">About Us</h2>
             </div>
                     <div class="offerings-block">
-                        <div class="offerings-content" >
-                       <p class="text-justify">{!! $home_about_content ?? 'Adiyogi Global is dedicated to providing healthy, high-quality products to customers worldwide. With
-                        over 12 years of experience, we source the finest goods directly from top farmers and manufacturers
-                        across India. Our commitment to quality and transparency ensures that every product meets the highest
-                        standards of purity and freshness. We take pride in earning the trust of our customers through
-                        exceptional service and a deep dedication to their well-being. At Adiyogi Global, we bring the best of
-                        India to the world, always prioritizing quality and care.Customer trust is the foundation of Adiyogi Global. We are committed to earning and maintaining this
-                        trust through transparency, integrity, and exceptional service. From your first interaction with us, we
-                        aim to provide a seamless and satisfying experience.' !!}</p>
-
-                        </div>
-                        <div class="offerings-figure"data-aos="fade-right">
+                       <div class="offerings-content">
+            <p id="about-content" class="text-justify">
+                {!! $home_about_content ?? 'Adiyogi Global is dedicated to providing healthy, high-quality products to customers worldwide. With
+                over 12 years of experience, we source the finest goods directly from top farmers and manufacturers
+                across India. Our commitment to quality and transparency ensures that every product meets the highest
+                standards of purity and freshness. We take pride in earning the trust of our customers through
+                exceptional service and a deep dedication to their well-being. At Adiyogi Global, we bring the best of
+                India to the world, always prioritizing quality and care. Customer trust is the foundation of Adiyogi Global. We are committed to earning and maintaining this
+                trust through transparency, integrity, and exceptional service. From your first interaction with us, we
+                aim to provide a seamless and satisfying experience.' !!}
+            </p>
+            <button id="toggle-button" class="px-4 py-2 bg-blue-600 text-black rounded hover:bg-blue-700 transition">
+                <a href="{{ route('aboutUs')}}" style="color:black">         Now More</a>
+       
+            </button>
+        </div> <div class="offerings-figure"data-aos="fade-right">
                             <img src="{{ asset($home_about_image ?? './assets/img/Random Pics.jpeg') }}" class="img-fluid rounded" width="" height="" alt="Bikaner">
                         </div>
                     </div>
@@ -80,76 +84,86 @@
 <div class="destinations pt-5 pb-4" data-aos="fade-up">
   <div class="custom-container">
     <div class="site-title pb-4">
-            <h2 class="text-center">Our Services</h2>
-        </div>
-
-        <div class="swiper we-offer">
-            <div class="swiper-wrapper">
-
-                @if ($home_products->count())
-                    @foreach ($home_products as $item)
-                        <div class="swiper-slide">
-                            <div class="destinations-block">
-                                <div class="destinations-figure">
-                                    <img src="{{ asset($item->image) }}" class="img-fluid" alt="Destinations">
-                                </div>
-                                <span class="destinations-title mh-auto text-center">{{ $item->heading_top }}</span>
-                            </div>
-                        </div>
-                    @endforeach
-                @else
-                    <div class="swiper-slide">
-                        <div class="destinations-block">
-                            <div class="destinations-figure">
-                                <img src="./assets/img/Basmati rice.jpeg" class="img-fluid" alt="Destinations">
-                            </div>
-                            <span class="destinations-title mh-auto text-center">Basmati Rice</span>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="destinations-block">
-                            <div class="destinations-figure">
-                                <img src="./assets/img/Ground Spice.jpg" class="img-fluid" alt="Destinations">
-                            </div>
-                            <span class="destinations-title mh-auto text-center">Ground Spices</span>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="destinations-block">
-                            <div class="destinations-figure">
-                                <img src="./assets/img/Fruit & Vegitables 2.jpg" class="img-fluid" alt="Destinations">
-                            </div>
-                            <span class="destinations-title mh-auto text-center">Fresh Fruits & Vegetables</span>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="destinations-block">
-                            <div class="destinations-figure">
-                                <img src="./assets/img/Non Basmati Rice 2.jpg" class="img-fluid" alt="Destinations">
-                            </div>
-                            <span class="destinations-title mh-auto text-center">Non Basmati Rice</span>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="destinations-block">
-                            <div class="destinations-figure">
-                                <img src="./assets/img/fresh-fruits-berries-.jpg" class="img-fluid" alt="Destinations">
-                            </div>
-                            <span class="destinations-title mh-auto text-center">Fresh Fruits</span>
-                        </div>
-                    </div>
-                @endif
-
-            </div>
-
-            <div class="swiper-pagination"></div>
-        </div>
-
-        <div class="view-button text-center pt-4">
-            <a href="{{ route('productPage') }}">Know more</a>
-        </div>
-    </div>
+ <h2 class="text-center">Our Services</h2>
 </div>
+
+<div class="swiper we-offer ">
+<div class="swiper-wrapper " >
+
+ @if ($home_products->count())
+ @foreach ($home_products as $item)
+<div class="swiper-slide c">
+<div class="destinations-block">
+<div class="destinations-figure">
+    <img src="{{ asset($item->image) }}" class="img-fluid" alt="Destinations">
+</div>
+<span class="destinations-title mh-auto text-center">{{ $item->heading_top }}</span>
+</div>
+</div>
+ @endforeach
+ @else
+ <div class="swiper-slide">
+<div class="destinations-block">
+     <div class="destinations-figure">
+<img src="./assets/img/Basmati rice.jpeg" class="img-fluid" alt="Destinations">
+</div>
+<span class="destinations-title mh-auto text-center" style="font-size:20px">Basmati Rice</span>
+</div>
+</div>
+<div class="swiper-slide">
+ <div class="destinations-block">
+ <div class="destinations-figure">
+ <img src="./assets/img/Ground Spice.jpg" class="img-fluid" alt="Destinations">
+</div>
+<span class="destinations-title mh-auto text-center" style="font-size:20px">Ground Spices</span>
+ </div>
+</div>
+<div class="swiper-slide">
+<div class="destinations-block">
+<div class="destinations-figure">
+<img src="./assets/img/Fruit & Vegitables 2.jpg" class="img-fluid" alt="Destinations">
+ </div>
+<span class="destinations-title mh-auto text-center" style="font-size:20px">Fresh Fruits & Vegetables</span>
+</div>
+</div>
+<div class="swiper-slide">
+<div class="destinations-block">
+    <div class="destinations-figure">
+<img src="./assets/img/Non Basmati Rice 2.jpg" class="img-fluid" alt="Destinations">
+</div>
+<span class="destinations-title mh-auto text-center" style="font-size:20px">Non Basmati Rice</span>
+ </div>
+</div>
+ <div class="swiper-slide">
+<div class="destinations-block">
+ <div class="destinations-figure">
+ <img src="./assets/img/fresh-fruits-berries-.jpg" class="img-fluid" alt="Destinations">
+</div>
+ <span class="destinations-title mh-auto text-center" style="font-size:20px">Fresh Fruits</span>
+</div>
+</div>
+@endif
+
+</div>
+
+ <div class="swiper-pagination"></div> </div>
+
+</div>
+</div>
+<style>
+ 
+@media (max-width: 576px) {
+  .swiper-wrapper {
+    justify-content: center !important;
+  }
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+</style>
+
 <!-- Destinations Section End -->
 
 
@@ -269,54 +283,54 @@
         <div class="row" id="ourServices">
             <div class="col-md-4 mb-4">
                 <div class="our-block">
-                    <div class="our-block-figure"><i class="fa-solid fa-sliders"></i></div>
+                    <div class="our-block-figure"><i class="fa-solid fa-sliders"  style="font-size:30px"></i></div>
                     <div class="our-content">
-                        <p class="mb-0 text-center">Audio-Video Support</p>
+                        <p class="mb-0 text-center" style="font-size:18;line-height:50px">Audio-Video Support</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 mb-4">
                 <div class="our-block">
-                    <div class="our-block-figure"><i class="fa-solid fa-award"></i></div>
+                    <div class="our-block-figure"><i class="fa-solid fa-award" style="font-size:30px"></i></div>
                     <div class="our-content">
 
-                        <p class="mb-0 text-center">Live Streaming</p>
+                        <p class="mb-0 text-center" style="font-size:18;line-height:50px">Live Streaming</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 mb-4">
                 <div class="our-block">
-                    <div class="our-block-figure"><i class="fa-regular fa-star"></i></div>
+                    <div class="our-block-figure"><i class="fa-regular fa-star" style="font-size:30px"></i></div>
                     <div class="our-content">
 
-                        <p class="mb-0 text-center">Event Management - Townhall</p>
+                        <p class="mb-0 text-center" style="font-size:18;line-height:50px">Event Management - Townhall</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 mb-4">
                 <div class="our-block">
-                    <div class="our-block-figure"><i class="fa-solid fa-headphones"></i></div>
+                    <div class="our-block-figure"><i class="fa-solid fa-headphones" style="font-size:30px"></i></div>
                     <div class="our-content">
 
-                        <p class="mb-0 text-center">Audio-Video Rentals</p>
+                        <p class="mb-0 text-center" style="font-size:18;line-height:50px">Audio-Video Rentals</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 mb-4">
                 <div class="our-block">
-                    <div class="our-block-figure"><i class="fa-solid fa-fire"></i></div>
+                    <div class="our-block-figure"><i class="fa-solid fa-fire" style="font-size:30px"></i></div>
                     <div class="our-content">
 
-                        <p class="mb-0 text-center">Onsite Support</p>
+                        <p class="mb-0 text-center" style="font-size:18;line-height:50px">Onsite Support</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 mb-4">
                 <div class="our-block">
-                    <div class="our-block-figure"><i class="fa-solid fa-wallet"></i></div>
+                    <div class="our-block-figure"><i class="fa-solid fa-wallet" style="font-size:30px"></i></div>
                     <div class="our-content">
 
-                        <p class="mb-0 text-center">Specialized AV Solutions</p>
+                        <p class="mb-0 text-center" style="font-size:18;line-height:50px">Specialized AV Solutions</p>
                     </div>
                 </div>
             </div>
@@ -324,6 +338,84 @@
     </div>
 </section>
 <!-- Why Choose Us Section Ends -->
+
+<!-- galary slider !-->
+<div class="destinations pt-5 pb-4" data-aos="fade-up">
+  <div class="custom-container">
+    <div class="site-title pb-4">
+ <h2 class="text-center">Gallery</h2>
+</div>
+
+<div class="swiper we-offer ">
+<div class="swiper-wrapper " >
+
+ @if ($home_products->count())
+ @foreach ($home_products as $item)
+<div class="swiper-slide c">
+<div class="destinations-block">
+<div class="destinations-figure">
+    <img src="{{ asset($item->image) }}" class="img-fluid" alt="Destinations">
+</div>
+</div>
+</div>
+ @endforeach
+ @else
+ <div class="swiper-slide">
+<div class="destinations-block">
+     <div class="destinations-figure">
+<img src="./assets/img/Basmati rice.jpeg" class="img-fluid" alt="Destinations">
+</div>
+</div>
+</div>
+<div class="swiper-slide">
+ <div class="destinations-block">
+ <div class="destinations-figure">
+ <img src="./assets/img/Ground Spice.jpg" class="img-fluid" alt="Destinations">
+</div>
+ </div>
+</div>
+<div class="swiper-slide">
+<div class="destinations-block">
+<div class="destinations-figure">
+<img src="./assets/img/Fruit & Vegitables 2.jpg" class="img-fluid" alt="Destinations">
+ </div>
+</div>
+</div>
+<div class="swiper-slide">
+<div class="destinations-block">
+    <div class="destinations-figure">
+<img src="./assets/img/Non Basmati Rice 2.jpg" class="img-fluid" alt="Destinations">
+</div>
+ </div>
+</div>
+ <div class="swiper-slide">
+<div class="destinations-block">
+ <div class="destinations-figure">
+ <img src="./assets/img/fresh-fruits-berries-.jpg" class="img-fluid" alt="Destinations">
+</div>
+ </div>
+</div>
+@endif
+
+</div>
+
+ <div class="swiper-pagination"></div> </div>
+
+</div>
+</div>
+<style>
+ 
+@media (max-width: 576px) {
+  .swiper-wrapper {
+    justify-content: center !important;
+  }
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+</style>
 
 
 {{-- new letter --}}
@@ -692,6 +784,8 @@
         </div>
     </section> -->
     <!-- {{-- Testimonial Section End  --}} -->
+
+    
 @endsection
 <style>
     .about-image{
@@ -719,6 +813,7 @@
     cursor: pointer;
     background-color: #fff;
     position: relative;
+
     z-index: 0;
     min-height: 100px;
 }
@@ -802,6 +897,10 @@
     line-height: 20px;
 }
     </style>
+
+
+
+
 @section('script')
     <script>
         let site_url = '{{ url('/') }}';
