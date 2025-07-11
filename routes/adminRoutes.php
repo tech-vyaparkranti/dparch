@@ -7,6 +7,7 @@ use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\HomeProductsController;
 use App\Http\Controllers\WebSiteElementsController;
+use App\Http\Controllers\WhyChooseUsController;
 
 
 Route::get("login",[AdminController::class,"Login"])->name("login");
@@ -48,7 +49,13 @@ Route::middleware(['auth'])->group(function () {
 
     Route::post("manage-contact-data", [ServicesController::class, "managecontactdata"])->name("managecontactdata");
 
-    Route::get("contact-us-data", function () {
+// Why Choose Us admin routes (without prefix)
+Route::get("why-choose-us", [WhyChooseUsController::class, "index"])->name("why-choose-us.index");
+Route::post("why-choose-us/data", [WhyChooseUsController::class, 'data'])->name('whyChooseUsData')->middleware('auth');
+Route::post("why-choose-us/save", [WhyChooseUsController::class, 'save'])->name('whyChooseUsSave')->middleware('auth');
+
+
+Route::get("contact-us-data", function () {
     return view("HomePage.ContactUsdata");
 })->name("ContactUsData");
 

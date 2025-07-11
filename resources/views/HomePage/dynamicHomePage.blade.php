@@ -1,5 +1,5 @@
 @extends('layouts.webSite')
-@section('title', 'RN Communication ')
+@section('title', 'Dp Arch ')
 @section('content')
     {{-- @include('include.navigation') --}}
     @include('include.slider')
@@ -36,7 +36,7 @@
                 aim to provide a seamless and satisfying experience.' !!}
             </p>
             <button id="toggle-button" class="px-4 py-2 bg-blue-600 text-black rounded hover:bg-blue-700 transition">
-                <a href="{{ route('aboutUs')}}" style="color:black">         Now More</a>
+                <a href="{{ route('aboutUs')}}" style="color:black">         Know More</a>
        
             </button>
         </div> <div class="offerings-figure"data-aos="fade-right">
@@ -281,128 +281,155 @@
             <h2 class="text-center">Why choose us</h2>
         </div>
         <div class="row" id="ourServices">
-            <div class="col-md-4 mb-4">
-                <div class="our-block">
-                    <div class="our-block-figure"><i class="fa-solid fa-sliders"  style="font-size:30px"></i></div>
-                    <div class="our-content">
-                        <p class="mb-0 text-center" style="font-size:18;line-height:50px">Audio-Video Support</p>
+            @if(isset($why_choose_us) && count($why_choose_us))
+                @foreach($why_choose_us as $item)
+                <div class="col-md-4 mb-4">
+                    <div class="our-block">
+                        <div class="our-block-figure">
+                            @if($item->icon && file_exists(public_path($item->icon)))
+                                <img src="{{ asset($item->icon) }}" alt="Icon" style="height: 40px;">
+                            @else
+                                <i class="fa fa-star" style="font-size:30px"></i>
+                            @endif
+                        </div>
+                        <div class="our-content">
+                            <p class="mb-0 text-center" style="font-size:18px;line-height:50px">
+                                {{ $item->title }}
+                            </p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="our-block">
-                    <div class="our-block-figure"><i class="fa-solid fa-award" style="font-size:30px"></i></div>
-                    <div class="our-content">
-
-                        <p class="mb-0 text-center" style="font-size:18;line-height:50px">Live Streaming</p>
+                @endforeach
+            @else
+                {{-- Static Fallback --}}
+                <div class="col-md-4 mb-4">
+                    <div class="our-block">
+                        <div class="our-block-figure"><i class="fa-solid fa-sliders"  style="font-size:30px"></i></div>
+                        <div class="our-content">
+                            <p class="mb-0 text-center" style="font-size:18px;line-height:50px">Audio-Video Support</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="our-block">
-                    <div class="our-block-figure"><i class="fa-regular fa-star" style="font-size:30px"></i></div>
-                    <div class="our-content">
-
-                        <p class="mb-0 text-center" style="font-size:18;line-height:50px">Event Management - Townhall</p>
+                <div class="col-md-4 mb-4">
+                    <div class="our-block">
+                        <div class="our-block-figure"><i class="fa-solid fa-award" style="font-size:30px"></i></div>
+                        <div class="our-content">
+                            <p class="mb-0 text-center" style="font-size:18px;line-height:50px">Live Streaming</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="our-block">
-                    <div class="our-block-figure"><i class="fa-solid fa-headphones" style="font-size:30px"></i></div>
-                    <div class="our-content">
-
-                        <p class="mb-0 text-center" style="font-size:18;line-height:50px">Audio-Video Rentals</p>
+                <div class="col-md-4 mb-4">
+                    <div class="our-block">
+                        <div class="our-block-figure"><i class="fa-regular fa-star" style="font-size:30px"></i></div>
+                        <div class="our-content">
+                            <p class="mb-0 text-center" style="font-size:18px;line-height:50px">Event Management - Townhall</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="our-block">
-                    <div class="our-block-figure"><i class="fa-solid fa-fire" style="font-size:30px"></i></div>
-                    <div class="our-content">
-
-                        <p class="mb-0 text-center" style="font-size:18;line-height:50px">Onsite Support</p>
+                <div class="col-md-4 mb-4">
+                    <div class="our-block">
+                        <div class="our-block-figure"><i class="fa-solid fa-headphones" style="font-size:30px"></i></div>
+                        <div class="our-content">
+                            <p class="mb-0 text-center" style="font-size:18px;line-height:50px">Audio-Video Rentals</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="our-block">
-                    <div class="our-block-figure"><i class="fa-solid fa-wallet" style="font-size:30px"></i></div>
-                    <div class="our-content">
-
-                        <p class="mb-0 text-center" style="font-size:18;line-height:50px">Specialized AV Solutions</p>
+                <div class="col-md-4 mb-4">
+                    <div class="our-block">
+                        <div class="our-block-figure"><i class="fa-solid fa-fire" style="font-size:30px"></i></div>
+                        <div class="our-content">
+                            <p class="mb-0 text-center" style="font-size:18px;line-height:50px">Onsite Support</p>
+                        </div>
                     </div>
                 </div>
-            </div>
+                <div class="col-md-4 mb-4">
+                    <div class="our-block">
+                        <div class="our-block-figure"><i class="fa-solid fa-wallet" style="font-size:30px"></i></div>
+                        <div class="our-content">
+                            <p class="mb-0 text-center" style="font-size:18px;line-height:50px">Specialized AV Solutions</p>
+                        </div>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
 </section>
+
 <!-- Why Choose Us Section Ends -->
 
 <!-- galary slider !-->
+<!-- Gallery Slider Section (Dynamic with Fallback) -->
 <div class="destinations pt-5 pb-4" data-aos="fade-up">
   <div class="custom-container">
     <div class="site-title pb-4">
- <h2 class="text-center">Gallery</h2>
+        <h2 class="text-center">Gallery</h2>
+    </div>
+
+    <div class="swiper we-offer">
+        <div class="swiper-wrapper">
+            @if(isset($galleryImages) && $galleryImages->count())
+                @foreach($galleryImages as $image)
+                    <div class="swiper-slide">
+                        <div class="destinations-block">
+                            <div class="destinations-figure">
+                                <img src="{{ url($image->local_image) }}" 
+                                     class="img-fluid" 
+                                     alt="Gallery Image" 
+                                     style="width:100%;height:220px;object-fit:cover;border-radius:10px;">
+                            </div>
+                            @if($image->title)
+                                <span class="destinations-title mh-auto text-center" style="font-size:18px;">
+                                    {{ $image->title }}
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+                @endforeach
+            @else
+                <!-- Static fallback images -->
+                <div class="swiper-slide">
+                    <div class="destinations-block">
+                        <div class="destinations-figure">
+                            <img src="{{ asset('assets/img/Basmati rice.jpeg') }}" class="img-fluid" alt="Gallery">
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="destinations-block">
+                        <div class="destinations-figure">
+                            <img src="{{ asset('assets/img/Ground Spice.jpg') }}" class="img-fluid" alt="Gallery">
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="destinations-block">
+                        <div class="destinations-figure">
+                            <img src="{{ asset('assets/img/Fruit & Vegitables 2.jpg') }}" class="img-fluid" alt="Gallery">
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="destinations-block">
+                        <div class="destinations-figure">
+                            <img src="{{ asset('assets/img/Non Basmati Rice 2.jpg') }}" class="img-fluid" alt="Gallery">
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="destinations-block">
+                        <div class="destinations-figure">
+                            <img src="{{ asset('assets/img/fresh-fruits-berries-.jpg') }}" class="img-fluid" alt="Gallery">
+                        </div>
+                    </div>
+                </div>
+                <!-- Add more static slides if you want -->
+            @endif
+        </div>
+        <div class="swiper-pagination"></div>
+    </div>
+  </div>
 </div>
 
-<div class="swiper we-offer ">
-<div class="swiper-wrapper " >
-
- @if ($home_products->count())
- @foreach ($home_products as $item)
-<div class="swiper-slide c">
-<div class="destinations-block">
-<div class="destinations-figure">
-    <img src="{{ asset($item->image) }}" class="img-fluid" alt="Destinations">
-</div>
-</div>
-</div>
- @endforeach
- @else
- <div class="swiper-slide">
-<div class="destinations-block">
-     <div class="destinations-figure">
-<img src="./assets/img/Basmati rice.jpeg" class="img-fluid" alt="Destinations">
-</div>
-</div>
-</div>
-<div class="swiper-slide">
- <div class="destinations-block">
- <div class="destinations-figure">
- <img src="./assets/img/Ground Spice.jpg" class="img-fluid" alt="Destinations">
-</div>
- </div>
-</div>
-<div class="swiper-slide">
-<div class="destinations-block">
-<div class="destinations-figure">
-<img src="./assets/img/Fruit & Vegitables 2.jpg" class="img-fluid" alt="Destinations">
- </div>
-</div>
-</div>
-<div class="swiper-slide">
-<div class="destinations-block">
-    <div class="destinations-figure">
-<img src="./assets/img/Non Basmati Rice 2.jpg" class="img-fluid" alt="Destinations">
-</div>
- </div>
-</div>
- <div class="swiper-slide">
-<div class="destinations-block">
- <div class="destinations-figure">
- <img src="./assets/img/fresh-fruits-berries-.jpg" class="img-fluid" alt="Destinations">
-</div>
- </div>
-</div>
-@endif
-
-</div>
-
- <div class="swiper-pagination"></div> </div>
-
-</div>
-</div>
 <style>
  
 @media (max-width: 576px) {
@@ -575,62 +602,173 @@
         }
     </style>
 
-    <section class="newsletter-section py-5">
-        <div class="floating-shape shape-1"></div>
-        <div class="floating-shape shape-2"></div>
+    <section class="newsletter-section py-5 position-relative" style="background:linear-gradient(100deg,#f3f8ff 60%,#e3f2fd 100%);overflow:hidden;">
+    <!-- Decorative Floating Shapes -->
+    <div class="floating-shape shape-1"></div>
+    <div class="floating-shape shape-2"></div>
 
-        <div class="container newsletter-content">
-            <div class="row justify-content-center">
-                <div class="col-lg-6 text-center">
-                    <div class="newsletter-icon fade-in-up">
-                        <i class="fas fa-envelope-open-text"></i>
+    <div class="container newsletter-content position-relative" style="z-index:2;">
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-7">
+                <div class="card newsletter-card shadow-lg border-0 p-4 px-md-5 text-center mx-auto animate__animated animate__fadeInUp" style="border-radius:2rem;">
+                    <div class="newsletter-icon mb-3 text-primary">
+                        <i class="fas fa-envelope-open-text fa-3x" style="animation: pop 1.2s ease;"></i>
                     </div>
-                    <h3 class="newsletter-title mb-3 fade-in-up">Subscribe to Our Newsletter</h3>
-                    <p class="newsletter-subtitle mb-4 text-muted fade-in-up">Stay updated with our latest news and updates.</p>
-
-                    <form class="newsletter-form row g-3 justify-content-center fade-in-up" id="newsletterForm">
-                        <div class="col-md-8">
-                            <input type="email" class="form-control" placeholder="Enter your email" required id="emailInput">
+                    <h3 class="newsletter-title mb-2 fw-bold">Subscribe to Our Newsletter</h3>
+                    <p class="newsletter-subtitle mb-4 text-muted">
+                        Stay updated with our latest news and updates.
+                    </p>
+                    <!-- Newsletter Form -->
+                    <form class="newsletter-form row g-3 justify-content-center mb-2" id="newsletterForm" autocomplete="off" novalidate>
+                        <div class="col-12 col-md-8">
+                            <input type="email" class="form-control form-control-lg shadow-sm" placeholder="Enter your email" required id="emailInput" style="border-radius:1.5rem;">
                         </div>
-                        <div class="col-md-4">
-                            <button type="submit" class="btn btn-subscribe w-100">
+                        <div class="col-12 col-md-4">
+                            <button type="submit" class="btn btn-primary btn-lg w-100 fw-semibold" style="border-radius:1.5rem;">
                                 <i class="fas fa-paper-plane me-2"></i>Subscribe
                             </button>
                         </div>
                     </form>
-
-                    <!-- Captcha Section -->
-                    <div class="captcha-section mt-4 fade-in-up" style="animation-delay: 1s;">
-                        <div class="row g-2 justify-content-center align-items-end">
-                            <div class="col-md-4">
-                                <label for="captcha" class="form-label text-start d-block">Enter Captcha</label>
-                                <input type="text" class="form-control" id="captcha" name="captcha"
-                                       placeholder="Enter captcha code" required>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="captcha-display bg-light  p-1 text-center">
-                                    <span id="captcha-code" class="fw-bold fs-4 text-primary font-monospace">A3B7K</span>
-                                </div>
-                            </div>
-                            <div class="col-md-1">
-                                <button type="button" class="btn btn-outline-primary captcha-refresh-btn" onclick="refreshCaptcha()" title="Refresh Captcha">
-                                    <i class="fas fa-sync-alt"></i>
-                                </button>
-                            </div>
+                    <!-- Captcha -->
+                    <div class="row g-2 align-items-center justify-content-center mb-3">
+                        <div class="col-auto">
+                            <canvas id="captcha-canvas" width="120" height="40" style="border-radius:8px; background:#f8f9fa; border:1px solid #e3e8ef; box-shadow:0 1px 2px rgba(0,0,0,0.04); vertical-align:middle;"></canvas>
+                        </div>
+                        <div class="col-auto p-0">
+                            <button type="button" class="btn btn-outline-primary btn-sm px-2 py-1 ms-2" onclick="drawCaptcha()" title="Refresh Captcha">
+                                <i class="fas fa-sync-alt"></i>
+                            </button>
+                        </div>
+                        <div class="col-12 mt-2">
+                            <input type="text" class="form-control form-control-sm text-center mx-auto" style="max-width:170px;border-radius:1rem;" id="captcha" placeholder="Enter code above" autocomplete="off" required>
                         </div>
                     </div>
-
-                    <small class="privacy-text text-muted mt-3 d-block fade-in-up">
+                    <!-- Privacy Note -->
+                    <small class="privacy-text text-muted d-block mt-1">
                         <i class="fas fa-shield-alt me-1"></i>
                         We respect your privacy. Unsubscribe at any time.
                     </small>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+    <!-- Floating shape styles -->
+    <style>
+        .floating-shape {
+            position:absolute; pointer-events:none; z-index:1; opacity:.15;
+        }
+        .shape-1 { width:180px; height:180px; top:-40px; left:-60px; background:radial-gradient(circle at 50% 60%,#59b2fd 40%,transparent 90%);}
+        .shape-2 { width:120px; height:120px; bottom:-40px; right:15vw; background:radial-gradient(circle at 30% 60%,#4dd2c3 60%,transparent 90%);}
+        @media (max-width: 600px) {
+            .shape-1 { width:100px; height:100px; left:-30px;}
+            .shape-2 { width:70px; height:70px; right:10vw;}
+        }
+        /* Animation for icon */
+        @keyframes pop {0%{transform:scale(.7);}70%{transform:scale(1.1);}100%{transform:scale(1);}}
+    </style>
+</section>
+
+<script>
+// Canvas Captcha
+function randomCaptchaText(len=5) {
+    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    let text = '';
+    for (let i = 0; i < len; i++) {
+        text += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    return text;
+}
+function drawCaptcha() {
+    const canvas = document.getElementById('captcha-canvas');
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // subtle gradient bg
+    let grad=ctx.createLinearGradient(0,0,canvas.width,canvas.height);
+    grad.addColorStop(0,'#e3f2fd');
+    grad.addColorStop(1,'#fff');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    // Draw noise lines
+    for (let i = 0; i < 5; i++) {
+        ctx.strokeStyle = `rgba(${Math.random()*180+50},${Math.random()*200+30},${Math.random()*255},0.37)`;
+        ctx.beginPath();
+        ctx.moveTo(Math.random()*canvas.width, Math.random()*canvas.height);
+        ctx.lineTo(Math.random()*canvas.width, Math.random()*canvas.height);
+        ctx.stroke();
+    }
+    // Draw text
+    let code = randomCaptchaText();
+    canvas.dataset.code = code;
+    for (let i = 0; i < code.length; i++) {
+        ctx.save();
+        ctx.font = `${Math.floor(Math.random()*8+25)}px Arial`;
+        ctx.globalAlpha = .78;
+        ctx.fillStyle = `hsl(${Math.random()*360},67%,42%)`;
+        let angle = (Math.random()-0.5)*0.44;
+        ctx.translate(20 + i*18, 28);
+        ctx.rotate(angle);
+        ctx.fillText(code[i], 0, 0);
+        ctx.restore();
+    }
+}
+document.addEventListener('DOMContentLoaded', drawCaptcha);
+
+// Form Validation
+document.getElementById('newsletterForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    let email = document.getElementById('emailInput').value.trim();
+    let captchaInput = document.getElementById('captcha').value.trim().toUpperCase();
+    let captchaCode = document.getElementById('captcha-canvas').dataset.code;
+    let button = this.querySelector('button[type=submit]');
+
+    // Basic validation
+    if(!email.match(/^[\w\.\-\_]+@[\w\-]+\.[\w\-\.]+$/)) {
+        document.getElementById('emailInput').classList.add('is-invalid');
+        return;
+    } else {
+        document.getElementById('emailInput').classList.remove('is-invalid');
+    }
+
+    if(captchaInput !== captchaCode) {
+        document.getElementById('captcha').classList.add('is-invalid');
+        // Shake animation
+        document.getElementById('captcha').style.animation = 'shake 0.3s';
+        setTimeout(()=>{document.getElementById('captcha').style.animation='';},400);
+        drawCaptcha();
+        return;
+    } else {
+        document.getElementById('captcha').classList.remove('is-invalid');
+    }
+
+    // Show loading
+    button.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Subscribing...';
+    button.disabled = true;
+
+    setTimeout(function(){
+        button.innerHTML = '<i class="fas fa-check me-2"></i>Subscribed!';
+        button.classList.add('btn-success');
+        button.classList.remove('btn-primary');
+        // Reset fields
+        document.getElementById('emailInput').value = '';
+        document.getElementById('captcha').value = '';
+        drawCaptcha();
+        setTimeout(function(){
+            button.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Subscribe';
+            button.disabled = false;
+            button.classList.remove('btn-success');
+            button.classList.add('btn-primary');
+        }, 2200);
+    }, 1400);
+});
+// Minimal shake animation
+let shakeStyle = document.createElement('style');
+shakeStyle.innerHTML = `@keyframes shake {10%,90%{transform:translateX(-2px);}20%,80%{transform:translateX(4px);}30%,50%,70%{transform:translateX(-8px);}40%,60%{transform:translateX(8px);}}`;
+document.head.appendChild(shakeStyle);
+</script>
+
 
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script> --}}
-    <script>
+    {{-- <script>
         // Captcha functionality
         function refreshCaptcha() {
             const captchaCode = document.getElementById('captcha-code');
@@ -748,7 +886,7 @@
             }
         `;
         document.head.appendChild(style);
-    </script>
+    </script> --}}
 
 {{-- new letter --}}
 

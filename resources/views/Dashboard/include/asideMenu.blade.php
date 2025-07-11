@@ -107,6 +107,14 @@
                   <div data-i18n="Analytics">Manage Products</div>
                 </a>
               </li>
+
+              <li class="menu-item">
+                <a href="{{route("why-choose-us.index")}}" class="menu-link">
+                  <i class="menu-icon tf-icons bx bx-bulb"></i>
+                  <div data-i18n="Analytics">Manage why choose us</div>
+                </a>
+              </li>
+
               <li class="menu-item">
                 <a href="{{route("homeDestinationsSlider")}}" class="menu-link">
                   <i class="menu-icon tf-icons bx bx-bulb"></i>

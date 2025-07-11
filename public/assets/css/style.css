@@ -211,7 +211,7 @@ a.footer-call {
 
 .common-home header.fixed-header,
 .information header.fixed-header {
-    background-color: #fff6f4;
+    background-color: #C89293;
     position: sticky;
     top: 0;
     z-index: 9;
@@ -223,7 +223,7 @@ a.footer-call {
 /* } */
 header.fixed-header,
 .common-home header.fixed-header {
-    background-color: #fff6f4;
+    background-color: #C89293;
     box-shadow: var(--box-shadow) rgb(var(--black-color));
     height: 66px;
 }
@@ -263,7 +263,7 @@ a {
 .main-header {
     position: relative;
     margin: 0 0;
-    background-color: #fff6f4;
+    background-color: #c89293;
     max-height: 65px;
 }
 

@@ -54,17 +54,17 @@
                 <div class="footer-item">
                     <div class="footer-logo">
                         <div class="footer-logo-inner">
-                            <img src="{{ asset($Logo??"./assets/img/logo.png") }}" class="img-fluid" width="130" height="86" alt="RNcommunication " >
+                            <img src="{{ asset($Logo??"./assets/img/logo.jpeg") }}" class="img-fluid" width="130" height="86" alt="DP Arch " >
                             {{-- <div id="TA_rated501" class="TA_rated"><ul id="JjXmgm" class="TA_links VuYcLdHeKQX"><li id="Vri6iTpTKUC" class="IZw2R90i"><a target="_blank" href="https://www.tripadvisor.com/Attraction_Review-g304551-d15224458-Reviews-The_Luxury_Travel-New_Delhi_National_Capital_Territory_of_Delhi.html"><img src="https://www.tripadvisor.com/img/cdsi/img2/badges/ollie-11424-2.gif" alt="TripAdvisor"/></a></li></ul></div><script async src="https://www.jscache.com/wejs?wtype=rated&amp;uniq=501&amp;locationId=15224458&amp;lang=en_US&amp;display_version=2" data-loadtrk onload="this.loadtrk=true"></script> --}}
                         </div>
-                        <p><b>{!! $footer_logo_name ?? 'RnCommunication'!!}</b></p>
+                        <p><b>{!! $footer_logo_name ?? 'DP Arch'!!}</b></p>
                         <ul class="social-media mt-4">
-                        <li><a href="{!! $facebook_link ?? 'https://www.facebook.com/RNcommunication' !!}" aria-label="Read more about RNcommunication  facebook"><i class="fa-brands fa-facebook"></i></a></li>
-                        <li><a href="{!! $linkedin_link ?? '/' !!}" aria-label="Read more about RNcommunication  Linkedin"><i class="fab fa-linkedin"></i></a></li>
-                        <li><a href="{!! $instagram_link ?? 'https://www.instagram.com/adiyogi_global' !!}" aria-label="Read more about RNcommunication  Instagram"><i class="fa-brands fa-instagram"></i></a></li>
-                        <li><a href="{!! $youtube_link ?? 'https://www.youtube.com/@RNcommunication' !!}" aria-label="Read more about RNcommunication  Youtube"><i class="fa-brands fa-youtube"></i></a></li>
+                        <li><a href="{!! $facebook_link ?? 'https://www.facebook.com/DP Arch' !!}" aria-label="Read more about DP Arch  facebook"><i class="fa-brands fa-facebook"></i></a></li>
+                        <li><a href="{!! $linkedin_link ?? '/' !!}" aria-label="Read more about DP Arch  Linkedin"><i class="fab fa-linkedin"></i></a></li>
+                        <li><a href="{!! $instagram_link ?? 'https://www.instagram.com/adiyogi_global' !!}" aria-label="Read more about DP Arch  Instagram"><i class="fa-brands fa-instagram"></i></a></li>
+                        <li><a href="{!! $youtube_link ?? 'https://www.youtube.com/@DP Arch' !!}" aria-label="Read more about DP Arch  Youtube"><i class="fa-brands fa-youtube"></i></a></li>
                         </ul>
-                        {{-- <p class="text-center mb-0"><img style="max-width: 100%" src="assets/img/msme.png" alt="RNcommunication " width="100%" height="" /></p> --}}
+                        {{-- <p class="text-center mb-0"><img style="max-width: 100%" src="assets/img/msme.png" alt="DP Arch " width="100%" height="" /></p> --}}
                     </div>
                 </div>
             </div>
@@ -91,7 +91,7 @@
                     <div class="footer-contact">
                         <div class="footer-item pb-3">
                             <label>Company E-mail:</label>
-                            <p class="footer-email"><i class="fa-solid fa-envelope"></i>&nbsp;<a  href="mailto:{!! $email_1??"sales@RNcommunication.com" !!}" style="font-weight:bold;font-size:16px;">{!! $email_2??"sales@RNcommunication.com" !!}</a>
+                            <p class="footer-email"><i class="fa-solid fa-envelope"></i>&nbsp;<a  href="mailto:{!! $email_1??"sales@DP Arch.com" !!}" style="font-weight:bold;font-size:16px;">{!! $email_2??"sales@DP Arch.com" !!}</a>
                         </div>
                         <div class="footer-item pb-3">
                             <label>Contact No:</label>
@@ -269,7 +269,7 @@ $('#compactContactUsForm').on('submit', function (e) {
 </script>
 </footer>
 
-<div class="copyright-section text-center p-3">&copy; <script>document.write( new Date().getFullYear() );</script>{{ isset($WebSetting['0']->copyright_txt) ? $WebSetting['0']->copyright_txt : '© 2024 All Rights Reserved by RNcommunication ' }}   & Developed by <a href="https://vyaparkranti.com/" class="text-white" aria-label="Digital Markating" alt="Vyapar Kranti">Vyapar kranti</a></div>
+<div class="copyright-section text-center p-3">&copy; <script>document.write( new Date().getFullYear() );</script>{{ isset($WebSetting['0']->copyright_txt) ? $WebSetting['0']->copyright_txt : '© 2024 All Rights Reserved by DP Arch ' }}   & Developed by <a href="https://vyaparkranti.com/" class="text-white" aria-label="Digital Markating" alt="Vyapar Kranti">Vyapar kranti</a></div>
 <!-- Footer Section End-->
 <style>
         /* Demo content */

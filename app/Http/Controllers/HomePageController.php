@@ -12,6 +12,8 @@ use App\Models\ServicesModel;
 use App\Models\WebSiteElements;
 use App\Traits\CommonFunctions;
 use App\Models\HomeProductsModel;
+use App\Models\WhyChooseUs;
+
 use Mews\Captcha\Facades\Captcha;
 
 class HomePageController extends Controller
@@ -23,8 +25,16 @@ class HomePageController extends Controller
             $sliders=SliderModel::where([[SliderModel::SLIDE_STATUS,SliderModel::SLIDE_STATUS_LIVE],
             [SliderModel::SLIDE_STATUS,1]])->orderBy(SliderModel::SLIDE_SORTING,"desc")->get();
             $home_products=HomeProductsModel::where('slide_status','live')->get();
+            $why_choose_us = WhyChooseUs::where('status', 'live')
+            ->orderBy('sorting', 'asc')
+            ->get();
+           $galleryImages = GalleryItem::where('status', 1)
+    ->where('view_status', 'visible')
+    ->orderBy('created_at', 'desc')
+    ->take(10)
+    ->get();
             $data = $this->getElement();
-            return view("HomePage.dynamicHomePage",compact('sliders','home_products'),$data);
+            return view("HomePage.dynamicHomePage",compact('sliders','home_products','why_choose_us','galleryImages'),$data);
         }catch(Exception $exception){
             echo $exception->getMessage();
             return false;
@@ -74,14 +84,11 @@ class HomePageController extends Controller
     //     return view("HomePage.blogPage",compact("WebSetting","getAllBlogs","getAllFaq","Recognitions"));
     // }
     public function galleryPages(){
-        // $data["galleryImages"] =$this->getCachedGalleryItems();
-        // $data[GalleryItem::FILTER_CATEGORY] = collect($data["galleryImages"])->unique(GalleryItem::FILTER_CATEGORY);
-        $ImageMOdule = new GalleryItem();
-        
-        $galleryImages = $ImageMOdule->getAllGalleryImages();
-
-        return view("HomePage.galleryPages",compact("galleryImages"));
-    }
+    $galleryImages = GalleryItem::where('view_status', 'visible')
+        ->where('status', 1)
+        ->get();
+    return view('HomePage.galleryPages', compact('galleryImages'));
+}
     public function contactUs(){
         
         $data = $this->getElement();

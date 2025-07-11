@@ -13,17 +13,17 @@
                         label="Upload Images" placeholder="Images" accept="image/*"
                         multiple></x-input-with-label-element>
 
-                    <x-input-with-label-element type="url" name="image_link" id="image_link" placeholder="Image Link"
-                        label="Image Link"></x-input-with-label-element>
+                    {{-- <x-input-with-label-element type="url" name="image_link" id="image_link" placeholder="Image Link"
+                        label="Image Link"></x-input-with-label-element> --}}
 
                     <x-input-with-label-element required name="alternate_text" id="alternate_text"
                         placeholder="Alernate Text For Image" label="Alternate Text"></x-input-with-label-element>
 
-                    <x-input-with-label-element type="file" name="local_video" id="local_video" placeholder="Video"
+                    {{-- <x-input-with-label-element type="file" name="local_video" id="local_video" placeholder="Video"
                         label="Upload Video"></x-input-with-label-element>
 
                     <x-input-with-label-element type="url"  name="video_link" id="video_link" placeholder="Video Link"
-                        label="Video Link"></x-input-with-label-element>
+                        label="Video Link"></x-input-with-label-element> --}}
 
                     <x-input-with-label-element type="text" id="title" name="title" required
                         placeholder="Gallery Item Title" label="Title"></x-input-with-label-element>
@@ -39,9 +39,9 @@
                         <option value="hidden">Hidden</option>
                     </x-select-label-group>
                     <x-select-label-group required name="filter_category" id="filter_category_id" label_text="Filter Category">
-                        <option value="Temples">Temples</option>
-                        <option value="Monuments">Monuments</option>
-                        <option value="HillStations">HillStations</option>
+                        <option value="Residential">Residential</option>
+                        <option value="Commercial">Commercial</option>
+                        <option value="Master Planning">Master Planning</option>
                     </x-select-label-group>
                     <x-form-buttons></x-form-buttons>
                 </x-form>
@@ -137,36 +137,36 @@
                         searchable: false,
                         title: "Image Link"
                     },
-                    {
-                        data: '{{ \App\Models\GalleryItem::LOCAL_VIDEO }}',
-                        render: function(data, type) {
-                            let video = '';
-                            if (data) {
-                                video += '<video width="100" height="100" controls><source src="' +
-                                    site_url + data + '" type="video/mp4">' +
-                                    'Your browser does not support the video tag.</video>';
-                            }
-                            return video;
-                        },
-                        orderable: false,
-                        searchable: false,
-                        title: "Video Local"
-                    },
-                    {
-                        data: '{{ \App\Models\GalleryItem::VIDEO_LINK }}',
-                        render: function(data, type) {
-                            let video = '';
-                            if (data) {
-                                video += '<video width="100" height="100" controls><source src="' +
-                                    data + '" type="video/mp4">' +
-                                    'Your browser does not support the video tag.</video>';
-                            }
-                            return video;
-                        },
-                        orderable: false,
-                        searchable: false,
-                        title: "Video Link"
-                    },
+                    // {
+                    //     data: '{{ \App\Models\GalleryItem::LOCAL_VIDEO }}',
+                    //     render: function(data, type) {
+                    //         let video = '';
+                    //         if (data) {
+                    //             video += '<video width="100" height="100" controls><source src="' +
+                    //                 site_url + data + '" type="video/mp4">' +
+                    //                 'Your browser does not support the video tag.</video>';
+                    //         }
+                    //         return video;
+                    //     },
+                    //     orderable: false,
+                    //     searchable: false,
+                    //     title: "Video Local"
+                    // },
+                    // {
+                    //     data: '{{ \App\Models\GalleryItem::VIDEO_LINK }}',
+                    //     render: function(data, type) {
+                    //         let video = '';
+                    //         if (data) {
+                    //             video += '<video width="100" height="100" controls><source src="' +
+                    //                 data + '" type="video/mp4">' +
+                    //                 'Your browser does not support the video tag.</video>';
+                    //         }
+                    //         return video;
+                    //     },
+                    //     orderable: false,
+                    //     searchable: false,
+                    //     title: "Video Link"
+                    // },
                     {
                         data: '{{ \App\Models\GalleryItem::POSITION }}',
                         name: '{{ \App\Models\GalleryItem::POSITION }}',
@@ -186,9 +186,9 @@
             let row = $.parseJSON(atob($(this).data("row")));
             if (row['id']) {
                 $("#id").val(row['id']);
-                $("#image_link").val(row['image_link']);
+                // $("#image_link").val(row['image_link']);
                 $("#alternate_text").val(row['alternate_text']);
-                $("#video_link").val(row['video_link']);
+                // $("#video_link").val(row['video_link']);
                 $("#title").val(row['title']);
                 $("#description").val(row['description']);
                 $("#position").val(row['position']);

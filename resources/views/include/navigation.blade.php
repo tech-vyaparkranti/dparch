@@ -12,7 +12,7 @@
     <div class="header-contaner">
         <div class="logo-section">
             <div class="mobile-bars" hidden></div>
-            <a href="{{ url('/') }}" aria-level="Main logo"><img src="{{ asset($Logo??"./assets/img/logo.png") }}" class="img-fluid" width="120" height="90" alt="Home Styler"></a>
+            <a href="{{ url('/') }}" aria-level="Main logo"><img src="{{ asset($Logo??"./assets/img/logo.jpeg") }}" class="img-fluid" width="120" height="90" alt="Home Styler"></a>
         </div>
         <div class="slide-navigation">
             <div class="navbar-wrapper">
