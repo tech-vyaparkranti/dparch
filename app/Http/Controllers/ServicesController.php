@@ -1,5 +1,6 @@
 <?php
 
+
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ServicesRequest;
@@ -13,211 +14,153 @@ use Yajra\DataTables\Facades\DataTables;
 
 class ServicesController extends Controller
 {
-    use CommonFunctions;
-    //
-
-    public function servicesSlider(){
+    // Show the project admin page
+    public function servicesSlider()
+    {
         return view("Dashboard.Pages.services");
     }
 
-    public function servicesData(){
-        $query = ServicesModel::select(ServicesModel::IMAGE,
-        ServicesModel::ID,
-        ServicesModel::HEADING_TOP,
-        ServicesModel::HEADING_BOTTOM,
-        ServicesModel::HEADING_MIDDLE,
-        ServicesModel::SLIDE_SORTING,
-        ServicesModel::SLIDE_STATUS);
+    // DataTable AJAX for projects
+    public function data(Request $request)
+    {
+        $query = ServicesModel::select([
+            'id',
+            'image',
+            'banner_image',
+            'project_name',
+            'description',
+            'gallery_images',
+            'status',
+            'sorting'
+        ]);
+
         return DataTables::of($query)
             ->addIndexColumn()
-            ->addColumn('action', function ($row){
-                $btn_edit = '<a data-row="' . base64_encode(json_encode($row)) . '" href="javascript:void(0)" class="edit btn btn-primary btn-sm">Edit</a>';
-                
-                $btn_disable = ' <a   href="javascript:void(0)" onclick="Disable('.$row->{ServicesModel::ID}.')" class="btn btn-danger btn-sm">Disable Slide</a>';
-                $btn_enable = ' <a   href="javascript:void(0)" onclick="Enable('.$row->{ServicesModel::ID}.')" class="btn btn-primary btn-sm">Enable Slide</a>';
-                if($row->{ServicesModel::SLIDE_STATUS}==ServicesModel::SLIDE_STATUS_DISABLED){
-                    return $btn_edit.$btn_enable;
-                }else{
-                    return $btn_edit.$btn_disable;
-                }
+            ->editColumn('image', function ($row) {
+                return $row->image ? $row->image : '';
             })
-            ->rawColumns(['action'])
-            ->make(true);
-    }
-
-    public function servicesSaveSlide(ServicesRequest $request){
-        try{
-            switch($request->input("action")){
-                case "insert":
-                    $return = $this->insertSlide($request);
-                    break;
-                case "update":
-                    $return = $this->updateSlide($request);
-                    break;
-                case "enable":
-                case "disable":
-                    $return = $this->enableDisableSlide($request);
-                    break;
-                default:
-                $return = ["status"=>false,"message"=>"Unknown case","data"=>""];
-            }
-        }catch(Exception $exception){
-            $return = $this->reportException($exception);
-        }
-        return response()->json($return);
-    }
-
-    public function insertSlide(ServicesRequest $request){
-        $imageUpload = $this->slideImageUpload($request);
-        if($imageUpload["status"]){
-            $ServicesModel = new ServicesModel();
-            $ServicesModel->{ServicesModel::IMAGE} = $imageUpload["data"];
-            $ServicesModel->{ServicesModel::HEADING_TOP} = $request->input(ServicesModel::HEADING_TOP);
-            $ServicesModel->{ServicesModel::HEADING_MIDDLE} = $request->input(ServicesModel::HEADING_MIDDLE);
-            $ServicesModel->{ServicesModel::HEADING_BOTTOM} = $request->input(ServicesModel::HEADING_BOTTOM);
-            $ServicesModel->{ServicesModel::SLIDE_STATUS} = $request->input(ServicesModel::SLIDE_STATUS);
-            $ServicesModel->{ServicesModel::SLIDE_SORTING} = $request->input(ServicesModel::SLIDE_SORTING);           
-            $ServicesModel->{ServicesModel::STATUS} = 1;
-            $ServicesModel->{ServicesModel::CREATED_BY} = Auth::user()->id;
-            $ServicesModel->save();
-            $return = ["status"=>true,"message"=>"Saved successfully","data"=>null];
-            $this->forgetSlides();
-        }else{
-            $return = $imageUpload;
-        }
-        return $return;
-    }
-
-    public function slideImageUpload(ServicesRequest $request){
-        $maxId = ServicesModel::max(ServicesModel::ID);
-        $maxId += 1;
-        $timeNow = strtotime($this->timeNow());
-        $maxId .= "_$timeNow";
-        return $this->uploadLocalFile($request,"image","/website/uploads/Slider/","slide_$maxId");
-    }
-
-    public function updateSlide(ServicesRequest $request){
-        $check = ServicesModel::where([ServicesModel::ID=>$request->input(ServicesModel::ID),ServicesModel::STATUS=>1])->first();
-        if($check){
-            if($request->input(ServicesModel::IMAGE)){
-                $imageUpload =$this->slideImageUpload($request);
-                if($imageUpload["status"]){
-                    $check->{ServicesModel::IMAGE} = $imageUpload["data"];
-                    $check->{ServicesModel::SLIDE_SORTING} = $request->input(ServicesModel::SLIDE_SORTING);
-                    $check->{ServicesModel::HEADING_TOP} = $request->input(ServicesModel::HEADING_TOP);
-                    $check->{ServicesModel::HEADING_MIDDLE} = $request->input(ServicesModel::HEADING_MIDDLE);
-                    $check->{ServicesModel::HEADING_BOTTOM} = $request->input(ServicesModel::HEADING_BOTTOM);
-                    $check->{ServicesModel::SLIDE_STATUS} = $request->input(ServicesModel::SLIDE_STATUS);
-                    $check->{ServicesModel::UPDATED_BY} = Auth::user()->id;
-                    $check->save();
-                    $this->forgetSlides();
-                    $return = ["status"=>true,"message"=>"Updated successfully","data"=>null];
-                }else{
-                    $return = $imageUpload;
+            ->editColumn('banner_image', function ($row) {
+                return $row->banner_image ? $row->banner_image : '';
+            })
+            ->editColumn('gallery_images', function ($row) {
+                // Gallery is stored as JSON array
+                $galleries = $row->gallery_images ? json_decode($row->gallery_images, true) : [];
+                if (is_array($galleries) && count($galleries)) {
+                    $imgs = '';
+                    foreach ($galleries as $img) {
+                        $imgs .= '<img src="' . $img . '" style="max-width:32px; margin:2px;">';
+                    }
+                    return $imgs;
                 }
-            }else{
-                $check->{ServicesModel::SLIDE_SORTING} = $request->input(ServicesModel::SLIDE_SORTING);
-                $check->{ServicesModel::HEADING_TOP} = $request->input(ServicesModel::HEADING_TOP);
-                $check->{ServicesModel::HEADING_MIDDLE} = $request->input(ServicesModel::HEADING_MIDDLE);
-                $check->{ServicesModel::HEADING_BOTTOM} = $request->input(ServicesModel::HEADING_BOTTOM);
-                $check->{ServicesModel::SLIDE_STATUS} = $request->input(ServicesModel::SLIDE_STATUS);
-                $check->{ServicesModel::UPDATED_BY} = Auth::user()->id;
-                $check->save();
-                $this->forgetSlides();
-                $return = ["status"=>true,"message"=>"Updated successfully","data"=>null];            
-            }
-        }else{
-            $return = ["status"=>false,"message"=>"Details not found.","data"=>null];
-        }
-        return $return;
-    }
-
-    // public function enableDisableSlide(ServicesRequest $request){
-    //     $check = ServicesModel::find($request->input(ServicesModel::ID));
-    //     if($check){
-    //         $check->{ServicesModel::UPDATED_BY} = Auth::user()->id;
-    //         if($request->input("action")=="enable"){
-    //             $check->{ServicesModel::SLIDE_STATUS} = ServicesModel::SLIDE_STATUS_LIVE;
-    //             $return = ["status"=>true,"message"=>"Enabled successfully.","data"=>""];
-    //         }else{
-    //             $check->{ServicesModel::SLIDE_STATUS} = ServicesModel::SLIDE_STATUS_DISABLED;
-    //             $return = ["status"=>true,"message"=>"Disabled successfully.","data"=>""];
-    //         }
-    //         $this->forgetSlides();
-    //         $check->save();
-    //     }else{
-    //         $return = ["status"=>false,"message"=>"Details not found.","data"=>""];
-    //     }
-    //     return $return;
-    // }
-    public function enableDisableSlide(ServicesRequest $request) {
-        $check = ServicesModel::find($request->input(ServicesModel::ID));
-        
-        if ($check) {
-            $check->{ServicesModel::UPDATED_BY} = Auth::user()->id;
-            
-            if ($request->input("action") == "enable") {
-                $check->{ServicesModel::SLIDE_STATUS} = ServicesModel::SLIDE_STATUS_LIVE;
-                $return = ["status" => 1, "message" => "Enabled successfully.", "data" => ""];
-            } else {
-                $check->{ServicesModel::SLIDE_STATUS} = ServicesModel::SLIDE_STATUS_DISABLED;
-                $return = ["status" => 1, "message" => "Disabled successfully.", "data" => ""];
-            }
-            
-            $this->forgetSlides();
-            $check->save();
-        } else {
-            $return = ["status" => 0, "message" => "Details not found.", "data" => ""];
-        }
-        
-        return $return;
-    }
-    
-
-    public function managecontactdata(Request $request)
-{
-    if ($request->ajax()) {
-        $data = ContactUsModel::query();
-
-        // If no data, add 2 static dummy rows
-        if ($data->count() == 0) {
-            $static = collect([
-                [
-                    'first_name' => 'John',
-                    'last_name' => 'Doe',
-                    'email' => 'john@example.com',
-                    'country_code' => '+1',
-                    'phone_number' => '1234567890',
-                    'message' => 'This is a static message.',
-                    'ip_address' => '127.0.0.1',
-                    'user_agent' => 'Static UA',
-                    'status' => 'new',
-                    'created_at' => now(),
-                ],
-                [
-                    'first_name' => 'Jane',
-                    'last_name' => 'Smith',
-                    'email' => 'jane@example.com',
-                    'country_code' => '+44',
-                    'phone_number' => '9876543210',
-                    'message' => 'Another static message.',
-                    'ip_address' => '192.168.1.1',
-                    'user_agent' => 'Static UA 2',
-                    'status' => 'read',
-                    'created_at' => now(),
-                ],
-            ]);
-
-            return DataTables::of($static)
-                ->addIndexColumn()
-                ->make(true);
-        }
-
-        return DataTables::of($data)
-            ->addIndexColumn()
+                return '';
+            })
+            ->editColumn('status', function ($row) {
+                return ucfirst($row->status);
+            })
+            ->addColumn('action', function ($row) {
+                $rowJson = base64_encode(json_encode([
+                    'id' => $row->id,
+                    'image' => $row->image,
+                    'banner_image' => $row->banner_image,
+                    'project_name' => $row->project_name,
+                    'description' => $row->description,
+                    'gallery_images' => $row->gallery_images,
+                    'status' => $row->status,
+                    'sorting' => $row->sorting,
+                ]));
+                $editBtn = '<button class="btn btn-primary btn-sm edit" data-row="' . $rowJson . '"><i class="fa fa-edit"></i> Edit</button> ';
+                if ($row->status === 'live') {
+                    $statusBtn = '<button class="btn btn-danger btn-sm" onclick="Disable(' . $row->id . ')">Disable</button>';
+                } else {
+                    $statusBtn = '<button class="btn btn-success btn-sm" onclick="Enable(' . $row->id . ')">Enable</button>';
+                }
+                return $editBtn . $statusBtn;
+            })
+            ->rawColumns(['action', 'gallery_images'])
             ->make(true);
     }
 
-    abort(403);
-}
+    // Save/Insert/Update/Enable/Disable
+    public function save(Request $request)
+    {
+        try {
+            $action = $request->input('action');
+            $id = $request->input('id');
+            if ($action === 'insert') {
+                $request->validate([
+                    'image' => 'required|image|mimes:jpeg,png,jpg,svg|max:4096',
+                    'banner_image' => 'required|image|mimes:jpeg,png,jpg,svg|max:4096',
+                    'project_name' => 'required|string|max:255',
+                    'description' => 'required|string',
+                    'gallery_images.*' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:4096',
+                    'status' => 'required|in:live,disabled',
+                    'sorting' => 'nullable|integer',
+                ]);
+                $imagePath = null;
+                if ($request->hasFile('image')) {
+                    $imagePath = $request->file('image')->store('uploads/projects', 'public');
+                    $imagePath = '/storage/' . $imagePath;
+                }
+                $bannerImagePath = null;
+                if ($request->hasFile('banner_image')) {
+                    $bannerImagePath = $request->file('banner_image')->store('uploads/projects/banner', 'public');
+                    $bannerImagePath = '/storage/' . $bannerImagePath;
+                }
+                $galleryPaths = [];
+                if ($request->hasFile('gallery_images')) {
+                    foreach ($request->file('gallery_images') as $img) {
+                        $path = $img->store('uploads/projects/gallery', 'public');
+                        $galleryPaths[] = '/storage/' . $path;
+                    }
+                }
+                ServicesModel::create([
+                    'image' => $imagePath,
+                    'banner_image' => $bannerImagePath,
+                    'project_name' => $request->project_name,
+                    'description' => $request->description,
+                    'gallery_images' => json_encode($galleryPaths),
+                    'status' => $request->status,
+                    'sorting' => $request->sorting ?? 0,
+                ]);
+                return response()->json(['status' => true, 'message' => 'Project added successfully']);
+            } elseif ($action === 'update') {
+                $project = ServicesModel::find($id);
+                if (!$project) {
+                    return response()->json(['status' => false, 'message' => 'Record not found']);
+                }
+                $data = $request->only(['project_name', 'description', 'status', 'sorting']);
+                if ($request->hasFile('image')) {
+                    if ($project->image && file_exists(public_path($project->image))) @unlink(public_path($project->image));
+                    $imagePath = $request->file('image')->store('uploads/projects', 'public');
+                    $data['image'] = '/storage/' . $imagePath;
+                }
+                if ($request->hasFile('banner_image')) {
+                    if ($project->banner_image && file_exists(public_path($project->banner_image))) @unlink(public_path($project->banner_image));
+                    $bannerPath = $request->file('banner_image')->store('uploads/projects/banner', 'public');
+                    $data['banner_image'] = '/storage/' . $bannerPath;
+                }
+                if ($request->hasFile('gallery_images')) {
+                    // Optionally, you can delete old gallery images
+                    $galleryPaths = [];
+                    foreach ($request->file('gallery_images') as $img) {
+                        $path = $img->store('uploads/projects/gallery', 'public');
+                        $galleryPaths[] = '/storage/' . $path;
+                    }
+                    $data['gallery_images'] = json_encode($galleryPaths);
+                }
+                $project->update($data);
+                return response()->json(['status' => true, 'message' => 'Project updated successfully']);
+            } elseif ($action === 'enable' || $action === 'disable') {
+                $project = ServicesModel::find($id);
+                if ($project) {
+                    $project->status = $action === 'enable' ? 'live' : 'disabled';
+                    $project->save();
+                    return response()->json(['status' => true, 'message' => ucfirst($action) . 'd successfully']);
+                }
+            }
+            return response()->json(['status' => false, 'message' => 'Invalid action']);
+        } catch (Exception $e) {
+            return response()->json(['status' => false, 'message' => 'Error: ' . $e->getMessage()]);
+        }
+    }
 }

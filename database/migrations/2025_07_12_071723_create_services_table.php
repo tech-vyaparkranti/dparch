@@ -15,13 +15,13 @@ class CreateServicesTable extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->id();
-            $table->string('image',500)->nullable(false);
-            $table->string('heading_top',500)->nullable(true)->default(null);
-            $table->longText('heading_middle')->nullable(true)->default(null);
-            $table->string('heading_bottom',500)->nullable(true)->default(null);
-            $table->enum('slide_status',["live","disabled"])->nullable(false)->default("disabled");
-            $table->integer('slide_sorting')->nullable(false)->default("1")->index("services_index");
-            $table->tinyInteger('status')->default('1')->nullable(false);
+            $table->string('image', 500)->nullable(false);           // Main image
+            $table->string('banner_image', 500)->nullable(true);     // Banner image
+            $table->string('project_name', 255)->nullable(false);    // Project/Service name
+            $table->longText('description')->nullable(true);         // Description/content
+            $table->json('gallery_images')->nullable(true);          // Multiple images as JSON array
+            $table->enum('status', ['live', 'disabled'])->default('disabled');
+            $table->integer('sorting')->default(1)->index('services_sorting_index');
             $table->bigInteger("created_by")->nullable(true);
             $table->bigInteger("updated_by")->nullable(true);
             $table->timestamps();

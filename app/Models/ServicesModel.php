@@ -13,18 +13,32 @@ class ServicesModel extends Model
 
     const ID = "id";
     const IMAGE = "image";
-    const HEADING_TOP = "heading_top";
-    const HEADING_MIDDLE = "heading_middle";
-    const HEADING_BOTTOM = "heading_bottom";
-    const SLIDE_STATUS = "slide_status";
-    const SLIDE_SORTING = "slide_sorting";
+    const BANNER_IMAGE = "banner_image";
+    const PROJECT_NAME = "project_name";
+    const DESCRIPTION = "description";
+    const GALLERY_IMAGES = "gallery_images"; // store as json string
     const STATUS = "status";
-    const CREATED_BY = "created_by";
-    const UPDATED_BY = "updated_by";
+    const SORTING = "sorting";
     const CREATED_AT = "created_at";
     const UPDATED_AT = "updated_at";
 
-    const SLIDE_STATUS_LIVE = "live";
-    const SLIDE_STATUS_DISABLED = "disabled";
+    const STATUS_LIVE = "live";
+    const STATUS_DISABLED = "disabled";
+
+    // Fillable fields for mass-assignment
+    protected $fillable = [
+        self::IMAGE,
+        self::BANNER_IMAGE,
+        self::PROJECT_NAME,
+        self::DESCRIPTION,
+        self::GALLERY_IMAGES,
+        self::STATUS,
+        self::SORTING,
+    ];
+
+    // If you want gallery_images as array always
+    protected $casts = [
+        self::GALLERY_IMAGES => 'array',
+    ];
     #"live","disabled"
 }

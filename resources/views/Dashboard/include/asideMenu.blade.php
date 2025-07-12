@@ -104,7 +104,7 @@
               <li class="menu-item">
                 <a href="{{route("servicesSlider")}}" class="menu-link">
                   <i class="menu-icon tf-icons bx bx-bulb"></i>
-                  <div data-i18n="Analytics">Manage Products</div>
+                  <div data-i18n="Analytics">Manage Projects</div>
                 </a>
               </li>
 
