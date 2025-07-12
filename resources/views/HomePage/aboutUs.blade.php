@@ -13,7 +13,7 @@
                 <h2 class="text-center">About Us </h2>
             </div>
             <div class="midd-content">
-                <p class="text-justify" data-aos="fade-up">{!! $about_us_page_text ?? 'At Adiyogi Global, we are committed to delivering healthy, high-quality products to people around the
+                <p class="text-justify" data-aos="fade-up">{!! $home_about_content ?? 'At Adiyogi Global, we are committed to delivering healthy, high-quality products to people around the
 world. For over 12 years, we have built a reputation as a trusted provider by sourcing only the finest
 goods directly from the best farmers and manufacturers in India. Our dedication to quality is reflected in
 every product we offer, from fresh produce to a wide range of specialty items.

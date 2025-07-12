@@ -285,14 +285,14 @@ class HomePageController extends Controller
     }
 
     public function blogPage(){
-        $blog= Blog::where('status',1)->get();
+        $blog= Blog::where('blog_status','live')->get();
         $data = $this->getElement();
         // dd($blog);
         return view("HomePage.blogPage",compact('blog'),$data);  
     }
     public function blogDetails($slug)
     {
-        $blogDetails = Blog::where(['status'=>1,'slug'=>$slug])->first();
+        $blogDetails = Blog::where(['blog_status','live','slug'=>$slug])->first();
         $data = $this->getElement();
         $recentBlog = Blog::where('status', 1)
             ->where('id', '!=', optional($blogDetails)->id)
