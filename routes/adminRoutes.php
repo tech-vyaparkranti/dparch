@@ -6,6 +6,7 @@ use App\Http\Controllers\SliderController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\HomeProductsController;
+use App\Http\Controllers\TeamMemberController;
 use App\Http\Controllers\WebSiteElementsController;
 use App\Http\Controllers\WhyChooseUsController;
 
@@ -53,6 +54,11 @@ Route::middleware(['auth'])->group(function () {
 Route::get("why-choose-us", [WhyChooseUsController::class, "index"])->name("why-choose-us.index");
 Route::post("why-choose-us/data", [WhyChooseUsController::class, 'data'])->name('whyChooseUsData')->middleware('auth');
 Route::post("why-choose-us/save", [WhyChooseUsController::class, 'save'])->name('whyChooseUsSave')->middleware('auth');
+
+Route::get("team-member", [TeamMemberController::class, "index"])->name("teamMember.index");
+Route::post("team-member/data", [TeamMemberController::class, 'data'])->name('teamMemberData')->middleware('auth');
+Route::post("team-member/save", [TeamMemberController::class, 'save'])->name('teamMemberSave')->middleware('auth');
+
 
 
 Route::get("contact-us-data", function () {

@@ -6,6 +6,7 @@ use Exception;
 use App\Models\NavMenu;
 use App\Models\GalleryItem;
 use App\Models\SliderModel;
+use App\Models\TeamMember;
 use Illuminate\Http\Request;
 use App\Models\ProductsModel;
 use App\Models\ServicesModel;
@@ -43,7 +44,9 @@ class HomePageController extends Controller
     }
     public function aboutUs(){
         $data = $this->getElement();
-        return view("HomePage.aboutUs",$data);
+        $teamMembers = TeamMember::where('status', 'live')->orderBy('sorting', 'asc')->get();
+
+        return view("HomePage.aboutUs",compact('teamMembers'),$data);
     }
     public function termsConditions(){
         $data = $this->getElement();

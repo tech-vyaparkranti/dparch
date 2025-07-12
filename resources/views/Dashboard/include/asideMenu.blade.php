@@ -115,6 +115,13 @@
                 </a>
               </li>
 
+               <li class="menu-item">
+                <a href="{{route("teamMember.index")}}" class="menu-link">
+                  <i class="menu-icon tf-icons bx bx-bulb"></i>
+                  <div data-i18n="Analytics">Manage Team members</div>
+                </a>
+              </li>
+
               <li class="menu-item">
                 <a href="{{route("homeDestinationsSlider")}}" class="menu-link">
                   <i class="menu-icon tf-icons bx bx-bulb"></i>
