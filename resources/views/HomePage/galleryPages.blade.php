@@ -24,35 +24,35 @@
                 @endforeach
             </div>
 
-            <div class="row my-shuffle-container">
-                @if($galleryImages->isNotEmpty())
-                    @foreach ($galleryImages as $GalleryImage)
-                        <div class="mb-3 col-md-4 col-sm-6 picture-item"
-                             data-groups='["{{ $GalleryImage->filter_category ?? 'uncategorized' }}"]'>
-                            <a data-fancybox="gallery"
-                               href="{{ $GalleryImage->local_image ? url($GalleryImage->local_image) : $GalleryImage->image_link }}">
-                                <div style="width: 100%; height: 250px; overflow: hidden; border-radius: 10px; box-shadow: 0 2px 8px #ccc;">
-                                    <img src="{{ $GalleryImage->local_image ? url($GalleryImage->local_image) : $GalleryImage->image_link }}"
-                                         class="img-fluid"
-                                         alt="{{ $GalleryImage->title ?? $GalleryImage->alternate_text }}"
-                                         style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
-                                </div>
-                                <div class="gallery-caption mt-2">
-                                    <h3 style="font-size: 1.1rem; font-weight: bold; margin-bottom: 4px;">
-                                        {{ $GalleryImage->title ?: $GalleryImage->alternate_text ?: 'Untitled' }}
-                                    </h3>
-                                    <p style="font-size: 0.98rem; color: #666;">
-                                        {{ $GalleryImage->description }}
-                                    </p>
-                                </div>
-                            </a>
-                        </div>
-                    @endforeach
-                @else
-                    <div class="col-12"><p class="text-center">No gallery items available.</p></div>
-                @endif
-                <div class="col-1@sm my-sizer-element"></div>
+         <div class="row my-shuffle-container">
+    @if($galleryImages->isNotEmpty())
+        @foreach ($galleryImages as $GalleryImage)
+            <div class="col-12 col-sm-6 col-md-4 mb-4 picture-item"
+                 data-groups='["{{ $GalleryImage->filter_category ?? 'uncategorized' }}"]'>
+                <a data-fancybox="gallery"
+                   href="{{ $GalleryImage->local_image ? url($GalleryImage->local_image) : $GalleryImage->image_link }}">
+                    <div style="width: 100%; height: 250px; overflow: hidden; border-radius: 10px; box-shadow: 0 2px 8px #ccc;">
+                        <img src="{{ $GalleryImage->local_image ? url($GalleryImage->local_image) : $GalleryImage->image_link }}"
+                             class="img-fluid"
+                             alt="{{ $GalleryImage->title ?? $GalleryImage->alternate_text }}"
+                             style="width: 100%; height: 100%; object-fit: cover; object-position: center;">
+                    </div>
+                    <div class="gallery-caption mt-2">
+                        <h3 class="h6 mb-1">
+                            {{ $GalleryImage->title ?: $GalleryImage->alternate_text ?: 'Untitled' }}
+                        </h3>
+                        <p class="text-muted small">
+                            {{ $GalleryImage->description }}
+                        </p>
+                    </div>
+                </a>
             </div>
+        @endforeach
+    @else
+        <div class="col-12"><p class="text-center">No gallery items available.</p></div>
+    @endif
+</div>
+
         </div>
     </div>
 </div>

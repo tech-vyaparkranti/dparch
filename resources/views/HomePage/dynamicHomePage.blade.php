@@ -152,15 +152,7 @@
 </div>
 <style>
  
-@media (max-width: 576px) {
-  .swiper-wrapper {
-    justify-content: center !important;
-  }
-  .swiper-slide {
-    display: flex;
-    justify-content: center;
-  }
-}
+
 
 </style>
 
@@ -370,18 +362,31 @@
             @if(isset($galleryImages) && $galleryImages->count())
                 @foreach($galleryImages as $image)
                     <div class="swiper-slide">
-                        <div class="destinations-block">
-                            <div class="destinations-figure">
+                        <div class="destinations-block" style="background:none;">
+                            <div class="destinations-figure" style="width:100%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    ">
                                 <img src="{{ url($image->local_image) }}" 
                                      class="img-fluid" 
                                      alt="Gallery Image" 
-                                     style="width:100%;height:220px;object-fit:cover;border-radius:10px;">
+                                     style= "width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius:50px;
+          
+            display: block;"
+                                     >
                             </div>
-                            @if($image->title)
+                          <!--  @if($image->title)
                                 <span class="destinations-title mh-auto text-center" style="font-size:18px;">
                                     {{ $image->title }}
                                 </span>
                             @endif
+                            !-->
                         </div>
                     </div>
                 @endforeach
@@ -432,15 +437,12 @@
 
 <style>
  
-@media (max-width: 576px) {
-  .swiper-wrapper {
-    justify-content: center !important;
+  @media (max-width: 576px) {
+    .swiper-slide {
+      margin: 0px 10px;
+    }
   }
-  .swiper-slide {
-    display: flex;
-    justify-content: center;
-  }
-}
+</style>
 
 </style>
 
