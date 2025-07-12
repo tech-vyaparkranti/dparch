@@ -8,6 +8,7 @@ use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\HomeProductsController;
 use App\Http\Controllers\TeamMemberController;
 use App\Http\Controllers\WebSiteElementsController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\WhyChooseUsController;
 
 
@@ -59,6 +60,10 @@ Route::get("team-member", [TeamMemberController::class, "index"])->name("teamMem
 Route::post("team-member/data", [TeamMemberController::class, 'data'])->name('teamMemberData')->middleware('auth');
 Route::post("team-member/save", [TeamMemberController::class, 'save'])->name('teamMemberSave')->middleware('auth');
 
+
+Route::get("blog-admin", [BlogController::class, "manageBlog"])->name("manageBlog");
+Route::post("save-blog", [BlogController::class, "saveBlog"])->name("saveBlog");
+Route::post("blog-data", [BlogController::class, "blogData"])->name("blogData");
 
 
 Route::get("contact-us-data", function () {

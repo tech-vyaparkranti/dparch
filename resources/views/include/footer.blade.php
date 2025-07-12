@@ -203,23 +203,108 @@ function refreshCaptcha() {
     document.getElementById('captcha').value = '';
 }
 
+// $('#compactContactUsForm').on('submit', function (e) {
+//     e.preventDefault();
+
+//     let form = this;
+//     let formData = new FormData(form);
+//     $('#submitButton').attr('disabled', true).text('Submitting...');
+
+//     $.ajax({
+//         url: '{{ route("saveContactUsDetails") }}',
+//         method: 'POST',
+//         data: formData,
+//         contentType: false,
+//         processData: false,
+
+// //         success: function (response) {
+// //             $('#submitButton').attr('disabled', false).text('Submit');
+
+// //             if (response.status === true) {
+// //                 Swal.fire({
+// //                     icon: 'success',
+// //                     title: 'Success!',
+// //                     text: response.message || 'Your message has been sent.',
+// //                     confirmButtonColor: '#3085d6',
+// //                     confirmButtonText: 'OK'
+// //                 }).then(() => {
+// //                     const modal = bootstrap.Modal.getInstance(document.getElementById('compactEnquiryModal'));
+// //                     if (modal) modal.hide();
+// //                 });
+
+// //                 form.reset();
+// //             } else {
+// //                 Swal.fire({
+// //                     icon: 'error',
+// //                     title: 'Oops...',
+// //                     text: response.message || 'Something went wrong!'
+// //                 });
+// //             }
+
+// //             refreshCompactCaptcha();
+// //         },
+
+// //         error: function (xhr) {
+// //     $('#submitButton').attr('disabled', false).text('Submit');
+
+// //     let msg = 'Something went wrong.';
+// //     if (xhr.responseJSON?.errors) {
+// //         msg = Object.values(xhr.responseJSON.errors).flat().join('\n');
+// //     } else if (xhr.responseJSON?.message) {
+// //         msg = xhr.responseJSON.message;
+// //     }
+
+// //     Swal.fire({
+// //         icon: 'error',
+// //         title: 'Submission Failed',
+// //         text: msg
+// //     });
+
+// //     refreshCompactCaptcha();
+// // }
+// success: function (response) {
+//     $('#submitButton').attr('disabled', false).text('Submit');
+
+//     if (response.status === true) {
+//         Swal.fire({
+//             icon: 'success',
+//             title: 'Success!',
+//             text: response.message || 'Your message has been sent.',
+//         }).then(() => {
+//             const modal = bootstrap.Modal.getInstance(document.getElementById('compactEnquiryModal'));
+//             if (modal) modal.hide();
+//         });
+//         form.reset();
+//     } else {
+//         Swal.fire({
+//             icon: 'warning',
+//             title: 'Notice',
+//             text: response.message || 'Submission already exists today.',
+//         });
+//     }
+
+//     refreshCompactCaptcha();
+// },
+
+
+//     });
+// });
 $('#compactContactUsForm').on('submit', function (e) {
     e.preventDefault();
-
+    
     let form = this;
     let formData = new FormData(form);
     $('#submitButton').attr('disabled', true).text('Submitting...');
-
+    
     $.ajax({
         url: '{{ route("saveContactUsDetails") }}',
         method: 'POST',
         data: formData,
         contentType: false,
         processData: false,
-
         success: function (response) {
             $('#submitButton').attr('disabled', false).text('Submit');
-
+            
             if (response.status === true) {
                 Swal.fire({
                     icon: 'success',
@@ -231,35 +316,47 @@ $('#compactContactUsForm').on('submit', function (e) {
                     const modal = bootstrap.Modal.getInstance(document.getElementById('compactEnquiryModal'));
                     if (modal) modal.hide();
                 });
-
                 form.reset();
             } else {
                 Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: response.message || 'Something went wrong!'
+                    icon: 'warning',
+                    title: 'Notice',
+                    text: response.message || 'Submission already exists today.',
                 });
             }
-
+            
             refreshCompactCaptcha();
         },
-
         error: function (xhr) {
             $('#submitButton').attr('disabled', false).text('Submit');
-
+            
             let msg = 'Something went wrong.';
-            if (xhr.responseJSON?.errors) {
-                msg = Object.values(xhr.responseJSON.errors).join('\n');
-            } else if (xhr.responseJSON?.message) {
+            let icon = 'error';
+            let title = 'Submission Failed';
+            
+            // Handle validation errors
+            if (xhr.status === 422 && xhr.responseJSON?.errors) {
+                msg = Object.values(xhr.responseJSON.errors).flat().join('\n');
+                title = 'Validation Error';
+            } 
+            // Handle other server errors
+            else if (xhr.responseJSON?.message) {
                 msg = xhr.responseJSON.message;
             }
-
+            // Handle network/server errors
+            else if (xhr.status === 500) {
+                msg = 'Server error occurred. Please try again later.';
+            }
+            else if (xhr.status === 0) {
+                msg = 'Network error. Please check your connection.';
+            }
+            
             Swal.fire({
-                icon: 'error',
-                title: 'Submission Failed',
+                icon: icon,
+                title: title,
                 text: msg
             });
-
+            
             refreshCompactCaptcha();
         }
     });

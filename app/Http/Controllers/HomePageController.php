@@ -14,6 +14,8 @@ use App\Models\WebSiteElements;
 use App\Traits\CommonFunctions;
 use App\Models\HomeProductsModel;
 use App\Models\WhyChooseUs;
+use App\Models\Blog;
+
 
 use Mews\Captcha\Facades\Captcha;
 
@@ -69,23 +71,22 @@ class HomePageController extends Controller
         return view("HomePage.destinations",$data);
     }
     public function productPage(){
-        $services=ServicesModel::where('slide_status','live')->get();
+        $services=ServicesModel::where('status','live')->get();
         $data = $this->getElement();
-         return view("HomePage.productPage",compact('services'),$data);
+        return view("HomePage.productPage",compact('services'),$data);  
+    }
+    public function productDetails($slug)
+    {
+        $projectDetails=ServicesModel::where(['status'=>'live','slug'=>$slug])->first();
+        $data = $this->getElement();
+        return view("HomePage.productDetails",compact('projectDetails'),$data);
+
     }
     public function reportPage(){
         $data = $this->getElement();
          return view("HomePage.reportPage",$data);
     }
-    // public function blogPage(){
-    //     $WebSetting = SettingModel::all();
-
-    //    $getAllBlogs = BlogModel::all();
-    //    $getAllFaq = FaqModel::all();
-    //    $Recognitions   = PartnersModel::where('image_type','2')->get();
-
-    //     return view("HomePage.blogPage",compact("WebSetting","getAllBlogs","getAllFaq","Recognitions"));
-    // }
+    
     public function galleryPages(){
     $galleryImages = GalleryItem::where('view_status', 'visible')
         ->where('status', 1)
@@ -281,5 +282,23 @@ class HomePageController extends Controller
             }
         } 
         return $data;
+    }
+
+    public function blogPage(){
+        $blog= Blog::where('status',1)->get();
+        $data = $this->getElement();
+        // dd($blog);
+        return view("HomePage.blogPage",compact('blog'),$data);  
+    }
+    public function blogDetails($slug)
+    {
+        $blogDetails = Blog::where(['status'=>1,'slug'=>$slug])->first();
+        $data = $this->getElement();
+        $recentBlog = Blog::where('status', 1)
+            ->where('id', '!=', optional($blogDetails)->id)
+            ->latest()
+            ->take(5)
+            ->get();
+        return view("HomePage.blogDetails",compact('blogDetails' ,'recentBlog'),$data);
     }
 }

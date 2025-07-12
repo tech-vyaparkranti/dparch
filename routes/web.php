@@ -42,10 +42,13 @@ Route::get("cancellation-refund-policy",[HomePageController::class,"Cancellation
 Route::get("privacy-policy",[HomePageController::class,"privacyPolicy"])->name("privacyPolicy");
 // Route::get("services",[HomePageController::class,"destinations"])->name("destinations");
 Route::get("projects",[HomePageController::class,"productPage"])->name("productPage");
+Route::get("projects/{slug}",[HomePageController::class,"productDetails"])->name("productDetails");
+
 Route::get("report",[HomePageController::class,"reportPage"])->name("reportPage");
 Route::get("event",[HomePageController::class,"galleryPages"])->name("galleryPages");
 Route::get("contact-us",[HomePageController::class,"contactUs"])->name("contactUs");
 Route::get("blog",[HomePageController::class,"blogPage"])->name("blogPage");
+Route::get("blogDetails/{slug}",[HomePageController::class,"blogDetails"])->name("blogDetails");
 // Route::get("get-home-page-dd",[DestinationController::class,"getHomePageDestinations"])->name("getHomePageDestinations");
 // Route::get("get-home-page-services",[OurServicesModelController::class,"getHomePageServices"])->name("getHomePageServices");
 Route::post("contact-us-form",[ContactUsController::class,"saveContactUsDetails"])->name("saveContactUsDetails");

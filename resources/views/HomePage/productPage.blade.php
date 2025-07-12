@@ -1,60 +1,89 @@
 @extends('layouts.webSite')
 @section('title', 'Services')
 @section('content')
+
+@php
+    use App\Models\WebSiteElements;
+
+    $project_content = WebSiteElements::where([
+        'status' => 1,
+        'element' => 'projects_content'
+    ])->value('element_details'); // or whatever column holds the actual content
+@endphp
 <div class="information-page-slider">
     <div class="information-content">
-        <h1><a href="{{ url('/') }}">Home</a><span>Services</span></h1>
+        <h1><a href="{{ url('/') }}">Home</a><span>Project</span></h1>
     </div>
 </div>
 <div id="about">
     <div class="default-content products-page pt-5 pb-3">
         <div class="custom-container">
             <div class="site-title pb-3">
-                <h2 class="text-center">Our Services</h2>
-                {{-- <p class="text-center pb-3">From basic treks to high-altitude mountaineering expeditions, we cater to adventurers of all levels.</p> --}}
+                <h2 class="text-center">Our Projects</h2>
+                <p class="text-center pb-3">
+                    {!! $project_content ?? "From basic treks to high-altitude mountaineering expeditions, we cater to adventurers of all levels." !!}
+                    {{-- {!! $data['projects_content'] !!} --}}
+                </p>
             </div>
-            <div class="midd-content">
-                <div class="row">
-                    @foreach ($services as  $item)
-                    <div class="col-md-12 mb-4 offerings-container">
-                        <div class="offerings-block">
-                            <div class="offerings-content">
-                                <div class="offerings-content-inner">
-                                    <h3>{{ $item->heading_top }}</h3>
-                                    <p class="text-justify">{{ $item->heading_middle }}</p>
-                                    <a href="javascript:void(0)" type="button" data-bs-toggle="modal"
-                            data-bs-target="#enquery-pop"><i class="fa fa-link" aria-hidden="true"></i> Enquiry Now</a>
-                                </div>
-                            </div>
-                            <div class="offerings-figure" data-aos="zoom-in-up">
-                                <img src="{{ asset($item->image) }}" class="img-fluid rounded" width="" height="" alt="{{ $item->heading_top }}" >
-                            </div>
-                            
+            <div class="services-grid mt-3">
+            @if (isset($services) && $services->count() > 0)
+                @foreach ($services as $index => $item)
+                <div class="service-card" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                    <div class="services-container {{ $index % 2 == 1 ? 'reverse' : '' }}">
+                        <div class="left-item">
+                            <img src="{{ asset($item->image) }}" alt="{{ $item->heading_top }}">
+                        </div>
+                        <div class="right-item">
+                            <h4>{{ strToUpper($item->project_name) }}</h4> 
+                            <p class="text-justify">{!! Str::limit($item->description, 500, '...') !!}</p>
+                            <a href="{{route('productDetails',$item->slug)}}" type="button" class="theme-btn center">
+                                <span>View Details</span>
+                                <i class="fa fa-link" aria-hidden="true"></i>
+                            </a>
                         </div>
                     </div>
-                    @endforeach
-                   
-                    <!-- <div class="col-md-12 mb-4 offerings-container">
-                        <div class="offerings-block">
-                            <div class="offerings-content">
-                                <div class="offerings-content-inner">
-                                    <h3>Tomato</h3>
-                                    <p>The tomato, often referred to as the "love apple," is a culinary gem cherished for its vibrant color, juicy texture, and versatile flavor. Originating from the Andes region of South America, this humble fruit has journeyed across continents to become a staple ingredient in cuisines around the globe. Whether enjoyed fresh in salads, cooked into rich sauces, or sun-dried for intensified sweetness, the tomato's culinary potential knows no bounds.</p>
-                                    <a href="javascript:void(0)" type="button" data-bs-toggle="modal"
-                                    data-bs-target="#enquery-pop"><i class="fa fa-link" aria-hidden="true"></i> Enquiry Now</a>
-                                </div>
-                            </div>
-                            <div class="offerings-figure" data-aos="zoom-in-down">
-                                <img src="assets/img/tomato.jpg" class="img-fluid rounded" width="" height="" alt="Bikaner"  />
-                            </div>
-                        </div>
-                    </div> -->
-               
-
-
-
                 </div>
-            </div>
+                @endforeach
+            @else
+                
+                <div class="service-card" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                    <div class="services-container">
+                        <div class="left-item">
+                            <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Strategic Planning Service">
+                        </div>
+                        <div class="right-item">
+                            <h4>Strategic Planning</h4>
+                            <p>Develop comprehensive strategies that align with
+                                 your vision and objectives. Our strategic planning services help you identify opportunities, mitigate risks, and create actionable roadmaps for sustainable success.</p>
+                            <a href="#" class="theme-btn style-two bgc-secondary">
+                                <span data-hover="Book Now">Explore</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div class="service-card" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
+                    <div class="services-container">
+                        <div class="left-item">
+                            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Digital Solutions Service">
+                        </div>
+                        <div class="right-item">
+                            <h4>Digital Solutions</h4>
+                            <p class="text-justify pb-10">Transform your business with our cutting-edge digital solutions. From web development to mobile applications, we create innovative platforms that drive growth and enhance user experience across all digital touchpoints.</p>
+                            <a href="#" class="theme-btn style-two bgc-secondary">
+                                <span data-hover="Book Now">View Details</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            @endif
+            
+        </div>
+
         </div>
     </div>
 </div>
@@ -153,7 +182,7 @@
     </div>
 </div>
 
-<style>
+{{-- <style>
      .contact-form-area button[data-bs-dismiss="modal"],
     .service-page .destinations-block a {
         position: absolute;
@@ -193,10 +222,311 @@
     .contact-form-area.pt-4 {
     padding: 20px;
 }
-    </style>
+    </style> --}}
+    <style>
+/* Services Section Styles */
+.services-section {
+    padding: 80px 0;
+    background: white;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+    color: #2c3e50;
+}
+
+.section-header h2 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.section-header p {
+    font-size: 1.2rem;
+    opacity: 0.8;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.services-grid {
+    display: grid;
+    gap: 40px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.service-card {
+    background: rgba(255, 255, 255, 1);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+    border: 1px solid rgba(230, 230, 230, 0.5);
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+}
+
+.services-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 350px;
+}
+
+.services-container.reverse {
+    direction: rtl;
+}
+
+.services-container.reverse .right-item {
+    direction: ltr;
+}
+
+.left-item {
+    position: relative;
+    overflow: hidden;
+}
+
+.left-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.service-card:hover .left-item img {
+    transform: scale(1.1);
+}
+
+.right-item {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+}
+
+.right-item h4 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #2c3e50;
+    position: relative;
+}
+
+.right-item h4::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    border-radius: 2px;
+}
+
+.right-item p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+.theme-btn {
+    display: inline-flex;
+    height: 100%;
+    width: 50%;
+    align-items: center;
+    gap: 15px;
+    padding: 15px 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white !important;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    border: none;
+}
+
+.theme-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.theme-btn:hover::before {
+    left: 100%;
+}
+
+.theme-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+    color: white !important;
+}
+
+.theme-btn span {
+    position: relative;
+    z-index: 2;
+}
+
+.theme-btn i {
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+}
+
+.theme-btn:hover i {
+    transform: translateX(5px);
+}
+
+/* Service specific styling */
+.service-card:nth-child(1) .right-item h4::after {
+    background: linear-gradient(90deg, #ff6b6b, #ee5a52);
+}
+
+.service-card:nth-child(2) .right-item h4::after {
+    background: linear-gradient(90deg, #4ecdc4, #44a08d);
+}
+
+.service-card:nth-child(3) .right-item h4::after {
+    background: linear-gradient(90deg, #45b7d1, #096dd9);
+}
+
+/* Loading animation */
+.service-card {
+    opacity: 0;
+    transform: translateY(50px);
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .services-container,
+    .services-container.reverse {
+        grid-template-columns: 1fr;
+        direction: ltr;
+    }
+
+    .left-item {
+        height: 250px;
+    }
+
+    .right-item {
+        padding: 30px 25px;
+    }
+
+    .section-header h2 {
+        font-size: 2.2rem;
+    }
+
+    .services-grid {
+        gap: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .services-section {
+        padding: 60px 0;
+    }
+
+    .container {
+        padding: 0 15px;
+    }
+
+    .right-item {
+        padding: 25px 20px;
+    }
+
+    .right-item h4 {
+        font-size: 1.5rem;
+    }
+
+    .theme-btn {
+        padding: 12px 25px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Modal Styles */
+.contact-form-area button[data-bs-dismiss="modal"] {
+    position: absolute;
+    top: 10px;
+    right: 10px !important;
+    left: auto;
+    color: red;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    z-index: 1000;
+}
+
+.contact-form-area.pt-4 {
+    padding: 20px;
+}
+
+.modal-content {
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+}
+
+.form-control {
+    border-radius: 10px;
+    border: 2px solid #e9ecef;
+    padding: 12px 15px;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+}
+
+.default-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.default-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+</style>
+
 @endsection
 
-    @section('script')
+@section('script')
 <script>
     $("#contactUsForm").on("submit", function () {
         var full_number = phone_number.getNumber(intlTelInputUtils.numberFormat.E164);
