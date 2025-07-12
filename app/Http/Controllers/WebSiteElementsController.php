@@ -37,6 +37,7 @@ class WebSiteElementsController extends Controller
         "value_content",
         "contact_us_image",
         "contact_us_content",
+        "Projects_content"
     ];
     public function addWebSiteElements()
     {

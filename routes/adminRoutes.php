@@ -40,8 +40,8 @@ Route::middleware(['auth'])->group(function () {
 
       
     Route::get("products-admin", [ServicesController::class, "servicesSlider"])->name("servicesSlider");
-    Route::post("products", [ServicesController::class, "servicesSaveSlide"])->name("servicesSaveSlide");
-    Route::post("products-data", [ServicesController::class, "servicesData"])->name("servicesData");
+    Route::post("products", [ServicesController::class, "save"])->name("projects.save");
+    Route::post("products-data", [ServicesController::class, "data"])->name("projects.data");
 
         
     Route::get("home-products-admin", [HomeProductsController::class, "homeDestinationsSlider"])->name("homeDestinationsSlider");
