@@ -141,23 +141,16 @@ for choosing Adiyogi Global.'  !!}</p>
 </div>
 
 
-<div class="swiper we-offer ">
-<div class="swiper-wrapper " >
-
- 
-
-</div>
-</div>
 
 
 
 <style>
-   @media (max-width: 576px) {
+   /* @media (max-width: 576px) {
     .swiper-slide {
       margin: 0px 10px;
     }
   }
-
+ */
     .container {
       width: 100%;
       padding-left: 15px;
@@ -233,7 +226,7 @@ for choosing Adiyogi Global.'  !!}</p>
       font-size: 0.95rem;
       margin-bottom: 10px;
     }
-
+/* 
    @media (max-width: 576px) {
   .swiper-wrapper {
     justify-content: center !important;
@@ -243,7 +236,7 @@ for choosing Adiyogi Global.'  !!}</p>
     justify-content: center;
   }
 }
-
+ */
 </style>
 
 
