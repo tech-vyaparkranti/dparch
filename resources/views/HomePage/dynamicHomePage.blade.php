@@ -29,12 +29,22 @@
                     <div class="offerings-content">
                         <p id="about-content" class="text-justify">
                         <p class="text-justify">
-                        {!! Str::words(
+                           
+                      {!! Str::limit(
                             $home_about_content ??
-                                'Adiyogi Global is dedicated to providing healthy, high-quality products to customers worldwide. With over 12 years of experience, we source the finest goods directly from top farmers and manufacturers across India. Our commitment to quality and transparency ensures that every product meets the highest standards of purity and freshness. We take pride in earning the trust of our customers through exceptional service and a deep dedication to their well-being. At Adiyogi Global, we bring the best of India to the world, always prioritizing quality and care. Customer trust is the foundation of Adiyogi Global. We are committed to earning and maintaining this trust through transparency, integrity, and exceptional service. From your first interaction with us, we aim to provide a seamless and satisfying experience.',
-                            400,
+                                'Adiyogi Global is dedicated to providing healthy,
+                                 high-quality products to customers worldwide. With over
+                                  12 years of experience, we source the finest goods directly from top farmers and manufacturers
+                                   across India. Our commitment to quality and transparency ensures that every product meets the
+                                 highest standards of purity and freshness. We take pride in earning the trust of our customers 
+                                through exceptional service and a deep dedication to their well-being. At Adiyogi Global, we bring 
+                                the best of India to the world, always prioritizing quality and care. Customer trust is the foundation 
+                                of Adiyogi Global. We are committed to earning and maintaining this trust through transparency, integrity, 
+                                and exceptional service. From your first interaction with us, we aim to provide a seamless and satisfying 
+                                experience.',
+                            1000,
                             '...',
-                        ) !!}
+                        ) !!} 
                         </p>
                         <button id="toggle-button"
                             class="px-4 py-2 bg-blue-600 text-black rounded hover:bg-blue-700 transition">
