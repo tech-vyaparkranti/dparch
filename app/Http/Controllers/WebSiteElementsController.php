@@ -28,7 +28,7 @@ class WebSiteElementsController extends Controller
         "footer_logo_name",
         "address",
         "whatsapp_footer_link",
-        "about_us_page_text",
+        // "about_us_page_text",
         "mision_image",
         "mision_content",
         "vision_image",

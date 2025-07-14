@@ -18,102 +18,30 @@ class ContactUsController extends Controller
 {
     use CommonFunctions;
     use ResponseAPI;
-    // public function saveContactUsDetails(ContactUsRequest $request){
-    //     try{
-    //         $check = ContactUsModel::where([
-    //             [ContactUsModel::EMAIL,$request->input(ContactUsModel::EMAIL)],
-    //             [ContactUsModel::PHONE_NUMBER,$request->input(ContactUsModel::PHONE_NUMBER)],
-    //         ])->whereRaw("date(created_at)=date(now())")->first();
-    //         if($check){
-    //             $response = $this->error("You alread sent a message for today.");
-    //         }else{
-    //             $newContactUs = new ContactUsModel();
-    //             $newContactUs->{ContactUsModel::FIRST_NAME} = $request->input(ContactUsModel::FIRST_NAME);
-    //             $newContactUs->{ContactUsModel::LAST_NAME} = $request->input(ContactUsModel::LAST_NAME);
-    //             $newContactUs->{ContactUsModel::EMAIL} = $request->input(ContactUsModel::EMAIL);
-    //             $newContactUs->{ContactUsModel::COUNTRY_CODE} = $request->input(ContactUsModel::COUNTRY_CODE);
-    //             $newContactUs->{ContactUsModel::PHONE_NUMBER} = $request->input(ContactUsModel::PHONE_NUMBER);
-    //             $newContactUs->{ContactUsModel::MESSAGE} = $request->input(ContactUsModel::MESSAGE);
-    //             $newContactUs->{ContactUsModel::IP_ADDRESS} = $this->getIp();
-    //             $newContactUs->{ContactUsModel::USER_AGENT} = $request->userAgent();
-    //             $newContactUs->save();
-    //             $this->sendContactUsEmail($newContactUs);
-    //             $response = $this->success("Thank you for your message. We will contact you shortly.",[]);
-    //         }
-    //     }catch(Exception $exception){
-    //         report($exception);
-    //         $response = $this->error("Something went wrong. ".$exception->getMessage());
-    //     }
-    //     return response()->json($response);
-    // }
-
-    public function saveContactUsDetails(ContactUsRequest $request): JsonResponse
-{
-    try {
-        // Check if user already submitted today
-        $check = ContactUsModel::where([
-            [ContactUsModel::EMAIL, $request->input(ContactUsModel::EMAIL)],
-            [ContactUsModel::PHONE_NUMBER, $request->input(ContactUsModel::PHONE_NUMBER)],
-        ])
-        ->whereRaw("date(created_at) = date(now())")
-        ->first();
-        
-        if ($check) {
-            return response()->json([
-                'status' => false,
-                'message' => 'You have already sent a message today. Please try again tomorrow.'
-            ], 200); // Use 200 status code for business logic errors
+    public function saveContactUsDetails(ContactUsRequest $request){
+        try{
+                $newContactUs = new ContactUsModel();
+                $newContactUs->{ContactUsModel::FIRST_NAME} = $request->input(ContactUsModel::FIRST_NAME);
+                $newContactUs->{ContactUsModel::LAST_NAME} = $request->input(ContactUsModel::LAST_NAME);
+                $newContactUs->{ContactUsModel::EMAIL} = $request->input(ContactUsModel::EMAIL);
+                $newContactUs->{ContactUsModel::COUNTRY_CODE} = $request->input(ContactUsModel::COUNTRY_CODE);
+                $newContactUs->{ContactUsModel::PHONE_NUMBER} = $request->input(ContactUsModel::PHONE_NUMBER);
+                $newContactUs->{ContactUsModel::MESSAGE} = $request->input(ContactUsModel::MESSAGE);
+                $newContactUs->{ContactUsModel::IP_ADDRESS} = $this->getIp();
+                $newContactUs->{ContactUsModel::USER_AGENT} = $request->userAgent();
+                $newContactUs->save();
+                $this->sendContactUsEmail($newContactUs);
+                $response = $this->success("Thank you for your message. We will contact you shortly.",[]);
+            
+        }catch(Exception $exception){
+            report($exception);
+            $response = $this->error("Something went wrong. ".$exception->getMessage());
         }
-        
-        // Create new contact entry
-        $newContactUs = new ContactUsModel();
-        $newContactUs->{ContactUsModel::FIRST_NAME} = $request->input(ContactUsModel::FIRST_NAME);
-        $newContactUs->{ContactUsModel::LAST_NAME} = $request->input(ContactUsModel::LAST_NAME);
-        $newContactUs->{ContactUsModel::EMAIL} = $request->input(ContactUsModel::EMAIL);
-        $newContactUs->{ContactUsModel::COUNTRY_CODE} = $request->input(ContactUsModel::COUNTRY_CODE);
-        $newContactUs->{ContactUsModel::PHONE_NUMBER} = $request->input(ContactUsModel::PHONE_NUMBER);
-        $newContactUs->{ContactUsModel::MESSAGE} = $request->input(ContactUsModel::MESSAGE);
-        $newContactUs->{ContactUsModel::IP_ADDRESS} = $this->getIp();
-        $newContactUs->{ContactUsModel::USER_AGENT} = $request->userAgent();
-        
-        if (!$newContactUs->save()) {
-            return response()->json([
-                'status' => false,
-                'message' => 'Failed to save your message. Please try again.'
-            ], 500);
-        }
-        
-        // Send email (wrap in try-catch to prevent email failures from breaking the flow)
-        try {
-            $this->sendContactUsEmail($newContactUs);
-        } catch (\Exception $emailException) {
-            // Log email error but don't break the flow
-            \Log::error('Contact form email failed: ' . $emailException->getMessage());
-        }
-        
-        return response()->json([
-            'status' => true,
-            'message' => 'Thank you for your message. We will contact you shortly.'
-        ]);
-        
-    } catch (\Illuminate\Validation\ValidationException $e) {
-        // Handle validation errors
-        return response()->json([
-            'status' => false,
-            'message' => 'Please check your form data.',
-            'errors' => $e->errors()
-        ], 422);
-        
-    } catch (\Exception $e) {
-        // Log the error for debugging
-        \Log::error('Contact form error: ' . $e->getMessage());
-        
-        return response()->json([
-            'status' => false,
-            'message' => 'Something went wrong. Please try again later.'
-        ], 500);
+        // return response()->json($response);
+        return $response;
     }
-}
+
+
 
 
     public function manageContactUs(){

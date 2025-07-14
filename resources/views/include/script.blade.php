@@ -232,4 +232,62 @@ var swiper = new Swiper(".recognitions-self", {
 });
 </script>
 
+<script>
+    // Attach submit event handler to the form
+    $("#compactContactUsForm").on("submit", function(e) {
+        e.preventDefault(); // Prevent default form submission
+
+        // Create FormData object
+        var form = new FormData(this);
+
+        // Disable the submit button to prevent multiple submissions
+        $("#submitButton").attr("disabled", true);
+
+        // Send AJAX POST request
+        $.ajax({
+            type: 'post',
+            url: '{{ route('saveContactUsDetails') }}', // Backend route for saving contact details
+            data: form,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                if (response.status) {
+                    // Display success message
+                    successMessage(response.message, true);
+
+                    // Reset the form after successful submission
+                    $("#compactContactUsForm")[0].reset();
+
+                    // Re-enable the submit button
+                    $("#submitButton").attr("disabled", false);
+                } else {
+                    // Display error message
+                    errorMessage(response.message ?? "Something went wrong.");
+                    $("#submitButton").attr("disabled", false);
+                }
+            },
+            failure: function(response) {
+                // Handle failure response
+                errorMessage(response.message ?? "Something went wrong.");
+                $("#submitButton").attr("disabled", false);
+            },
+            error: function(response) {
+                // Handle error response
+                errorMessage(response.message ?? "Something went wrong.");
+                $("#submitButton").attr("disabled", false);
+            }
+        });
+    });
+
+    // Function to refresh the CAPTCHA (if applicable)
+    // function refreshCapthca(captchaImgId, captchaInputId) {
+    //     // Replace the CAPTCHA image source to reload it
+    //     $("#" + captchaImgId).attr("src", "{{ captcha_src() }}" + "?" + Math.random());
+
+    //     // Clear the CAPTCHA input field
+    //     $("#" + captchaInputId).val('');
+    // }
+</script>
+
 

@@ -302,63 +302,36 @@ $('#compactContactUsForm').on('submit', function (e) {
         data: formData,
         contentType: false,
         processData: false,
-        success: function (response) {
-            $('#submitButton').attr('disabled', false).text('Submit');
-            
-            if (response.status === true) {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Success!',
-                    text: response.message || 'Your message has been sent.',
-                    confirmButtonColor: '#3085d6',
-                    confirmButtonText: 'OK'
-                }).then(() => {
-                    const modal = bootstrap.Modal.getInstance(document.getElementById('compactEnquiryModal'));
-                    if (modal) modal.hide();
-                });
-                form.reset();
+        success: function(response) {
+                if (response.status) {
+                    successMessage(response.message);
+                    closeModal();
+                } else {
+                    errorMessage(response.message ?? "Something went wrong.");
+                    $('#submitButton').attr('disabled', false);
+                }
+            },
+        error: function(xhr) {
+            if (xhr.status === 422) {
+                const errors = xhr.responseJSON.errors;
+                if (errors?.captcha) {
+                    errorMessage(errors.captcha[0]);
+                } else {
+                    errorMessage("Please check all required fields.");
+                }
+                refreshCaptcha()
+            } else if (xhr.status === 400) {
+                // Logical or duplicate submission error
+                const message = xhr.responseJSON?.message || "You already sent a message for today.";
+                errorMessage(message);
             } else {
-                Swal.fire({
-                    icon: 'warning',
-                    title: 'Notice',
-                    text: response.message || 'Submission already exists today.',
-                });
+                // Other server-side issues
+                errorMessage("Something went wrong.");
             }
-            
-            refreshCompactCaptcha();
-        },
-        error: function (xhr) {
-            $('#submitButton').attr('disabled', false).text('Submit');
-            
-            let msg = 'Something went wrong.';
-            let icon = 'error';
-            let title = 'Submission Failed';
-            
-            // Handle validation errors
-            if (xhr.status === 422 && xhr.responseJSON?.errors) {
-                msg = Object.values(xhr.responseJSON.errors).flat().join('\n');
-                title = 'Validation Error';
-            } 
-            // Handle other server errors
-            else if (xhr.responseJSON?.message) {
-                msg = xhr.responseJSON.message;
-            }
-            // Handle network/server errors
-            else if (xhr.status === 500) {
-                msg = 'Server error occurred. Please try again later.';
-            }
-            else if (xhr.status === 0) {
-                msg = 'Network error. Please check your connection.';
-            }
-            
-            Swal.fire({
-                icon: icon,
-                title: title,
-                text: msg
-            });
-            
-            refreshCompactCaptcha();
+
+            $('#submitButton').attr('disabled', false);
         }
+
     });
 });
 
