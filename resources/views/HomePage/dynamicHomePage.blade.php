@@ -105,41 +105,41 @@
  <div class="swiper-slide">
 <div class="destinations-block">
      <div class="destinations-figure">
-<img src="./assets/img/Basmati rice.jpeg" class="img-fluid" alt="Destinations">
+<img src="./assets/img/architectural.jpeg" class="img-fluid" alt="Destinations">
 </div>
-<span class="destinations-title mh-auto text-center" style="font-size:20px">Basmati Rice</span>
+<span class="destinations-title mh-auto text-center" style="font-size:20px">Architectural Design</span>
 </div>
 </div>
 <div class="swiper-slide">
  <div class="destinations-block">
  <div class="destinations-figure">
- <img src="./assets/img/Ground Spice.jpg" class="img-fluid" alt="Destinations">
+ <img src="./assets/img/interior-design.jpg" class="img-fluid" alt="Destinations">
 </div>
-<span class="destinations-title mh-auto text-center" style="font-size:20px">Ground Spices</span>
+<span class="destinations-title mh-auto text-center" style="font-size:20px">Interior Design</span>
  </div>
 </div>
 <div class="swiper-slide">
 <div class="destinations-block">
 <div class="destinations-figure">
-<img src="./assets/img/Fruit & Vegitables 2.jpg" class="img-fluid" alt="Destinations">
+<img src="./assets/img/project-managment.jpg" class="img-fluid" alt="Destinations">
  </div>
-<span class="destinations-title mh-auto text-center" style="font-size:20px">Fresh Fruits & Vegetables</span>
+<span class="destinations-title mh-auto text-center" style="font-size:20px">Project Management</span>
 </div>
 </div>
 <div class="swiper-slide">
 <div class="destinations-block">
     <div class="destinations-figure">
-<img src="./assets/img/Non Basmati Rice 2.jpg" class="img-fluid" alt="Destinations">
+<img src="./assets/img/renovation-restoration.jpg" class="img-fluid" alt="Destinations">
 </div>
-<span class="destinations-title mh-auto text-center" style="font-size:20px">Non Basmati Rice</span>
+<span class="destinations-title mh-auto text-center" style="font-size:20px">Renovation & Restoration</span>
  </div>
 </div>
  <div class="swiper-slide">
 <div class="destinations-block">
  <div class="destinations-figure">
- <img src="./assets/img/fresh-fruits-berries-.jpg" class="img-fluid" alt="Destinations">
+ <img src="./assets/img/UrbanPlanning.jpg" class="img-fluid" alt="Destinations">
 </div>
- <span class="destinations-title mh-auto text-center" style="font-size:20px">Fresh Fruits</span>
+ <span class="destinations-title mh-auto text-center" style="font-size:20px">Urban Planning</span>
 </div>
 </div>
 @endif
