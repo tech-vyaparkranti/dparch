@@ -655,14 +655,12 @@ section.chairperson {
 /* Destination Block */
 .destinations-figure,
 .destinations-block {
-    position: relative;
     cursor: pointer;
 }
 
 .destinations-block,
 .destinations-block:before,
 .destinations-figure>img {
-    max-width: 325px;
     transition: var(--transition);
 }
 
@@ -673,7 +671,6 @@ section.chairperson {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(0deg, rgb(0 0 0 / 20%), transparent);
     z-index: 1;
 }
 

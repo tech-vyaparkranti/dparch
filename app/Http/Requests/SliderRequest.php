@@ -33,7 +33,7 @@ class SliderRequest extends FormRequest
             "heading_top"=>"bail|nullable|string|max:500",
             "heading_middle"=>"bail|nullable|string|max:500",
             "heading_bottom"=>"bail|nullable|string|max:500",
-            "image"=>"bail|file|image|max:2048|required_if:action,insert|dimensions:ratio=16/9",
+            "image"=>"bail|file|image|max:2048|required_if:action,insert",
             "slide_status"=>"required_if:action,update|in:live,disabled",
             "slide_sorting"=>"required_if:action,update,insert|numeric|gt:0"
         ];

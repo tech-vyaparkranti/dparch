@@ -13,7 +13,7 @@
                 <h2 class="text-center">About Us </h2>
             </div>
             <div class="midd-content">
-                <p class="text-justify" data-aos="fade-up">{!! $about_us_page_text ?? 'At Adiyogi Global, we are committed to delivering healthy, high-quality products to people around the
+                <p class="text-justify" data-aos="fade-up">{!! $home_about_content ?? 'At Adiyogi Global, we are committed to delivering healthy, high-quality products to people around the
 world. For over 12 years, we have built a reputation as a trusted provider by sourcing only the finest
 goods directly from the best farmers and manufacturers in India. Our dedication to quality is reflected in
 every product we offer, from fresh produce to a wide range of specialty items.
@@ -77,15 +77,29 @@ for choosing Adiyogi Global.'  !!}</p>
                     @foreach($teamMembers as $member)
                         <div class="swiper-slide">
                             <div class="destinations-block" style="border:none">
-                                <div class="destinations-figure" style="width: 200px; height: 200px; border-radius: 50%; overflow: hidden; margin: 0 auto;">
-                                    <img
-                                        style="width: 100%; height: 100%; object-fit: cover;"
-                                        src="{{ asset($member->image ?? 'assets/img/default-profile.png') }}"
-                                        class="img-fluid"
-                                        alt="{{ $member->name }}"
-                                    >
-                                </div>
-                                <span class="destinations-title mh-auto text-center" style="font-size:20px">{{ $member->name }}</span>
+                              <div style="
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;">
+    
+    <img
+        src="{{ asset($member->image ?? 'assets/img/default-profile.png') }}"
+        alt="{{ $member->name }}"
+        style="
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;"
+    >
+</div>
+  <span class="destinations-title mh-auto text-center" style="font-size:20px">{{ $member->name }}</span>
                                 <span class="destinations-title mh-auto text-center" style="font-size:20px">{{ $member->designation }}</span>
                             </div>
                         </div>
@@ -138,6 +152,12 @@ for choosing Adiyogi Global.'  !!}</p>
 
 
 <style>
+   @media (max-width: 576px) {
+    .swiper-slide {
+      margin: 0px 10px;
+    }
+  }
+
     .container {
       width: 100%;
       padding-left: 15px;

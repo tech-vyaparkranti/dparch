@@ -37,13 +37,12 @@
             </x-input-with-label-element>
 
             {{-- Description --}}
-           <x-text-area-with-label 
-    id="description"
-    label="Description"
-    name="description"
-    required
-    rows="4"
-></x-text-area-with-label>
+           <x-text-area-with-label
+                id="description"
+                label="Description"
+                name="description"
+                required
+        ></x-text-area-with-label>
 
             {{-- Gallery Images --}}
             <div class="mb-3">
@@ -76,25 +75,25 @@
     </x-card-element>
 </x-content-div>
 @endsection
-<style>
+{{-- <style>
     /* Make summernote fill its container */
     #description, .note-editor, .note-editing-area, .note-editable {
         width: 100% !important;
         min-width: 100% !important;
         box-sizing: border-box;
     }
-</style>
+</style> --}}
 @section('script')
 <script type="text/javascript">
     let site_url = '{{ url('/') }}';
     let table = "";
 
     $(function() {
-        $('#description').summernote({
-    placeholder: 'Description',
-    tabsize: 2,
-    height: 100
-});
+          $('#description').summernote({
+            placeholder: 'Description',
+            tabsize: 2,
+            height: 100
+        });
         table = $('.data-table').DataTable({
             processing: true,
             serverSide: true,
@@ -141,7 +140,12 @@
             $("#image").attr("required", false);
             $("#banner_image").attr("required", false);
             $("#project_name").val(row['project_name']);
-            $("#description").val(row['description']);
+            $("#description").text(row['description']);
+            $('#description').summernote('destroy');
+            $("#description").val(row["description"]);
+            $('#description').summernote({
+                    focus: true
+                });
             $("#status").val(row['status']);
             $("#sorting").val(row['sorting']);
             $("#action").val("update");

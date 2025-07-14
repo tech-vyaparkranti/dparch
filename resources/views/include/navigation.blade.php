@@ -21,7 +21,9 @@
                     <li><a href="{{ route('aboutUs') }}">About Us</a> </li>
                     <li><a href="{{ route('productPage') }}">Projects</a></li> 
                     <li><a href="{{ route('contactUs') }}">Contact Us</a></li>
+                    <li><a href="{{ route('blogPage') }}">Blog</a></li>
                     <li><a href="{{ route('galleryPages') }}">Gallery</a></li>
+                    
                 </ul>
             </div>
             <ul class="social-media">

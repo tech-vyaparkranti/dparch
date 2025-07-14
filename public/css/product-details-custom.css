@@ -1,0 +1,156 @@
+
+/* Product Details Custom CSS */
+.product-details-banner {
+    position: relative;
+    height: 400px;
+    overflow: hidden;
+}
+
+.product-details-banner-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-details-banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(0,0,0,0.7), rgba(0,0,0,0.4));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-details-banner-content {
+    text-align: center;
+    color: white;
+}
+
+.product-details-breadcrumb-nav {
+    margin-bottom: 20px;
+}
+
+.product-details-banner-title {
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+.product-details-section {
+    padding: 80px 0;
+    background-color: #f8f9fa;
+}
+
+.product-details-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.product-details-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 350px;
+    gap: 40px;
+}
+
+.product-details-main-content {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.product-details-header {
+    margin-bottom: 30px;
+}
+
+.product-details-title {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.product-details-meta {
+    display: flex;
+    gap: 15px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.product-details-featured-image img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 30px;
+}
+
+.product-details-description-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #444;
+}
+
+.product-details-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.product-details-gallery-item img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+.product-details-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.product-details-sidebar-widget {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.product-details-widget-title {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
+
+.product-details-recent-project-item {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.product-details-recent-project-image img {
+    width: 80px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.product-details-recent-project-content h4 {
+    font-size: 1rem;
+    margin: 0;
+}
+
+.product-details-recent-project-content p {
+    font-size: 0.9rem;
+    color: #777;
+    margin: 5px 0;
+}
+
+.product-details-quick-contact .product-details-contact-item {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.product-details-contact-item i {
+    color: #667eea;
+}
