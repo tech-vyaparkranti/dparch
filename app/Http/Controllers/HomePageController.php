@@ -15,6 +15,7 @@ use App\Traits\CommonFunctions;
 use App\Models\HomeProductsModel;
 use App\Models\WhyChooseUs;
 use App\Models\Blog;
+use App\Models\Service;
 
 
 use Mews\Captcha\Facades\Captcha;
@@ -32,12 +33,13 @@ class HomePageController extends Controller
             ->orderBy('sorting', 'asc')
             ->get();
            $galleryImages = GalleryItem::where('status', 1)
-    ->where('view_status', 'visible')
-    ->orderBy('created_at', 'desc')
-    ->take(10)
-    ->get();
+            ->where('view_status', 'visible')
+            ->orderBy('created_at', 'desc')
+            ->take(10)
+            ->get();
             $data = $this->getElement();
-            return view("HomePage.dynamicHomePage",compact('sliders','home_products','why_choose_us','galleryImages'),$data);
+            $services = Service::where("status","live")->get();
+            return view("HomePage.dynamicHomePage",compact('sliders','home_products','why_choose_us','galleryImages','services'),$data);
         }catch(Exception $exception){
             echo $exception->getMessage();
             return false;
@@ -47,7 +49,6 @@ class HomePageController extends Controller
     public function aboutUs(){
         $data = $this->getElement();
         $teamMembers = TeamMember::where('status', 'live')->orderBy('sorting', 'asc')->get();
-
         return view("HomePage.aboutUs",compact('teamMembers'),$data);
     }
     public function termsConditions(){
@@ -287,7 +288,6 @@ class HomePageController extends Controller
     public function blogPage(){
         $blog= Blog::where('blog_status','live')->get();
         $data = $this->getElement();
-        // dd($blog);
         return view("HomePage.blogPage",compact('blog'),$data);  
     }
     public function blogDetails($slug)

@@ -104,14 +104,14 @@
 <div class="swiper we-offer ">
 <div class="swiper-wrapper " >
 
- @if ($home_products->count())
- @foreach ($home_products as $item)
+ @if (isset($services) && $services->count() > 0)
+ @foreach ($services as $item)
 <div class="swiper-slide c">
 <div class="destinations-block">
 <div class="destinations-figure">
-    <img src="{{ asset($item->image) }}" class="img-fluid" alt="Destinations">
+    <img src="{{ asset($item->image) }}" class="img-fluid" alt="Destinations" style="object-fit: fill">
 </div>
-<span class="destinations-title mh-auto text-center">{{ $item->heading_top }}</span>
+<span class="destinations-title mh-auto text-center">{{ $item->service_name }}</span>
 </div>
 </div>
  @endforeach
@@ -184,7 +184,7 @@
      <!-- Destinations Section -->
       <!-- <div class="destinations pt-5 pb-2">
     <!-- Destinations Section -->
-    <div class="destinations pt-5 pb-4" data-aos="fade-up">
+    {{-- <div class="destinations pt-5 pb-4" data-aos="fade-up">
         <div class="custom-container">
             <div class="site-title pb-4">
                 <h2 class="text-center">Our Services</h2>
@@ -259,7 +259,7 @@
             </div>
 
         </div>
-    </div>
+    </div> --}}
     <style>
 
 
