@@ -4,7 +4,7 @@
             <li><a href="mailto:{!! $email_2??"support@communicationrn.com" !!}"><i class="fa fa-envelope"></i>&nbsp;<span>{!! $email_2??"info@RNcommunication.com" !!}</span></a></li>
             <li><a href="tel:+91{!! isset($contact_us_contact_number)?str_replace(" ","",$contact_us_contact_number):"+919266747031" !!}"><i class="fa fa-phone"></i>&nbsp;<span>{!! $contact_us_contact_number??"+91 926 674 7031" !!}</span></a></li>
         </ul>
-        <div class="gtranslate_wrapper"></div>
+        {{-- <div class="gtranslate_wrapper"></div> --}}
     </div>
 </div> 
 <!-- Header section Start -->
@@ -26,12 +26,14 @@
                     
                 </ul>
             </div>
-            <ul class="social-media">
-                <li><a href="{!! $facebook_link ?? 'https://www.facebook.com/RNcommunication' !!}" aria-label="Read more about RNcommunication  facebook"><i class="fa-brands fa-facebook"></i></a></li>
+            <ul class="sticky-content">
+                {{-- <li><a href="{!! $facebook_link ?? 'https://www.facebook.com/RNcommunication' !!}" aria-label="Read more about RNcommunication  facebook"><i class="fa-brands fa-facebook"></i></a></li>
                 <li><a href="{!! $linkedin_link ?? '/' !!}" aria-label="Read more about RNcommunication  Linkedin"><i class="fab fa-linkedin"></i></a></li>
                 <li><a href="{!! $instagram_link ?? 'https://www.instagram.com/adiyogi_global/' !!}" aria-label="Read more about RNcommunication  Instagram"><i class="fa-brands fa-instagram"></i></a></li>
-                <li><a href="{!! $youtube_link ?? 'https://www.youtube.com/@RNcommunication' !!}" aria-label="Read more about RNcommunication  Youtube"><i class="fa-brands fa-youtube"></i></a></li>
+                <li><a href="{!! $youtube_link ?? 'https://www.youtube.com/@RNcommunication' !!}" aria-label="Read more about RNcommunication  Youtube"><i class="fa-brands fa-youtube"></i></a></li> --}}
+                
             </ul>
+            
         </div>
     </div>
 </header>

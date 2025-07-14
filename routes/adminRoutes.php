@@ -10,6 +10,7 @@ use App\Http\Controllers\TeamMemberController;
 use App\Http\Controllers\WebSiteElementsController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\WhyChooseUsController;
+use App\Http\Controllers\ServiceProjectController;
 
 
 Route::get("login",[AdminController::class,"Login"])->name("login");
@@ -71,3 +72,8 @@ Route::get("contact-us-data", function () {
 })->name("ContactUsData");
 
 });
+
+Route::get("our-services-master", [ServiceProjectController::class, "index"])->name("viewOurServicesMaster");
+Route::post("save-our-services", [ServiceProjectController::class, "saveOurServicesMaster"])->name("saveOurServicesMaster");
+Route::post("our-services-data", [ServiceProjectController::class, "ourServicesData"])->name("ourServicesData");
+    

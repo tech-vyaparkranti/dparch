@@ -89,7 +89,7 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="enquery-pop" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+{{-- <div class="modal fade" id="enquery-pop" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="contact-form-area pt-4">
@@ -180,7 +180,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 {{-- <style>
      .contact-form-area button[data-bs-dismiss="modal"],

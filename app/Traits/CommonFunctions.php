@@ -113,6 +113,9 @@ trait CommonFunctions{
     public function forgetSlides(){
         Cache::forget('slides');
     }
+     public function addDiv($item,$class="row",$id=""){
+        return '<div class="'.$class.'" id="'.$id.'">'.$item.'</div>';
+    }
 
     public function getModal(int $id,string $data,$buttontitle,$modalTitle = ""){
         return '
