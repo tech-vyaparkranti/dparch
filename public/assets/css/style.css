@@ -547,6 +547,16 @@ section.chairperson {
     z-index: 0;
 }
 
+@media (max-width: 768px) {
+    .video-banner {
+        position: relative;
+        /* height: 100vh; */
+        height: 40%;
+        overflow: hidden;
+        z-index: 0;
+    }
+}
+
 .video-content {
     position: absolute;
     display: flex;
@@ -637,6 +647,14 @@ section.chairperson {
     height: 100%;
     width: 100%;
     object-fit: cover;
+}
+
+@media (max-width: 768px) {
+    .video-block>.main-slider .swiper-slide img.img-fluid {
+        height: 40%;
+        width: 100%;
+        object-fit: cover;
+    }
 }
 
 .video-block .swiper-slide:before {

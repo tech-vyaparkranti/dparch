@@ -43,6 +43,13 @@
         </div>
     </div>
 </div>
+<style>
+.custom-container, .offerings-container {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+</style>
+
 
   <!-- About Section End
         <section class="chairperson">
