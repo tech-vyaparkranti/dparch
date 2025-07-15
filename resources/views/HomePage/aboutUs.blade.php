@@ -35,6 +35,27 @@ for choosing Adiyogi Global.'  !!}</p>
  </div>
 </div>
 
+<div id="director-message" class="pt-5 pb-5" style="background-color:#f9f9f9;">
+  <div class="custom-container">
+    <div class="site-title pb-4">
+      <h2 class="text-center">Message from Our Director</h2>
+    </div>
+    <div class="row align-items-center">
+      <div class="col-md-4 text-center mb-4 mb-md-0">
+<img src="{{ isset($director_image) ? asset($director_image) : asset('assets/img/Random Pics.jpeg') }}"
+                         alt="About Us"
+                         class="img-fluid rounded w-100"
+                         style="height:300px; object-fit:cover;">      </div>
+      <div class="col-md-8">
+        {!! $director_message ?? 'At DP Architect, we don’t just design buildings — we craft experiences, emotions, and environments that shape lives. Every structure we create reflects our commitment to design excellence, functional integrity, and a deep respect for space, context, and culture.
+
+Over the years, we’ve had the privilege of transforming ideas into enduring landmarks, blending innovation with timeless principles of architecture. Whether it’s a residence, a commercial complex, or an urban masterplan, our goal remains constant: to deliver thoughtful, sustainable, and inspiring design.' !!}
+        <p class="text-end mt-3" style="font-weight: bold;">— Mr. Testing<br><span style="font-weight: normal;">Founder & Director</span></p>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div id="team" class="destinations pt-5 pb-4" data-aos="fade-up">
     <div class="custom-container">
         <div class="site-title pb-4">
@@ -42,37 +63,24 @@ for choosing Adiyogi Global.'  !!}</p>
         </div>
         <div class="swiper we-offer">
             <div class="swiper-wrapper">
-                @if(isset($teamMembers) && count($teamMembers))
-                    @foreach($teamMembers as $member)
-                        <div class="swiper-slide">
-                            <div class="destinations-block" style="border:none">
-                              <div style="
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f0f0f0;">
-    
-    <img
-        src="{{ asset($member->image ?? 'assets/img/default-profile.png') }}"
-        alt="{{ $member->name }}"
-        style="
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            display: block;"
-    >
-</div>
-  <span class="destinations-title mh-auto text-center" style="font-size:20px">{{ $member->name }}</span>
-                                <span class="destinations-title mh-auto text-center" style="font-size:20px">{{ $member->designation }}</span>
-                            </div>
-                        </div>
-                    @endforeach
+               @if (isset($teamMembers) && count($teamMembers))
+    @foreach ($teamMembers as $member)
+        <div class="swiper-slide">
+            <div class="destinations-block team-card">
+                <div class="team-image-wrapper">
+                    <img
+                        src="{{ asset($member->image ?? 'assets/img/default-profile.png') }}"
+                        alt="{{ $member->name }}"
+                    />
+                    <div class="overlay">
+                        <p>{{ $member->short_description ?? 'No description provided.' }}</p>
+                    </div>
+                </div>
+                <span class="destinations-title mh-auto text-center" style="font-size:20px">{{ $member->name }}</span>
+                <span class="destinations-title mh-auto text-center" style="font-size:20px">{{ $member->designation }}</span>
+            </div>
+        </div>
+    @endforeach
                 @else
                     {{-- Static fallback if no data --}}
                     <div class="swiper-slide">
@@ -114,103 +122,149 @@ for choosing Adiyogi Global.'  !!}</p>
 
 
 <style>
-   /* @media (max-width: 576px) {
-    .swiper-slide {
-      margin: 0px 10px;
-    }
+  /* TEAM CARD STYLES */
+.team-card {
+  text-align: center;
+  border: none;
+  position: relative;
+}
+
+/* Wrapper around the circular image */
+.team-image-wrapper {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 10px;
+  position: relative;
+  background-color: #f0f0f0;
+}
+
+/* Image inside the circular wrapper */
+.team-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Overlay on hover */
+.team-image-wrapper .overlay {
+  position: absolute;
+  inset: 0; /* shorthand for top, right, bottom, left = 0 */
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  font-size: 14px;
+  padding: 15px;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 50%;
+  line-height: 1.4;
+}
+
+.team-image-wrapper:hover .overlay {
+  opacity: 1;
+}
+
+/* RESPONSIVE CONTAINER */
+.container {
+  width: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
   }
- */
-    .container {
-      width: 100%;
-      padding-left: 15px;
-      padding-right: 15px;
-      margin-left: auto;
-      margin-right: auto;
-    }
+}
 
-    @media (min-width: 576px) {
-      .container {
-        max-width: 540px;
-      }
-    }
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
 
-    @media (min-width: 768px) {
-      .container {
-        max-width: 720px;
-      }
-    }
+@media (min-width: 1000px) {
+  .container {
+    max-width: 1300px;
+  }
+}
 
-    @media (min-width:1000px) {
-      .container {
-        max-width: 1300px;
-      }
-    }
+/* CARD GRID (PHILOSOPHY SECTION) */
+.card-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
 
+@media (min-width: 768px) {
   .card-container {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-    }
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
-    @media (min-width: 768px) {
-      .card-container {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
+@media (min-width: 1024px) {
+  .card-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
 
-    @media (min-width: 1024px) {
-      .card-container {
-        grid-template-columns: repeat(3, 1fr);
-      }
-    }
+/* INDIVIDUAL CARD STYLE */
+.card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 
-    .card {
-      background-color: #ffffff;
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
+.card img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+}
 
-    .card img {
-      width: 100%;
-      min-height: 0px;
-      max-height:200px
-      object-fit: cover;
-    }
+.card-body {
+  padding: 15px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
-    .card-body {
-      padding: 15px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
+.card-text {
+  color: #555;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
 
-   
-    .card-text {
-      color: #555;
-      font-size: 0.95rem;
-      margin-bottom: 10px;
-    }
-/* 
-   @media (max-width: 576px) {
+/* SWIPER RESPONSIVE FIX */
+@media (max-width: 576px) {
   .swiper-wrapper {
     justify-content: center !important;
   }
+
   .swiper-slide {
     display: flex;
     justify-content: center;
   }
 }
- */
+
 </style>
 
 
 <div id="philosophy" class="container">
-   <h2 style="text-align:center;padding-bottom:40px">Our Phylosophy</h2>
+   <h2 style="text-align:center;padding-bottom:40px">Our Philosophy</h2>
 
 <div class="card-container">
     <!-- Card 1 -->
@@ -247,7 +301,7 @@ for choosing Adiyogi Global.'  !!}</p>
 <div id="services" class="destinations pt-5 pb-4" data-aos="fade-up">
   <div class="custom-container">
     <div class="site-title pb-4">
- <h2 class="text-center">Our Services</h2>
+ <h2 class="text-center">Our Expertise</h2>
 </div>
 
 <div class="swiper we-offer ">

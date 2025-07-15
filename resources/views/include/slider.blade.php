@@ -5,6 +5,7 @@
       <div class="swiper-wrapper">
         @foreach ($sliders as $slide )
         <div class="swiper-slide">
+          
           <img class="img-fluid banner-img" width="" height="" alt="Image" src="{{ asset($slide->image) }}" />
           <div class="video-content">
             <!-- Dynamic content from the database -->
@@ -69,6 +70,51 @@
         </div>
         @endunless
       </div>
+      <div class="swiper-button-prev"></div>
+<div class="swiper-button-next"></div>
     </div>
   </div>
 </div>
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+<!-- Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<style>
+
+  .video-content {
+    bottom: -200px !important;
+  }
+
+  .swiper-button-next,
+.swiper-button-prev {
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding: 20px;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+</style>
+
+<script>
+  var swiper = new Swiper('.main-slider', {
+    loop: true,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+    effect: 'fade', // optional
+  });
+</script>
+

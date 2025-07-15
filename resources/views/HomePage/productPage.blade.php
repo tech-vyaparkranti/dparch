@@ -31,7 +31,28 @@
                 <div class="service-card" data-aos="fade-up" data-aos-duration="1500" data-aos-offset="50">
                     <div class="services-container {{ $index % 2 == 1 ? 'reverse' : '' }}">
                         <div class="left-item">
-                            <img src="{{ asset($item->image) }}" alt="{{ $item->heading_top }}">
+                            @php
+    $sections = is_array($item->sections) ? $item->sections : json_decode($item->sections, true);
+@endphp
+@if (!empty($sections))
+    <div class="swiper mySwiper{{ $index }}">
+        <div class="swiper-wrapper">
+            @foreach ($sections as $section)
+                @if (!empty($section['image']))
+                    <div class="swiper-slide">
+                        <img src="{{ asset($section['image']) }}" alt="Section Image" style="width: 100%; height: 100%; object-fit: cover; border-radius: 10px;">
+                    </div>
+                @endif
+            @endforeach
+        </div>
+        <div class="swiper-pagination"></div>
+        {{-- <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div> --}}
+    </div>
+@else
+    <img src="{{ asset('assets/img/default-image.jpg') }}" alt="Default Image">
+@endif
+
                         </div>
                         <div class="right-item">
                             <h4>{{ strToUpper($item->project_name) }}</h4> 
@@ -572,4 +593,30 @@
         utilsScript: "//cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.3/js/utils.js"
     });
 </script>
+
+@section('script')
+<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        @foreach ($services as $index => $item)
+            new Swiper(".mySwiper{{ $index }}", {
+                loop: true,
+                pagination: {
+                    el: ".mySwiper{{ $index }} .swiper-pagination",
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: ".mySwiper{{ $index }} .swiper-button-next",
+                    prevEl: ".mySwiper{{ $index }} .swiper-button-prev",
+                },
+                autoplay: {
+                    delay: 4000,
+                    disableOnInteraction: false,
+                },
+            });
+        @endforeach
+    });
+</script>
+
+
 @endsection

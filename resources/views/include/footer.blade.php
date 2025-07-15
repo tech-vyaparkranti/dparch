@@ -370,39 +370,38 @@ $('#compactContactUsForm').on('submit', function (e) {
         }
 
         /* Floating Enquiry Button */
-         .compact-enquiry-btn {
+   .compact-enquiry-btn {
     position: fixed;
-    right: 0;
     top: 50%;
+    right: 0;
     transform: translateY(-50%);
     z-index: 1000;
-    background: linear-gradient(135deg, #ff6b35, #f7931e);
-    border: none;
-    border-radius: 50px 0 0 50px; /* Only round left corners */
-    padding: 12px 24px 12px 16px; /* More padding on right to account for edge */
+    background: #7b4b28; /* Brown */
     color: white;
     font-weight: bold;
-    font-size: 14px;
-    box-shadow: 0 4px 20px rgba(255, 107, 53, 0.4);
-    cursor: pointer;
-    transition: all 0.3s ease;
-    animation: compact-pulse 3s infinite;
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-     /* Vertical text from right to left */
+    font-size: 12px;
+    text-transform: uppercase;
+    border-radius: 25px 0 0 25px;
+    padding: 10px 6px;
+    width: 38px;
+    height: 130px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    writing-mode: vertical-rl;
     text-orientation: mixed;
     white-space: nowrap;
-    margin-right: -1px; /* Slightly overlap edge */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    text-decoration: none;
+    letter-spacing: 0.5px;
 }
 
-/* Hover effect */
 .compact-enquiry-btn:hover {
-    right: 4px; /* Slide out slightly on hover */
-    box-shadow: 0 6px 25px rgba(255, 107, 53, 0.5);
+    background: #a54c37;
+    right: 4px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
 }
+
 
 /* Optional: Adjust icon positioning */
 .compact-enquiry-btn .icon {

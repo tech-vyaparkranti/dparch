@@ -31,6 +31,13 @@
                 required
             ></x-input-with-label-element>
 
+            {{-- Short Description --}}
+            <x-input-with-label-element 
+                id="short_description" 
+                label="Short Description" 
+                name="short_description" 
+            ></x-input-with-label-element>
+
             {{-- Status --}}
             <x-select-with-label 
                 id="status" 
@@ -83,16 +90,13 @@
                 { 
                     data: "image",
                     render: function(data) {
-                        if (data) {
-                            // DATA IS FULL URL! Don't prepend site_url.
-                            return '<img src="' + data + '" class="img-thumbnail" style="max-width:48px;">';
-                        }
-                        return '';
+                        return data ? '<img src="' + data + '" class="img-thumbnail" style="max-width:48px;">' : '';
                     },
                     orderable: false, searchable: false, title: "Image"
                 },
                 { data: "name", name: "name", title: 'Name' },
                 { data: "designation", name: "designation", title: 'Designation' },
+                { data: "short_description", name: "short_description", title: 'Short Description' },
                 { data: "status", name: "status", title: 'Status' },
                 { data: "sorting", name: "sorting", title: 'Sorting' },
                 { data: 'action', name: 'action', orderable: false, searchable: false, title: 'Action' },
@@ -109,11 +113,12 @@
             $("#image").attr("required", false);
             $("#name").val(row['name']);
             $("#designation").val(row['designation']);
+            $("#short_description").val(row['short_description']);
             $("#status").val(row['status']);
             $("#sorting").val(row['sorting']);
             $("#action").val("update");
-            // Show image preview (data is full URL)
-            if(row['image']) {
+
+            if (row['image']) {
                 $("#image-preview").html('<img src="' + row['image'] + '" alt="Current Image" style="max-width: 70px;" class="mb-2">');
             } else {
                 $("#image-preview").html('');
@@ -124,13 +129,14 @@
         }
     });
 
-    // Enable/Disable feature
     function Disable(id) {
         changeAction(id, "disable", "This member will be disabled!", "Yes, disable it!");
     }
+
     function Enable(id) {
         changeAction(id, "enable", "This member will be enabled!", "Yes, enable it!");
     }
+
     function changeAction(id, action, text, confirmButtonText) {
         if (id) {
             Swal.fire({
@@ -170,7 +176,7 @@
         }
     }
 
-    // Handle form submit via AJAX
+    // Form submit with image
     $(document).ready(function() {
         $("#teamMemberForm").on("submit", function() {
             var form = new FormData(this);
@@ -194,10 +200,10 @@
             });
         });
 
-        // When image file is chosen, show preview
+        // Image preview
         $("#image").on("change", function() {
             let input = this;
-            if(input.files && input.files[0]) {
+            if (input.files && input.files[0]) {
                 let reader = new FileReader();
                 reader.onload = function(e) {
                     $('#image-preview').html('<img src="'+e.target.result+'" alt="Image Preview" style="max-width:70px;">');

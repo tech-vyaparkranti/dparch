@@ -256,7 +256,7 @@ header ul,
 a {
     list-style: none;
     text-decoration: none;
-    padding: 0 0;
+    padding: 5;
     margin: 0 0;
 }
 
@@ -331,7 +331,7 @@ a {
 
 .header-contaner ul li:hover a,
 .header-contaner ul li:focus a {
-    color: var(--lightblue-color);
+    color: royalblue;
 }
 
 .header-contaner ul li {
