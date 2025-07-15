@@ -1,7 +1,7 @@
 @extends('layouts.dashboardLayout')
 @section('title', 'Manage Projects')
-@section('content')
 
+@section('content')
 <x-content-div heading="Manage Projects">
     <x-card-element header="Add / Edit Project">
         <x-form-element method="POST" enctype="multipart/form-data" id="projectForm" action="javascript:">
@@ -54,7 +54,7 @@
             <x-input-with-label-element 
                 id="sorting" 
                 label="Sorting" 
-                type="numeric"
+                type="number"
                 name="sorting">
             </x-input-with-label-element>
 
@@ -66,17 +66,18 @@
         <x-data-table></x-data-table>
     </x-card-element>
 </x-content-div>
-
 @endsection
 
 @section('script')
 <script type="text/javascript">
     let sectionIndex = 1;
+    let site_url = '{{ url('/') }}';
+    let table = "";
 
     $(document).on('click', '.add-section', function () {
         let html = `
             <div class="project-section d-flex gap-3 mb-3">
-                <input type="file" name="sections[${sectionIndex}][image]" accept="image/*" class="form-control" required>
+                <input type="file" name="sections[${sectionIndex}][image]" accept="image/*" class="form-control">
                 <textarea name="sections[${sectionIndex}][description]" class="form-control" rows="1" placeholder="Enter description" required></textarea>
                 <button type="button" class="btn btn-danger remove-section">–</button>
             </div>`;
@@ -88,14 +89,11 @@
         $(this).closest('.project-section').remove();
     });
 
-    let site_url = '{{ url('/') }}';
-    let table = "";
-
     $('#description').summernote({
-            placeholder: 'Description',
-            tabsize: 2,
-            height: 100
-        });
+        placeholder: 'Description',
+        tabsize: 2,
+        height: 100
+    });
 
     $(function() {
         table = $('.data-table').DataTable({
@@ -132,12 +130,36 @@
             $("#id").val(row['id']);
             $("#banner_image").attr("required", false);
             $("#project_name").val(row['project_name']);
-            $("#description").val(row['description']);
+            $("#description").summernote('code', row['description']);
             $("#status").val(row['status']);
             $("#sorting").val(row['sorting']);
             $("#action").val("update");
 
-            // Clear old dynamic sections if needed and re-populate dynamically (optional)
+            $('#project-sections-wrapper').empty();
+            sectionIndex = 0;
+            if (row.sections && typeof row.sections === 'string') {
+                row.sections = JSON.parse(row.sections);
+            }
+            if (Array.isArray(row.sections)) {
+                row.sections.forEach((section, i) => {
+                    let btnHtml = i === 0 
+                        ? `<button type="button" class="btn btn-success add-section">+</button>` 
+                        : `<button type="button" class="btn btn-danger remove-section">–</button>`;
+
+                    let html = `
+                    <div class="project-section d-flex gap-3 mb-3">
+                        <div>
+                            <input type="file" name="sections[${sectionIndex}][image]" class="form-control" accept="image/*">
+                            ${section.image ? `<img src="${site_url}${section.image}" alt="Preview" style="width:60px; margin-top:5px;">` : ''}
+                            <input type="hidden" name="sections[${sectionIndex}][existing_image]" value="${section.image}">
+                        </div>
+                        <textarea name="sections[${sectionIndex}][description]" class="form-control" rows="1" required>${section.description}</textarea>
+                        ${btnHtml}
+                    </div>`;
+                    $('#project-sections-wrapper').append(html);
+                    sectionIndex++;
+                });
+            }
             scrollToDiv();
         } else {
             errorMessage("Something went wrong. Code 101");

@@ -32,7 +32,10 @@ class ServicesController extends Controller
             ->editColumn('banner_image', fn($row) => $row->banner_image ?? '')
             ->editColumn('status', fn($row) => ucfirst($row->status))
             ->addColumn('action', function ($row) {
-                $rowJson = base64_encode(json_encode($row));
+                $rowArray = $row->toArray();
+                $rowArray['sections'] = json_decode($rowArray['sections'], true); // decode before sending
+
+                $rowJson = base64_encode(json_encode($rowArray));
                 $editBtn = '<button class="btn btn-primary btn-sm edit" data-row="' . $rowJson . '"><i class="fa fa-edit"></i> Edit</button>';
                 $statusBtn = $row->status === 'live'
                     ? '<button class="btn btn-danger btn-sm" onclick="Disable(' . $row->id . ')">Disable</button>'
@@ -112,7 +115,7 @@ class ServicesController extends Controller
                         $imgPath = $section['image']->store('uploads/projects/sections', 'public');
                         $image = '/storage/' . $imgPath;
                     } else {
-                        $image = $section['existing_image'] ?? null; // for future enhancement
+                        $image = $section['existing_image'] ?? null;
                     }
 
                     $sections[] = [
