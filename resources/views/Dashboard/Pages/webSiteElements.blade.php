@@ -121,7 +121,10 @@
                     $("#element_type_text").val(row['element_details']);                
                 }
                 $("#action").val("update");
-
+                $('#element_type_text').summernote('destroy');
+            $('#element_type_text').summernote({
+                focus: true
+            });
                 scrollToDiv();
             } else {
                 errorMessage("Something went wrong. Code 101");

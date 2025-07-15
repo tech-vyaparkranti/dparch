@@ -58,12 +58,12 @@
                             {{-- <div id="TA_rated501" class="TA_rated"><ul id="JjXmgm" class="TA_links VuYcLdHeKQX"><li id="Vri6iTpTKUC" class="IZw2R90i"><a target="_blank" href="https://www.tripadvisor.com/Attraction_Review-g304551-d15224458-Reviews-The_Luxury_Travel-New_Delhi_National_Capital_Territory_of_Delhi.html"><img src="https://www.tripadvisor.com/img/cdsi/img2/badges/ollie-11424-2.gif" alt="TripAdvisor"/></a></li></ul></div><script async src="https://www.jscache.com/wejs?wtype=rated&amp;uniq=501&amp;locationId=15224458&amp;lang=en_US&amp;display_version=2" data-loadtrk onload="this.loadtrk=true"></script> --}}
                         </div>
                         <p><b>{!! $footer_logo_name ?? 'DP Arch'!!}</b></p>
-                        <ul class="social-media mt-4">
+                        {{-- <ul class="social-media mt-4">
                         <li><a href="{!! $facebook_link ?? 'https://www.facebook.com/DP Arch' !!}" aria-label="Read more about DP Arch  facebook"><i class="fa-brands fa-facebook"></i></a></li>
                         <li><a href="{!! $linkedin_link ?? '/' !!}" aria-label="Read more about DP Arch  Linkedin"><i class="fab fa-linkedin"></i></a></li>
                         <li><a href="{!! $instagram_link ?? 'https://www.instagram.com/adiyogi_global' !!}" aria-label="Read more about DP Arch  Instagram"><i class="fa-brands fa-instagram"></i></a></li>
                         <li><a href="{!! $youtube_link ?? 'https://www.youtube.com/@DP Arch' !!}" aria-label="Read more about DP Arch  Youtube"><i class="fa-brands fa-youtube"></i></a></li>
-                        </ul>
+                        </ul> --}}
                         {{-- <p class="text-center mb-0"><img style="max-width: 100%" src="assets/img/msme.png" alt="DP Arch " width="100%" height="" /></p> --}}
                     </div>
                 </div>
@@ -302,63 +302,36 @@ $('#compactContactUsForm').on('submit', function (e) {
         data: formData,
         contentType: false,
         processData: false,
-        success: function (response) {
-            $('#submitButton').attr('disabled', false).text('Submit');
-            
-            if (response.status === true) {
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Success!',
-                    text: response.message || 'Your message has been sent.',
-                    confirmButtonColor: '#3085d6',
-                    confirmButtonText: 'OK'
-                }).then(() => {
-                    const modal = bootstrap.Modal.getInstance(document.getElementById('compactEnquiryModal'));
-                    if (modal) modal.hide();
-                });
-                form.reset();
+        success: function(response) {
+                if (response.status) {
+                    successMessage(response.message);
+                    closeModal();
+                } else {
+                    errorMessage(response.message ?? "Something went wrong.");
+                    $('#submitButton').attr('disabled', false);
+                }
+            },
+        error: function(xhr) {
+            if (xhr.status === 422) {
+                const errors = xhr.responseJSON.errors;
+                if (errors?.captcha) {
+                    errorMessage(errors.captcha[0]);
+                } else {
+                    errorMessage("Please check all required fields.");
+                }
+                refreshCaptcha()
+            } else if (xhr.status === 400) {
+                // Logical or duplicate submission error
+                const message = xhr.responseJSON?.message || "You already sent a message for today.";
+                errorMessage(message);
             } else {
-                Swal.fire({
-                    icon: 'warning',
-                    title: 'Notice',
-                    text: response.message || 'Submission already exists today.',
-                });
+                // Other server-side issues
+                errorMessage("Something went wrong.");
             }
-            
-            refreshCompactCaptcha();
-        },
-        error: function (xhr) {
-            $('#submitButton').attr('disabled', false).text('Submit');
-            
-            let msg = 'Something went wrong.';
-            let icon = 'error';
-            let title = 'Submission Failed';
-            
-            // Handle validation errors
-            if (xhr.status === 422 && xhr.responseJSON?.errors) {
-                msg = Object.values(xhr.responseJSON.errors).flat().join('\n');
-                title = 'Validation Error';
-            } 
-            // Handle other server errors
-            else if (xhr.responseJSON?.message) {
-                msg = xhr.responseJSON.message;
-            }
-            // Handle network/server errors
-            else if (xhr.status === 500) {
-                msg = 'Server error occurred. Please try again later.';
-            }
-            else if (xhr.status === 0) {
-                msg = 'Network error. Please check your connection.';
-            }
-            
-            Swal.fire({
-                icon: icon,
-                title: title,
-                text: msg
-            });
-            
-            refreshCompactCaptcha();
+
+            $('#submitButton').attr('disabled', false);
         }
+
     });
 });
 

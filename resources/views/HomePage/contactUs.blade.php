@@ -13,7 +13,7 @@
                     <h2 class="text-center">Contact Us</h2>
                 </div>
                 <div class="contact-about ">
-                    <p class="text-justify">{!! $contact_us_content ?? 'Adiyogi Global is dedicated to providing healthy, high-quality products to customers worldwide. With
+                    <p class="text-justify">{!! $contact_us_content ?? 'DP Arc is dedicated to providing healthy, high-quality products to customers worldwide. With
 over 12 years of experience, we source the finest goods directly from top farmers and manufacturers
 across India. Our commitment to quality and transparency ensures that every product meets the highest
 standards of purity and freshness. For any inquiries,support or feedback,feel free to contact us.' !!} </p>
@@ -108,7 +108,7 @@ standards of purity and freshness. For any inquiries,support or feedback,feel fr
                     </div>
                     <div class="col-md-6 col-sm-6 col-xs-12 pt-5">
                         <div class="map-area">
-                            <img src="{{ asset($contact_us_image ?? './assets/img/logomain.jpeg') }}" alt="" width="600px" height="600px" class="img-fluid">
+                            <img src="{{ asset($contact_us_image ?? './assets/img/dparchLogo.jpeg') }}" alt="" width="600px" height="600px" class="img-fluid">
                             
                         </div>
                     </div>

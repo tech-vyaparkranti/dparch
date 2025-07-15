@@ -29,12 +29,22 @@
                     <div class="offerings-content">
                         <p id="about-content" class="text-justify">
                         <p class="text-justify">
-                        {!! Str::words(
+                           
+                      {!! Str::limit(
                             $home_about_content ??
-                                'Adiyogi Global is dedicated to providing healthy, high-quality products to customers worldwide. With over 12 years of experience, we source the finest goods directly from top farmers and manufacturers across India. Our commitment to quality and transparency ensures that every product meets the highest standards of purity and freshness. We take pride in earning the trust of our customers through exceptional service and a deep dedication to their well-being. At Adiyogi Global, we bring the best of India to the world, always prioritizing quality and care. Customer trust is the foundation of Adiyogi Global. We are committed to earning and maintaining this trust through transparency, integrity, and exceptional service. From your first interaction with us, we aim to provide a seamless and satisfying experience.',
-                            400,
+                                'Adiyogi Global is dedicated to providing healthy,
+                                 high-quality products to customers worldwide. With over
+                                  12 years of experience, we source the finest goods directly from top farmers and manufacturers
+                                   across India. Our commitment to quality and transparency ensures that every product meets the
+                                 highest standards of purity and freshness. We take pride in earning the trust of our customers 
+                                through exceptional service and a deep dedication to their well-being. At Adiyogi Global, we bring 
+                                the best of India to the world, always prioritizing quality and care. Customer trust is the foundation 
+                                of Adiyogi Global. We are committed to earning and maintaining this trust through transparency, integrity, 
+                                and exceptional service. From your first interaction with us, we aim to provide a seamless and satisfying 
+                                experience.',
+                            1000,
                             '...',
-                        ) !!}
+                        ) !!} 
                         </p>
                         <button id="toggle-button"
                             class="px-4 py-2 bg-blue-600 text-black rounded hover:bg-blue-700 transition">
@@ -94,14 +104,14 @@
 <div class="swiper we-offer ">
 <div class="swiper-wrapper " >
 
- @if ($home_products->count())
- @foreach ($home_products as $item)
+ @if (isset($services) && $services->count() > 0)
+ @foreach ($services as $item)
 <div class="swiper-slide c">
 <div class="destinations-block">
 <div class="destinations-figure">
-    <img src="{{ asset($item->image) }}" class="img-fluid" alt="Destinations">
+    <img src="{{ asset($item->image) }}" class="img-fluid" alt="Destinations" style="object-fit: fill">
 </div>
-<span class="destinations-title mh-auto text-center">{{ $item->heading_top }}</span>
+<span class="destinations-title mh-auto text-center">{{ $item->service_name }}</span>
 </div>
 </div>
  @endforeach
@@ -173,7 +183,148 @@
 
      <!-- Destinations Section -->
       <!-- <div class="destinations pt-5 pb-2">
-   
+    <!-- Destinations Section -->
+<<<<<<< HEAD
+  <div class="destinations pt-5 pb-4" data-aos="fade-up">
+    <div class="custom-container">
+        <div class="site-title pb-4">
+            <h2 class="text-center">Our Services</h2>
+        </div>
+
+        <div class="swiper we-offer">
+            <div class="swiper-wrapper">
+                @if ($home_products->count())
+                    @foreach ($home_products as $item)
+                        <div class="swiper-slide">
+                            <div class="destinations-block" style="text-align:center;">
+                                <div class="destinations-figure">
+                                    <img src="{{ asset($item->image) }}" alt="Destinations"
+                                         style="width:100%; height:200px; object-fit:cover; border-radius:15px;">
+                                </div>
+                                <span class="destinations-title text-center"
+                                      style="font-size:18px; display:block; margin-top:10px;">
+                                    {{ $item->heading_top }}
+                                </span>
+                            </div>
+                        </div>
+                    @endforeach
+                @else
+                    @php
+                        $fallback = [
+                            ['img' => 'assets/img/Basmati rice.jpeg', 'title' => 'Basmati Rice'],
+                            ['img' => 'assets/img/Ground Spice.jpg', 'title' => 'Ground Spices'],
+                            ['img' => 'assets/img/Fruit & Vegitables 2.jpg', 'title' => 'Fresh Fruits & Vegetables'],
+                            ['img' => 'assets/img/Non Basmati Rice 2.jpg', 'title' => 'Non Basmati Rice'],
+                            ['img' => 'assets/img/fresh-fruits-berries-.jpg', 'title' => 'Fresh Fruits'],
+                        ];
+                    @endphp
+
+                    @foreach ($fallback as $item)
+                        <div class="swiper-slide">
+                            <div class="destinations-block" style="text-align:center;">
+                                <div class="destinations-figure">
+                                    <img src="{{ asset($item['img']) }}" alt="Destinations"
+                                         style="width:100%; height:200px; object-fit:cover; border-radius:15px;">
+                                </div>
+                                <span class="destinations-title text-center"
+                                      style="font-size:18px; display:block; margin-top:10px;">
+                                    {{ $item['title'] }}
+                                </span>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
+=======
+    {{-- <div class="destinations pt-5 pb-4" data-aos="fade-up">
+        <div class="custom-container">
+            <div class="site-title pb-4">
+                <h2 class="text-center">Our Services</h2>
+            </div>
+
+            <div class="swiper we-offer ">
+                <div class="swiper-wrapper ">
+
+                    @if ($home_products->count())
+                        @foreach ($home_products as $item)
+                            <div class="swiper-slide c">
+                                <div class="destinations-block">
+                                    <div class="destinations-figure">
+                                        <img src="{{ asset($item->image) }}" class="img-fluid" alt="Destinations">
+                                    </div>
+                                    <span class="destinations-title mh-auto text-center">{{ $item->heading_top }}</span>
+                                </div>
+                            </div>
+                        @endforeach
+                    @else
+                        <div class="swiper-slide">
+                            <div class="destinations-block">
+                                <div class="destinations-figure">
+                                    <img src="./assets/img/Basmati rice.jpeg" class="img-fluid" alt="Destinations">
+                                </div>
+                                <span class="destinations-title mh-auto text-center" style="font-size:20px">Basmati
+                                    Rice</span>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="destinations-block">
+                                <div class="destinations-figure">
+                                    <img src="./assets/img/Ground Spice.jpg" class="img-fluid" alt="Destinations">
+                                </div>
+                                <span class="destinations-title mh-auto text-center" style="font-size:20px">Ground
+                                    Spices</span>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="destinations-block">
+                                <div class="destinations-figure">
+                                    <img src="./assets/img/Fruit & Vegitables 2.jpg" class="img-fluid" alt="Destinations">
+                                </div>
+                                <span class="destinations-title mh-auto text-center" style="font-size:20px">Fresh Fruits &
+                                    Vegetables</span>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="destinations-block">
+                                <div class="destinations-figure">
+                                    <img src="./assets/img/Non Basmati Rice 2.jpg" class="img-fluid" alt="Destinations">
+                                </div>
+                                <span class="destinations-title mh-auto text-center" style="font-size:20px">Non Basmati
+                                    Rice</span>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="destinations-block">
+                                <div class="destinations-figure">
+                                    <img src="./assets/img/fresh-fruits-berries-.jpg" class="img-fluid"
+                                        alt="Destinations">
+                                </div>
+                                <span class="destinations-title mh-auto text-center" style="font-size:20px">Fresh
+                                    Fruits</span>
+                            </div>
+                        </div>
+                    @endif
+
+                </div>
+
+                <div class="swiper-pagination"></div>
+>>>>>>> f34dd5bc1dcbb2a51b39c8f0ed693307fd3bc49c
+            </div>
+
+            <div class="swiper-pagination"></div>
+        </div>
+<<<<<<< HEAD
+    </div>
+</div>
+  <style>
+=======
+    </div> --}}
+    <style>
+>>>>>>> f34dd5bc1dcbb2a51b39c8f0ed693307fd3bc49c
+
+
+
+    </style>
+
     <!-- Destinations Section End -->
 
 
@@ -374,102 +525,54 @@
 
     <!-- galary slider !-->
     <!-- Gallery Slider Section (Dynamic with Fallback) -->
-    <div class="destinations pt-5 pb-4" data-aos="fade-up">
-        <div class="custom-container">
-            <div class="site-title pb-4">
-                <h2 class="text-center">Gallery</h2>
+ <div class="destinations pt-5 pb-4" data-aos="fade-up">
+    <div class="custom-container">
+        <div class="site-title pb-4">
+            <h2 class="text-center">Gallery</h2>
+        </div>
+
+        <div class="swiper we-offer">
+            <div class="swiper-wrapper">
+                @if (isset($galleryImages) && $galleryImages->count())
+                    @foreach ($galleryImages as $image)
+                        <div class="swiper-slide">
+                            <div class="destinations-block" style="background:none;">
+                                <div class="destinations-figure" style="width:100%;height:100%; display:flex; align-items:center; justify-content:center;">
+                                    <img src="{{ url($image->local_image) }}" alt="Gallery Image"
+                                         style="width:100%; height:250px; object-fit:contain; border-radius:20px;">
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @else
+                    <!-- Static fallback images -->
+                    @php
+                        $fallbackImages = [
+                            'assets/img/Basmati rice.jpeg',
+                            'assets/img/Ground Spice.jpg',
+                            'assets/img/Fruit & Vegitables 2.jpg',
+                            'assets/img/Non Basmati Rice 2.jpg',
+                            'assets/img/fresh-fruits-berries-.jpg'
+                        ];
+                    @endphp
+
+                    @foreach ($fallbackImages as $img)
+                        <div class="swiper-slide">
+                            <div class="destinations-block" style="background:none; width:100%; height:100%; display:flex; align-items:center; justify-content:center;">
+                                <div class="destinations-figure" style="width:100%; display:flex; align-items:center; justify-content:center;">
+                                    <img src="{{ asset($img) }}" alt="Gallery" 
+                                         style="width:100%; height:250px; object-fit:cover; border-radius:20px;">
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                @endif
             </div>
 
-            <div class="swiper we-offer">
-                <div class="swiper-wrapper">
-                    @if (isset($galleryImages) && $galleryImages->count())
-                        @foreach ($galleryImages as $image)
-                            <div class="swiper-slide">
-                                <div class="destinations-block" style="background:none;">
-                                    <div class="destinations-figure"
-                                        style="width:100%;
-    height: 100%;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    ">
-                                        <img src="{{ url($image->local_image) }}" class="img-fluid" alt="Gallery Image"
-                                            style= "width: 100%;
-            height: 100%;
-            object-fit: contain;
-            border-radius:50px;
-          
-            display: block;">
-                                    </div>
-                                    <!--  @if ($image->title)
-    <span class="destinations-title mh-auto text-center" style="font-size:18px;">
-                                        {{ $image->title }}
-                                    </span>
-    @endif
-                                !-->
-                                </div>
-                            </div>
-                        @endforeach
-                    @else
-                        <!-- Static fallback images -->
-                        <div class="swiper-slide">
-                            <div class="destinations-block">
-                                <div class="destinations-figure">
-                                    <img src="{{ asset('assets/img/Basmati rice.jpeg') }}" class="img-fluid"
-                                        alt="Gallery">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="destinations-block">
-                                <div class="destinations-figure">
-                                    <img src="{{ asset('assets/img/Ground Spice.jpg') }}" class="img-fluid"
-                                        alt="Gallery">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="destinations-block">
-                                <div class="destinations-figure">
-                                    <img src="{{ asset('assets/img/Fruit & Vegitables 2.jpg') }}" class="img-fluid"
-                                        alt="Gallery">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="destinations-block">
-                                <div class="destinations-figure">
-                                    <img src="{{ asset('assets/img/Non Basmati Rice 2.jpg') }}" class="img-fluid"
-                                        alt="Gallery">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="destinations-block">
-                                <div class="destinations-figure">
-                                    <img src="{{ asset('assets/img/fresh-fruits-berries-.jpg') }}" class="img-fluid"
-                                        alt="Gallery">
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Add more static slides if you want -->
-                    @endif
-                </div>
-                <div class="swiper-pagination"></div>
-            </div>
+            <div class="swiper-pagination"></div>
         </div>
     </div>
-
-    <style>
-        @media (max-width: 576px) {
-            .swiper-slide {
-                margin: 0px 10px;
-            }
-        }
-    </style>
-
-    </style>
+</div>
 
 
     {{-- new letter --}}
