@@ -588,7 +588,9 @@
         
         .custom-modal .modal-content {
             height: 500px;
-            background: linear-gradient(135deg, #e4e1e0 0%, #91d7d8 100%);
+            /* background: linear-gradient(135deg, #e4e1e0 0%, #91d7d8 100%); */
+            /* background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); */
+            background: #a8b2c5;
             border: none;
             border-radius: 15px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.3);
@@ -694,7 +696,7 @@
         .modal-text {
             font-size: 1.8rem;
             line-height: 1.4;
-            color: rgb(37, 35, 35);
+            color: white;
             margin: 0;
             font-weight: 700;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
