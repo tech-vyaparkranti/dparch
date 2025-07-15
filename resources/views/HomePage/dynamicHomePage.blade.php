@@ -707,6 +707,7 @@
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
             max-width: 80%;
             text-align: center;
+            padding-bottom:30px;
         }
         
         .coming-soon {
