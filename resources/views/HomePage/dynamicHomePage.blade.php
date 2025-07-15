@@ -580,6 +580,173 @@
         </section> -->
     <!-- {{-- Testimonial Section End  --}} -->
 
+     <style>
+        .custom-modal .modal-dialog {
+            max-width: 60% !important;
+            height: 500px;
+        }
+        
+        .custom-modal .modal-content {
+            height: 500px;
+            background: linear-gradient(135deg, #e4e1e0 0%, #91d7d8 100%);
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .custom-modal .modal-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="construction" patternUnits="userSpaceOnUse" width="20" height="20"><rect fill="%23000" fill-opacity="0.05" width="20" height="20"/><rect fill="%23000" fill-opacity="0.1" width="10" height="10"/><rect fill="%23000" fill-opacity="0.1" x="10" y="10" width="10" height="10"/></pattern></defs><rect width="100" height="100" fill="url(%23construction)"/></svg>');
+            opacity: 0.1;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .custom-modal .modal-dialog {
+                max-width: 90% !important;
+                margin: 1rem;
+                height: 450px;
+            }
+            .custom-modal .modal-content {
+                height: 450px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .custom-modal .modal-dialog {
+                max-width: 95% !important;
+                margin: 0.5rem;
+                height: 400px;
+            }
+            .custom-modal .modal-content {
+                height: 400px;
+            }
+        }
+        
+        .modal-header {
+            border-bottom: none;
+            padding: 20px 20px 0;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .modal-body {
+            padding: 0;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: calc(100% - 70px);
+            position: relative;
+            z-index: 2;
+        }
+        
+        .close-btn {
+            background: rgba(255,255,255,0.2);
+            border: 2px solid rgba(16, 15, 15, 0.3);
+            font-size: 1.8rem;
+            color: rgb(8, 8, 8);
+            cursor: pointer;
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+        
+        .close-btn:hover {
+            background: rgba(255,255,255,0.3);
+            border-color: rgba(255,255,255,0.5);
+            transform: scale(1.1);
+        }
+        
+        .construction-icon {
+            font-size: 4rem;
+            color: white;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+        
+        .modal-text {
+            font-size: 1.8rem;
+            line-height: 1.4;
+            color: rgb(37, 35, 35);
+            margin: 0;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            max-width: 80%;
+            text-align: center;
+        }
+        
+        .coming-soon {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.9);
+            margin-top: 15px;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
+    {{-- <div class="container mt-5">
+        <h1>Welcome to Our Website</h1>
+        <p>This is your main content. The modal will show automatically when the page loads.</p>
+    </div> --}}
+
+    <!-- Bootstrap Modal -->
+    <div class="modal fade custom-modal" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close-btn ms-auto" data-bs-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="construction-icon">🚧</div>
+                    <p class="modal-text">
+                        We are currently updating our website to bring you a better and more interesting experience.
+                    </p>
+                    {{-- <div class="coming-soon">Coming Soon</div> --}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Script to show modal automatically -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Show modal immediately when page loads
+            var updateModal = new bootstrap.Modal(document.getElementById('updateModal'));
+            updateModal.show();
+        });
+    </script>
+
 
 @endsection
 <style>
