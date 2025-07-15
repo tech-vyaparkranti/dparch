@@ -49,7 +49,9 @@ class HomePageController extends Controller
     public function aboutUs(){
         $data = $this->getElement();
         $teamMembers = TeamMember::where('status', 'live')->orderBy('sorting', 'asc')->get();
-        return view("HomePage.aboutUs",compact('teamMembers'),$data);
+        $services = Service::where("status","live")->get();
+
+        return view("HomePage.aboutUs",compact('teamMembers','services'),$data);
     }
     public function termsConditions(){
         $data = $this->getElement();

@@ -78,7 +78,9 @@
                         <li><a href="{{ route('CancellationRefundPolicy') }}">Cancellation & Refund Policy</a></li> --}} -->
                         <li><a href="{{ route('privacyPolicy') }}">Privacy Policy</a></li>
 
-                        <li><a href="{{ route('productPage') }}">Services</a></li>
+                        <li><a href="{{ route('productPage') }}">Projects</a></li> 
+                    <li><a href="{{ route('galleryPages') }}">Gallery</a></li>
+                     <li><a href="{{ route('blogPage') }}">Articles</a></li>
 
                         <li><a href="{{ route('contactUs') }}">Contact Us</a></li>
                         <li><a href="{{ route('sitemap') }}">Sitemap</a></li>
@@ -91,7 +93,7 @@
                     <div class="footer-contact">
                         <div class="footer-item pb-3">
                             <label>Company E-mail:</label>
-                            <p class="footer-email"><i class="fa-solid fa-envelope"></i>&nbsp;<a  href="mailto:{!! $email_1??"sales@DP Arch.com" !!}" style="font-weight:bold;font-size:16px;">{!! $email_2??"sales@DP Arch.com" !!}</a>
+                            <p class="footer-email"><i class="fa-solid fa-envelope"></i>&nbsp;<a  href="mailto:{!! $email_2??"sales@DP Arch.com" !!}" style="font-weight:bold;font-size:16px;">{!! $email_2??"sales@DP Arch.com" !!}</a>
                         </div>
                         <div class="footer-item pb-3">
                             <label>Contact No:</label>
