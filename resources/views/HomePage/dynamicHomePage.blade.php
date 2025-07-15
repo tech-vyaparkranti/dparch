@@ -43,6 +43,13 @@
         </div>
     </div>
 </div>
+<style>
+.custom-container, .offerings-container {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+</style>
+
 
   <!-- About Section End
         <section class="chairperson">
@@ -702,6 +709,7 @@
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
             max-width: 80%;
             text-align: center;
+            padding-bottom:30px;
         }
         
         .coming-soon {
