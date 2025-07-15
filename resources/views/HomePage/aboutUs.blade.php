@@ -35,38 +35,7 @@ for choosing Adiyogi Global.'  !!}</p>
  </div>
 </div>
 
-<div class="container">
-   <h2 style="text-align:center;padding-bottom:40px">Our Phylosophy</h2>
-
-<div class="card-container">
-    <!-- Card 1 -->
-    <div class="card">
-      <img src="{{ $phylosophy_image1 ?? 'https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?cs=srgb&dl=pexels-souvenirpixels-414612.jpg&fm=jpg'}}" alt="Nature">
-      <div class="card-body">
-        <p class="card-text">{!! $phylosophy_content1 ?? "This is a longer card with supporting text below as a natural lead-in to additional content.This is a longer card with supporting text below as a natural lead-in to additional contentThis is a longer card with supporting text below as a natural lead-in to additional content."!!}</p>
-      </div>
-    </div>
-
-    <!-- Card 2 -->
-    <div class="card">
-      <img src="{{ $phylosophy_image2 ?? 'https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?cs=srgb&dl=pexels-souvenirpixels-414612.jpg&fm=jpg'}}" alt="Technology">
-      <div class="card-body">
-        <p class="card-text">{!! $phylosophy_content2 ?? "This card has supporting text below as a natural lead-in to additional content." !!}</p>
-      </div>
-    </div>
-
-    <!-- Card 3 -->
-    <div class="card">
-      <img src="{{ $phylosophy_image3 ?? 'https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?cs=srgb&dl=pexels-souvenirpixels-414612.jpg&fm=jpg'}}" alt="Adventure">
-      <div class="card-body">
-        <p class="card-text">{!! $phylosophy_content3 ?? "This is a wider card with supporting text below as a natural lead-in to additional content."!!}</p>
-      </div>
-    </div>
-  </div>
-                </div>
-<!-- team section !-->
-<!-- team section !-->
-<div class="destinations pt-5 pb-4" data-aos="fade-up">
+<div id="team" class="destinations pt-5 pb-4" data-aos="fade-up">
     <div class="custom-container">
         <div class="site-title pb-4">
             <h2 class="text-center">Our Team</h2>
@@ -240,7 +209,123 @@ for choosing Adiyogi Global.'  !!}</p>
 </style>
 
 
+<div id="philosophy" class="container">
+   <h2 style="text-align:center;padding-bottom:40px">Our Phylosophy</h2>
+
+<div class="card-container">
+    <!-- Card 1 -->
+    <div class="card">
+      <img src="{{ $phylosophy_image1 ?? 'https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?cs=srgb&dl=pexels-souvenirpixels-414612.jpg&fm=jpg'}}" alt="Nature">
+      <div class="card-body">
+        <p class="card-text">{!! $phylosophy_content1 ?? "This is a longer card with supporting text below as a natural lead-in to additional content.This is a longer card with supporting text below as a natural lead-in to additional contentThis is a longer card with supporting text below as a natural lead-in to additional content."!!}</p>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card">
+      <img src="{{ $phylosophy_image2 ?? 'https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?cs=srgb&dl=pexels-souvenirpixels-414612.jpg&fm=jpg'}}" alt="Technology">
+      <div class="card-body">
+        <p class="card-text">{!! $phylosophy_content2 ?? "This card has supporting text below as a natural lead-in to additional content." !!}</p>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card">
+      <img src="{{ $phylosophy_image3 ?? 'https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?cs=srgb&dl=pexels-souvenirpixels-414612.jpg&fm=jpg'}}" alt="Adventure">
+      <div class="card-body">
+        <p class="card-text">{!! $phylosophy_content3 ?? "This is a wider card with supporting text below as a natural lead-in to additional content."!!}</p>
+      </div>
+    </div>
+  </div>
+                </div>
+<!-- team section !-->
+<!-- team section !-->
+
+
 </script>
+
+<div id="services" class="destinations pt-5 pb-4" data-aos="fade-up">
+  <div class="custom-container">
+    <div class="site-title pb-4">
+ <h2 class="text-center">Our Services</h2>
+</div>
+
+<div class="swiper we-offer ">
+<div class="swiper-wrapper " >
+
+ @if (isset($services) && $services->count() > 0)
+ @foreach ($services as $item)
+<div class="swiper-slide c">
+<div class="destinations-block">
+<div class="destinations-figure">
+    <img src="{{ asset($item->image) }}" class="img-fluid" alt="Destinations" style="object-fit: fill">
+</div>
+<span class="destinations-title mh-auto text-center">{{ $item->service_name }}</span>
+</div>
+</div>
+ @endforeach
+ @else
+ <div class="swiper-slide">
+<div class="destinations-block">
+     <div class="destinations-figure">
+<img src="./assets/img/architectural.jpeg" class="img-fluid" alt="Destinations">
+</div>
+<span class="destinations-title mh-auto text-center" style="font-size:20px">Architectural Design</span>
+</div>
+</div>
+<div class="swiper-slide">
+ <div class="destinations-block">
+ <div class="destinations-figure">
+ <img src="./assets/img/interior-design.jpg" class="img-fluid" alt="Destinations">
+</div>
+<span class="destinations-title mh-auto text-center" style="font-size:20px">Interior Design</span>
+ </div>
+</div>
+<div class="swiper-slide">
+<div class="destinations-block">
+<div class="destinations-figure">
+<img src="./assets/img/project-managment.jpg" class="img-fluid" alt="Destinations">
+ </div>
+<span class="destinations-title mh-auto text-center" style="font-size:20px">Project Management</span>
+</div>
+</div>
+<div class="swiper-slide">
+<div class="destinations-block">
+    <div class="destinations-figure">
+<img src="./assets/img/renovation-restoration.jpg" class="img-fluid" alt="Destinations">
+</div>
+<span class="destinations-title mh-auto text-center" style="font-size:20px">Renovation & Restoration</span>
+ </div>
+</div>
+ <div class="swiper-slide">
+<div class="destinations-block">
+ <div class="destinations-figure">
+ <img src="./assets/img/UrbanPlanning.jpg" class="img-fluid" alt="Destinations">
+</div>
+ <span class="destinations-title mh-auto text-center" style="font-size:20px">Urban Planning</span>
+</div>
+</div>
+@endif
+
+</div>
+
+ <div class="swiper-pagination"></div> </div>
+
+</div>
+</div>
+<style>
+ 
+@media (max-width: 576px) {
+  .swiper-wrapper {
+    justify-content: center !important;
+  }
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+</style>
 
 @endsection
 

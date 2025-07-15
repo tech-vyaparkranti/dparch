@@ -184,8 +184,7 @@
      <!-- Destinations Section -->
       <!-- <div class="destinations pt-5 pb-2">
     <!-- Destinations Section -->
-<<<<<<< HEAD
-  <div class="destinations pt-5 pb-4" data-aos="fade-up">
+  {{-- <div class="destinations pt-5 pb-4" data-aos="fade-up">
     <div class="custom-container">
         <div class="site-title pb-4">
             <h2 class="text-center">Our Services</h2>
@@ -234,207 +233,18 @@
                         </div>
                     @endforeach
                 @endif
-=======
-    {{-- <div class="destinations pt-5 pb-4" data-aos="fade-up">
-        <div class="custom-container">
-            <div class="site-title pb-4">
-                <h2 class="text-center">Our Services</h2>
-            </div>
-
-            <div class="swiper we-offer ">
-                <div class="swiper-wrapper ">
-
-                    @if ($home_products->count())
-                        @foreach ($home_products as $item)
-                            <div class="swiper-slide c">
-                                <div class="destinations-block">
-                                    <div class="destinations-figure">
-                                        <img src="{{ asset($item->image) }}" class="img-fluid" alt="Destinations">
-                                    </div>
-                                    <span class="destinations-title mh-auto text-center">{{ $item->heading_top }}</span>
-                                </div>
-                            </div>
-                        @endforeach
-                    @else
-                        <div class="swiper-slide">
-                            <div class="destinations-block">
-                                <div class="destinations-figure">
-                                    <img src="./assets/img/Basmati rice.jpeg" class="img-fluid" alt="Destinations">
-                                </div>
-                                <span class="destinations-title mh-auto text-center" style="font-size:20px">Basmati
-                                    Rice</span>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="destinations-block">
-                                <div class="destinations-figure">
-                                    <img src="./assets/img/Ground Spice.jpg" class="img-fluid" alt="Destinations">
-                                </div>
-                                <span class="destinations-title mh-auto text-center" style="font-size:20px">Ground
-                                    Spices</span>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="destinations-block">
-                                <div class="destinations-figure">
-                                    <img src="./assets/img/Fruit & Vegitables 2.jpg" class="img-fluid" alt="Destinations">
-                                </div>
-                                <span class="destinations-title mh-auto text-center" style="font-size:20px">Fresh Fruits &
-                                    Vegetables</span>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="destinations-block">
-                                <div class="destinations-figure">
-                                    <img src="./assets/img/Non Basmati Rice 2.jpg" class="img-fluid" alt="Destinations">
-                                </div>
-                                <span class="destinations-title mh-auto text-center" style="font-size:20px">Non Basmati
-                                    Rice</span>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="destinations-block">
-                                <div class="destinations-figure">
-                                    <img src="./assets/img/fresh-fruits-berries-.jpg" class="img-fluid"
-                                        alt="Destinations">
-                                </div>
-                                <span class="destinations-title mh-auto text-center" style="font-size:20px">Fresh
-                                    Fruits</span>
-                            </div>
-                        </div>
-                    @endif
-
-                </div>
-
-                <div class="swiper-pagination"></div>
->>>>>>> f34dd5bc1dcbb2a51b39c8f0ed693307fd3bc49c
             </div>
 
             <div class="swiper-pagination"></div>
         </div>
-<<<<<<< HEAD
     </div>
-</div>
+</div> --}}
   <style>
-=======
-    </div> --}}
-    <style>
->>>>>>> f34dd5bc1dcbb2a51b39c8f0ed693307fd3bc49c
 
 
 
     </style>
 
-    <!-- Destinations Section End -->
-
-
-    <!-- Destinations Section -->
-    <!-- <div class="destinations pt-5 pb-2">
-            <div class="custom-container">
-                <div class="site-title pb-0">
-                    <h2 class="text-center">Glimpse of Product</h2>
-                    <div class="destinations-block">
-                                    <div class="destinations-figure">
-                                        <img src="./assets/img/chilli.jpg" class="img-fluid" width="" height="" alt="Destinations">
-                                    </div>
-                                    <span class="destinations-title mh-auto text-center">Chilli</span>
-                                </div>
-                <p class="text-center">Embark on unforgettable journeys to exotic destinations with our expertly crafted travel experiences.</p> --}}
-                </div>
-                <div class="swiper glimpse">
-                    <div class="swiper-wrapper">
-                        @if (!empty($getAllProduts))
-                            @foreach ($getAllProduts as $product)
-    <div class="swiper-slide mb-4">
-                                    <div class="destinations-block">
-                                        <div style="width: auto;height: 150px; overflow: hidden;">
-                                            <img src="{{ url($product->p_img) }}" class="img-fluid"
-                                            alt="{!! $product->p_name !!}" style="width: 100%;height: 100%; object-fit: cover;">
-                                        </div>
-                                        <span class="destinations-title mh-auto text-center">{!! $product->p_name !!}</span>
-                                    </div>
-                                </div>
-    @endforeach
-@else
-    <div class="swiper-slide mb-4">
-                                <div class="destinations-block">
-                                    <div class="destinations-figure">
-                                        <img src="./assets/img/chilli.jpg" class="img-fluid" width="" height="" alt="Destinations">
-                                    </div>
-                                    <span class="destinations-title mh-auto text-center">Chilli</span>
-                                </div>
-                            </div>
-                            <div class="swiper-slide mb-4">
-                                <div class="destinations-block">
-                                    <div class="destinations-figure">
-                                        <img src="assets/img/Wheat.jpg" class="img-fluid" width="" height="" alt="Destinations">
-                                    </div>
-                                    <span class="destinations-title mh-auto text-center">Wheat</span>
-                                </div>
-                            </div>
-                            <div class="swiper-slide mb-4">
-                                <div class="destinations-block">
-                                    <div class="destinations-figure">
-                                        <img src="assets/img/tomato.jpg" class="img-fluid" width="" height="" alt="Destinations">
-                                    </div>
-                                    <span class="destinations-title mh-auto text-center">Tomato</span>
-                                </div>
-                            </div>
-                            <div class="swiper-slide mb-4">
-                                <div class="destinations-block">
-                                    <div class="destinations-figure">
-                                        <img src="assets/img/main-peas.jpg" class="img-fluid" width="" height="" alt="Destinations">
-                                    </div>
-                                    <span class="destinations-title mh-auto text-center">Peas</span>
-                                </div>
-                            </div>
-                            <div class="swiper-slide mb-4">
-                                <div class="destinations-block">
-                                    <div class="destinations-figure">
-                                        <img src="assets/img/Paddy.jpg" class="img-fluid" width="" height="" alt="Destinations">
-                                    </div>
-                                    <span class="destinations-title mh-auto text-center">Paddy</span>
-                                </div>
-                            </div>
-                            <div class="swiper-slide mb-4">
-                                <div class="destinations-block">
-                                    <div class="destinations-figure">
-                                        <img src="assets/img/Vermicompost.jpg" class="img-fluid" width="" height="" alt="Destinations">
-                                    </div>
-                                    <span class="destinations-title mh-auto text-center">Vermicompost</span>
-                                </div>
-                            </div>
-                        @endif
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-            </div>
-        </div> -->
-    <!-- Destinations Section End -->
-
-    <!-- {{-- Testimonial Section  --}}
-        <section class="testimonial pt-5 pb-4">
-            <div class="custom-container">
-                <div class="site-title pb-3">
-                    <h2 class="text-center">Testimonial</h2>
-                    <p class="text-center text-white">Include quotes or stories from farmers who have benefited from <b>KRISHIDHA FPO's</b> services.</p>
-                </div>
-                <div class="swiper testimonials mb-5">
-                    <div class="swiper-wrapper" id="testimonialsData">
-
-       @if (isset($testimonial))
-       @foreach ($testimonial as $testimonialValue)
-    <div class="swiper-slide">
-        <div class="testimonials-block text-center">
-            <div class="testimonials-title"><?= $testimonialValue->client_name ?><span> </span></div>
-            <p class="text-justify"><?= $testimonialValue->review_text ?></p>
-        </div>
-    </div>
-    @endforeach
-    @endif
-    </div>
-    </div>
-     Why Choose Us Section Starts -->
     <section class="our-service pt-5 pb-5">
         <div class="custom-container">
             <div class="section-heading mb-4">
@@ -584,387 +394,109 @@
     <title>Simple Newsletter Section</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"> --}}
-    <style>
-        .newsletter-section {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            position: relative;
-            overflow: hidden;
-        }
+    <style>.simple-newsletter {
+  background: #f4f6f8;
+  border-top: 1px solid #dee2e6;
+}
 
-        .newsletter-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(0, 123, 255, 0.05) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
-        }
+.simple-newsletter h5 {
+  font-size: 1.2rem;
+}
 
-        @keyframes rotate {
-            0% {
-                transform: rotate(0deg);
-            }
+.simple-newsletter input,
+.simple-newsletter canvas {
+  height: 34px;
+  line-height: 1;
+}
 
-            100% {
-                transform: rotate(360deg);
-            }
-        }
+#simpleCaptcha {
+  margin-right: 0.25rem;
+}
 
-        .newsletter-content {
-            position: relative;
-            z-index: 2;
-        }
+.btn-outline-secondary {
+  height: 34px;
+}
 
-        .fade-in-up {
-            animation: fadeInUp 0.8s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .newsletter-title {
-            font-weight: 600;
-            color: #2c3e50;
-            animation-delay: 0.2s;
-        }
-
-        .newsletter-subtitle {
-            animation-delay: 0.4s;
-        }
-
-        .newsletter-form {
-            animation-delay: 0.6s;
-        }
-
-        .form-control {
-            border: 2px solid #e9ecef;
-            border-radius: 10px;
-            padding: 12px 16px;
-            transition: all 0.3s ease;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        }
-
-        .form-control:focus {
-            border-color: #007bff;
-            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.15);
-            transform: translateY(-2px);
-        }
-
-        .btn-subscribe {
-            background: linear-gradient(45deg, #007bff, #0056b3);
-            border: none;
-            border-radius: 10px;
-            padding: 12px 24px;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
-        }
-
-        .btn-subscribe:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0, 123, 255, 0.4);
-            background: linear-gradient(45deg, #0056b3, #004085);
-        }
-
-        .newsletter-icon {
-            font-size: 2.5rem;
-            color: #007bff;
-            margin-bottom: 1rem;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-
-            0%,
-            20%,
-            50%,
-            80%,
-            100% {
-                transform: translateY(0);
-            }
-
-            40% {
-                transform: translateY(-10px);
-            }
-
-            60% {
-                transform: translateY(-5px);
-            }
-        }
-
-        .privacy-text {
-            animation-delay: 0.8s;
-            transition: color 0.3s ease;
-        }
-
-        .privacy-text:hover {
-            color: #007bff !important;
-        }
-
-        .floating-shape {
-            position: absolute;
-            background: rgba(0, 123, 255, 0.1);
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .shape-1 {
-            width: 60px;
-            height: 60px;
-            top: 20%;
-            right: 10%;
-            animation-delay: -2s;
-        }
-
-        .shape-2 {
-            width: 40px;
-            height: 40px;
-            bottom: 30%;
-            left: 15%;
-            animation-delay: -4s;
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0px);
-            }
-
-            50% {
-                transform: translateY(-20px);
-            }
-        }
     </style>
 
-    <section class="newsletter-section py-5 position-relative"
-        style="background:linear-gradient(100deg,#f3f8ff 60%,#e3f2fd 100%);overflow:hidden;">
-        <!-- Decorative Floating Shapes -->
-        <div class="floating-shape shape-1"></div>
-        <div class="floating-shape shape-2"></div>
+    <section class="simple-newsletter py-4 bg-light">
+  <div class="container">
+    <div class="row align-items-center justify-content-center text-center">
+      <div class="col-md-8">
+        <h5 class="fw-semibold mb-2">Subscribe to Our Newsletter</h5>
+        <p class="text-muted small mb-3">Get the latest updates, straight to your inbox.</p>
+       <form class="d-flex flex-column flex-md-row align-items-center justify-content-center gap-2" id="simpleNewsletterForm" autocomplete="off">
+  <input type="email" class="form-control form-control-sm w-100 w-md-auto" placeholder="Your email" id="simpleEmail" required style="max-width:250px;">
 
-        <div class="container newsletter-content position-relative" style="z-index:2;">
-            <div class="row justify-content-center">
-                <div class="col-md-10 col-lg-7">
-                    <div class="card newsletter-card shadow-lg border-0 p-4 px-md-5 text-center mx-auto animate__animated animate__fadeInUp"
-                        style="border-radius:2rem;">
-                        <div class="newsletter-icon mb-3 text-primary">
-                            <i class="fas fa-envelope-open-text fa-3x" style="animation: pop 1.2s ease;"></i>
-                        </div>
-                        <h3 class="newsletter-title mb-2 fw-bold">Subscribe to Our Newsletter</h3>
-                        <p class="newsletter-subtitle mb-4 text-muted">
-                            Stay updated with our latest news and updates.
-                        </p>
-                        <!-- Newsletter Form -->
-                        <form class="newsletter-form row g-3 justify-content-center mb-2" id="newsletterForm"
-                            autocomplete="off" novalidate>
-                            <div class="col-12 col-md-8">
-                                <input type="email" class="form-control form-control-lg shadow-sm"
-                                    placeholder="Enter your email" required id="emailInput"
-                                    style="border-radius:1.5rem;">
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <button type="submit" class="btn btn-primary btn-lg w-100 fw-semibold"
-                                    style="border-radius:1.5rem;">
-                                    <i class="fas fa-paper-plane me-2"></i>Subscribe
-                                </button>
-                            </div>
-                        </form>
-                        <!-- Captcha -->
-                        <div class="row g-2 align-items-center justify-content-center mb-3">
-                            <div class="col-auto">
-                                <canvas id="captcha-canvas" width="120" height="40"
-                                    style="border-radius:8px; background:#f8f9fa; border:1px solid #e3e8ef; box-shadow:0 1px 2px rgba(0,0,0,0.04); vertical-align:middle;"></canvas>
-                            </div>
-                            <div class="col-auto p-0">
-                                <button type="button" class="btn btn-outline-primary btn-sm px-2 py-1 ms-2"
-                                    onclick="drawCaptcha()" title="Refresh Captcha">
-                                    <i class="fas fa-sync-alt"></i>
-                                </button>
-                            </div>
-                            <div class="col-12 mt-2">
-                                <input type="text" class="form-control form-control-sm text-center mx-auto"
-                                    style="max-width:170px;border-radius:1rem;" id="captcha"
-                                    placeholder="Enter code above" autocomplete="off" required>
-                            </div>
-                        </div>
-                        <!-- Privacy Note -->
-                        <small class="privacy-text text-muted d-block mt-1">
-                            <i class="fas fa-shield-alt me-1"></i>
-                            We respect your privacy. Unsubscribe at any time.
-                        </small>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Floating shape styles -->
-        <style>
-            .floating-shape {
-                position: absolute;
-                pointer-events: none;
-                z-index: 1;
-                opacity: .15;
-            }
+  <!-- CAPTCHA canvas -->
+  <canvas id="simpleCaptcha" width="100" height="34" style="border-radius:5px; background:#f8f9fa;"></canvas>
 
-            .shape-1 {
-                width: 180px;
-                height: 180px;
-                top: -40px;
-                left: -60px;
-                background: radial-gradient(circle at 50% 60%, #59b2fd 40%, transparent 90%);
-            }
+  <!-- Refresh button -->
+  <button type="button" class="btn btn-outline-secondary btn-sm px-2" onclick="drawSimpleCaptcha()" title="Refresh Captcha">
+    <i class="fas fa-sync-alt"></i>
+  </button>
 
-            .shape-2 {
-                width: 120px;
-                height: 120px;
-                bottom: -40px;
-                right: 15vw;
-                background: radial-gradient(circle at 30% 60%, #4dd2c3 60%, transparent 90%);
-            }
+  <!-- CAPTCHA input -->
+  <input type="text" class="form-control form-control-sm" placeholder="Enter code" id="simpleCaptchaInput" required style="max-width:120px;">
+  
+  <!-- Subscribe -->
+  <button class="btn btn-sm btn-primary" type="submit"><i class="fas fa-paper-plane me-1"></i>Subscribe</button>
+</form>
 
-            @media (max-width: 600px) {
-                .shape-1 {
-                    width: 100px;
-                    height: 100px;
-                    left: -30px;
-                }
+        <small class="text-muted d-block mt-2">We respect your privacy. Unsubscribe anytime.</small>
+      </div>
+    </div>
+  </div>
+</section>
 
-                .shape-2 {
-                    width: 70px;
-                    height: 70px;
-                    right: 10vw;
-                }
-            }
 
-            /* Animation for icon */
-            @keyframes pop {
-                0% {
-                    transform: scale(.7);
-                }
+   <script>
+  function randomSimpleCaptcha(len = 5) {
+    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    let code = '';
+    for (let i = 0; i < len; i++) code += chars[Math.floor(Math.random() * chars.length)];
+    return code;
+  }
 
-                70% {
-                    transform: scale(1.1);
-                }
+  function drawSimpleCaptcha() {
+    const canvas = document.getElementById('simpleCaptcha');
+    const ctx = canvas.getContext('2d');
+    const code = randomSimpleCaptcha();
+    canvas.dataset.code = code;
 
-                100% {
-                    transform: scale(1);
-                }
-            }
-        </style>
-    </section>
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.font = '20px Arial';
+    ctx.fillStyle = '#333';
+    ctx.fillText(code, 10, 24);
+  }
 
-    <script>
-        // Canvas Captcha
-        function randomCaptchaText(len = 5) {
-            const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
-            let text = '';
-            for (let i = 0; i < len; i++) {
-                text += chars.charAt(Math.floor(Math.random() * chars.length));
-            }
-            return text;
-        }
+  document.addEventListener('DOMContentLoaded', drawSimpleCaptcha);
 
-        function drawCaptcha() {
-            const canvas = document.getElementById('captcha-canvas');
-            const ctx = canvas.getContext('2d');
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            // subtle gradient bg
-            let grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-            grad.addColorStop(0, '#e3f2fd');
-            grad.addColorStop(1, '#fff');
-            ctx.fillStyle = grad;
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            // Draw noise lines
-            for (let i = 0; i < 5; i++) {
-                ctx.strokeStyle = `rgba(${Math.random()*180+50},${Math.random()*200+30},${Math.random()*255},0.37)`;
-                ctx.beginPath();
-                ctx.moveTo(Math.random() * canvas.width, Math.random() * canvas.height);
-                ctx.lineTo(Math.random() * canvas.width, Math.random() * canvas.height);
-                ctx.stroke();
-            }
-            // Draw text
-            let code = randomCaptchaText();
-            canvas.dataset.code = code;
-            for (let i = 0; i < code.length; i++) {
-                ctx.save();
-                ctx.font = `${Math.floor(Math.random()*8+25)}px Arial`;
-                ctx.globalAlpha = .78;
-                ctx.fillStyle = `hsl(${Math.random()*360},67%,42%)`;
-                let angle = (Math.random() - 0.5) * 0.44;
-                ctx.translate(20 + i * 18, 28);
-                ctx.rotate(angle);
-                ctx.fillText(code[i], 0, 0);
-                ctx.restore();
-            }
-        }
-        document.addEventListener('DOMContentLoaded', drawCaptcha);
+  document.getElementById('simpleNewsletterForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const email = document.getElementById('simpleEmail').value.trim();
+    const input = document.getElementById('simpleCaptchaInput').value.trim().toUpperCase();
+    const code = document.getElementById('simpleCaptcha').dataset.code;
 
-        // Form Validation
-        document.getElementById('newsletterForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            let email = document.getElementById('emailInput').value.trim();
-            let captchaInput = document.getElementById('captcha').value.trim().toUpperCase();
-            let captchaCode = document.getElementById('captcha-canvas').dataset.code;
-            let button = this.querySelector('button[type=submit]');
+    if (!email || !email.match(/^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$/)) {
+      alert('Please enter a valid email.');
+      return;
+    }
 
-            // Basic validation
-            if (!email.match(/^[\w\.\-\_]+@[\w\-]+\.[\w\-\.]+$/)) {
-                document.getElementById('emailInput').classList.add('is-invalid');
-                return;
-            } else {
-                document.getElementById('emailInput').classList.remove('is-invalid');
-            }
+    if (input !== code) {
+      alert('Incorrect captcha. Try again.');
+      drawSimpleCaptcha();
+      return;
+    }
 
-            if (captchaInput !== captchaCode) {
-                document.getElementById('captcha').classList.add('is-invalid');
-                // Shake animation
-                document.getElementById('captcha').style.animation = 'shake 0.3s';
-                setTimeout(() => {
-                    document.getElementById('captcha').style.animation = '';
-                }, 400);
-                drawCaptcha();
-                return;
-            } else {
-                document.getElementById('captcha').classList.remove('is-invalid');
-            }
+    alert('Subscribed successfully!');
+    this.reset();
+    drawSimpleCaptcha();
+  });
+</script>
 
-            // Show loading
-            button.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i>Subscribing...';
-            button.disabled = true;
-
-            setTimeout(function() {
-                button.innerHTML = '<i class="fas fa-check me-2"></i>Subscribed!';
-                button.classList.add('btn-success');
-                button.classList.remove('btn-primary');
-                // Reset fields
-                document.getElementById('emailInput').value = '';
-                document.getElementById('captcha').value = '';
-                drawCaptcha();
-                setTimeout(function() {
-                    button.innerHTML = '<i class="fas fa-paper-plane me-2"></i>Subscribe';
-                    button.disabled = false;
-                    button.classList.remove('btn-success');
-                    button.classList.add('btn-primary');
-                }, 2200);
-            }, 1400);
-        });
-        // Minimal shake animation
-        let shakeStyle = document.createElement('style');
-        shakeStyle.innerHTML =
-            `@keyframes shake {10%,90%{transform:translateX(-2px);}20%,80%{transform:translateX(4px);}30%,50%,70%{transform:translateX(-8px);}40%,60%{transform:translateX(8px);}}`;
-        document.head.appendChild(shakeStyle);
-    </script>
 
 
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script> --}}
