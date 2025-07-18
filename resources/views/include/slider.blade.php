@@ -25,7 +25,7 @@
         @unless (count($sliders) > 0)
         <!-- Static slides - example content added for structure, currently commented out -->
         <div class="swiper-slide">
-          <img class="img-fluid" width="" height="" alt="Image" src="./assets/img/Banner Pic 1.jpg" />
+          <img class="img-fluid" width="" height="" alt="Image" src="./assets/img/3 Emperium Prime .JPG" />
           <div class="video-content">
             {{--
             <h2>Adiyogi Global</h2>
@@ -36,7 +36,7 @@
           </div>
         </div>
         <div class="swiper-slide">
-          <img class="img-fluid" width="" height="" alt="Image" src="./assets/img/Banner Pic 2.jpg" />
+          <img class="img-fluid" width="" height="" alt="Image" src="./assets/img/1 Skyom city lucknow (1).jpg" />
           <div class="video-content">
             {{--
             <h2>Adiyogi Global</h2>
@@ -47,7 +47,7 @@
           </div>
         </div>
         <div class="swiper-slide">
-          <img class="img-fluid" width="" height="" alt="Image" src="./assets/img/Banner Pic 3.jpg" />
+          <img class="img-fluid" width="" height="" alt="Image" src="./assets/img/2 INR heights karnal.jpg" />
           <div class="video-content">
             {{--
             <h2>Adiyogi Global</h2>
@@ -57,17 +57,7 @@
             --}}
           </div>
         </div>
-        <div class="swiper-slide">
-          <img class="img-fluid" width="" height="" alt="Image" src="./assets/img/Banner Pic 4.jpg" />
-          <div class="video-content">
-            {{--
-            <h2>Adiyogi Global</h2>
-            <h3>Grow with Innovation: Solutions for Sustainable Farming</h3>
-            <p>A short descriptive text for Banner Pic 4.</p>
-            <a href="{{ route('contactUs') }}" aria-label="Explore The World">Get in touch</a>
-            --}}
-          </div>
-        </div>
+        
         @endunless
       </div>
       <div class="swiper-button-prev" ></div>

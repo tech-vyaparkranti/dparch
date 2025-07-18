@@ -97,8 +97,8 @@
  @foreach ($services as $item)
 <div class="swiper-slide c">
 <div class="destinations-block">
-<div class="destinations-figure">
-    <img src="{{ asset($item->image) }}" class="img-fluid" alt="Destinations" style="object-fit: fill">
+<div class="destinations-figure" style="width: 100%; height: 300px; background-color: #f0f0f0;">
+  <img src="{{ asset($item->image) }}" class="img-fluid" alt="Destinations" style="width: 100%; height: 100%; object-fit: contain;">
 </div>
 <span class="destinations-title mh-auto text-center">{{ $item->service_name }}</span>
 </div>
@@ -825,7 +825,7 @@
 
     .our-block-figure>svg {
         font-size: 30px;
-        color: var(--primary-bg);
+        color: black;
         transition: var(--transition);
         position: relative;
         left: 0;
@@ -897,6 +897,10 @@
         font-size: 15px;
         line-height: 20px;
     }
+    .our-block:hover .our-block-figure img {
+    filter: brightness(0) invert(1);
+    transition: filter 0.3s ease;
+}
 </style>
 
 
