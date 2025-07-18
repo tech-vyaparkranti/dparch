@@ -70,6 +70,8 @@ for choosing Adiyogi Global.'  !!}</p>
 </div>
   <span class="destinations-title mh-auto text-center" style="font-size:20px">{{ $member->name }}</span>
                                 <span class="destinations-title mh-auto text-center" style="font-size:20px">{{ $member->designation }}</span>
+                                                        <span class="text-justify" style="font-size:15px">{{ $member->description }}</span>
+        
                             </div>
                         </div>
                     @endforeach

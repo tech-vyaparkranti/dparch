@@ -557,6 +557,7 @@ section.chairperson {
     }
 }
 
+
 .video-content {
     position: absolute;
     display: flex;
@@ -568,6 +569,14 @@ section.chairperson {
     bottom: 0;
     left: 10%;
     color: #fff;
+}
+
+@media (max-width: 576px) {
+    .video-content {
+        position: absolute;
+        top: -400px;
+        left: 60px;
+    }
 }
 
 .video-content h1 {
@@ -1727,11 +1736,6 @@ section.chairperson {
         margin-bottom: 1rem;
     }
 
-    .video-content {
-        left: 20px;
-        right: 20px;
-        top: 120px;
-    }
 
     .footer-section .footer-item {
         text-align: center;
