@@ -653,9 +653,9 @@ section.chairperson {
 
 /* destinations */
 .video-block>.main-slider .swiper-slide img.img-fluid {
-    height: 100%;
+    height: auto;
     width: 100%;
-    object-fit: center;
+    display: block;
 }
 
 @media (max-width: 768px) {

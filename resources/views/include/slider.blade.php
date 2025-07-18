@@ -6,7 +6,7 @@
         @foreach ($sliders as $slide )
         <div class="swiper-slide">
           
-          <img class="img-fluid banner-img" width="" height="" alt="Image" src="{{ asset($slide->image) }}" />
+          <img class="img-fluid banner-img" width="" height="" style="height:560px" alt="Image" src="{{ asset($slide->image) }}" />
           <div class="video-content">
             <!-- Dynamic content from the database -->
             <h2 style="padding-top:100px">{!!$slide->heading_top !!}</h2>
@@ -78,7 +78,7 @@
 <style>
 .swiper-button-prev, .swiper-button-next {
   position: absolute;
-  top: 250px;
+  top: 200px;
   
 }
 @media (max-width: 640px) { 
