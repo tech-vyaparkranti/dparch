@@ -50,7 +50,7 @@ for choosing Adiyogi Global.'  !!}</p>
         {!! $director_message ?? 'At DP Architect, we don’t just design buildings — we craft experiences, emotions, and environments that shape lives. Every structure we create reflects our commitment to design excellence, functional integrity, and a deep respect for space, context, and culture.
 
 Over the years, we’ve had the privilege of transforming ideas into enduring landmarks, blending innovation with timeless principles of architecture. Whether it’s a residence, a commercial complex, or an urban masterplan, our goal remains constant: to deliver thoughtful, sustainable, and inspiring design.' !!}
-        <p class="text-end mt-3" style="font-weight: bold;">— Mr. Testing<br><span style="font-weight: normal;">Founder & Director</span></p>
+        <p class="text-end mt-3" style="font-weight: bold;">— Mr. Anil Kalra <br><span style="font-weight: normal;">Founder & Principal Architect</span></p>
       </div>
     </div>
   </div>
@@ -61,61 +61,86 @@ Over the years, we’ve had the privilege of transforming ideas into enduring la
         <div class="site-title pb-4">
             <h2 class="text-center">Our Team</h2>
         </div>
+
         <div class="swiper we-offer">
             <div class="swiper-wrapper">
-               @if (isset($teamMembers) && count($teamMembers))
-    @foreach ($teamMembers as $member)
-        <div class="swiper-slide">
-            <div class="destinations-block team-card">
-                <div class="team-image-wrapper">
-                    <img
-                        src="{{ asset($member->image ?? 'assets/img/default-profile.png') }}"
-                        alt="{{ $member->name }}"
-                    />
-                    <div class="overlay">
-                        <p>{{ $member->short_description ?? 'No description provided.' }}</p>
-                    </div>
-                </div>
-                <span class="destinations-title mh-auto text-center" style="font-size:20px">{{ $member->name }}</span>
-                <span class="destinations-title mh-auto text-center" style="font-size:20px">{{ $member->designation }}</span>
-            </div>
-        </div>
-    @endforeach
+                @if(isset($teamMembers) && count($teamMembers))
+                    @foreach($teamMembers as $member)
+                        <div class="swiper-slide">
+                            <div class="destinations-block" style="border:none">
+                              <div style="
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;">
+    
+    <img
+        src="{{ asset($member->image ?? 'assets/img/default-profile.png') }}"
+        alt="{{ $member->name }}"
+        style="
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;"
+    >
+</div>
+  <span class="destinations-title mh-auto text-center" style="font-size:20px">{{ $member->name }}</span>
+                                <span class="destinations-title mh-auto text-center" style="font-size:20px">{{ $member->designation }}</span>
+                                                        <span class="text-justify" style="font-size:15px">{{ $member->short_description }}</span>
+        
+                            </div>
+                        </div>
+                    @endforeach
                 @else
-                    {{-- Static fallback if no data --}}
+                    {{-- Static fallback if no team data --}}
                     <div class="swiper-slide">
                         <div class="destinations-block" style="border:none">
                             <div class="destinations-figure" style="width: 200px; height: 200px; border-radius: 50%; overflow: hidden; margin: 0 auto;">
-                                <img style="width: 100%; height: 100%; object-fit: cover;" src="https://plus.unsplash.com/premium_photo-1689568126014-06fea9d5d341?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D"  class="img-fluid" alt="Destinations">
+                                <img src="https://plus.unsplash.com/premium_photo-1689568126014-06fea9d5d341?fm=jpg&q=60&w=3000" style="width: 100%; height: 100%; object-fit: cover;" alt="Rohit Sharma">
                             </div>
                             <span class="destinations-title mh-auto text-center" style="font-size:20px">Rohit Sharma</span>
-                            <span class="destinations-title mh-auto text-center" style="font-size:20px">Web Developer</span>
+                            <span class="destinations-title mh-auto text-center" style="font-size:18px; color:#555;">Web Developer</span>
                         </div>
                     </div>
+
                     <div class="swiper-slide">
                         <div class="destinations-block" style="border:none">
                             <div class="destinations-figure" style="width: 200px; height: 200px; border-radius: 50%; overflow: hidden; margin: 0 auto;">
-                                <img src="./assets/img/Ground Spice.jpg" style="width: 100%; height: 100%; object-fit: cover;" class="img-fluid" alt="Destinations">
+                                <img src="./assets/img/Ground Spice.jpg" style="width: 100%; height: 100%; object-fit: cover;" alt="Priya Verma">
                             </div>
                             <span class="destinations-title mh-auto text-center" style="font-size:20px">Priya Verma</span>
-                            <span class="destinations-title mh-auto text-center" style="font-size:20px">UI/UX Designer</span>
+                            <span class="destinations-title mh-auto text-center" style="font-size:18px; color:#555;">UI/UX Designer</span>
                         </div>
                     </div>
+
                     <div class="swiper-slide">
                         <div class="destinations-block" style="border:none">
                             <div class="destinations-figure" style="width: 200px; height: 200px; border-radius: 50%; overflow: hidden; margin: 0 auto;">
-                                <img src="./assets/img/Non Basmati Rice 2.jpg" style="width: 100%; height: 100%; object-fit: cover;" class="img-fluid" alt="Destinations">
+                                <img src="./assets/img/Non Basmati Rice 2.jpg" style="width: 100%; height: 100%; object-fit: cover;" alt="Aman Gupta">
                             </div>
                             <span class="destinations-title mh-auto text-center" style="font-size:20px">Aman Gupta</span>
-                            <span class="destinations-title mh-auto text-center" style="font-size:20px">Project Manager</span>
+                            <span class="destinations-title mh-auto text-center" style="font-size:18px; color:#555;">Project Manager</span>
                         </div>
                     </div>
                 @endif
+
             </div>
             <div class="swiper-pagination" style="border:none"></div>
         </div>
     </div>
 </div>
+
+<style>
+    .team-card:hover .overlay {
+        opacity: 1 !important;
+    }
+</style>
 
 
 

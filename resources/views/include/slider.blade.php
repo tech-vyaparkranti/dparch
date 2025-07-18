@@ -9,7 +9,7 @@
           <img class="img-fluid banner-img" width="" height="" alt="Image" src="{{ asset($slide->image) }}" />
           <div class="video-content">
             <!-- Dynamic content from the database -->
-            <h2>{!!$slide->heading_top !!}</h2>
+            <h2 style="padding-top:100px">{!!$slide->heading_top !!}</h2>
             <h3>{!! $slide->heading_middle !!}</h3>
             <p>{!! $slide->heading_bottom !!}</p>
             {{-- Uncomment the following line if you have a contact route for each slide --}}
@@ -60,51 +60,20 @@
         
         @endunless
       </div>
-      <div class="swiper-button-prev"></div>
-<div class="swiper-button-next"></div>
+      <div class="swiper-button-prev" ></div>
+<div class="swiper-button-next" ></div>
     </div>
   </div>
 </div>
-<!-- Swiper CSS -->
-<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-
-<!-- Swiper JS -->
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-
 <style>
-
-  .video-content {
-    bottom: -200px !important;
+.swiper-button-prev, .swiper-button-next {
+  position: absolute;
+  top: 250px;
+  
+}
+@media (max-width: 640px) { 
+  .swiper-button-prev, .swiper-button-next {
+    top: 120px;
   }
-
-  .swiper-button-next,
-.swiper-button-prev {
-  color: #fff;
-  background-color: rgba(0, 0, 0, 0.4);
-  padding: 20px;
-  border-radius: 50%;
-  transition: all 0.3s ease;
 }
-
-.swiper-button-next:hover,
-.swiper-button-prev:hover {
-  background-color: rgba(0, 0, 0, 0.6);
-}
-
 </style>
-
-<script>
-  var swiper = new Swiper('.main-slider', {
-    loop: true,
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false,
-    },
-    effect: 'fade', // optional
-  });
-</script>
-
