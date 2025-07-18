@@ -144,7 +144,7 @@
               <li class="menu-item">
                 <a href="{{route("viewOurServicesMaster")}}" class="menu-link">
                   <i class="menu-icon tf-icons bx bx-book-content"></i>
-                  <div data-i18n="Analytics">Manage Services</div>
+                  <div data-i18n="Analytics">Manage Expertise</div>
                 </a>
               </li>
             </ul>

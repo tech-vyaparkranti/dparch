@@ -33,10 +33,10 @@ class HomePageController extends Controller
             ->orderBy('sorting', 'asc')
             ->get();
            $galleryImages = GalleryItem::where('status', 1)
-            ->where('view_status', 'visible')
-            ->orderBy('created_at', 'desc')
-            ->take(10)
-            ->get();
+    ->where('view_status', 'visible')
+    ->whereBetween('position', [1, 5])
+    ->orderBy('position', 'asc') // optional, for ordered display
+    ->get();
             $data = $this->getElement();
             $services = Service::where("status","live")->get();
             return view("HomePage.dynamicHomePage",compact('sliders','home_products','why_choose_us','galleryImages','services'),$data);

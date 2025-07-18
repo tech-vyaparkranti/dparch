@@ -1,22 +1,12 @@
 @extends('layouts.dashboardLayout')
 @section('title', 'Manage Projects')
-@section('content')
 
+@section('content')
 <x-content-div heading="Manage Projects">
     <x-card-element header="Add / Edit Project">
         <x-form-element method="POST" enctype="multipart/form-data" id="projectForm" action="javascript:">
-            <x-input type="hidden" name="id" id="id" value=""></x-input>
-            <x-input type="hidden" name="action" id="action" value="insert"></x-input>
-
-            {{-- Main Image --}}
-            <x-input-with-label-element 
-                id="image" 
-                label="Project Main Image" 
-                name="image" 
-                type="file" 
-                accept="image/*" 
-                required>
-            </x-input-with-label-element>
+            <x-input type="hidden" name="id" id="id" value="" />
+            <x-input type="hidden" name="action" id="action" value="insert" />
 
             {{-- Banner Image --}}
             <x-input-with-label-element 
@@ -36,18 +26,22 @@
                 required>
             </x-input-with-label-element>
 
-            {{-- Description --}}
-           <x-text-area-with-label
+            {{-- Main Description --}}
+            <x-text-area-with-label
                 id="description"
-                label="Description"
+                label="Main Description"
                 name="description"
                 required
-        ></x-text-area-with-label>
+            ></x-text-area-with-label>
 
-            {{-- Gallery Images --}}
-            <div class="mb-3">
-                <label for="gallery_images" class="form-label">Gallery Images (Multiple)</label>
-                <input type="file" class="form-control" id="gallery_images" name="gallery_images[]" multiple accept="image/*">
+            {{-- Dynamic Sections --}}
+            <label class="form-label mt-3">Project Content Sections (Image + Description)</label>
+            <div id="project-sections-wrapper">
+                <div class="project-section d-flex gap-3 mb-3">
+                    <input type="file" name="sections[0][image]" accept="image/*" class="form-control" required>
+                    <textarea name="sections[0][description]" class="form-control" rows="1" placeholder="Enter description" required></textarea>
+                    <button type="button" class="btn btn-success add-section">+</button>
+                </div>
             </div>
 
             {{-- Status --}}
@@ -60,7 +54,7 @@
             <x-input-with-label-element 
                 id="sorting" 
                 label="Sorting" 
-                type="numeric"
+                type="number"
                 name="sorting">
             </x-input-with-label-element>
 
@@ -69,31 +63,39 @@
     </x-card-element>
 
     <x-card-element header="Projects Data">
-        <x-data-table>
-            {{-- DataTable will render here --}}
-        </x-data-table>
+        <x-data-table></x-data-table>
     </x-card-element>
 </x-content-div>
 @endsection
-{{-- <style>
-    /* Make summernote fill its container */
-    #description, .note-editor, .note-editing-area, .note-editable {
-        width: 100% !important;
-        min-width: 100% !important;
-        box-sizing: border-box;
-    }
-</style> --}}
+
 @section('script')
 <script type="text/javascript">
+    let sectionIndex = 1;
     let site_url = '{{ url('/') }}';
     let table = "";
 
+    $(document).on('click', '.add-section', function () {
+        let html = `
+            <div class="project-section d-flex gap-3 mb-3">
+                <input type="file" name="sections[${sectionIndex}][image]" accept="image/*" class="form-control">
+                <textarea name="sections[${sectionIndex}][description]" class="form-control" rows="1" placeholder="Enter description" required></textarea>
+                <button type="button" class="btn btn-danger remove-section">–</button>
+            </div>`;
+        $('#project-sections-wrapper').append(html);
+        sectionIndex++;
+    });
+
+    $(document).on('click', '.remove-section', function () {
+        $(this).closest('.project-section').remove();
+    });
+
+    $('#description').summernote({
+        placeholder: 'Description',
+        tabsize: 2,
+        height: 100
+    });
+
     $(function() {
-          $('#description').summernote({
-            placeholder: 'Description',
-            tabsize: 2,
-            height: 100
-        });
         table = $('.data-table').DataTable({
             processing: true,
             serverSide: true,
@@ -107,13 +109,6 @@
                 { data: "DT_RowIndex", orderable: false, searchable: false, title: "Sr.No." },
                 { data: "id", name: "id", visible: false },
                 {
-                    data: "image",
-                    render: function(data) {
-                        return data ? '<img src="' + site_url + data + '" class="img-thumbnail" style="max-width:60px;">' : '';
-                    },
-                    orderable: false, searchable: false, title: "Main Image"
-                },
-                {
                     data: "banner_image",
                     render: function(data) {
                         return data ? '<img src="' + site_url + data + '" class="img-thumbnail" style="max-width:60px;">' : '';
@@ -121,9 +116,6 @@
                     orderable: false, searchable: false, title: "Banner"
                 },
                 { data: "project_name", name: "project_name", title: "Project Name" },
-                { data: "description", name: "description", title: "Description" },
-                // Optional: Gallery images preview column
-                // { data: "gallery_preview", orderable: false, searchable: false, title: "Gallery Images" },
                 { data: "status", name: "status", title: "Status" },
                 { data: "sorting", name: "sorting", title: "Sorting" },
                 { data: "action", name: "action", orderable: false, searchable: false, title: "Action" }
@@ -132,24 +124,42 @@
         });
     });
 
-    // Edit button handler (example, adjust to your actual data structure)
-    $(document).on("click", ".edit", function() {
+    $(document).on("click", ".edit", function () {
         let row = $.parseJSON(atob($(this).data("row")));
         if (row['id']) {
             $("#id").val(row['id']);
-            $("#image").attr("required", false);
             $("#banner_image").attr("required", false);
             $("#project_name").val(row['project_name']);
-            $("#description").text(row['description']);
-            $('#description').summernote('destroy');
-            $("#description").val(row["description"]);
-            $('#description').summernote({
-                    focus: true
-                });
+            $("#description").summernote('code', row['description']);
             $("#status").val(row['status']);
             $("#sorting").val(row['sorting']);
             $("#action").val("update");
-            // Optionally: show image previews for image/banner/gallery
+
+            $('#project-sections-wrapper').empty();
+            sectionIndex = 0;
+            if (row.sections && typeof row.sections === 'string') {
+                row.sections = JSON.parse(row.sections);
+            }
+            if (Array.isArray(row.sections)) {
+                row.sections.forEach((section, i) => {
+                    let btnHtml = i === 0 
+                        ? `<button type="button" class="btn btn-success add-section">+</button>` 
+                        : `<button type="button" class="btn btn-danger remove-section">–</button>`;
+
+                    let html = `
+                    <div class="project-section d-flex gap-3 mb-3">
+                        <div>
+                            <input type="file" name="sections[${sectionIndex}][image]" class="form-control" accept="image/*">
+                            ${section.image ? `<img src="${site_url}${section.image}" alt="Preview" style="width:60px; margin-top:5px;">` : ''}
+                            <input type="hidden" name="sections[${sectionIndex}][existing_image]" value="${section.image}">
+                        </div>
+                        <textarea name="sections[${sectionIndex}][description]" class="form-control" rows="1" required>${section.description}</textarea>
+                        ${btnHtml}
+                    </div>`;
+                    $('#project-sections-wrapper').append(html);
+                    sectionIndex++;
+                });
+            }
             scrollToDiv();
         } else {
             errorMessage("Something went wrong. Code 101");
@@ -159,9 +169,11 @@
     function Disable(id) {
         changeAction(id, "disable", "This item will be disabled!", "Yes, disable it!");
     }
+
     function Enable(id) {
         changeAction(id, "enable", "This item will be enabled!", "Yes, enable it!");
     }
+
     function changeAction(id, action, text, confirmButtonText) {
         if (id) {
             Swal.fire({
@@ -189,20 +201,15 @@
                             } else {
                                 errorMessage(response.message);
                             }
-                        },
-                        failure: function(response) {
-                            errorMessage(response.message);
                         }
                     });
                 }
             });
-        } else {
-            errorMessage("Something went wrong. Code 102");
         }
     }
 
-    $(document).ready(function() {
-        $("#projectForm").on("submit", function() {
+    $(document).ready(function () {
+        $("#projectForm").on("submit", function () {
             var form = new FormData(this);
             $.ajax({
                 type: 'POST',
@@ -211,15 +218,12 @@
                 cache: false,
                 contentType: false,
                 processData: false,
-                success: function(response) {
+                success: function (response) {
                     if (response.status) {
                         successMessage(response.message, "reload");
                     } else {
                         errorMessage(response.message);
                     }
-                },
-                failure: function(response) {
-                    errorMessage(response.message);
                 }
             });
         });

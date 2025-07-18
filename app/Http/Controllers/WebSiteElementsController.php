@@ -37,7 +37,9 @@ class WebSiteElementsController extends Controller
         "phylosophy_content3",
         "contact_us_image",
         "contact_us_content",
-        "projects_content"
+        "projects_content",
+        "director_image",
+        "director_message"
     ];
     public function addWebSiteElements()
     {

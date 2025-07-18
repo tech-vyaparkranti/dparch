@@ -87,7 +87,7 @@
 <div class="destinations pt-5 pb-4" data-aos="fade-up">
   <div class="custom-container">
     <div class="site-title pb-4">
- <h2 class="text-center">Our Services</h2>
+ <h2 class="text-center">Our Expertise</h2>
 </div>
 
 <div class="swiper we-offer ">

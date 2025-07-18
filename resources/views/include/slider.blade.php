@@ -5,6 +5,7 @@
       <div class="swiper-wrapper">
         @foreach ($sliders as $slide )
         <div class="swiper-slide">
+          
           <img class="img-fluid banner-img" width="" height="" alt="Image" src="{{ asset($slide->image) }}" />
           <div class="video-content">
             <!-- Dynamic content from the database -->
@@ -69,6 +70,8 @@
         </div>
         @endunless
       </div>
+      <div class="swiper-button-prev"></div>
+<div class="swiper-button-next"></div>
     </div>
   </div>
 </div>

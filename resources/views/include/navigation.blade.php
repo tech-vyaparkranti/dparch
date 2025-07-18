@@ -17,9 +17,11 @@
         <div class="slide-navigation">
             <div class="navbar-wrapper">
                 <ul class="navbar-block">
-                    <li><a href="{{ url('/') }}">Home</a></li>
+                    <li><a href="{{ url('/') }}" style="font-weight: bolder;
+    font-size: 15px;">Home</a></li>
                     <li class="has-dropdown">
-            <a href="{{ route('aboutUs') }}">About Us</a>
+            <a href="{{ route('aboutUs') }}"style="font-weight: bolder;
+    font-size: 15px;">About Us</a>
             <ul class="dropdown">
               <li><a href="{{ route('aboutUs') }}#about">About</a></li>
               <li><a href="{{ route('aboutUs') }}#team">Our Team</a></li>
@@ -27,14 +29,19 @@
               <li><a href="{{ route('aboutUs') }}#services">Our Services</a></li>
             </ul>
           </li>
-                    <li><a href="{{ route('productPage') }}">Projects</a></li> 
-                    <li><a href="{{ route('galleryPages') }}">Gallery</a></li>
-                     <li><a href="{{ route('blogPage') }}">Articles</a></li>
-                    <li><a href="{{ route('contactUs') }}">Contact Us</a></li>
+                    <li><a href="{{ route('productPage') }}"style="font-weight: bolder;
+    font-size: 15px;">Projects</a></li> 
+                    <li><a href="{{ route('galleryPages') }}"style="font-weight: bolder;
+    font-size: 15px;">Gallery</a></li>
+                     <li><a href="{{ route('blogPage') }}"style="font-weight: bolder;
+    font-size: 15px;">Articles</a></li>
+                    <li><a href="{{ route('contactUs') }}"style="font-weight: bolder;
+    font-size: 15px;">Contact Us</a></li>
                    
                     
                     
                 </ul>
+                
             </div>
             <ul class="sticky-content">
                 {{-- <li><a href="{!! $facebook_link ?? 'https://www.facebook.com/RNcommunication' !!}" aria-label="Read more about RNcommunication  facebook"><i class="fa-brands fa-facebook"></i></a></li>
@@ -54,7 +61,6 @@
 }
 
 .navbar-block .has-dropdown > a::after {
-  content: " ▼";
   font-size: 0.6rem;
   margin-left: 4px;
   color: #ccc;
