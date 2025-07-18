@@ -331,7 +331,7 @@ a {
 
 .header-contaner ul li:hover a,
 .header-contaner ul li:focus a {
-    color: royalblue;
+    color: black;
 }
 
 .header-contaner ul li {
@@ -737,7 +737,7 @@ section.chairperson {
 .destinations-figure {
     border-radius: 10px;
     overflow: hidden;
-    max-height: 250px;
+    max-height: 300px;
 }
 
 .destinations-block {

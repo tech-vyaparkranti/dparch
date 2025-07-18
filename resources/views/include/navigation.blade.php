@@ -1,8 +1,8 @@
 <div class="sticky-navigation">
     <div class="custom-container">
     <ul class="sticky-content p-0 m-0">
-            <li><a href="mailto:{!! $email_2??"support@communicationrn.com" !!}"><i class="fa fa-envelope"></i>&nbsp;<span>{!! $email_1??"info@RNcommunication.com" !!}</span></a></li>
-            <li><a href="tel:+91{!! isset($contact_us_contact_number)?str_replace(" ","",$contact_us_contact_number):"+919266747031" !!}"><i class="fa fa-phone"></i>&nbsp;<span>{!! $contact_us_contact_number??"+91 926 674 7031" !!}</span></a></li>
+            <li><a href="mailto:{!! $email_2??"info@dparch.co.in" !!}"><i class="fa fa-envelope"></i>&nbsp;<span>{!! $email_1??"info@dparch.co.in" !!}</span></a></li>
+            <li><a href="tel:+91{!! isset($contact_us_contact_number)?str_replace(" ","",$contact_us_contact_number):"+919958298515" !!}"><i class="fa fa-phone"></i>&nbsp;<span>{!! $contact_us_contact_number??"+919958298515" !!}</span></a></li>
         </ul>
         {{-- <div class="gtranslate_wrapper"></div> --}}
     </div>
@@ -12,7 +12,7 @@
     <div class="header-contaner">
         <div class="logo-section">
             <div class="mobile-bars" hidden></div>
-            <a href="{{ url('/') }}" aria-level="Main logo"><img src="{{ asset($Logo??"./assets/img/logo.jpeg") }}" class="img-fluid" width="120" height="90" alt="Home Styler"></a>
+            <a href="{{ url('/') }}" aria-level="Main logo"><img src="{{ asset($Logo??"./assets/img/logo.png") }}" class="img-fluid" width="120" height="90" alt="Home Styler"></a>
         </div>
         <div class="slide-navigation">
             <div class="navbar-wrapper">
