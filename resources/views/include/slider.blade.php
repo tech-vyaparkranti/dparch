@@ -9,7 +9,7 @@
           <img class="img-fluid banner-img" width="" height="" alt="Image" src="{{ asset($slide->image) }}" />
           <div class="video-content">
             <!-- Dynamic content from the database -->
-            <h2>{!!$slide->heading_top !!}</h2>
+            <h2 style="padding-top:100px">{!!$slide->heading_top !!}</h2>
             <h3>{!! $slide->heading_middle !!}</h3>
             <p>{!! $slide->heading_bottom !!}</p>
             {{-- Uncomment the following line if you have a contact route for each slide --}}
@@ -70,11 +70,20 @@
         </div>
         @endunless
       </div>
-      <div class="swiper-button-prev"></div>
-<div class="swiper-button-next"></div>
+      <div class="swiper-button-prev" ></div>
+<div class="swiper-button-next" ></div>
     </div>
   </div>
 </div>
 <style>
-
+.swiper-button-prev, .swiper-button-next {
+  position: absolute;
+  top: 250px;
+  
+}
+@media (max-width: 640px) { 
+  .swiper-button-prev, .swiper-button-next {
+    top: 120px;
+  }
+}
 </style>
