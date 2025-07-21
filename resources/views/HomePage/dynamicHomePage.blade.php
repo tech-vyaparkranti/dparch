@@ -224,21 +224,27 @@
             @if (isset($why_choose_us) && count($why_choose_us))
                 @foreach ($why_choose_us as $item)
                     <div class="col-md-4 mb-4">
-                        <div class="our-block text-center">
-                            <div class="our-block-figure">
-                                @if ($item->icon && file_exists(public_path($item->icon)))
-                                    <img src="{{ asset($item->icon) }}" alt="Icon" style="height:40px; transition:filter 0.3s, transform 0.3s;" 
-     onmouseover="this.style.filter='invert(1)'; this.style.transform='scale(1.1)';" 
-     onmouseout="this.style.filter='invert(0)'; this.style.transform='scale(1)';">
-                                @else
-                                    <i class="fa fa-star" style="font-size:30px"></i>
-                                @endif
-                            </div>
-                            <div class="our-content mt-2">
-                                <p style="font-size:18px; line-height:50px;">{{ $item->title }}</p>
-                            </div>
-                        </div>
-                    </div>
+    <div class="our-block text-center" 
+         onmouseover="this.querySelectorAll('img').forEach(img => { img.style.filter='invert(1)'; img.style.transform='scale(1.1)'; });" 
+         onmouseout="this.querySelectorAll('img').forEach(img => { img.style.filter='invert(0)'; img.style.transform='scale(1)'; });">
+
+        <div class="our-block-figure">
+            @if ($item->icon && file_exists(public_path($item->icon)))
+                <img src="{{ asset($item->icon) }}" 
+                     alt="Icon" 
+                     style="height:40px; transition:filter 0.3s, transform 0.3s;">
+            @else
+                <i class="fa fa-star" style="font-size:30px"></i>
+            @endif
+        </div>
+
+        <div class="our-content mt-2">
+            <p style="font-size:18px; line-height:50px;">{{ $item->title }}</p>
+        </div>
+
+    </div>
+</div>
+
                 @endforeach
             @else
                 @php
