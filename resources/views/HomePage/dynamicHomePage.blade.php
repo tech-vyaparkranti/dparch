@@ -419,7 +419,7 @@
     const input = document.getElementById('simpleCaptchaInput').value.trim().toUpperCase();
     const code = document.getElementById('simpleCaptcha').dataset.code;
 
-    if (!email || !email.match(/^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$/)) {
+    if (!email || !email.match(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)) {
       alert('Please enter a valid email.');
       return;
     }
@@ -430,11 +430,34 @@
       return;
     }
 
-    alert('Subscribed successfully!');
-    this.reset();
-    drawSimpleCaptcha();
+    // AJAX to Laravel
+    fetch("{{ route('subscribe') }}", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+      },
+      body: JSON.stringify({ email: email })
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        alert(data.success);
+        e.target.reset();
+        drawSimpleCaptcha();
+      } else if (data.error) {
+        alert(data.error);
+        drawSimpleCaptcha();
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      alert('An error occurred. Please try again.');
+      drawSimpleCaptcha();
+    });
   });
 </script>
+
 
 
 

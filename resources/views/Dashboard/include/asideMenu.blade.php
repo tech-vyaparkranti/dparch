@@ -147,5 +147,12 @@
                   <div data-i18n="Analytics">Manage Expertise</div>
                 </a>
               </li>
+
+              <li class="menu-item">
+                <a href="{{route("subscribersData")}}" class="menu-link">
+                  <i class="menu-icon tf-icons bx bx-book-content"></i>
+                  <div data-i18n="Analytics">NewsLetter Subscribers</div>
+                </a>
+              </li>
             </ul>
           </aside>

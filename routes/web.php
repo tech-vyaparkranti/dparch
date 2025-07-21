@@ -6,6 +6,8 @@ use App\Http\Controllers\DestinationController;
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\OurServicesModelController;
 use App\Http\Controllers\TestimonialsController;
+use App\Http\Controllers\NewsletterController;
+
 //use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -53,6 +55,9 @@ Route::get("blogDetails/{slug}",[HomePageController::class,"blogDetails"])->name
 // Route::get("get-home-page-services",[OurServicesModelController::class,"getHomePageServices"])->name("getHomePageServices");
 Route::post("contact-us-form",[ContactUsController::class,"saveContactUsDetails"])->name("saveContactUsDetails");
 Route::get('refresh-captcha',[HomePageController::class,"refreshCapthca"])->name("refreshCaptcha");
+
+Route::post('/subscribe', [NewsletterController::class, 'store'])->name('subscribe');
+
 
 Route::get('/sitemap', function () {
     return view('sitemap'); // This will load resources/views/sitemap.blade.php

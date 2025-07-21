@@ -18,7 +18,7 @@
             serverSide: true,
             scrollX: true,
             ajax: {
-                url: "{{ route('managecontactdata') }}",
+                url: "{{ route('admin.Contactus.data') }}",
                 type: "POST",
                 data: {
                     '_token': '{{ csrf_token() }}'
