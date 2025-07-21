@@ -656,6 +656,7 @@ section.chairperson {
     height: auto;
     width: 100%;
     display: block;
+
 }
 
 @media (max-width: 768px) {

@@ -25,7 +25,7 @@
         @unless (count($sliders) > 0)
         <!-- Static slides - example content added for structure, currently commented out -->
         <div class="swiper-slide">
-          <img class="img-fluid" width="" height="" alt="Image" src="./assets/img/3 Emperium Prime .JPG" />
+          <img class="img-fluid" width="" height="" alt="Image" src="./assets/img/3 Emperium Prime .JPG" style="height:560px" />
           <div class="video-content">
             {{--
             <h2>Adiyogi Global</h2>
@@ -36,7 +36,7 @@
           </div>
         </div>
         <div class="swiper-slide">
-          <img class="img-fluid" width="" height="" alt="Image" src="./assets/img/1 Skyom city lucknow (1).jpg" />
+          <img class="img-fluid" width="" height="" alt="Image" src="./assets/img/1 Skyom city lucknow (1).jpg" style="height:560px" />
           <div class="video-content">
             {{--
             <h2>Adiyogi Global</h2>
@@ -47,7 +47,7 @@
           </div>
         </div>
         <div class="swiper-slide">
-          <img class="img-fluid" width="" height="" alt="Image" src="./assets/img/2 INR heights karnal.jpg" />
+          <img class="img-fluid" width="" height="" alt="Image" src="./assets/img/2 INR heights karnal.jpg" style="height:560px" />
           <div class="video-content">
             {{--
             <h2>Adiyogi Global</h2>
