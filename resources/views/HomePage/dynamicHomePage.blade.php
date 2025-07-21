@@ -282,7 +282,7 @@
                             <div class="destinations-block text-center" style="background:none;">
                                 <div class="destinations-figure d-flex align-items-center justify-content:center" style="max-height:200px">
                                     <img src="{{ url($image->local_image) }}" alt="Gallery Image"
-                                         style="width:100%; height:250px; object-fit:contain; border-radius:20px;">
+                                         style="">
                                 </div>
                             </div>
                         </div>
@@ -303,7 +303,7 @@
                             <div class="destinations-block text-center" style="background:none;">
                                 <div class="destinations-figure d-flex align-items-center justify-content-center">
                                     <img src="{{ asset($img) }}" alt="Gallery Image"
-                                         style="width:100%; height:250px; object-fit:cover; border-radius:20px;">
+                                         style="">
                                 </div>
                             </div>
                         </div>
