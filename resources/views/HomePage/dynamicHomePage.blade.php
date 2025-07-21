@@ -227,9 +227,11 @@
                         <div class="our-block text-center">
                             <div class="our-block-figure">
                                 @if ($item->icon && file_exists(public_path($item->icon)))
-                                    <img src="{{ asset($item->icon) }}" alt="Icon" style="height:40px;">
+                                    <img src="{{ asset($item->icon) }}" alt="Icon" style="height:40px; transition:filter 0.3s, transform 0.3s;" 
+     onmouseover="this.style.filter='invert(1)'; this.style.transform='scale(1.1)';" 
+     onmouseout="this.style.filter='invert(0)'; this.style.transform='scale(1)';">
                                 @else
-                                    <i class="fa fa-star" style="font-size:30px;"></i>
+                                    <i class="fa fa-star" style="font-size:30px"></i>
                                 @endif
                             </div>
                             <div class="our-content mt-2">
