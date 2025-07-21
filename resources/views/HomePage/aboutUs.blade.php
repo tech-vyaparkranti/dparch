@@ -337,7 +337,7 @@ Over the years, we’ve had the privilege of transforming ideas into enduring la
 <div class="swiper-slide c">
 <div class="destinations-block">
 <div class="destinations-figure">
-    <img src="{{ asset($item->image) }}" class="img-fluid" alt="Destinations" style="object-fit: fill">
+    <img src="{{ asset($item->image) }}" class="img-fluid" alt="Destinations" >
 </div>
 <span class="destinations-title mh-auto text-center">{{ $item->service_name }}</span>
 </div>
