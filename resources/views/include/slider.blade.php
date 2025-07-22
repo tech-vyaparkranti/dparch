@@ -76,4 +76,18 @@
     top: 120px;
   }
 }
+.swiper-button-prev,
+.swiper-button-next {
+    color: navy !important;
+    background-color: rgba(0, 0, 128, 0.1); /* optional light background for visibility */
+    padding: 10px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.swiper-button-prev:hover,
+.swiper-button-next:hover {
+    background-color: rgba(0, 0, 128, 0.2); /* darken on hover */
+    transform: scale(1.1);
+}
 </style>
