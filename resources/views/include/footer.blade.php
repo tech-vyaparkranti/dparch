@@ -54,10 +54,12 @@
                 <div class="footer-item">
                     <div class="footer-logo">
                         <div class="footer-logo-inner">
-                            <img src="{{ asset($Logo??"./assets/img/logo.png") }}" class="img-fluid" width="130" height="86" alt="DP Arch " >
-                            {{-- <div id="TA_rated501" class="TA_rated"><ul id="JjXmgm" class="TA_links VuYcLdHeKQX"><li id="Vri6iTpTKUC" class="IZw2R90i"><a target="_blank" href="https://www.tripadvisor.com/Attraction_Review-g304551-d15224458-Reviews-The_Luxury_Travel-New_Delhi_National_Capital_Territory_of_Delhi.html"><img src="https://www.tripadvisor.com/img/cdsi/img2/badges/ollie-11424-2.gif" alt="TripAdvisor"/></a></li></ul></div><script async src="https://www.jscache.com/wejs?wtype=rated&amp;uniq=501&amp;locationId=15224458&amp;lang=en_US&amp;display_version=2" data-loadtrk onload="this.loadtrk=true"></script> --}}
-                        </div>
-                        <p><b>{!! $footer_logo_name ?? 'DP Arch'!!}</b></p>
+    <img src="{{ asset($Logo ?? './assets/img/logo.png') }}" class="img-fluid" width="130" height="86" alt="DP Arch">
+</div>
+<p><b>{!! $footer_logo_name ?? 'DP Arch'!!}</b></p>
+<p class="footer-tagline mt-2" style="font-size: 1.05rem; font-weight: 500; color: #333; text-align: left; margin-left: 0;">
+    Where architecture meets innovation to shape tomorrow’s landmarks.
+</p>
                         {{-- <ul class="social-media mt-4">
                         <li><a href="{!! $facebook_link ?? 'https://www.facebook.com/DP Arch' !!}" aria-label="Read more about DP Arch  facebook"><i class="fa-brands fa-facebook"></i></a></li>
                         <li><a href="{!! $linkedin_link ?? '/' !!}" aria-label="Read more about DP Arch  Linkedin"><i class="fab fa-linkedin"></i></a></li>
@@ -93,7 +95,7 @@
                     <div class="footer-contact">
                         <div class="footer-item pb-3">
                             <label>Company E-mail:</label>
-                            <p class="footer-email"><i class="fa-solid fa-envelope"></i>&nbsp;<a  href="mailto:{!! $email_2??"sales@DP Arch.com" !!}" style="font-weight:bold;font-size:16px;">{!! $email_2??"sales@DP Arch.com" !!}</a>
+                            <p class="footer-email"><i class="fa-solid fa-envelope"></i>&nbsp;<a  href="mailto:{!! $email_2??"sales@DP Arch.com" !!}" style="font-size:16px;">{!! $email_2??"sales@DP Arch.com" !!}</a>
                         </div>
                         <div class="footer-item pb-3">
                             <label>Contact No:</label>
@@ -101,7 +103,8 @@
                         </div>
                         <div class="footer-item pb-3">
                             <label>Address:</label>
-                            <p>{!! $address ?? 'najafgarh' !!}</p>
+                            <p><i class="fa fa-map-marker" aria-hidden="false"></i>
+{!! $address ?? 'najafgarh' !!}</p>
                         </div>
                     </div>
                 </div>
@@ -342,7 +345,7 @@ $('#compactContactUsForm').on('submit', function (e) {
 </script>
 </footer>
 
-<div class="copyright-section text-center p-3">&copy; <script>document.write( new Date().getFullYear() );</script>{{ isset($WebSetting['0']->copyright_txt) ? $WebSetting['0']->copyright_txt : '© 2024 All Rights Reserved by DP Arch ' }}   & Developed by <a href="https://vyaparkranti.com/" class="text-white" aria-label="Digital Markating" alt="Vyapar Kranti">Vyapar kranti</a></div>
+<div class="copyright-section text-center p-3">&copy; <script>document.write( new Date().getFullYear() );</script>{{ isset($WebSetting['0']->copyright_txt) ? $WebSetting['0']->copyright_txt : ' All Rights Reserved by DP Arch ' }}   & Developed by <a href="https://vyaparkranti.com/" class="text-white" aria-label="Digital Markating" alt="Vyapar Kranti">Vyapar kranti</a></div>
 <!-- Footer Section End-->
 <style>
         /* Demo content */
@@ -683,4 +686,11 @@ $('#compactContactUsForm').on('submit', function (e) {
         .modal.slide-right.show .modal-backdrop {
             opacity: 0.5;
         }
+
+        .footer-tagline {
+    font-size: 0.9rem;
+    color: #ccc;
+    margin-top: 5px;
+    max-width: 300px;
+}
     </style>
