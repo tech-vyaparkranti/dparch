@@ -11,7 +11,7 @@
             <!-- Dynamic content from the database -->
             <h2 style="padding-top:100px">{!!$slide->heading_top !!}</h2>
             <h3>{!! $slide->heading_middle !!}</h3>
-            <p>{!! $slide->heading_bottom !!}</p>
+            <h3>{!! $slide->heading_bottom !!}</h3>
             {{-- Uncomment the following line if you have a contact route for each slide --}}
             {{-- <a href="{{ route('contactUs') }}" aria-label="Explore The World">Get in touch</a> --}}
           </div>
