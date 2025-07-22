@@ -84,76 +84,58 @@
         </section> -->
 
    <!-- Destinations Section -->
+<!-- Our Expertise Section -->
 <div class="destinations pt-5 pb-4" data-aos="fade-up">
-  <div class="custom-container">
-    <div class="site-title pb-4">
- <h2 class="text-center">Our Expertise</h2>
-</div>
+    <div class="custom-container">
+        <div class="site-title pb-4">
+            <h2 class="text-center">Our Expertise</h2>
+        </div>
 
-<div class="swiper we-offer ">
-<div class="swiper-wrapper " >
-
- @if (isset($services) && $services->count() > 0)
- @foreach ($services as $item)
-<div class="swiper-slide c">
-<div class="destinations-block">
-<div class="destinations-figure">
-    <img src="{{ asset($item->image) }}" class="img-fluid" alt="Destinations" style="object-fit: fill">
-</div>
-<span class="destinations-title mh-auto text-center">{{ $item->service_name }}</span>
-</div>
-</div>
- @endforeach
- @else
- <div class="swiper-slide">
-<div class="destinations-block">
-     <div class="destinations-figure">
-<img src="./assets/img/architectural.jpeg" class="img-fluid" alt="Destinations">
-</div>
-<span class="destinations-title mh-auto text-center" style="font-size:20px">Architectural Design</span>
-</div>
-</div>
-<div class="swiper-slide">
- <div class="destinations-block">
- <div class="destinations-figure">
- <img src="./assets/img/interior-design.jpg" class="img-fluid" alt="Destinations">
-</div>
-<span class="destinations-title mh-auto text-center" style="font-size:20px">Interior Design</span>
- </div>
-</div>
-<div class="swiper-slide">
-<div class="destinations-block">
-<div class="destinations-figure">
-<img src="./assets/img/project-managment.jpg" class="img-fluid" alt="Destinations">
- </div>
-<span class="destinations-title mh-auto text-center" style="font-size:20px">Project Management</span>
-</div>
-</div>
-<div class="swiper-slide">
-<div class="destinations-block">
-    <div class="destinations-figure">
-<img src="./assets/img/renovation-restoration.jpg" class="img-fluid" alt="Destinations">
-</div>
-<span class="destinations-title mh-auto text-center" style="font-size:20px">Renovation & Restoration</span>
- </div>
-</div>
- <div class="swiper-slide">
-<div class="destinations-block">
- <div class="destinations-figure">
- <img src="./assets/img/UrbanPlanning.jpg" class="img-fluid" alt="Destinations">
-</div>
- <span class="destinations-title mh-auto text-center" style="font-size:20px">Urban Planning</span>
-</div>
-</div>
-@endif
-
-</div>
-
- <div class="swiper-pagination"></div> </div>
-
-</div>
-</div>
+        <div class="row">
+            @if (isset($services) && $services->count() > 0)
+                @foreach ($services as $item)
+                    <div class="col-md-4 col-sm-6 mb-4">
+                        <div class="destinations-block text-center">
+                            <div class="destinations-figure">
+                                <img src="{{ asset($item->image) }}" class="img-fluid" alt="{{ $item->service_name }}"
+                                     style="width:100%; height:250px; object-fit:cover; border-radius:10px;">
+                            </div>
+                            <span class="destinations-title d-block mt-2" style="font-size:20px;">
+                                {{ $item->service_name }}
+                            </span>
+                        </div>
                     </div>
+                @endforeach
+            @else
+                {{-- Fallback content if no services found --}}
+                @php
+                    $fallbackServices = [
+                        ['img' => 'assets/img/architectural.jpeg', 'title' => 'Architectural Design'],
+                        ['img' => 'assets/img/interior-design.jpg', 'title' => 'Interior Design'],
+                        ['img' => 'assets/img/project-managment.jpg', 'title' => 'Project Management'],
+                        ['img' => 'assets/img/renovation-restoration.jpg', 'title' => 'Renovation & Restoration'],
+                        ['img' => 'assets/img/UrbanPlanning.jpg', 'title' => 'Urban Planning'],
+                    ];
+                @endphp
+
+                @foreach ($fallbackServices as $fallback)
+                    <div class="col-md-4 col-sm-6 mb-4">
+                        <div class="destinations-block text-center">
+                            <div class="destinations-figure">
+                                <img src="{{ asset($fallback['img']) }}" class="img-fluid" alt="{{ $fallback['title'] }}"
+                                     style="width:100%; height:250px; object-fit:cover; border-radius:10px;">
+                            </div>
+                            <span class="destinations-title d-block mt-2" style="font-size:20px;">
+                                {{ $fallback['title'] }}
+                            </span>
+                        </div>
+                    </div>
+                @endforeach
+            @endif
+        </div>
+    </div>
+</div>
+
 <!-- Destinations Section End -->
 
 
