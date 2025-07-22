@@ -6,10 +6,10 @@
         @foreach ($sliders as $slide )
         <div class="swiper-slide">
           
-          <img class="img-fluid banner-img" width="" height="" style="height:560px" alt="Image" src="{{ asset($slide->image) }}" />
+          <img class="img-fluid banner-img" width="" height=""  alt="Image" src="{{ asset($slide->image) }}" />
           <div class="video-content">
             <!-- Dynamic content from the database -->
-            <h2 style="padding-top:100px">{!!$slide->heading_top !!}</h2>
+            <h2 style="padding-top:200px">{!!$slide->heading_top !!}</h2>
             <h3>{!! $slide->heading_middle !!}</h3>
             <p>{!! $slide->heading_bottom !!}</p>
             {{-- Uncomment the following line if you have a contact route for each slide --}}
@@ -47,7 +47,7 @@
           </div>
         </div>
         <div class="swiper-slide">
-          <img class="img-fluid" width="" height="" alt="Image" src="./assets/img/2 INR heights karnal.jpg" style="height:560px" />
+          <img class="img-fluid" width="" height="" alt="Image" src="./assets/img/2 INR heights karnal.jpg" style="height:560px"/>
           <div class="video-content">
             {{--
             <h2>Adiyogi Global</h2>

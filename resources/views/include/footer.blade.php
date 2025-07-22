@@ -110,8 +110,9 @@
     </div>
 
     <a href="#" class="compact-enquiry-btn" data-bs-toggle="modal" data-bs-target="#compactEnquiryModal">
-        <i class="fas fa-envelope"></i>
-        <span>Enquire</span>
+        <i class="fas fa-envelope" style="height:10px"></i>
+        <span style=" display: inline-block;
+    transform: rotate(180deg);">Enquire now</span>
     </a>
 
     <!-- Right-Sliding Enquiry Modal -->
@@ -368,6 +369,10 @@ $('#compactContactUsForm').on('submit', function (e) {
             max-width: 600px;
             line-height: 1.6;
         }
+ 
+
+
+
 
         /* Floating Enquiry Button */
    .compact-enquiry-btn {
@@ -375,13 +380,16 @@ $('#compactContactUsForm').on('submit', function (e) {
     top: 50%;
     right: 0;
     transform: translateY(-50%);
+        background: linear-gradient(45deg, blue, blue, #f58634, brown);
+    background-size: 600% 600%; /* 🔥 Required for animation */
+    animation: gradientMove 5s ease infinite;
+ 
     z-index: 1000;
-    background: #7b4b28; /* Brown */
     color: white;
     font-weight: bold;
     font-size: 12px;
     text-transform: uppercase;
-    border-radius: 25px 0 0 25px;
+    border:1px solid black;
     padding: 10px 6px;
     width: 38px;
     height: 130px;
@@ -395,6 +403,20 @@ $('#compactContactUsForm').on('submit', function (e) {
     text-decoration: none;
     letter-spacing: 0.5px;
 }
+
+
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
 
 .compact-enquiry-btn:hover {
     background: #a54c37;
