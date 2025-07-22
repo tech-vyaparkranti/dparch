@@ -10,7 +10,7 @@
     <div class="default-content pt-5 pb-3">
         <div class="custom-container">
             <div class="site-title pb-3">
-                <h2 class="text-center">About Us </h2>
+                <h2 class="text-center">Introduction</h2>
             </div>
             <div class="midd-content">
                 <p class="text-justify" data-aos="fade-up">{!! $home_about_content ?? 'At Adiyogi Global, we are committed to delivering healthy, high-quality products to people around the
@@ -35,10 +35,10 @@ for choosing Adiyogi Global.'  !!}</p>
  </div>
 </div>
 
-<div id="director-message" class="pt-5 pb-5" style="background-color:#f9f9f9;">
+<div id="team" class="pt-5 pb-5" style="background-color:#f9f9f9;">
   <div class="custom-container">
     <div class="site-title pb-4">
-      <h2 class="text-center">Message from Our Director</h2>
+      <h2 class="text-center">The Team</h2>
     </div>
     <div class="row align-items-center">
       <div class="col-md-4 text-center mb-4 mb-md-0">
@@ -56,11 +56,9 @@ Over the years, we’ve had the privilege of transforming ideas into enduring la
   </div>
 </div>
 
-<div id="team" class="destinations pt-5 pb-4" data-aos="fade-up">
+<div class="destinations pt-5 pb-4" data-aos="fade-up">
     <div class="custom-container">
-        <div class="site-title pb-4">
-            <h2 class="text-center">Our Team</h2>
-        </div>
+        
 
         <div class="swiper we-offer">
             <div class="swiper-wrapper">
@@ -289,7 +287,10 @@ Over the years, we’ve had the privilege of transforming ideas into enduring la
 
 
 <div id="philosophy" class="container">
-   <h2 style="text-align:center;padding-bottom:40px">Our Philosophy</h2>
+ <div class="site-title pb-5">
+      <h2 class="text-center">Our Foundation</h2>
+    </div>
+  
 
 <div class="card-container">
     <!-- Card 1 -->
@@ -326,7 +327,7 @@ Over the years, we’ve had the privilege of transforming ideas into enduring la
 <div id="services" class="destinations pt-5 pb-4" data-aos="fade-up">
   <div class="custom-container">
     <div class="site-title pb-4">
- <h2 class="text-center">Our Expertise</h2>
+ <h2 class="text-center">What We Do</h2>
 </div>
 
 <div class="swiper we-offer ">

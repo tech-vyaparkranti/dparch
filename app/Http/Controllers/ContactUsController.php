@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\DB;
 use Yajra\DataTables\Facades\DataTables;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Http\JsonResponse;
+use Carbon\Carbon;
+
 
 
 
@@ -48,22 +50,30 @@ class ContactUsController extends Controller
         return view("Dashboard.Pages.manageContactUs");
     }
 
-    public function ContactUsData(){
 
+public function ContactUsData()
+{
+    $query = ContactUsModel::select(
+        ContactUsModel::FIRST_NAME,
+        ContactUsModel::LAST_NAME,
+        ContactUsModel::EMAIL,
+        ContactUsModel::COUNTRY_CODE,
+        ContactUsModel::PHONE_NUMBER,
+        ContactUsModel::MESSAGE,
+        ContactUsModel::IP_ADDRESS,
+        ContactUsModel::USER_AGENT,
+        ContactUsModel::STATUS,
+        ContactUsModel::CREATED_AT
+    );
 
-        $query = ContactUsModel::select(
-            ContactUsModel::FIRST_NAME,
-            ContactUsModel::LAST_NAME,
-            ContactUsModel::EMAIL,
-            ContactUsModel::COUNTRY_CODE,
-            ContactUsModel::PHONE_NUMBER,
-            ContactUsModel::MESSAGE,
-            ContactUsModel::IP_ADDRESS,
-            ContactUsModel::ID,
-            DB::raw("date_format(".ContactUsModel::CREATED_AT.", '%M %d %Y %r') as created_at_date")
-        );
-        return DataTables::of($query)
-            ->addIndexColumn()
-            ->make(true);
-    }
+    return DataTables::of($query)
+        ->addIndexColumn()
+        ->editColumn('created_at', function ($row) {
+            return Carbon::parse($row->created_at)
+                ->timezone('Asia/Kolkata')
+                ->format('d M Y, h:i A');
+        })
+        ->make(true);
+}
+
 }

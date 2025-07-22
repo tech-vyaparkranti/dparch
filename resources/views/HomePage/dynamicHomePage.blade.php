@@ -34,7 +34,7 @@
 
           <a href="{{ route('aboutUs') }}" 
    class="btn" 
-   style="background-color:#D4D4D4; color:black; padding:10px 20px; border:none;">
+   style="background-color:navy; color:white; padding:10px 20px; border:none;">
    Know More
 </a>
       </div>
@@ -216,7 +216,7 @@
 <!-- Why Choose Us Section -->
 <section class="our-service pt-5 pb-5">
     <div class="custom-container">
-        <div class="section-heading mb-4">
+        <div class="site-title pb-4">
             <h2 class="text-center">Why Choose Us</h2>
         </div>
 
@@ -380,8 +380,9 @@
   <input type="text" class="form-control form-control-sm" placeholder="Enter code" id="simpleCaptchaInput" required style="max-width:120px;">
   
   <!-- Subscribe -->
-  <button class="btn btn-sm btn-primary" type="submit"><i class="fas fa-paper-plane me-1"></i>Subscribe</button>
-</form>
+<button class="btn btn-sm" style="background-color: navy; color: white;" type="submit">
+    <i class="fas fa-paper-plane me-1"></i>Subscribe
+</button></form>
 
         <small class="text-muted d-block mt-2">We respect your privacy. Unsubscribe anytime.</small>
       </div>
@@ -420,7 +421,7 @@
     const input = document.getElementById('simpleCaptchaInput').value.trim().toUpperCase();
     const code = document.getElementById('simpleCaptcha').dataset.code;
 
-    if (!email || !email.match(/^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$/)) {
+    if (!email || !email.match(/^[^@\s]+@[^@\s]+\.[^@\s]+$/)) {
       alert('Please enter a valid email.');
       return;
     }
@@ -431,11 +432,34 @@
       return;
     }
 
-    alert('Subscribed successfully!');
-    this.reset();
-    drawSimpleCaptcha();
+    // AJAX to Laravel
+    fetch("{{ route('subscribe') }}", {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+      },
+      body: JSON.stringify({ email: email })
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.success) {
+        alert(data.success);
+        e.target.reset();
+        drawSimpleCaptcha();
+      } else if (data.error) {
+        alert(data.error);
+        drawSimpleCaptcha();
+      }
+    })
+    .catch(err => {
+      console.error(err);
+      alert('An error occurred. Please try again.');
+      drawSimpleCaptcha();
+    });
   });
 </script>
+
 
 
 

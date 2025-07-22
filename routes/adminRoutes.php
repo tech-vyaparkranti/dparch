@@ -9,8 +9,11 @@ use App\Http\Controllers\HomeProductsController;
 use App\Http\Controllers\TeamMemberController;
 use App\Http\Controllers\WebSiteElementsController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ContactUsController;
 use App\Http\Controllers\WhyChooseUsController;
 use App\Http\Controllers\ServiceProjectController;
+use App\Http\Controllers\NewsletterController;
+
 
 
 Route::get("login",[AdminController::class,"Login"])->name("login");
@@ -71,9 +74,21 @@ Route::get("contact-us-data", function () {
     return view("HomePage.ContactUsdata");
 })->name("ContactUsData");
 
+Route::get("subscribers-data", function () {
+    return view("HomePage.subscribersdata");
+})->name("subscribersData");
+
 });
+
+Route::post('/contactus/data', [ContactUsController::class, 'ContactUsData'])->name('admin.Contactus.data');
+
+
+Route::post('/subscribers/data', [NewsletterController::class, 'datatable'])->name('admin.subscribers.data');
 
 Route::get("our-services-master", [ServiceProjectController::class, "index"])->name("viewOurServicesMaster");
 Route::post("save-our-services", [ServiceProjectController::class, "saveOurServicesMaster"])->name("saveOurServicesMaster");
 Route::post("our-services-data", [ServiceProjectController::class, "ourServicesData"])->name("ourServicesData");
+
+// Route::get('/subscribers', [NewsletterController::class, 'index'])->name('subscribers.index');
+
     
