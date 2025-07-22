@@ -1124,7 +1124,7 @@ section.chairperson {
     z-index: 1;
     max-width: 1200px;
     margin: 0 auto;
-    height: 150px;
+    height: 171px;
     display: flex;
     align-items: center;
 }
@@ -1142,7 +1142,7 @@ section.chairperson {
     right: 0;
     bottom: 0;
     left: 0;
-    background: linear-gradient(45deg, rgb(var(--dgreen-color) / 90%), rgb(var(--yellow-color) / 50%)), url('../img/Banner Pic Inside.jpg');
+    /* background: linear-gradient(45deg, rgb(var(--dgreen-color) / 90%), rgb(var(--yellow-color) / 50%)), url('../img/Banner Pic Inside.jpg'); */
     background-size: cover;
     background-position: left;
     background-blend-mode: hard-light;
