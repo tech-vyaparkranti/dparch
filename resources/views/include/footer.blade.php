@@ -47,6 +47,7 @@
 </section> -->
 {{-- Recognitions End --}}
 <!-- Footer Section -->
+
 <footer class="footer-section pt-4 pb-4">
     <div class="custom-container">
         <div class="row">
