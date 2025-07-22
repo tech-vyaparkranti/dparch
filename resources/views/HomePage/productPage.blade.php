@@ -11,9 +11,10 @@
     ])->value('element_details');
 @endphp
 
-<div class="information-page-slider">
+<div class="information-page-slider"
+     style="background: url('{{ asset('assets/img/projectsbanner.jpg') }}'); background-size: cover; background-position: center;">
     <div class="information-content">
-        <h1><a href="{{ url('/') }}">Home</a><span>Project</span></h1>
+        <h1><a href="{{ url('/') }}">Home</a><span>About Us</span></h1>
     </div>
 </div>
 
