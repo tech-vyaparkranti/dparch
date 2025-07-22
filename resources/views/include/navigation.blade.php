@@ -12,7 +12,7 @@
     <div class="header-contaner">
         <div class="logo-section">
             <div class="mobile-bars" hidden></div>
-            <a href="{{ url('/') }}" aria-level="Main logo"><img src="{{ asset($Logo??"./assets/img/logo.png") }}" class="img-fluid" width="120" height="90" alt="Home Styler"></a>
+            <a href="{{ url('/') }}" aria-level="Main logo"><img src="{{ asset($Logo??"./assets/img/logo.png") }}" class="img-fluid site-logo" width="120" height="90" alt="Home Styler"></a>
         </div>
         <div class="slide-navigation">
             <div class="navbar-wrapper">
@@ -58,6 +58,13 @@
 <style>
     .navbar-block .has-dropdown {
   position: relative;
+}
+@media (max-width: 768px) {
+    .site-logo {
+        width: 90px;
+        height: 90px;
+        border-radius:50%;
+    }
 }
 
 .navbar-block .has-dropdown > a::after {
@@ -114,6 +121,7 @@
   background-color: rgba(255, 255, 255, 0.2);
   color: #222;
 }
+
 
 /* Smooth fade-in animation */
 @keyframes fadeInUp {

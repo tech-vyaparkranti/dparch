@@ -657,13 +657,20 @@ section.chairperson {
     width: 100%;
     display: block;
 
+
 }
 
 @media (max-width: 768px) {
     .video-block>.main-slider .swiper-slide img.img-fluid {
         height: 40%;
         width: 100%;
-        object-fit: cover;
+        object-fit: top;
+    }
+}
+
+@media (min-width: 992px) {
+    .video-block>.main-slider .swiper-slide img.img-fluid {
+        height: 560px;
     }
 }
 

@@ -283,7 +283,8 @@
         </div>
 
         <div class="swiper we-offer">
-            <div class="swiper-wrapper">
+            <div class="swiper-wrapper" style="max-height:250px;">
+                {{-- Check if $galleryImages is set and has images --}}
                 @if (isset($galleryImages) && $galleryImages->count())
                     @foreach ($galleryImages as $image)
                         <div class="swiper-slide">
@@ -318,7 +319,7 @@
                     @endforeach
                 @endif
             </div>
-            <div class="swiper-pagination"></div>
+            <div class="swiper-pagination" style="padding:0px;margin:0px"></div>
         </div>
     </div>
 </div>
