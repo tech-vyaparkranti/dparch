@@ -14,86 +14,159 @@
                     <h2 class="text-center">Privacy Policy</h2>
                 </div>
                 <div class="midd-content">
-                    <p class="text-justify">This privacy policy (“Policy”) relates to the manner <b>RNcommunication </b> (“we”, “us”, “our”) in which we use, handle and process the data that you provide us in connection with using the products or services we offer. By using this website or by availing goods or services offered by us, you agree to the terms and conditions of this Policy, and consent to our use, storage, disclosure, and transfer of your information or data in the manner described in this Policy.</p>
-                    <p class="text-justify">We are committed to ensuring that your privacy is protected in accordance with applicable laws and regulations. We urge you to acquaint yourself with this Policy to familiarize yourself with the manner in which your data is being handled by us.</p>
-                    <p class="text-justify"><b>RNcommunication </b> may change this Policy periodically and we urge you to check this page for the latest version of the Policy in order to keep yourself updated.</p>
-                    <h3>What data is being collected</h3>
-                    <p class="text-justify">We may collect the following information from you: </p>
-                    <ul>
-                        <li><p class="text-justify">Name</p></li>
-                        <li><p class="text-justify">Contact information including address and email address</p></li>
-                        <li><p class="text-justify">Demographic information or, preferences or interests</p></li>
-                        <li><p class="text-justify">Personal Data or Other information relevant/ required for providing the goods or services to you</p></li>
-                        <li><p class="text-justify">The meaning of Personal Data will be as defined under relevant Indian laws</p></li>
-                    </ul>
-                    <p class="text-justify"><b>Note:</b> Notwithstanding anything under this Policy as required under applicable Indian laws, we will not be storing any credit card, debit card or any other similar card data of yours. Please also note that all data or information collected from you will be strictly in accordance with applicable laws and guidelines.</p>
-                    <h3>What we do with the data we gather</h3>
-                    <p class="text-justify">We require this data to provide you with the goods or services offered by us including but not limited, for the below set out purposes:</p>
-                    <ul>
-                        <li><p class="text-justify">Internal record keeping.</p></li>
-                        <li><p class="text-justify">For improving our products or services.</p></li>
-                        <li><p class="text-justify">For providing updates to you regarding our products or services including any special offers.</p></li>
-                        <li><p class="text-justify">To communicate information to you</p></li>
-                        <li><p class="text-justify">For internal training and quality assurance purposes</p></li>
-                    </ul>
-                    <h3>Who do we share your data with</h3>
-                    <p class="text-justify">We may share your information or data with:</p>
-                    <ul>
-                        <li><p class="text-justify">Third parties including our service providers in order to facilitate the provisions of goods or services to you, carry out your requests, respond to your queries, fulfil your orders or for other operational and business reasons.</p></li>
-                        <li><p class="text-justify">With our group companies (to the extent relevant)</p></li>
-                        <li><p class="text-justify">Our auditors or advisors to the extent required by them for performing their services</p></li>
-                        <li><p class="text-justify">Governmental bodies, regulatory authorities, law enforcement authorities pursuant to our legal obligations or compliance requirements.</p></li>
-                    </ul>
-                    <h3>How we use cookies</h3>
-                    <p class="text-justify">We use "cookies" to collect information and to better understand customer behaviour. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to avail our goods or services to the full extent. We do not control the use of cookies by third parties. The third party service providers have their own privacy policies addressing how they use such information.</p>
-                    <h3>Your rights relating to your data</h3>
-                    <p class="text-justify"><b><i>Right to Review</i> -</b> You can review the data provided by you and can request us to correct or amend such data (to the extent feasible, as determined by us). That said, we will not be responsible for the authenticity of the data or information provided by you.</p>
-                    <p class="text-justify"><b><i>Withdrawal of your Consent</i></b> - You can choose not to provide your data, at any time while availing our goods or services or otherwise withdraw your consent provided to us earlier, in writing to our email ID: <a href="mailto:torna.in@gmail.com">torna.in@gmail.com</a> In the event you choose to not provide or later withdraw your consent, we may not be able to provide you our services or goods.Please note that these rights are subject to our compliance with applicable laws.</p>
-                    <h3>How long will we retain your information or data?</h3>
-                    <p class="text-justify">We may retain your information or data (i) for as long as we are providing goods and services to you; and (ii) as permitted under applicable law, we may also retain your data or information even after you terminate the business relationship with us. However, we will process such information or data in accordance with applicable laws and this Policy.</p>
-                    <h3>Data Security</h3>
-                    <p class="text-justify">We will use commercially reasonable and legally required precautions to preserve the integrity and security of your information and data.</p>
-                    <h3>Queries/ Grievance Officer</h3>
-                    <p class="text-justify">For any queries, questions or grievances about this Policy, please contact us using the contact information provided on this website.</p>  
-                </div>
-                <div class="site-title pt-3 pb-2">
-                    <h2 class="text-center">Cancellation & Refund Policy</h2>
-                </div>
-                <div class="midd-content">
-                    <p class="text-justify">If the tour or any part thereof cannot be conducted due to Force Majeure or Vis Majeure, the Company shall not be responsible to give any refund to you.</p>
-                    <p class="text-justify">If the tour or any part thereof cannot be conducted due to Force Majeure or Vis Majeure, the Company shall not be responsible to give any refund to you. However, at its sole discretion, the Company gives the refund based on various factors like the number of participants, the cancellation policies of suppliers like hoteliers, coach operators, etc. the decision of the Company on the quantum of refund shall be final.</p>
-                    <p class="text-justify">It would take at least minimum of 15 to 45 days to process the refund (if due).</p>
-                    <p class="text-justify">It is clearly understood that there shall be no refund whatsoever if the Client does not or cannot utilize any of the services like hotels, sightseeing, rides, cruises, meals, entrance fees, optional tours etc., due to any reason whatsoever.</p>
-                    <p class="text-justify">Refunds (If any) for amendments and/or cancellations will be paid directly to the Client for booking made directly with the Company by way of NEFT / RTGS / Crossed cheque or by credit card it will be reversed to their credit card account at the discretion of the company. It would at least take 45 days to process refunds.</p>
-                    <p class="text-justify">There is no refund payable for any unutilized services (e.g. meals, entrance fees, optional tours, hotels, transport and sightseeing etc.) for any reason whatsoever.</p>
-                    <p class="text-justify">Any service booked in advance and cancelled as per booking policy, refund will be done in the same mode of payment after deducting cancellation charges and actual bank charges if any for refund. To customer bank account if paid by bank transfer, net banking mode / credit /debit card - reversal to their respective credit card account will be done. This process will take 15 to 45 days to reflect in their account.</p>
-                    <p class="text-justify">Clients have option to keep their refund money in our account and collect credit certificate and utilise the same with 24 months.</p>
-                    <p class="text-justify">Clients have option to keep their refund money in our account and collect credit certificate and utilise the same with 24 months.</p>
-                </div>
-                <div class="site-title pt-3 pb-2">
-                    <h2 class="text-center">Conditions of Travel</h2>
-                </div>
-                <div class="midd-content">
-                    <p class="text-justify">The client will have to strictly follow the Tour Program. There shall be no refund, if the client fails to join the group at the commencement of the tour, or joins the group later or leaves the group before tour ending. It shall be noted that for all purposes, it shall be the responsibility of the client to reach the place of commencement of the tour and register with the representative of the company at the appointed place, date and time.</p>
-                    <p class="text-justify">In case where a client along with his family is compelled to discontinue the tour due to any reason whatsoever including illness, death or loss of any travel documents, no claim shall be entertained for refund of unutilized services. Even if a client is unable to reach the place of commencement of the tour due to any reason whatsoever including loss of baggage or loss of travel documents, his booking shall be treated as "no show" on the tour and 100% cancellation charges will be levied.</p>
-                    <p class="text-justify">If a client avails pre - tour services or part thereof, or the air tickets (if booked under any offer) but fails to join the group for the main tour at the appointed place, or cancels the tour after using the air tickets or pre - tour arrangements or part thereof, it shall be treated as "no show" and there will be no refund whatsoever for the unutilized pre-tour or main tour services.</p>
-                    <p class="text-justify">The company reserves the right to withdraw tour membership of any client whose behaviour is deemed likely to affect the smooth operation of the tour or adversely affect the enjoyment or safety of other passengers and the Company shall be under no liability to any such person.</p>
-                    <p class="text-justify">The immunities provided under this contract shall be available to THE COMPANY's employees, directors, managers, including, Employees and Agents but not to the Independent Contractors selected by the company.</p>
-                    <p class="text-justify">Each of these conditions shall be severable from the other and if any provision be invalid, illegal or unenforceable, the remaining provisions shall nevertheless have full force and effect. No liability on the part of THE COMPANY arising in any way out of the Contract in respect of any tour, holiday, excursion facilities shall exceed the total amount paid or agreed to be paid for the tour holiday, and shall in no case include any consequential, incidental loss or additional expense whatsoever.</p>
-                    <p class="text-justify">It is a condition of Booking that the client takes out a Holiday Insurance – Client may procure travel insurance (optional) at their own cost.</p>
-                    <p class="text-justify">The prices quoted in our website / brochure have been calculated at the rate prevailing at the time of publishing / printing. THE COMPANY reserves the right to amend the prices published in this brochure in case of fuel costs, special/high season charge levied by the suppliers, hike in the airline/rail charges before the date of departure and to surcharge accordingly. The Client must pay for all such increases in price in full before the departure.</p>
-                    <p class="text-justify">If no suit/action is brought against THE COMPANY within 7 days of the last day of the tour, THE COMPANY shall be discharged from all liabilities under/or arising out of this contract and the client shall be deemed to have relinquished/abandoned all his rights under or arising from this contract.</p>
-                    <p class="text-justify">In case of publication of any travel scheme offering any discount or benefit by THE COMPANY, we shall have the sole right to withdraw such a scheme or discount at any time unless a specific assurance of the contrary is published.</p>
+    <p><strong>Last updated:</strong> July 18, 2025</p>
 
-                </div>
-                <div class="site-title pt-3 pb-2">
-                    <h2 class="text-center">Shipping & Delivery Policy</h2>
-                </div>
-                <div class="midd-content">
-                    <p class="text-justify">For International buyers, orders are shipped and delivered through registered international courier companies and/or International speed post only. For domestic buyers, orders are shipped through registered domestic courier companies and /or speed post only. Orders are shipped within 3-5 Days days or as per the delivery date agreed at the time of order confirmation and delivering of the shipment subject to Courier Company / post office norms.</p>
-                    <p class="text-justify"><b>RNcommunication </b> is not liable for any delay in delivery by the courier company / postal authorities and only guarantees to hand over the consignment to the courier company or postal authorities within 3-5 Days days from the date of the order and payment or as per the delivery date agreed at the time of order confirmation. Delivery of all orders will be to the address provided by the buyer. Delivery of our services will be confirmed on your mail ID as specified during registration. For any issues in utilizing our services you may contact our helpdesk on <a href="tel:+919540721363">+91 954 072 1363</a> or <a href="mailto:torna.in@gmail.com">torna.in@gmail.com</a>.</p>
-                </div>
-            </div>
+    <p>This Privacy Policy describes Our policies and procedures on the collection, use, and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.</p>
+
+    <p>We use Your Personal data to provide and improve the Service. By using the Service, You agree to the collection and use of information in accordance with this Privacy Policy.</p>
+
+    <h2>Interpretation and Definitions</h2>
+
+    <h3>Interpretation</h3>
+    <p>The words of which the initial letter is capitalized have meanings defined under the following conditions. The following definitions shall have the same meaning regardless of whether they appear in singular or in plural.</p>
+
+    <h3>Definitions</h3>
+    <p>For the purposes of this Privacy Policy:</p>
+    <ul>
+        <li><strong>Account</strong> means a unique account created for You to access our Service or parts of our Service.</li>
+        <li><strong>Affiliate</strong> means an entity that controls, is controlled by, or is under common control with a party.</li>
+        <li><strong>Company</strong> (referred to as either "the Company", "We", "Us" or "Our") refers to dparch, Block K, Jangpura Extension, New Delhi - 110014.</li>
+        <li><strong>Cookies</strong> are small files placed on Your device containing details of Your browsing history.</li>
+        <li><strong>Country</strong> refers to Delhi, India.</li>
+        <li><strong>Device</strong> means any device that can access the Service.</li>
+        <li><strong>Personal Data</strong> is any information that relates to an identified or identifiable individual.</li>
+        <li><strong>Service</strong> refers to the Website.</li>
+        <li><strong>Service Provider</strong> means any party processing data on behalf of the Company.</li>
+        <li><strong>Third-party Social Media Service</strong> refers to any social network through which a User can log in to use the Service.</li>
+        <li><strong>Usage Data</strong> refers to data collected automatically when using the Service.</li>
+        <li><strong>Website</strong> refers to dparch, accessible from <a href="https://www.dparch.co.in/" target="_blank">https://www.dparch.co.in/</a></li>
+        <li><strong>You</strong> means the individual accessing or using the Service.</li>
+    </ul>
+
+    <h2>Collecting and Using Your Personal Data</h2>
+
+    <h3>Types of Data Collected</h3>
+
+    <h4>Personal Data</h4>
+    <p>While using Our Service, We may ask You to provide Us with certain personally identifiable information, including:</p>
+    <ul>
+        <li>Email address</li>
+        <li>First name and last name</li>
+        <li>Phone number</li>
+        <li>Address, State, Province, ZIP/Postal code, City</li>
+        <li>Usage Data</li>
+    </ul>
+
+    <h4>Usage Data</h4>
+    <p>Usage Data is collected automatically and may include:</p>
+    <ul>
+        <li>Your Device's IP address</li>
+        <li>Browser type and version</li>
+        <li>Pages visited</li>
+        <li>Time and date of visit</li>
+        <li>Time spent on pages</li>
+        <li>Unique device identifiers</li>
+    </ul>
+
+    <p>When You access the Service by or through a mobile device, We may collect additional data such as device type, unique ID, IP address, and operating system.</p>
+
+    <h4>Information from Third-Party Social Media Services</h4>
+    <p>You may create an account using Third-party Social Media Services such as:</p>
+    <ul>
+        <li>Google</li>
+        <li>Facebook</li>
+        <li>Instagram</li>
+        <li>Twitter</li>
+        <li>LinkedIn</li>
+    </ul>
+
+    <p>We may collect data already associated with Your social media account, such as name, email, and contact lists.</p>
+
+    <h4>Tracking Technologies and Cookies</h4>
+    <p>We use Cookies and similar technologies to track activity and store certain information.</p>
+
+    <p>Cookies may be:</p>
+    <ul>
+        <li><strong>Session Cookies:</strong> Deleted when you close your browser.</li>
+        <li><strong>Persistent Cookies:</strong> Remain until deleted.</li>
+    </ul>
+
+    <p>Types of Cookies we use:</p>
+    <ul>
+        <li><strong>Necessary / Essential Cookies:</strong> For authentication and account security.</li>
+        <li><strong>Cookies Policy / Notice Acceptance Cookies:</strong> To identify if you have accepted the use of cookies.</li>
+        <li><strong>Functionality Cookies:</strong> To remember preferences and provide a personalized experience.</li>
+    </ul>
+
+    <h2>Use of Your Personal Data</h2>
+
+    <p>We use Personal Data for the following purposes:</p>
+    <ul>
+        <li>To provide and maintain our Service</li>
+        <li>To manage Your Account</li>
+        <li>For the performance of a contract</li>
+        <li>To contact You</li>
+        <li>To provide You with special offers and news</li>
+        <li>To manage Your requests</li>
+        <li>For business transfers</li>
+        <li>For data analysis and improvement of our services</li>
+    </ul>
+
+    <p>We may share Your information in the following situations:</p>
+    <ul>
+        <li>With Service Providers</li>
+        <li>For business transfers</li>
+        <li>With Affiliates</li>
+        <li>With business partners</li>
+        <li>With other users (if you interact publicly)</li>
+        <li>With Your consent</li>
+    </ul>
+
+    <h2>Retention of Your Personal Data</h2>
+    <p>We retain Your Personal Data only as long as necessary to fulfill the purposes outlined in this Privacy Policy.</p>
+
+    <h2>Transfer of Your Personal Data</h2>
+    <p>Your data may be transferred to and maintained on computers outside of Your jurisdiction. By using our Service, You consent to this transfer.</p>
+
+    <h2>Delete Your Personal Data</h2>
+    <p>You can request the deletion of Your Personal Data by contacting us or using features in the Service where applicable.</p>
+
+    <h2>Disclosure of Your Personal Data</h2>
+
+    <h3>Business Transactions</h3>
+    <p>If the Company is involved in a merger, acquisition, or sale of assets, Your Personal Data may be transferred.</p>
+
+    <h3>Law Enforcement</h3>
+    <p>We may disclose Your data if required by law or in response to valid requests by public authorities.</p>
+
+    <h3>Other Legal Requirements</h3>
+    <p>We may disclose Your data to:</p>
+    <ul>
+        <li>Comply with legal obligations</li>
+        <li>Protect and defend the Company's rights</li>
+        <li>Prevent wrongdoing</li>
+        <li>Protect user safety</li>
+        <li>Protect against legal liability</li>
+    </ul>
+
+    <h2>Security of Your Personal Data</h2>
+    <p>We use commercially acceptable means to protect Your Personal Data but cannot guarantee absolute security.</p>
+
+    <h2>Children's Privacy</h2>
+    <p>We do not knowingly collect data from anyone under the age of 13. If you believe a child has provided us with Personal Data, please contact us.</p>
+
+    <h2>Links to Other Websites</h2>
+    <p>Our Service may contain links to third-party sites. We are not responsible for their content or privacy practices.</p>
+
+    <h2>Changes to this Privacy Policy</h2>
+    <p>We may update our Privacy Policy from time to time. Changes will be posted on this page with the "Last updated" date.</p>
+
+    <h2>Contact Us</h2>
+    <p>If you have any questions about this Privacy Policy, you can contact us:</p>
+    <p>By visiting this page on our website: <a href="https://www.dparch.co.in/" target="_blank">https://www.dparch.co.in/</a></p>
+       </div>
+
+</div>
         </div>
     </div>
 @endsection

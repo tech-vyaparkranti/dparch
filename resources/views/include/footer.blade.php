@@ -380,13 +380,11 @@ $('#compactContactUsForm').on('submit', function (e) {
         /* Floating Enquiry Button */
    .compact-enquiry-btn {
     position: fixed;
-    top: 50%;
+    top: 60%;
     right: 0;
     transform: translateY(-50%);
-        background: linear-gradient(45deg, blue, blue, #f58634, brown);
-    background-size: 600% 600%; /* 🔥 Required for animation */
-    animation: gradientMove 5s ease infinite;
- 
+
+   background:#000080;
     z-index: 1000;
     color: white;
     font-weight: bold;
@@ -408,17 +406,6 @@ $('#compactContactUsForm').on('submit', function (e) {
 }
 
 
-@keyframes gradientMove {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
 
 
 .compact-enquiry-btn:hover {
