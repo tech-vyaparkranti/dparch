@@ -341,161 +341,124 @@ Over the years, we’ve had the privilege of transforming ideas into enduring la
             <h2 class="text-center">What We Do</h2>
         </div>
 
-        {{-- Replaced Swiper structure with a responsive Bootstrap grid --}}
-        <div class="row justify-content-center"> {{-- Added justify-content-center for centering on smaller screens --}}
-
+        {{-- Standard Bootstrap Row and Columns (no Swiper) --}}
+        <div class="row justify-content-center">
             @if (isset($services) && $services->count() > 0)
                 @foreach ($services as $item)
-                    {{-- Each service block will be a column in the grid --}}
-                    <div class="col-sm-6 col-md-4 col-lg-3 mb-4"> {{-- Adjust col-xx-x classes for desired responsiveness --}}
-                        <div class="destinations-block">
-                            <div class="destinations-figure">
-                                <img src="{{ asset($item->image) }}" class="img-fluid" alt="{{ $item->service_name }}">
+                    {{-- Each service item is now a Bootstrap column --}}
+                    <div class="col-md-4 col-sm-6 mb-4">
+                        {{-- This is the 'destinations-block' structure from your Gallery Swiper slide --}}
+                        <div class="destinations-block text-center" style="background:none;">
+                            <div class="destinations-figure d-flex align-items-center justify-content-center">
+                                {{-- Image with initial inline styles, we'll override in CSS --}}
+                                <img src="{{ asset($item->image) }}" class="img-fluid" alt="{{ $item->service_name }}"
+                                     style="width:100%; height:250px; object-fit:contain; border-radius:20px;">
                             </div>
-                            <span class="destinations-title mh-auto text-center">{{ $item->service_name }}</span>
+                            <span class="destinations-title d-block mt-2" style="font-size:20px;">
+                                {{ $item->service_name }}
+                            </span>
                         </div>
                     </div>
                 @endforeach
             @else
-                {{-- Static fallback if no service data --}}
-                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                    <div class="destinations-block">
-                        <div class="destinations-figure">
-                            <img src="{{ asset('assets/img/architectural.jpeg') }}" class="img-fluid" alt="Architectural Design">
+                {{-- Fallback content using the same structure --}}
+                @php
+                    $fallbackServices = [
+                        ['img' => 'assets/img/architectural.jpeg', 'title' => 'Architectural Design'],
+                        ['img' => 'assets/img/interior-design.jpg', 'title' => 'Interior Design'],
+                        ['img' => 'assets/img/project-managment.jpg', 'title' => 'Project Management'],
+                        ['img' => 'assets/img/renovation-restoration.jpg', 'title' => 'Renovation & Restoration'],
+                        ['img' => 'assets/img/UrbanPlanning.jpg', 'title' => 'Urban Planning'],
+                    ];
+                @endphp
+
+                @foreach ($fallbackServices as $fallback)
+                    <div class="col-md-4 col-sm-6 mb-4">
+                        <div class="destinations-block text-center" style="background:none;">
+                            <div class="destinations-figure d-flex align-items-center justify-content-center">
+                                <img src="{{ asset($fallback['img']) }}" class="img-fluid" alt="{{ $fallback['title'] }}"
+                                     style="width:100%; height:250px; object-fit:contain; border-radius:20px;">
+                            </div>
+                            <span class="destinations-title d-block mt-2" style="font-size:20px;">
+                                {{ $fallback['title'] }}
+                            </span>
                         </div>
-                        <span class="destinations-title mh-auto text-center" style="font-size:20px">Architectural Design</span>
                     </div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                    <div class="destinations-block">
-                        <div class="destinations-figure">
-                            <img src="{{ asset('assets/img/interior-design.jpg') }}" class="img-fluid" alt="Interior Design">
-                        </div>
-                        <span class="destinations-title mh-auto text-center" style="font-size:20px">Interior Design</span>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                    <div class="destinations-block">
-                        <div class="destinations-figure">
-                            <img src="{{ asset('assets/img/project-managment.jpg') }}" class="img-fluid" alt="Project Management">
-                        </div>
-                        <span class="destinations-title mh-auto text-center" style="font-size:20px">Project Management</span>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                    <div class="destinations-block">
-                        <div class="destinations-figure">
-                            <img src="{{ asset('assets/img/renovation-restoration.jpg') }}" class="img-fluid" alt="Renovation & Restoration">
-                        </div>
-                        <span class="destinations-title mh-auto text-center" style="font-size:20px">Renovation & Restoration</span>
-                    </div>
-                </div>
-                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
-                    <div class="destinations-block">
-                        <div class="destinations-figure">
-                            <img src="{{ asset('assets/img/UrbanPlanning.jpg') }}" class="img-fluid" alt="Urban Planning">
-                        </div>
-                        <span class="destinations-title mh-auto text-center" style="font-size:20px">Urban Planning</span>
-                    </div>
-                </div>
+                @endforeach
             @endif
-
-        </div> {{-- End row --}}
-
-        {{-- Removed swiper-pagination --}}
-
+        </div>
     </div>
 </div>
-
 @push('styles')
 <style>
-.destinations-block {
-    text-align: center;
-    padding: 15px; /* Maintain internal padding */
-    border: 1px solid #eee;
-    border-radius: 8px;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-    
-    /* --- ENFORCING UNIFORM SIZE --- */
-    display: flex; /* Enable Flexbox */
-    flex-direction: column; /* Stack children vertically */
-    justify-content: space-between; /* Distribute space: image at top, text at bottom */
-    align-items: center; /* Center content horizontally */
-    
-    /* Fixed height for all blocks (adjust as needed) */
-    /* This is the most direct way to make heights equal */
-    height: 280px; /* Example height. Adjust this value! */
-    
-    /* If you want perfect squares based on width, use the aspect-ratio trick instead: */
-    /* Remove `height: 280px;` if using this */
-    /* position: relative; */
-    /* padding-bottom: 100%; /* Makes the height equal to the width (a square) */
-    /* height: 0; */
-    /* overflow: hidden; */
-    /* Then, you'd need to absolutely position children inside destinations-block */
-    /* Example:
-    .destinations-block .destinations-figure,
-    .destinations-block .destinations-title {
-        position: absolute;
-        width: 100%;
-        left: 0;
-        box-sizing: border-box;
-        padding: 0 15px;
-    }
-    .destinations-block .destinations-figure { top: 15px; height: calc(100% - 70px); }
-    .destinations-block .destinations-title { bottom: 15px; }
-    */
-    /* For now, sticking with simpler `height` property */
+/* ------------------------------------------- */
+/* OUR EXPERTISE SECTION STYLES (Gallery-like Grid) */
+/* ------------------------------------------- */
+
+/* Ensure the Bootstrap columns are also flex containers for consistent height across a row */
+.row.justify-content-center > [class*="col-"] {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch; /* Makes sure blocks stretch to fill tallest column */
 }
 
-/* Container for the image */
+/* The main container for each service item - Mimics gallery's slide structure */
+.destinations-block {
+    text-align: center;
+    background: none !important; /* Forces background to none as per your inline style */
+    
+    /* Use flexbox for internal layout (image, title) */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes image up, title down */
+    align-items: center; /* Horizontally center content */
+    
+    /* Enforce a consistent height for the entire block */
+    /* Adjust this height to control the overall card size */
+    min-height: 320px; /* Adjust this value as needed to fit image + title space */
+    height: 320px;
+    max-height: 320px;
+    
+    width: 100%; /* Ensures it fills its column */
+    padding: 0; /* Remove internal padding if you want image to go edge to edge */
+}
+
+/* Container for the image within each block */
 .destinations-figure {
     width: 100%; /* Take full width of parent block */
-    height: 160px; /* Fixed height for the image area within the block */
-    overflow: hidden; /* Crucial for images that might be taller than this */
-    margin-bottom: 15px; /* Space below the image */
-    border-radius: 8px; /* Match outer block's border-radius */
+    height: 250px; /* Fixed height for the image area, as per your inline style */
+    overflow: hidden; /* Important to keep image contained within this area */
+    margin-bottom: 10px; /* Space between image and title */
     
-    display: flex; /* Use flex to center the image if its dimensions are tricky */
-    justify-content: center;
+    /* Using d-flex, align-items-center, justify-content-center as in your HTML */
+    display: flex;
     align-items: center;
+    justify-content: center; /* Corrected typo: justify-content */
 }
 
 /* The actual image */
 .destinations-figure img {
-    width: 100%; /* Fill the container width */
-    height: 100%; /* Fill the container height */
-    object-fit: cover; /* ESSENTIAL: Crops image to cover container without distortion */
-    display: block; /* Removes extra space under image */
-    transition: transform 0.3s ease-in-out;
-}
-
-.destinations-block:hover .destinations-figure img {
-    transform: scale(1.05);
+    width: 100% !important; /* Force width to 100% of destinations-figure */
+    height: 100% !important; /* Force height to 100% of destinations-figure */
+    object-fit: contain; /* ***KEY CHANGE: Shows entire image, might have blank space*** */
+    border-radius: 20px !important; /* From your inline style */
+    background-color: #f8f8f8; /* Optional: A background color for the empty space from object-fit: contain */
+    display: block;
 }
 
 /* Title styling */
 .destinations-title {
-    display: block; /* Make it a block for layout control */
-    font-size: 20px;
+    font-size: 20px !important; /* From your inline style */
     font-weight: bold;
     color: #333;
     margin-top: auto; /* Pushes the title to the bottom if there's vertical space */
-    margin-bottom: 0; /* No bottom margin here, as block has padding */
-    white-space: normal; /* Allow text to wrap */
-    word-wrap: break-word; /* Ensure long words break */
-    line-height: 1.3; /* Adjust line height for readability */
+    margin-bottom: 0;
+    white-space: normal;
+    word-wrap: break-word;
+    line-height: 1.3;
 }
 
-/* Ensure default img-fluid doesn't interfere */
-.img-fluid {
-    max-width: 100%;
-    height: auto; /* Override to allow object-fit and fixed parent height to control */
-}
-
-
-/* Custom container (likely in your webSite.blade.php) */
+/* General custom container style (should be in your main webSite.blade.php) */
 .custom-container {
     padding-left: 15px;
     padding-right: 15px;
@@ -504,21 +467,23 @@ Over the years, we’ve had the privilege of transforming ideas into enduring la
     margin-right: auto;
 }
 
-/* Bootstrap column adjustments for responsiveness */
-/* This controls how many columns per row */
-.row {
-    display: flex; /* Ensure row uses flexbox for columns */
-    flex-wrap: wrap; /* Allow columns to wrap to the next line */
-}
-
-.col-sm-6, .col-md-4, .col-lg-3 {
-    display: flex; /* Make columns flex containers too */
-    /* This ensures that destinations-block inside fills the entire column height if needed, */
-    /* though with fixed height on destinations-block, it's less critical. */
-    flex-direction: column; /* Stack content vertically within the column */
+/* Responsive adjustments for columns */
+@media (max-width: 575.98px) { /* Bootstrap's 'sm' breakpoint */
+    .col-sm-6, .col-md-4, .col-lg-3 {
+        width: 100%; /* Full width on extra small screens */
+        max-width: 320px; /* Optional: Limit max width of a single card on very small screens */
+        margin-left: auto;
+        margin-right: auto; /* Center the single column */
+    }
+    .destinations-block {
+        margin-left: auto; /* Center the block itself within the column */
+        margin-right: auto;
+    }
 }
 </style>
 @endpush
+
+
 
 {{-- No @push('scripts') block needed for this section anymore --}}
 

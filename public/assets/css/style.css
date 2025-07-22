@@ -72,7 +72,7 @@ a {
 }
 
 .logo-section>a>img {
-    max-width: 113px;
+    max-width: 102px;
     border-radius: 50%;
     padding: 5px 0;
     justify-content: flex-start; 
@@ -92,10 +92,10 @@ a {
 }
 
 .footer-logo img {
-    max-width: 71px;
+    max-width: 80px;
     height: 100%;
     border-radius: 50%;
-    margin-left: 10px;
+    margin-left: 65px;
 }
 
 /* view more */
@@ -237,7 +237,7 @@ header.fixed-header .slide-navigation,
 .common-home header.fixed-header .logo-section img.img-fluid,
 .information header .logo-section img.img-fluid {
     position: relative;
-    max-width: 131px;
+    max-width: 111px;
     padding: 4px;
     z-index: 99;
 }
@@ -281,7 +281,7 @@ a {
     justify-items: center;
     align-items: center;
     width: 100%;
-    margin-left: 20px;
+    margin-left: -28px;
 }
 
 .custom-container,

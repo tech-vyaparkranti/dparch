@@ -56,7 +56,7 @@
                         <div class="footer-logo-inner">
     <img src="{{ asset($Logo ?? './assets/img/logo.png') }}" class="img-fluid" width="130" height="86" alt="DP Arch">
 </div>
-<p><b>{!! $footer_logo_name ?? 'DP Arch'!!}</b></p>
+<p><b>{!! $footer_logo_name ?? 'Design Park Architecture'!!}</b></p>
 <p class="footer-tagline mt-2" style="font-size: 1.05rem; font-weight: 500; color: #333; text-align: left; margin-left: 0;">
     Where architecture meets innovation to shape tomorrow’s landmarks.
 </p>
