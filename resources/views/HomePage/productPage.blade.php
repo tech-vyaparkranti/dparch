@@ -54,7 +54,7 @@
                             </div>
                             <div class="card-content">
                                 <h4><a href="{{ route('productDetails', $item->slug) }}">{{ strtoupper($item->project_name) }}</a></h4>
-                                <p>{!! Str::limit($item->description, 600, '...') !!}</p>
+                                <p>{!! Str::limit($item->description, 300, '...') !!}</p>
                                 <a href="{{ route('productDetails', $item->slug) }}" class="theme-btn">
                                     <span>View Details</span>
                                     <i class="fa fa-link" aria-hidden="true"></i>
