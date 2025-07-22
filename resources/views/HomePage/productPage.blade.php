@@ -30,31 +30,17 @@
 
             <div class="services-grid mt-3">
                 @if (isset($services) && $services->count() > 0)
-                    @foreach ($services as $index => $item)
+                    @foreach ($services as $item)
                         <div class="service-card" data-aos="fade-up" data-aos-duration="1500">
                             <div class="card-image">
-                                @php
-                                    $sections = is_array($item->sections) ? $item->sections : json_decode($item->sections, true);
-                                @endphp
-                                @if (!empty($sections))
-                                    <div class="swiper mySwiper{{ $index }}">
-                                        <div class="swiper-wrapper">
-                                            @foreach ($sections as $section)
-                                                @if (!empty($section['image']))
-                                                    <div class="swiper-slide">
-                                                        <img src="{{ asset($section['image']) }}" alt="Section Image">
-                                                    </div>
-                                                @endif
-                                            @endforeach
-                                        </div>
-                                        <div class="swiper-pagination"></div>
-                                    </div>
+                                @if (!empty($item->main_image))
+                                    <img src="{{ asset($item->main_image) }}" alt="{{ $item->project_name }}">
                                 @else
                                     <img src="{{ asset('assets/img/default-image.jpg') }}" alt="Default Image">
                                 @endif
                             </div>
                             <div class="card-content">
-                                <h4><a href="{{ route('productDetails', $item->slug) }}">{{ strtoupper($item->project_name) }}</a></h4>
+                                <h4><a href="{{ route('productDetails', $item->slug) }}">{{ $item->project_name }}</a></h4>
                                 <p>{!! Str::limit($item->description, 300, '...') !!}</p>
                                 <a href="{{ route('productDetails', $item->slug) }}" class="theme-btn">
                                     <span>View Details</span>
@@ -70,26 +56,6 @@
         </div>
     </div>
 </div>
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        @foreach ($services as $index => $item)
-            new Swiper(".mySwiper{{ $index }}", {
-                loop: true,
-                pagination: {
-                    el: ".mySwiper{{ $index }} .swiper-pagination",
-                    clickable: true,
-                },
-                autoplay: {
-                    delay: 3000,
-                    disableOnInteraction: false,
-                },
-            });
-        @endforeach
-    });
-</script>
 
 <style>
 .services-grid {
@@ -113,11 +79,17 @@
     box-shadow: 0 12px 35px rgba(0,0,0,0.15);
 }
 
-.card-image img, .swiper-slide img {
+.card-image {
     width: 100%;
     height: 220px;
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    border-radius: 10px;
+    display: block;
 }
 
 .card-content {
@@ -179,7 +151,7 @@
         grid-template-columns: 1fr;
     }
 
-    .card-image img {
+    .card-image {
         height: 180px;
     }
 }

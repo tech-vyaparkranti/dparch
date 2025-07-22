@@ -19,6 +19,7 @@ class ServicesController extends Controller
     {
         $query = ServicesModel::select([
             'id',
+            'main_image',
             'banner_image',
             'project_name',
             'description',
@@ -33,13 +34,14 @@ class ServicesController extends Controller
             ->editColumn('status', fn($row) => ucfirst($row->status))
             ->addColumn('action', function ($row) {
                 $rowArray = $row->toArray();
-                $rowArray['sections'] = json_decode($rowArray['sections'], true); // decode before sending
+                $rowArray['sections'] = json_decode($rowArray['sections'], true);
 
                 $rowJson = base64_encode(json_encode($rowArray));
                 $editBtn = '<button class="btn btn-primary btn-sm edit" data-row="' . $rowJson . '"><i class="fa fa-edit"></i> Edit</button>';
                 $statusBtn = $row->status === 'live'
                     ? '<button class="btn btn-danger btn-sm" onclick="Disable(' . $row->id . ')">Disable</button>'
                     : '<button class="btn btn-success btn-sm" onclick="Enable(' . $row->id . ')">Enable</button>';
+
                 return $editBtn . ' ' . $statusBtn;
             })
             ->rawColumns(['action'])
@@ -54,27 +56,37 @@ class ServicesController extends Controller
 
             if ($action === 'insert') {
                 $request->validate([
-                    'banner_image' => 'required|image|mimes:jpeg,png,jpg,svg|max:15360',
+                    'main_image' => 'required|image|mimes:jpeg,png,jpg,svg|max:4096',
+                    'banner_image' => 'required|image|mimes:jpeg,png,jpg,svg|max:4096',
                     'project_name' => 'required|string|max:255',
                     'description' => 'required|string',
-                    'sections.*.image' => 'required|image|mimes:jpeg,png,jpg,svg|max:15360',
+                    'sections.*.images.*' => 'required|image|mimes:jpeg,png,jpg,svg|max:4096',
                     'sections.*.description' => 'required|string',
                     'status' => 'required|in:live,disabled',
                     'sorting' => 'nullable|integer',
                 ]);
 
+                $mainPath = $request->file('main_image')->store('uploads/projects/main', 'public');
                 $bannerPath = $request->file('banner_image')->store('uploads/projects/banner', 'public');
 
                 $sections = [];
                 foreach ($request->sections as $section) {
-                    $imgPath = $section['image']->store('uploads/projects/sections', 'public');
+                    $images = [];
+                    if (isset($section['images'])) {
+                        foreach ($section['images'] as $img) {
+                            $imgPath = $img->store('uploads/projects/sections', 'public');
+                            $images[] = '/storage/' . $imgPath;
+                        }
+                    }
+
                     $sections[] = [
-                        'image' => '/storage/' . $imgPath,
+                        'images' => $images,
                         'description' => $section['description'],
                     ];
                 }
 
                 ServicesModel::create([
+                    'main_image' => '/storage/' . $mainPath,
                     'banner_image' => '/storage/' . $bannerPath,
                     'project_name' => $request->project_name,
                     'description' => $request->description,
@@ -93,13 +105,21 @@ class ServicesController extends Controller
                 $request->validate([
                     'project_name' => 'required|string|max:255',
                     'description' => 'required|string',
-                    'sections.*.image' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:4096',
+                    'sections.*.images.*' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:4096',
                     'sections.*.description' => 'required|string',
                     'status' => 'required|in:live,disabled',
                     'sorting' => 'nullable|integer',
                 ]);
 
                 $data = $request->only(['project_name', 'description', 'status', 'sorting']);
+
+                if ($request->hasFile('main_image')) {
+                    if ($project->main_image && file_exists(public_path($project->main_image))) {
+                        @unlink(public_path($project->main_image));
+                    }
+                    $mainPath = $request->file('main_image')->store('uploads/projects/main', 'public');
+                    $data['main_image'] = '/storage/' . $mainPath;
+                }
 
                 if ($request->hasFile('banner_image')) {
                     if ($project->banner_image && file_exists(public_path($project->banner_image))) {
@@ -111,15 +131,25 @@ class ServicesController extends Controller
 
                 $sections = [];
                 foreach ($request->sections as $section) {
-                    if (isset($section['image']) && $section['image'] instanceof \Illuminate\Http\UploadedFile) {
-                        $imgPath = $section['image']->store('uploads/projects/sections', 'public');
-                        $image = '/storage/' . $imgPath;
-                    } else {
-                        $image = $section['existing_image'] ?? null;
+                    $images = [];
+
+                    // Append existing images if available
+                    if (!empty($section['existing_images']) && is_array($section['existing_images'])) {
+                        $images = $section['existing_images'];
+                    }
+
+                    // Add newly uploaded images
+                    if (isset($section['images'])) {
+                        foreach ($section['images'] as $img) {
+                            if ($img instanceof \Illuminate\Http\UploadedFile) {
+                                $imgPath = $img->store('uploads/projects/sections', 'public');
+                                $images[] = '/storage/' . $imgPath;
+                            }
+                        }
                     }
 
                     $sections[] = [
-                        'image' => $image,
+                        'images' => $images,
                         'description' => $section['description'],
                     ];
                 }

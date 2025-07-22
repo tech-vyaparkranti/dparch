@@ -8,17 +8,27 @@
             <x-input type="hidden" name="id" id="id" value="" />
             <x-input type="hidden" name="action" id="action" value="insert" />
 
-            {{-- Banner Image --}}
+            {{-- ✅ New Main Image --}}
+            <x-input-with-label-element 
+                id="main_image" 
+                label="Main Image" 
+                name="main_image" 
+                type="file" 
+                accept="image/*" 
+                required>
+            </x-input-with-label-element>
+
+            {{-- ✅ Banner Image --}}
             <x-input-with-label-element 
                 id="banner_image" 
-                label="Project Banner Image" 
+                label="Banner Image" 
                 name="banner_image" 
                 type="file" 
                 accept="image/*" 
                 required>
             </x-input-with-label-element>
 
-            {{-- Project Name --}}
+            {{-- ✅ Project Name --}}
             <x-input-with-label-element 
                 id="project_name" 
                 label="Project Name" 
@@ -26,7 +36,7 @@
                 required>
             </x-input-with-label-element>
 
-            {{-- Main Description --}}
+            {{-- ✅ Main Description --}}
             <x-text-area-with-label
                 id="description"
                 label="Main Description"
@@ -34,23 +44,23 @@
                 required
             ></x-text-area-with-label>
 
-            {{-- Dynamic Sections --}}
-            <label class="form-label mt-3">Project Content Sections (Image + Description)</label>
+            {{-- ✅ Dynamic Sections with MULTIPLE image uploads --}}
+            <label class="form-label mt-3">Project Content Sections (Multiple Images + Description)</label>
             <div id="project-sections-wrapper">
                 <div class="project-section d-flex gap-3 mb-3">
-                    <input type="file" name="sections[0][image]" accept="image/*" class="form-control" required>
+                    <input type="file" name="sections[0][images][]" accept="image/*" class="form-control" multiple required>
                     <textarea name="sections[0][description]" class="form-control" rows="1" placeholder="Enter description" required></textarea>
                     <button type="button" class="btn btn-success add-section">+</button>
                 </div>
             </div>
 
-            {{-- Status --}}
+            {{-- ✅ Status --}}
             <x-select-with-label id="status" name="status" label="Status" required="true">
                 <option value="live">Live</option>
                 <option value="disabled">Disabled</option>
             </x-select-with-label>
 
-            {{-- Sorting --}}
+            {{-- ✅ Sorting --}}
             <x-input-with-label-element 
                 id="sorting" 
                 label="Sorting" 
@@ -74,10 +84,11 @@
     let site_url = '{{ url('/') }}';
     let table = "";
 
+    // Add Section Button
     $(document).on('click', '.add-section', function () {
         let html = `
             <div class="project-section d-flex gap-3 mb-3">
-                <input type="file" name="sections[${sectionIndex}][image]" accept="image/*" class="form-control">
+                <input type="file" name="sections[${sectionIndex}][images][]" multiple accept="image/*" class="form-control" required>
                 <textarea name="sections[${sectionIndex}][description]" class="form-control" rows="1" placeholder="Enter description" required></textarea>
                 <button type="button" class="btn btn-danger remove-section">–</button>
             </div>`;
@@ -128,6 +139,7 @@
         let row = $.parseJSON(atob($(this).data("row")));
         if (row['id']) {
             $("#id").val(row['id']);
+            $("#main_image").attr("required", false);
             $("#banner_image").attr("required", false);
             $("#project_name").val(row['project_name']);
             $("#description").summernote('code', row['description']);
@@ -137,11 +149,20 @@
 
             $('#project-sections-wrapper').empty();
             sectionIndex = 0;
+
             if (row.sections && typeof row.sections === 'string') {
                 row.sections = JSON.parse(row.sections);
             }
+
             if (Array.isArray(row.sections)) {
                 row.sections.forEach((section, i) => {
+                    let imagePreview = '';
+                    if (Array.isArray(section.images)) {
+                        section.images.forEach(img => {
+                            imagePreview += `<img src="${site_url}${img}" style="width:50px;margin-right:5px;">`;
+                        });
+                    }
+
                     let btnHtml = i === 0 
                         ? `<button type="button" class="btn btn-success add-section">+</button>` 
                         : `<button type="button" class="btn btn-danger remove-section">–</button>`;
@@ -149,9 +170,8 @@
                     let html = `
                     <div class="project-section d-flex gap-3 mb-3">
                         <div>
-                            <input type="file" name="sections[${sectionIndex}][image]" class="form-control" accept="image/*">
-                            ${section.image ? `<img src="${site_url}${section.image}" alt="Preview" style="width:60px; margin-top:5px;">` : ''}
-                            <input type="hidden" name="sections[${sectionIndex}][existing_image]" value="${section.image}">
+                            <input type="file" name="sections[${sectionIndex}][images][]" class="form-control" multiple accept="image/*">
+                            ${imagePreview}
                         </div>
                         <textarea name="sections[${sectionIndex}][description]" class="form-control" rows="1" required>${section.description}</textarea>
                         ${btnHtml}
@@ -160,6 +180,7 @@
                     sectionIndex++;
                 });
             }
+
             scrollToDiv();
         } else {
             errorMessage("Something went wrong. Code 101");
