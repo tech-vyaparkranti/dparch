@@ -60,7 +60,9 @@ Over the years, we’ve had the privilege of transforming ideas into enduring la
 
 <div class="destinations pt-5 pb-4" data-aos="fade-up">
     <div class="custom-container">
-        
+        <div class="site-title pb-4">
+      <h2 class="text-center">Our Core Team</h2>
+    </div>
 
         <div class="swiper we-offer">
             <div class="swiper-wrapper">
@@ -147,6 +149,13 @@ Over the years, we’ve had the privilege of transforming ideas into enduring la
 
 
 <style>
+
+  html {
+    scroll-behavior: smooth; /* Optional: Makes scrolling smooth */
+    scroll-padding-top: 110px; /* Adjust this value! */
+    /* Use a value slightly larger than your fixed header's height to give some breathing room. */
+    /* If your header is 80px, try 90px or 100px. */
+}
   /* TEAM CARD STYLES */
 .team-card {
   text-align: center;
@@ -327,87 +336,191 @@ Over the years, we’ve had the privilege of transforming ideas into enduring la
 </script>
 
 <div id="services" class="destinations pt-5 pb-4" data-aos="fade-up">
-  <div class="custom-container">
-    <div class="site-title pb-4">
- <h2 class="text-center">What We Do</h2>
+    <div class="custom-container">
+        <div class="site-title pb-4">
+            <h2 class="text-center">What We Do</h2>
+        </div>
+
+        {{-- Replaced Swiper structure with a responsive Bootstrap grid --}}
+        <div class="row justify-content-center"> {{-- Added justify-content-center for centering on smaller screens --}}
+
+            @if (isset($services) && $services->count() > 0)
+                @foreach ($services as $item)
+                    {{-- Each service block will be a column in the grid --}}
+                    <div class="col-sm-6 col-md-4 col-lg-3 mb-4"> {{-- Adjust col-xx-x classes for desired responsiveness --}}
+                        <div class="destinations-block">
+                            <div class="destinations-figure">
+                                <img src="{{ asset($item->image) }}" class="img-fluid" alt="{{ $item->service_name }}">
+                            </div>
+                            <span class="destinations-title mh-auto text-center">{{ $item->service_name }}</span>
+                        </div>
+                    </div>
+                @endforeach
+            @else
+                {{-- Static fallback if no service data --}}
+                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                    <div class="destinations-block">
+                        <div class="destinations-figure">
+                            <img src="{{ asset('assets/img/architectural.jpeg') }}" class="img-fluid" alt="Architectural Design">
+                        </div>
+                        <span class="destinations-title mh-auto text-center" style="font-size:20px">Architectural Design</span>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                    <div class="destinations-block">
+                        <div class="destinations-figure">
+                            <img src="{{ asset('assets/img/interior-design.jpg') }}" class="img-fluid" alt="Interior Design">
+                        </div>
+                        <span class="destinations-title mh-auto text-center" style="font-size:20px">Interior Design</span>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                    <div class="destinations-block">
+                        <div class="destinations-figure">
+                            <img src="{{ asset('assets/img/project-managment.jpg') }}" class="img-fluid" alt="Project Management">
+                        </div>
+                        <span class="destinations-title mh-auto text-center" style="font-size:20px">Project Management</span>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                    <div class="destinations-block">
+                        <div class="destinations-figure">
+                            <img src="{{ asset('assets/img/renovation-restoration.jpg') }}" class="img-fluid" alt="Renovation & Restoration">
+                        </div>
+                        <span class="destinations-title mh-auto text-center" style="font-size:20px">Renovation & Restoration</span>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-4 col-lg-3 mb-4">
+                    <div class="destinations-block">
+                        <div class="destinations-figure">
+                            <img src="{{ asset('assets/img/UrbanPlanning.jpg') }}" class="img-fluid" alt="Urban Planning">
+                        </div>
+                        <span class="destinations-title mh-auto text-center" style="font-size:20px">Urban Planning</span>
+                    </div>
+                </div>
+            @endif
+
+        </div> {{-- End row --}}
+
+        {{-- Removed swiper-pagination --}}
+
+    </div>
 </div>
 
-<div class="swiper we-offer ">
-<div class="swiper-wrapper " >
-
- @if (isset($services) && $services->count() > 0)
- @foreach ($services as $item)
-<div class="swiper-slide c">
-<div class="destinations-block">
-<div class="destinations-figure">
-    <img src="{{ asset($item->image) }}" class="img-fluid" alt="Destinations" >
-</div>
-<span class="destinations-title mh-auto text-center">{{ $item->service_name }}</span>
-</div>
-</div>
- @endforeach
- @else
- <div class="swiper-slide">
-<div class="destinations-block">
-     <div class="destinations-figure">
-<img src="./assets/img/architectural.jpeg" class="img-fluid" alt="Destinations">
-</div>
-<span class="destinations-title mh-auto text-center" style="font-size:20px">Architectural Design</span>
-</div>
-</div>
-<div class="swiper-slide">
- <div class="destinations-block">
- <div class="destinations-figure">
- <img src="./assets/img/interior-design.jpg" class="img-fluid" alt="Destinations">
-</div>
-<span class="destinations-title mh-auto text-center" style="font-size:20px">Interior Design</span>
- </div>
-</div>
-<div class="swiper-slide">
-<div class="destinations-block">
-<div class="destinations-figure">
-<img src="./assets/img/project-managment.jpg" class="img-fluid" alt="Destinations">
- </div>
-<span class="destinations-title mh-auto text-center" style="font-size:20px">Project Management</span>
-</div>
-</div>
-<div class="swiper-slide">
-<div class="destinations-block">
-    <div class="destinations-figure">
-<img src="./assets/img/renovation-restoration.jpg" class="img-fluid" alt="Destinations">
-</div>
-<span class="destinations-title mh-auto text-center" style="font-size:20px">Renovation & Restoration</span>
- </div>
-</div>
- <div class="swiper-slide">
-<div class="destinations-block">
- <div class="destinations-figure">
- <img src="./assets/img/UrbanPlanning.jpg" class="img-fluid" alt="Destinations">
-</div>
- <span class="destinations-title mh-auto text-center" style="font-size:20px">Urban Planning</span>
-</div>
-</div>
-@endif
-
-</div>
-
- <div class="swiper-pagination"></div> </div>
-
-</div>
-</div>
+@push('styles')
 <style>
- 
-@media (max-width: 576px) {
-  .swiper-wrapper {
-    justify-content: center !important;
-  }
-  .swiper-slide {
-    display: flex;
-    justify-content: center;
-  }
+.destinations-block {
+    text-align: center;
+    padding: 15px; /* Maintain internal padding */
+    border: 1px solid #eee;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    
+    /* --- ENFORCING UNIFORM SIZE --- */
+    display: flex; /* Enable Flexbox */
+    flex-direction: column; /* Stack children vertically */
+    justify-content: space-between; /* Distribute space: image at top, text at bottom */
+    align-items: center; /* Center content horizontally */
+    
+    /* Fixed height for all blocks (adjust as needed) */
+    /* This is the most direct way to make heights equal */
+    height: 280px; /* Example height. Adjust this value! */
+    
+    /* If you want perfect squares based on width, use the aspect-ratio trick instead: */
+    /* Remove `height: 280px;` if using this */
+    /* position: relative; */
+    /* padding-bottom: 100%; /* Makes the height equal to the width (a square) */
+    /* height: 0; */
+    /* overflow: hidden; */
+    /* Then, you'd need to absolutely position children inside destinations-block */
+    /* Example:
+    .destinations-block .destinations-figure,
+    .destinations-block .destinations-title {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        box-sizing: border-box;
+        padding: 0 15px;
+    }
+    .destinations-block .destinations-figure { top: 15px; height: calc(100% - 70px); }
+    .destinations-block .destinations-title { bottom: 15px; }
+    */
+    /* For now, sticking with simpler `height` property */
 }
 
+/* Container for the image */
+.destinations-figure {
+    width: 100%; /* Take full width of parent block */
+    height: 160px; /* Fixed height for the image area within the block */
+    overflow: hidden; /* Crucial for images that might be taller than this */
+    margin-bottom: 15px; /* Space below the image */
+    border-radius: 8px; /* Match outer block's border-radius */
+    
+    display: flex; /* Use flex to center the image if its dimensions are tricky */
+    justify-content: center;
+    align-items: center;
+}
+
+/* The actual image */
+.destinations-figure img {
+    width: 100%; /* Fill the container width */
+    height: 100%; /* Fill the container height */
+    object-fit: cover; /* ESSENTIAL: Crops image to cover container without distortion */
+    display: block; /* Removes extra space under image */
+    transition: transform 0.3s ease-in-out;
+}
+
+.destinations-block:hover .destinations-figure img {
+    transform: scale(1.05);
+}
+
+/* Title styling */
+.destinations-title {
+    display: block; /* Make it a block for layout control */
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-top: auto; /* Pushes the title to the bottom if there's vertical space */
+    margin-bottom: 0; /* No bottom margin here, as block has padding */
+    white-space: normal; /* Allow text to wrap */
+    word-wrap: break-word; /* Ensure long words break */
+    line-height: 1.3; /* Adjust line height for readability */
+}
+
+/* Ensure default img-fluid doesn't interfere */
+.img-fluid {
+    max-width: 100%;
+    height: auto; /* Override to allow object-fit and fixed parent height to control */
+}
+
+
+/* Custom container (likely in your webSite.blade.php) */
+.custom-container {
+    padding-left: 15px;
+    padding-right: 15px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Bootstrap column adjustments for responsiveness */
+/* This controls how many columns per row */
+.row {
+    display: flex; /* Ensure row uses flexbox for columns */
+    flex-wrap: wrap; /* Allow columns to wrap to the next line */
+}
+
+.col-sm-6, .col-md-4, .col-lg-3 {
+    display: flex; /* Make columns flex containers too */
+    /* This ensures that destinations-block inside fills the entire column height if needed, */
+    /* though with fixed height on destinations-block, it's less critical. */
+    flex-direction: column; /* Stack content vertically within the column */
+}
 </style>
+@endpush
+
+{{-- No @push('scripts') block needed for this section anymore --}}
 
 @endsection
 
