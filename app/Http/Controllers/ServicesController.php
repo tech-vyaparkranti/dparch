@@ -19,6 +19,7 @@ class ServicesController extends Controller
     {
         $query = ServicesModel::select([
             'id',
+            'main_image',
             'banner_image',
             'project_name',
             'description',
@@ -33,13 +34,14 @@ class ServicesController extends Controller
             ->editColumn('status', fn($row) => ucfirst($row->status))
             ->addColumn('action', function ($row) {
                 $rowArray = $row->toArray();
-                $rowArray['sections'] = json_decode($rowArray['sections'], true); // decode before sending
+                $rowArray['sections'] = json_decode($rowArray['sections'], true);
 
                 $rowJson = base64_encode(json_encode($rowArray));
                 $editBtn = '<button class="btn btn-primary btn-sm edit" data-row="' . $rowJson . '"><i class="fa fa-edit"></i> Edit</button>';
                 $statusBtn = $row->status === 'live'
                     ? '<button class="btn btn-danger btn-sm" onclick="Disable(' . $row->id . ')">Disable</button>'
                     : '<button class="btn btn-success btn-sm" onclick="Enable(' . $row->id . ')">Enable</button>';
+
                 return $editBtn . ' ' . $statusBtn;
             })
             ->rawColumns(['action'])
@@ -54,27 +56,39 @@ class ServicesController extends Controller
 
             if ($action === 'insert') {
                 $request->validate([
-                    'banner_image' => 'required|image|mimes:jpeg,png,jpg,svg|max:4096',
+                    'main_image' => 'required|image|mimes:jpeg,png,jpg,svg|max:15360',
+                    'banner_image' => 'required|image|mimes:jpeg,png,jpg,svg|max:15360',
                     'project_name' => 'required|string|max:255',
                     'description' => 'required|string',
-                    'sections.*.image' => 'required|image|mimes:jpeg,png,jpg,svg|max:4096',
+                    // The 'sections.*.images.*' validation here applies to new uploaded files.
+                    // Max image size for section images is now consistent with main/banner images (15MB).
+                    'sections.*.images.*' => 'required|image|mimes:jpeg,png,jpg,svg|max:15360',
                     'sections.*.description' => 'required|string',
                     'status' => 'required|in:live,disabled',
                     'sorting' => 'nullable|integer',
                 ]);
 
+                $mainPath = $request->file('main_image')->store('uploads/projects/main', 'public');
                 $bannerPath = $request->file('banner_image')->store('uploads/projects/banner', 'public');
 
                 $sections = [];
                 foreach ($request->sections as $section) {
-                    $imgPath = $section['image']->store('uploads/projects/sections', 'public');
+                    $images = [];
+                    if (isset($section['images'])) {
+                        foreach ($section['images'] as $img) {
+                            $imgPath = $img->store('uploads/projects/sections', 'public');
+                            $images[] = '/storage/' . $imgPath;
+                        }
+                    }
+
                     $sections[] = [
-                        'image' => '/storage/' . $imgPath,
+                        'images' => $images,
                         'description' => $section['description'],
                     ];
                 }
 
                 ServicesModel::create([
+                    'main_image' => '/storage/' . $mainPath,
                     'banner_image' => '/storage/' . $bannerPath,
                     'project_name' => $request->project_name,
                     'description' => $request->description,
@@ -93,7 +107,9 @@ class ServicesController extends Controller
                 $request->validate([
                     'project_name' => 'required|string|max:255',
                     'description' => 'required|string',
-                    'sections.*.image' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:4096',
+                    // Validation for new section images (if uploaded).
+                    // Max image size for section images is now consistent with main/banner images (15MB).
+                    'sections.*.images.*' => 'nullable|image|mimes:jpeg,png,jpg,svg|max:15360',
                     'sections.*.description' => 'required|string',
                     'status' => 'required|in:live,disabled',
                     'sorting' => 'nullable|integer',
@@ -101,30 +117,65 @@ class ServicesController extends Controller
 
                 $data = $request->only(['project_name', 'description', 'status', 'sorting']);
 
+                // Handle main_image update
+                if ($request->hasFile('main_image')) {
+                    // Delete old image if it exists
+                    if ($project->main_image && Storage::disk('public')->exists(str_replace('/storage/', '', $project->main_image))) {
+                        Storage::disk('public')->delete(str_replace('/storage/', '', $project->main_image));
+                    }
+                    $mainPath = $request->file('main_image')->store('uploads/projects/main', 'public');
+                    $data['main_image'] = '/storage/' . $mainPath;
+                }
+
+                // Handle banner_image update
                 if ($request->hasFile('banner_image')) {
-                    if ($project->banner_image && file_exists(public_path($project->banner_image))) {
-                        @unlink(public_path($project->banner_image));
+                    // Delete old image if it exists
+                    if ($project->banner_image && Storage::disk('public')->exists(str_replace('/storage/', '', $project->banner_image))) {
+                        Storage::disk('public')->delete(str_replace('/storage/', '', $project->banner_image));
                     }
                     $bannerPath = $request->file('banner_image')->store('uploads/projects/banner', 'public');
                     $data['banner_image'] = '/storage/' . $bannerPath;
                 }
 
-                $sections = [];
-                foreach ($request->sections as $section) {
-                    if (isset($section['image']) && $section['image'] instanceof \Illuminate\Http\UploadedFile) {
-                        $imgPath = $section['image']->store('uploads/projects/sections', 'public');
-                        $image = '/storage/' . $imgPath;
-                    } else {
-                        $image = $section['existing_image'] ?? null;
+                // --- Handle sections update: Ensure previous images are retained if not explicitly changed ---
+                $newSectionsData = [];
+                // Decode existing sections from the database to compare/merge
+                $existingSectionsInDb = json_decode($project->sections, true) ?? [];
+
+                foreach ($request->sections as $sectionIndex => $sectionRequestData) {
+                    $imagesForThisSection = [];
+
+                    // 1. Collect images from previous submission (explicitly retained from frontend)
+                    // The frontend should send paths of images it intends to keep via 'existing_images'.
+                    if (isset($sectionRequestData['existing_images']) && is_array($sectionRequestData['existing_images'])) {
+                        // Filter out any potentially invalid/empty entries if frontend sends them.
+                        $imagesForThisSection = array_filter($sectionRequestData['existing_images']);
                     }
 
-                    $sections[] = [
-                        'image' => $image,
-                        'description' => $section['description'],
+                    // 2. Add newly uploaded images for this specific section
+                    if (isset($sectionRequestData['images']) && is_array($sectionRequestData['images'])) {
+                        foreach ($sectionRequestData['images'] as $img) {
+                            if ($img instanceof \Illuminate\Http\UploadedFile) {
+                                $imgPath = $img->store('uploads/projects/sections', 'public');
+                                $imagesForThisSection[] = '/storage/' . $imgPath;
+                            }
+                        }
+                    }
+
+                    // 3. IMPORTANT: If no new images were uploaded AND no existing_images were explicitly provided
+                    // (meaning the user only changed description or didn't touch image inputs),
+                    // then retrieve the images from the corresponding old section in the database.
+                    if (empty($imagesForThisSection) && isset($existingSectionsInDb[$sectionIndex]['images'])) {
+                        $imagesForThisSection = $existingSectionsInDb[$sectionIndex]['images'];
+                    }
+
+                    $newSectionsData[] = [
+                        'images' => $imagesForThisSection,
+                        'description' => $sectionRequestData['description'],
                     ];
                 }
 
-                $data['sections'] = json_encode($sections);
+                $data['sections'] = json_encode($newSectionsData);
 
                 $project->update($data);
 

@@ -13,10 +13,11 @@ class ServicesModel extends Model
     protected $table = "services";
 
     protected $fillable = [
+        'main_image',       // ✅ newly added field for main image
         'banner_image',
         'project_name',
         'description',
-        'sections',      // NEW field: array of image + description
+        'sections',         // array of multiple images + description per section
         'status',
         'sorting',
         'slug',
