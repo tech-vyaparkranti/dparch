@@ -81,7 +81,7 @@
 
 .card-image {
     width: 100%;
-    height: 220px;
+    height: 256px;
     overflow: hidden;
 }
 
