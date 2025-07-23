@@ -283,16 +283,7 @@ Over the years, we’ve had the privilege of transforming ideas into enduring la
 }
 
 /* SWIPER RESPONSIVE FIX */
-@media (max-width: 576px) {
-  .swiper-wrapper {
-    justify-content: center !important;
-  }
 
-  .swiper-slide {
-    display: flex;
-    justify-content: center;
-  }
-}
 
 </style>
 
