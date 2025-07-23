@@ -74,7 +74,9 @@ class HomePageController extends Controller
         return view("HomePage.destinations",$data);
     }
     public function productPage(){
-        $services=ServicesModel::where('status','live')->get();
+       $services = ServicesModel::where('status', 'live')
+                             ->orderBy('sorting', 'asc') // Replace 'column_name' with the actual column you want to sort by
+                             ->get();
         $data = $this->getElement();
         return view("HomePage.productPage",compact('services'),$data);  
     }
