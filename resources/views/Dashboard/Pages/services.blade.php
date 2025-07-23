@@ -1,3 +1,4 @@
+
 @extends('layouts.dashboardLayout')
 @section('title', 'Manage Projects')
 
@@ -47,9 +48,14 @@
             {{-- ✅ Dynamic Sections with MULTIPLE image uploads --}}
             <label class="form-label mt-3">Project Content Sections (Multiple Images + Description)</label>
             <div id="project-sections-wrapper">
-                <div class="project-section d-flex gap-3 mb-3">
-                    <input type="file" name="sections[0][images][]" accept="image/*" class="form-control" multiple required>
-                    <textarea name="sections[0][description]" class="form-control" rows="1" placeholder="Enter description" required></textarea>
+                <div class="project-section d-flex gap-3 mb-3 align-items-start">
+                    <div class="image-upload-wrapper flex-grow-1">
+                        <input type="file" name="sections[0][images][]" accept="image/*" class="form-control" multiple>
+                        {{-- This div will be used to append existing image previews and hidden inputs --}}
+                        <div class="existing-images-preview d-flex flex-wrap mt-2"></div>
+                    </div>
+                    {{-- Add the class 'section-description-editor' --}}
+                    <textarea name="sections[0][description]" class="form-control section-description-editor flex-grow-1" placeholder="Enter description"></textarea>
                     <button type="button" class="btn btn-success add-section">+</button>
                 </div>
             </div>
@@ -80,26 +86,61 @@
 
 @section('script')
 <script type="text/javascript">
-    let sectionIndex = 1;
+    let sectionIndex = 0; // Start with 0 for the first section, then increment
     let site_url = '{{ url('/') }}';
     let table = "";
 
+    // Function to initialize Summernote on a given textarea element
+    function initializeSummernote(element) {
+        $(element).summernote({
+            placeholder: 'Description',
+            tabsize: 2,
+            height: 100,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['fullscreen', 'codeview', 'help']]
+            ]
+        });
+    }
+
+    // Initialize Summernote on the *first* textarea when the page loads
+    $(document).ready(function() {
+        initializeSummernote($('#project-sections-wrapper .section-description-editor').eq(0));
+    });
+
     // Add Section Button
     $(document).on('click', '.add-section', function () {
+        // Increment sectionIndex BEFORE creating the new element to ensure unique names
+        sectionIndex++;
         let html = `
-            <div class="project-section d-flex gap-3 mb-3">
-                <input type="file" name="sections[${sectionIndex}][images][]" multiple accept="image/*" class="form-control" required>
-                <textarea name="sections[${sectionIndex}][description]" class="form-control" rows="1" placeholder="Enter description" required></textarea>
+            <div class="project-section d-flex gap-3 mb-3 align-items-start">
+                <div class="image-upload-wrapper flex-grow-1">
+                    <input type="file" name="sections[${sectionIndex}][images][]" multiple accept="image/*" class="form-control">
+                    <div class="existing-images-preview d-flex flex-wrap mt-2"></div>
+                </div>
+                <textarea name="sections[${sectionIndex}][description]" class="form-control section-description-editor flex-grow-1" placeholder="Enter description"></textarea>
                 <button type="button" class="btn btn-danger remove-section">–</button>
             </div>`;
-        $('#project-sections-wrapper').append(html);
-        sectionIndex++;
+        
+        let newSection = $(html); // Create jQuery object from HTML string
+        $('#project-sections-wrapper').append(newSection);
+
+        // Initialize Summernote on the new textarea
+        initializeSummernote(newSection.find('.section-description-editor'));
     });
 
     $(document).on('click', '.remove-section', function () {
+        // Destroy Summernote instance before removing the element
+        $(this).closest('.project-section').find('.section-description-editor').summernote('destroy');
         $(this).closest('.project-section').remove();
     });
 
+    // Summernote for main description (remains the same)
     $('#description').summernote({
         placeholder: 'Description',
         tabsize: 2,
@@ -135,6 +176,7 @@
         });
     });
 
+    // Edit button click handler
     $(document).on("click", ".edit", function () {
         let row = $.parseJSON(atob($(this).data("row")));
         if (row['id']) {
@@ -142,41 +184,61 @@
             $("#main_image").attr("required", false);
             $("#banner_image").attr("required", false);
             $("#project_name").val(row['project_name']);
-            $("#description").summernote('code', row['description']);
+            $("#description").summernote('code', row['description']); // Set content for main description
             $("#status").val(row['status']);
             $("#sorting").val(row['sorting']);
             $("#action").val("update");
 
             $('#project-sections-wrapper').empty();
-            sectionIndex = 0;
+            sectionIndex = 0; // Reset sectionIndex for edit mode
 
+            // Ensure sections is an array, parsing if necessary
             if (row.sections && typeof row.sections === 'string') {
                 row.sections = JSON.parse(row.sections);
             }
 
             if (Array.isArray(row.sections)) {
                 row.sections.forEach((section, i) => {
-                    let imagePreview = '';
+                    let imagePreviewHtml = '';
+                    let existingImagePaths = []; // To store paths for backend
+
                     if (Array.isArray(section.images)) {
                         section.images.forEach(img => {
-                            imagePreview += `<img src="${site_url}${img}" style="width:50px;margin-right:5px;">`;
+                            // Ensure img path includes /storage/ if it's relative
+                            let imageUrl = img.startsWith('/storage/') ? img : '/storage/' + img;
+
+                            imagePreviewHtml += `
+                                <div class="position-relative d-inline-block me-2 mb-2">
+                                    <img src="${site_url}${imageUrl}" class="img-thumbnail" style="width:50px; height:50px; object-fit: cover;">
+                                    <button type="button" class="btn btn-danger btn-sm remove-existing-image" data-path="${imageUrl}" style="position:absolute; top:-5px; right:-5px; border-radius:50%; width:20px; height:20px; font-size:12px; line-height:1; padding:0;">&times;</button>
+                                    <input type="hidden" name="sections[${sectionIndex}][existing_images][]" value="${imageUrl}">
+                                </div>`;
+                            existingImagePaths.push(imageUrl); // Store original path for hidden input
                         });
                     }
 
-                    let btnHtml = i === 0 
-                        ? `<button type="button" class="btn btn-success add-section">+</button>` 
+                    let btnHtml = i === 0
+                        ? `<button type="button" class="btn btn-success add-section">+</button>`
                         : `<button type="button" class="btn btn-danger remove-section">–</button>`;
 
                     let html = `
-                    <div class="project-section d-flex gap-3 mb-3">
-                        <div>
-                            <input type="file" name="sections[${sectionIndex}][images][]" class="form-control" multiple accept="image/*">
-                            ${imagePreview}
-                        </div>
-                        <textarea name="sections[${sectionIndex}][description]" class="form-control" rows="1" required>${section.description}</textarea>
-                        ${btnHtml}
-                    </div>`;
-                    $('#project-sections-wrapper').append(html);
+                        <div class="project-section d-flex gap-3 mb-3 align-items-start">
+                            <div class="image-upload-wrapper flex-grow-1">
+                                <input type="file" name="sections[${sectionIndex}][images][]" class="form-control" multiple accept="image/*">
+                                <div class="existing-images-preview d-flex flex-wrap mt-2">
+                                    ${imagePreviewHtml}
+                                </div>
+                            </div>
+                            <textarea name="sections[${sectionIndex}][description]" class="form-control section-description-editor flex-grow-1" placeholder="Enter description">${section.description}</textarea>
+                            ${btnHtml}
+                        </div>`;
+                    
+                    let newSectionElement = $(html);
+                    $('#project-sections-wrapper').append(newSectionElement);
+
+                    // Initialize Summernote on the newly appended textarea
+                    initializeSummernote(newSectionElement.find('.section-description-editor'));
+                    
                     sectionIndex++;
                 });
             }
@@ -186,6 +248,12 @@
             errorMessage("Something went wrong. Code 101");
         }
     });
+
+    // Handle removing existing images from the preview
+    $(document).on('click', '.remove-existing-image', function() {
+        $(this).closest('.position-relative').remove(); // Remove the image preview and its hidden input
+    });
+
 
     function Disable(id) {
         changeAction(id, "disable", "This item will be disabled!", "Yes, disable it!");
@@ -230,8 +298,18 @@
     }
 
     $(document).ready(function () {
-        $("#projectForm").on("submit", function () {
+        $("#projectForm").on("submit", function (e) {
+            e.preventDefault(); // Prevent default form submission
+
+            // Ensure Summernote content is saved to underlying textareas before FormData is created
+            $('.section-description-editor').each(function() {
+                $(this).val($(this).summernote('code'));
+            });
+
             var form = new FormData(this);
+            // Append CSRF token to FormData
+            form.append('_token', '{{ csrf_token() }}');
+
             $.ajax({
                 type: 'POST',
                 url: '{{ route('projects.save') }}',
@@ -245,6 +323,15 @@
                     } else {
                         errorMessage(response.message);
                     }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    // Handle validation errors or other server errors
+                    if (jqXHR.responseJSON && jqXHR.responseJSON.message) {
+                        errorMessage(jqXHR.responseJSON.message);
+                    } else {
+                        errorMessage('An unexpected error occurred.');
+                    }
+                    console.error("AJAX Error:", textStatus, errorThrown, jqXHR.responseText);
                 }
             });
         });
