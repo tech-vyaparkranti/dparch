@@ -11,7 +11,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
 
-<a class="footer-whatsapp" aria-label="Whatsapp Button" href="https://wa.me/+91{!! $whatsapp_footer_link ?? '9266747031' !!}?text=Let%27s+start+build+a+project"><img src="./assets/img/whatsapp.png" alt="Whatsapp" class="img-fluid" height="" width="150"></a>
+<a class="footer-whatsapp" aria-label="Whatsapp Button" href="https://wa.me/+91{!! $whatsapp_footer_link ?? '9266747031' !!}?text=Let%27s+start+build+a+project"><img src="/assets/img/whatsapp.png" alt="Whatsapp" class="img-fluid" height="" width="150"></a>
 {{-- <!-- <a class="footer-whatsapp footer-call" aria-label="Phone Call Button" href="tel:{{ isset($WebSetting['0']->call_no) ? $WebSetting['0']->call_no : '+91 926 674 7031' }}"><img src="./assets/img/phone-call.png" alt="Phone Call" class="img-fluid" height="" width="150"></a> --> --}}
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="{{asset("dashboard/assets/js/website.js")}}"></script>
