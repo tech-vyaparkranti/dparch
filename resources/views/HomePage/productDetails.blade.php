@@ -25,6 +25,20 @@
         </div>
     </div>
 </div>
+<style>
+    .breadcrumb-nav,
+.banner-title {
+    display: block;
+}
+
+/* Hide on small devices (max-width 600px) */
+@media (max-width: 600px) {
+    .breadcrumb-nav,
+    .banner-title {
+        display: none;
+    }
+}
+</style>
 
 <div class="project-details-section">
     <div class="custom-container">
@@ -94,14 +108,15 @@
 /* Existing Banner Section Styles */
 .project-banner {
     position: relative;
-    height: 400px;
+    max-height: 400px;
     overflow: hidden;
 }
 .banner-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
 }
+
 .banner-overlay {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;

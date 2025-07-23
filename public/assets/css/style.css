@@ -75,7 +75,7 @@ a {
     max-width: 102px;
     border-radius: 50%;
     padding: 5px 0;
-    justify-content: flex-start; 
+    justify-content: flex-start;
 }
 
 .text-justify {
@@ -553,7 +553,8 @@ section.chairperson {
 @media (max-width: 768px) {
     .video-banner {
         position: relative;
-        height: 300px; /* Fixed height instead of percentage */
+        height: 300px;
+        /* Fixed height instead of percentage */
         max-height: 300px;
         overflow: hidden;
         z-index: 0;
@@ -596,7 +597,8 @@ section.chairperson {
     .video-content {
         position: absolute;
         top: 50%;
-        transform: translateY(-50%); /* Center vertically */
+        transform: translateY(-50%);
+        /* Center vertically */
         left: 20px;
         right: 20px;
         bottom: auto;
@@ -795,31 +797,39 @@ section.chairperson {
 }
 
 /* Swiper navigation buttons - mobile responsive */
-.swiper-button-prev, .swiper-button-next {
+.swiper-button-prev,
+.swiper-button-next {
     position: absolute;
     top: 200px;
 }
 
 @media (max-width: 768px) {
-    .swiper-button-prev, .swiper-button-next {
+
+    .swiper-button-prev,
+    .swiper-button-next {
         top: 150px;
         transform: scale(0.8);
     }
 }
 
 @media (max-width: 640px) {
-    .swiper-button-prev, .swiper-button-next {
+
+    .swiper-button-prev,
+    .swiper-button-next {
         top: 120px;
         transform: scale(0.7);
     }
 }
 
 @media (max-width: 480px) {
-    .swiper-button-prev, .swiper-button-next {
+
+    .swiper-button-prev,
+    .swiper-button-next {
         top: 100px;
         transform: scale(0.6);
     }
 }
+
 /* Destination Block */
 .destinations-figure,
 .destinations-block {
@@ -1828,7 +1838,7 @@ section.chairperson {
     .logo-section>a>img {
         max-width: 105px !important;
         margin-right: 175px;
-        
+
     }
 
     body.open-menu {
