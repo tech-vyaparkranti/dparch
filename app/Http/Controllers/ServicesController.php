@@ -56,11 +56,11 @@ class ServicesController extends Controller
 
             if ($action === 'insert') {
                 $request->validate([
-                    'main_image' => 'required|image|mimes:jpeg,png,jpg,svg|max:4096',
-                    'banner_image' => 'required|image|mimes:jpeg,png,jpg,svg|max:4096',
+                    'main_image' => 'required|image|mimes:jpeg,png,jpg,svg|max:15360',
+                    'banner_image' => 'required|image|mimes:jpeg,png,jpg,svg|max:15360',
                     'project_name' => 'required|string|max:255',
                     'description' => 'required|string',
-                    'sections.*.images.*' => 'required|image|mimes:jpeg,png,jpg,svg|max:4096',
+                    'sections.*.images.*' => 'required|image|mimes:jpeg,png,jpg,svg|max:15360',
                     'sections.*.description' => 'required|string',
                     'status' => 'required|in:live,disabled',
                     'sorting' => 'nullable|integer',
