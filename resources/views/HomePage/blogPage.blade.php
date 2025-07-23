@@ -3,6 +3,7 @@
 @section('content')
 
 <div class="information-page-slider">
+         style="background: url('{{ asset('assets/img/aboutusbanner.JPG') }}'); background-size: cover; background-position: center;">
     <div class="information-content">
         <h1><a href="{{ url('/') }}">Home</a><span>Blog</span></h1>
     </div>
