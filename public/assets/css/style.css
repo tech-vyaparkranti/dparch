@@ -544,7 +544,7 @@ section.chairperson {
 
 .video-banner {
     position: relative;
-    max-height: 700px;
+    max-height: 650px;
     overflow: hidden;
     z-index: 0;
 }
