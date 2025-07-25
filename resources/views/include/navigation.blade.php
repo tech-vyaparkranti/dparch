@@ -1,4 +1,4 @@
-<div class="sticky-navigation">
+<!-- <div class="sticky-navigation">
     <div class="custom-container">
     <ul class="sticky-content p-0 m-0">
             <li><a href="mailto:{!! $email_2??"info@dparch.co.in" !!}"><i class="fa fa-envelope"></i>&nbsp;<span>{!! $email_1??"info@dparch.co.in" !!}</span></a></li>
@@ -7,8 +7,17 @@
         {{-- <div class="gtranslate_wrapper"></div> --}}
     </div>
 </div> 
-<!-- Header section Start -->
-<header class="main-header">
+ --><!-- Header section Start -->
+<header class="main-header" style=" position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  height:100px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(30px); 
+  -webkit-backdrop-filter: blur(12px);
+  ">
     <div class="header-contaner">
         <div class="logo-section">
             <div class="mobile-bars" id="mobileToggle"></div>
@@ -19,12 +28,12 @@
         </div>
         <div class="slide-navigation" id="mainNav">
             <div class="navbar-wrapper">
-                <ul class="navbar-block">
+                <ul class="navbar-block" style="line-height:150px;">
                     <li><a href="{{ url('/') }}" style="font-weight: bolder;
-    font-size: 15px;">Home</a></li>
+    font-size: 17px;">Home</a></li>
                     <li class="has-dropdown">
             <a href="{{ route('aboutUs') }}"style="font-weight: bolder;
-    font-size: 15px;">About Us</a>
+    font-size: 17px;">About Us</a>
             <ul class="dropdown">
               <li><a href="{{ route('aboutUs') }}#about">Introduction</a></li>
               <li><a href="{{ route('aboutUs') }}#team">The Team</a></li>
@@ -33,13 +42,13 @@
             </ul>
           </li>
                     <li><a href="{{ route('productPage') }}"style="font-weight: bolder;
-    font-size: 15px;">Projects</a></li> 
+    font-size: 17px;">Projects</a></li> 
                     <li><a href="{{ route('galleryPages') }}"style="font-weight: bolder;
-    font-size: 15px;">Gallery</a></li>
+    font-size: 17px;">Gallery</a></li>
                      <li><a href="{{ route('blogPage') }}"style="font-weight: bolder;
-    font-size: 15px;">Articles</a></li>
+    font-size: 17px;">Articles</a></li>
                     <li><a href="{{ route('contactUs') }}"style="font-weight: bolder;
-    font-size: 15px;">Contact Us</a></li>
+    font-size: 17px;">Contact Us</a></li>
                    
                     
                     

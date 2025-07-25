@@ -1,5 +1,5 @@
 <!-- main Video Section -->
-<div class="video-banner" >
+<div class="video-banner" style="">
   <div class="video-block" style="">
     <div class="swiper main-slider" >
       <div class="swiper-wrapper">

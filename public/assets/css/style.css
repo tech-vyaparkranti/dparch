@@ -264,7 +264,8 @@ a {
 .main-header {
     position: relative;
     margin: 0 0;
-    background-color: #c89293;
+    /* background-color: #c89293;*/
+
     max-height: 52px;
 }
 
@@ -544,23 +545,27 @@ section.chairperson {
 
 .video-banner {
     position: relative;
-    max-height: 650px;
+    max-height: 100vh;
     overflow: hidden;
     z-index: 0;
 }
 
-/* Mobile adjustments for video banner */
-@media (max-width: 768px) {
+@media (max-width: 1024px) and (min-width: 769px) {
     .video-banner {
-        position: relative;
-        height: 300px;
-        /* Fixed height instead of percentage */
-        max-height: 300px;
-        overflow: hidden;
-        z-index: 0;
+        height: 400px;
+        max-height: 400px;
     }
 }
 
+/* Small Devices: Large phones / small tablets */
+@media (max-width: 768px) {
+    .video-banner {
+        height: 250px;
+        max-height: 250px;
+    }
+}
+
+/* Extra Small Devices: Mobile */
 @media (max-width: 480px) {
     .video-banner {
         height: 250px;
