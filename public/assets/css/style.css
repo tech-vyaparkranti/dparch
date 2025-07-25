@@ -1889,8 +1889,9 @@ section.chairperson {
     }
 
     .logo-section>a>img {
-        max-width: 105px !important;
-        margin-right: 175px;
+        margin-top:6px;
+        max-width: 80px !important;
+        margin-right: 108px;
 
     }
 
@@ -1909,7 +1910,7 @@ section.chairperson {
         top: 100%;
         left: 0;
         right: 0;
-        background: rgb(var(--yellow-color) / 30%);
+        background: #a038384f; 
         width: 100%;
         height: auto;
         margin: 0 0;
@@ -1999,7 +2000,7 @@ section.chairperson {
 
     .logo-section>a>img {
         max-width: 70px !important;
-        margin-right: 228px;
+        margin-right: 280px;
     }
 }
 

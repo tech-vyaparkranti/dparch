@@ -61,7 +61,7 @@
         @endunless
       </div>
       <div class="swiper-button-prev" ></div>
-<div class="swiper-button-next" ></div>
+      <div class="swiper-button-next" ></div>
     </div>
   </div>
 </div>
@@ -86,24 +86,26 @@
     top: 120px;
   }
 }
-autoplay: {
-  delay: 8000, // 8 seconds between slides
+.autoplay: {
+  delay: 9000, // 9 seconds between slides
   disableOnInteraction: false
 }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function() {
   const swiper = new Swiper('.main-slider', {
-    // Add fade effect
+    // Add fade effect with smooth crossfade
     effect: 'fade',
     fadeEffect: {
       crossFade: true
     },
     
-    // Add autoplay
+    // Smooth autoplay and transitions
     autoplay: {
-      delay: 6000, // 5 seconds between slides
-      disableOnInteraction: false
+      delay: 9000, // 9 seconds between slides
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true // Pause on hover for better UX
     },
     
     // Keep navigation
@@ -116,7 +118,11 @@ document.addEventListener('DOMContentLoaded', function() {
     loop: true,
     
     // Smooth transitions
-    speed: 8000
+    speed: 1200, // Smooth transition duration
+    
+    // Enable smooth scrolling behavior
+    freeMode: false,
+    watchSlidesProgress: true
   });
 });
 </script>
