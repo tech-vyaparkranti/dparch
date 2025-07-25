@@ -904,7 +904,6 @@ section.chairperson {
     text-align: center !important;
     margin: 10px 0 0 !important;
     display: block !important;
-    min-height: 95px !important;
     line-height: 1.3 !important;
     word-wrap: break-word !important;
 }
@@ -1942,7 +1941,7 @@ section.chairperson {
         margin-bottom: 1rem;
     }
 
-    
+
 
     .footer-section .footer-item {
         text-align: center;
