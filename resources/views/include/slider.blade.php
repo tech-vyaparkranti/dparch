@@ -9,9 +9,9 @@
           <img class="img-fluid banner-img" width="" height=""  alt="Image" src="{{ asset($slide->image) }}" />
           <div class="video-content">
             <!-- Dynamic content from the database -->
-            <h2 style="padding-top:100px">{!!$slide->heading_top !!}</h2>
-            <h3>{!! $slide->heading_middle !!}</h3>
-            <h3>{!! $slide->heading_bottom !!}</h3>
+            {{-- <h2 style="padding-top:100px">{!!$slide->heading_top !!}</h2>
+            <h3>{!! $slide->heading_middle !!}</h3> --}}
+            <h3 style="padding-top:210px">{!! $slide->heading_bottom !!}</h3>
             {{-- Uncomment the following line if you have a contact route for each slide --}}
             {{-- <a href="{{ route('contactUs') }}" aria-label="Explore The World">Get in touch</a> --}}
           </div>
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Add autoplay
     autoplay: {
-      delay: 5000, // 5 seconds between slides
+      delay: 6000, // 5 seconds between slides
       disableOnInteraction: false
     },
     
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loop: true,
     
     // Smooth transitions
-    speed: 800
+    speed: 8000
   });
 });
 </script>
