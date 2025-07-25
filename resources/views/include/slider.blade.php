@@ -1,17 +1,17 @@
 <!-- main Video Section -->
 <div class="video-banner" >
-  <div class="video-block">
-    <div class="swiper main-slider">
+  <div class="video-block" style="">
+    <div class="swiper main-slider" >
       <div class="swiper-wrapper">
         @foreach ($sliders as $slide )
-        <div class="swiper-slide">
+        <div class="swiper-slide"  >
           
           <img class="img-fluid banner-img" width="" height=""  alt="Image" src="{{ asset($slide->image) }}" />
           <div class="video-content">
             <!-- Dynamic content from the database -->
             {{-- <h2 style="padding-top:100px">{!!$slide->heading_top !!}</h2>
             <h3>{!! $slide->heading_middle !!}</h3> --}}
-            <h3 style="padding-top:210px">{!! $slide->heading_bottom !!}</h3>
+            <h3 class="slide-heading">{!! $slide->heading_bottom !!}</h3>
             {{-- Uncomment the following line if you have a contact route for each slide --}}
             {{-- <a href="{{ route('contactUs') }}" aria-label="Explore The World">Get in touch</a> --}}
           </div>
@@ -67,7 +67,15 @@
 </div>
 <style>
 
+.slide-heading {
+  padding-top: 530px;
+}
 
+@media (max-width: 640px) {
+  .slide-heading {
+    padding-top: 200px;
+  }
+}
 .swiper-button-prev, .swiper-button-next {
   position: absolute;
   top: 200px;
