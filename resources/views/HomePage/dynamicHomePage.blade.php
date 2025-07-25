@@ -34,7 +34,7 @@
 
           <a href="{{ route('aboutUs') }}"
    class="btn about-us-btn"
-   style="padding:10px 20px; border:none; background-color:navy; color:white;">
+   style="padding:10px 20px; border:none; background-color:#070736fc; color:white;">
    Know More
 </a>
 
