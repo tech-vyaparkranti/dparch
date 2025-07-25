@@ -14,9 +14,6 @@
   width: 100%;
   z-index: 1000;
   height:100px;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(30px); 
-  -webkit-backdrop-filter: blur(12px);
   ">
     <div class="header-contaner">
         <div class="logo-section">

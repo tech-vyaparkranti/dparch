@@ -212,7 +212,11 @@ a.footer-call {
 
 .common-home header.fixed-header,
 .information header.fixed-header {
-    background-color: #C89293;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    /* Optional glass effect */
+    -webkit-backdrop-filter: blur(12px);
+    /* For Safari */
     position: sticky;
     top: 0;
     z-index: 9;
@@ -224,7 +228,11 @@ a.footer-call {
 /* } */
 header.fixed-header,
 .common-home header.fixed-header {
-    background-color: #C89293;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    /* Optional glass effect */
+    -webkit-backdrop-filter: blur(12px);
+    /* For Safari */
     box-shadow: var(--box-shadow) rgb(var(--black-color));
     height: 66px;
 }
@@ -552,16 +560,16 @@ section.chairperson {
 
 @media (max-width: 1024px) and (min-width: 769px) {
     .video-banner {
-        height: 400px;
-        max-height: 400px;
+        height: 300px;
+        max-height: 300px;
     }
 }
 
 /* Small Devices: Large phones / small tablets */
 @media (max-width: 768px) {
     .video-banner {
-        height: 250px;
-        max-height: 250px;
+        height: 300px;
+        max-height: 300px;
     }
 }
 
