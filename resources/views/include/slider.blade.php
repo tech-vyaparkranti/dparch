@@ -78,5 +78,8 @@
     top: 120px;
   }
 }
-
+autoplay: {
+  delay: 8000, // 8 seconds between slides
+  disableOnInteraction: false
+}
 </style>

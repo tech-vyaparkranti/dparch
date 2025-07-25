@@ -20,7 +20,7 @@
     <div class="default-content blog-page pt-5 pb-3">
         <div class="custom-container">
             <div class="site-title pb-3">
-                <h2 class="text-center">Our Blog</h2>
+                <h2 class="text-center">Project experience so far</h2>
             </div>
             <div class="blog-container midd-content">
                 <div class="row">

@@ -39,7 +39,9 @@ class HomePageController extends Controller
     ->get();
             $data = $this->getElement();
             $services = Service::where("status","live")->get();
-            return view("HomePage.dynamicHomePage",compact('sliders','home_products','why_choose_us','galleryImages','services'),$data);
+            $blog = Blog::latest()->take(3)->get(); // limit to 6 or adjust as needed
+
+            return view("HomePage.dynamicHomePage",compact('sliders','home_products','why_choose_us','galleryImages','services','blog'),$data);
         }catch(Exception $exception){
             echo $exception->getMessage();
             return false;
@@ -294,15 +296,23 @@ class HomePageController extends Controller
         $data = $this->getElement();
         return view("HomePage.blogPage",compact('blog'),$data);  
     }
-    public function blogDetails($slug)
-    {
-        $blogDetails = Blog::where(['blog_status','live','slug'=>$slug])->first();
-        $data = $this->getElement();
-        $recentBlog = Blog::where('status', 1)
-            ->where('id', '!=', optional($blogDetails)->id)
-            ->latest()
-            ->take(5)
-            ->get();
-        return view("HomePage.blogDetails",compact('blogDetails' ,'recentBlog'),$data);
-    }
+   public function blogDetails($slug)
+{
+    // CORRECTED LINE:
+    // Ensure all conditions in the array are key-value pairs
+    $blogDetails = Blog::where([
+        'blog_status' => 'live', // This was missing the key
+        'slug' => $slug
+    ])->first();
+
+    // The rest of your code remains the same
+    $data = $this->getElement();
+    $recentBlog = Blog::where('status', 1)
+        ->where('id', '!=', optional($blogDetails)->id)
+        ->latest()
+        ->take(5)
+        ->get();
+
+    return view("HomePage.blogDetails", compact('blogDetails' ,'recentBlog'), $data);
+}
 }

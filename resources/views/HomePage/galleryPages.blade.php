@@ -4,14 +4,14 @@
 <div class="information-page-slider"
      style="background: url('{{ asset('assets/img/aboutusbanner.JPG') }}'); background-size: cover; background-position: center;">
     <div class="information-content">
-        <h1><a href="{{ url('/') }}">Home</a><span>Events</span></h1>
+        <h1><a href="{{ url('/') }}">Home</a><span>Gallery</span></h1>
     </div>
 </div>
 <div id="about">
     <div class="default-content pt-5 pb-5">
         <div class="custom-container">
             <div class="site-title mb-4">
-                <h2 class="text-center">Glimpse of Happiness</h2>
+                <h2 class="text-center">Glimpse of Achievements</h2>
             </div>
 
             {{-- DYNAMIC FILTER BUTTONS --}}

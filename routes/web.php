@@ -47,10 +47,10 @@ Route::get("projects",[HomePageController::class,"productPage"])->name("productP
 Route::get("projects/{slug}",[HomePageController::class,"productDetails"])->name("productDetails");
 
 Route::get("report",[HomePageController::class,"reportPage"])->name("reportPage");
-Route::get("event",[HomePageController::class,"galleryPages"])->name("galleryPages");
+Route::get("gallery",[HomePageController::class,"galleryPages"])->name("galleryPages");
 Route::get("contact-us",[HomePageController::class,"contactUs"])->name("contactUs");
-Route::get("blog",[HomePageController::class,"blogPage"])->name("blogPage");
-Route::get("blogDetails/{slug}",[HomePageController::class,"blogDetails"])->name("blogDetails");
+Route::get("articles",[HomePageController::class,"blogPage"])->name("blogPage");
+Route::get("article/{slug}",[HomePageController::class,"blogDetails"])->name("blogDetails");
 // Route::get("get-home-page-dd",[DestinationController::class,"getHomePageDestinations"])->name("getHomePageDestinations");
 // Route::get("get-home-page-services",[OurServicesModelController::class,"getHomePageServices"])->name("getHomePageServices");
 Route::post("contact-us-form",[ContactUsController::class,"saveContactUsDetails"])->name("saveContactUsDetails");

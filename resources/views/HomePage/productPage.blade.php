@@ -11,10 +11,13 @@
     ])->value('element_details');
 @endphp
 
+<!-- AOS CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+
 <div class="information-page-slider"
      style="background: url('{{ asset('assets/img/projectsbanner.jpg') }}'); background-size: cover; background-position: center;">
     <div class="information-content">
-        <h1><a href="{{ url('/') }}">Home</a><span>About Us</span></h1>
+        <h1><a href="{{ url('/') }}">Home</a><span>Projects</span></h1>
     </div>
 </div>
 
@@ -30,8 +33,8 @@
 
             <div class="services-grid mt-3">
                 @if (isset($services) && $services->count() > 0)
-                    @foreach ($services as $item)
-                        <div class="service-card" data-aos="fade-up" data-aos-duration="1500">
+                    @foreach ($services as $index => $item)
+                        <div class="service-card" data-aos="fade-up" data-aos-delay="{{ $index * 100 }}">
                             <div class="card-image">
                                 @if (!empty($item->main_image))
                                     <img src="{{ asset($item->main_image) }}" alt="{{ $item->project_name }}">
@@ -57,6 +60,16 @@
     </div>
 </div>
 
+<!-- AOS Script -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+<script>
+    AOS.init({
+        once: true,
+        duration: 1000,
+        offset: 100,
+    });
+</script>
+
 <style>
 .services-grid {
     display: grid;
@@ -68,21 +81,23 @@
     background: #fff;
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-    transition: 0.3s ease-in-out;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15), 0 6px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.4s ease;
     display: flex;
     flex-direction: column;
+    will-change: transform;
 }
 
 .service-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+    transform: translateY(-8px);
+    box-shadow: 0 18px 38px rgba(0, 0, 0, 0.25), 0 8px 12px rgba(0, 0, 0, 0.12);
 }
 
 .card-image {
     width: 100%;
     height: 256px;
     overflow: hidden;
+    transition: transform 0.4s ease-in-out;
 }
 
 .card-image img {
@@ -90,6 +105,11 @@
     height: 100%;
     object-fit: cover;
     display: block;
+    transition: transform 0.5s ease;
+}
+
+.service-card:hover .card-image img {
+    transform: scale(1.06);
 }
 
 .card-content {
@@ -105,11 +125,16 @@
     font-weight: bold;
     margin-bottom: 10px;
     color: #2c3e50;
+    transition: color 0.3s ease;
 }
 
 .card-content h4 a {
     text-decoration: none;
     color: inherit;
+}
+
+.service-card:hover .card-content h4 {
+    color: #e41e25;
 }
 
 .card-content p {
@@ -137,9 +162,11 @@
 
 .theme-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 15px rgba(102, 126, 234, 0.3);
+    background-color: #001f5f;
+    box-shadow: 0 8px 15px rgba(0, 0, 80, 0.3);
 }
 
+/* Responsive */
 @media (max-width: 1024px) {
     .services-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -156,5 +183,6 @@
     }
 }
 </style>
+
 
 @endsection

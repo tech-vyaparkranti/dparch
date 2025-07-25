@@ -85,7 +85,7 @@
 
    <!-- Destinations Section -->
 <!-- Our Expertise Section -->
-<div class="destinations pt-5 pb-4" data-aos="fade-up">
+<div class="destinations pt-5 pb-4 expertise-section" data-aos="fade-up">
     <div class="custom-container">
         <div class="site-title pb-4">
             <h2 class="text-center">Our Expertise</h2>
@@ -98,16 +98,15 @@
                     {{-- Each service item is now a Bootstrap column --}}
                     <div class="col-md-4 col-sm-6 mb-4">
                         {{-- This is the 'destinations-block' structure from your Gallery Swiper slide --}}
-                        <div class="destinations-block text-center" style="background:none;">
-                            <div class="destinations-figure d-flex align-items-center justify-content-center">
-                                {{-- Image with initial inline styles, we'll override in CSS --}}
-                                <img src="{{ asset($item->image) }}" class="img-fluid" alt="{{ $item->service_name }}"
-                                     style="width:100%; height:250px; object-fit:contain; border-radius:20px;">
-                            </div>
-                            <span class="destinations-title d-block mt-2" style="font-size:20px;">
-                                {{ $item->service_name }}
-                            </span>
-                        </div>
+                        <a href="{{ route('productPage') }}" class="destinations-block text-center text-decoration-none" style="background:none; display:block;">
+    <div class="destinations-figure d-flex align-items-center justify-content-center">
+        <img src="{{ asset($item->image) }}" class="img-fluid" alt="{{ $item->service_name }}"
+             style="width:100%; height:250px; object-fit:contain; border-radius:20px;">
+    </div>
+    <span class="destinations-title d-block mt-2" style="font-size:20px;">
+        {{ $item->service_name }}
+    </span>
+</a>
                     </div>
                 @endforeach
             @else
@@ -140,157 +139,67 @@
     </div>
 </div>
 @push('styles')
-<style>
-/* ------------------------------------------- */
-/* OUR EXPERTISE SECTION STYLES (Gallery-like Grid) */
-/* ------------------------------------------- */
+{{-- <style>
 
-/* Ensure the Bootstrap columns are also flex containers for consistent height across a row */
-.row.justify-content-center > [class*="col-"] {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch; /* Makes sure blocks stretch to fill tallest column */
+/* Only applies to expertise section – safer */
+.expertise-section .destinations-block {
+    text-align: center !important;
+    background: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    height: 320px !important;
+    width: 100% !important;
+    padding: 0 !important;
+    border-radius: 20px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    overflow: hidden !important;
 }
 
-/* The main container for each service item - Mimics gallery's slide structure */
-.destinations-block {
-    text-align: center;
-    background: none !important; /* Forces background to none as per your inline style */
-    
-    /* Use flexbox for internal layout (image, title) */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between; /* Pushes image up, title down */
-    align-items: center; /* Horizontally center content */
-    
-    /* Enforce a consistent height for the entire block */
-    /* Adjust this height to control the overall card size */
-    min-height: 320px; /* Adjust this value as needed to fit image + title space */
-    height: 320px;
-    max-height: 320px;
-    
-    width: 100%; /* Ensures it fills its column */
-    padding: 0; /* Remove internal padding if you want image to go edge to edge */
+.expertise-section .destinations-block:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15) !important;
 }
 
-/* Container for the image within each block */
-.destinations-figure {
-    width: 100%; /* Take full width of parent block */
-    height: 250px; /* Fixed height for the image area, as per your inline style */
-    overflow: hidden; /* Important to keep image contained within this area */
-    margin-bottom: 10px; /* Space between image and title */
-    
-    /* Using d-flex, align-items-center, justify-content-center as in your HTML */
-    display: flex;
-    align-items: center;
-    justify-content: center; /* Corrected typo: justify-content */
+.expertise-section .destinations-figure {
+    width: 100% !important;
+    height: 250px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 20px !important;
+    overflow: hidden !important;
+    background-color: #f8f8f8 !important;
+    margin-bottom: 10px !important;
 }
 
-/* The actual image */
-.destinations-figure img {
-    width: 100% !important; /* Force width to 100% of destinations-figure */
-    height: 100% !important; /* Force height to 100% of destinations-figure */
-    object-fit: contain; /* ***KEY CHANGE: Shows entire image, might have blank space*** */
-    border-radius: 20px !important; /* From your inline style */
-    background-color: #f8f8f8; /* Optional: A background color for the empty space from object-fit: contain */
-    display: block;
+.expertise-section .destinations-figure img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    border-radius: 20px !important;
+    transition: transform 0.3s ease !important;
 }
 
-/* Title styling */
-.destinations-title {
-    font-size: 20px !important; /* From your inline style */
-    font-weight: bold;
-    color: #333;
-    margin-top: auto; /* Pushes the title to the bottom if there's vertical space */
-    margin-bottom: 0;
-    white-space: normal;
-    word-wrap: break-word;
-    line-height: 1.3;
+.expertise-section .destinations-block:hover img {
+    transform: scale(1.05) !important;
 }
 
-/* General custom container style (should be in your main webSite.blade.php) */
-.custom-container {
-    padding-left: 15px;
-    padding-right: 15px;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
+.expertise-section .destinations-title {
+    font-size: 20px !important;
+    font-weight: bold !important;
+    color: #333 !important;
+    margin-top: auto !important;
+    margin-bottom: 0 !important;
+    text-align: center !important;
 }
 
-/* Responsive adjustments for columns */
-@media (max-width: 575.98px) { /* Bootstrap's 'sm' breakpoint */
-    .col-sm-6, .col-md-4, .col-lg-3 {
-        width: 100%; /* Full width on extra small screens */
-        max-width: 320px; /* Optional: Limit max width of a single card on very small screens */
-        margin-left: auto;
-        margin-right: auto; /* Center the single column */
-    }
-    .destinations-block {
-        margin-left: auto; /* Center the block itself within the column */
-        margin-right: auto;
-    }
-}
-</style>
+
+</style> --}}
 @endpush
-<!-- Destinations Section End -->
 
-
-     <!-- Destinations Section -->
-      <!-- <div class="destinations pt-5 pb-2">
- !-- Our Services Section -->
-<!-- <div class="destinations pt-5 pb-4" data-aos="fade-up">
-    <div class="custom-container">
-        <div class="site-title pb-4">
-            <h2 class="text-center">Our Services</h2>
-        </div>
-
-        <div class="swiper we-offer">
-            <div class="swiper-wrapper">
-                @if ($home_products->count())
-                    @foreach ($home_products as $item)
-                        <div class="swiper-slide">
-                            <div class="destinations-block text-center">
-                                <div class="destinations-figure">
-                                    <img src="{{ asset($item->image) }}" alt="{{ $item->heading_top }}"
-                                         style="width:100%; height:200px; object-fit:cover; border-radius:15px;">
-                                </div>
-                                <span class="destinations-title d-block mt-2" style="font-size:18px;">
-                                    {{ $item->heading_top }}
-                                </span>
-                            </div>
-                        </div>
-                    @endforeach
-                @else
-                    @php
-                        $fallback = [
-                            ['img' => 'assets/img/Basmati rice.jpeg', 'title' => 'Basmati Rice'],
-                            ['img' => 'assets/img/Ground Spice.jpg', 'title' => 'Ground Spices'],
-                            ['img' => 'assets/img/Fruit & Vegitables 2.jpg', 'title' => 'Fresh Fruits & Vegetables'],
-                            ['img' => 'assets/img/Non Basmati Rice 2.jpg', 'title' => 'Non Basmati Rice'],
-                            ['img' => 'assets/img/fresh-fruits-berries-.jpg', 'title' => 'Fresh Fruits'],
-                        ];
-                    @endphp
-
-                    @foreach ($fallback as $item)
-                        <div class="swiper-slide">
-                            <div class="destinations-block text-center">
-                                <div class="destinations-figure">
-                                    <img src="{{ asset($item['img']) }}" alt="{{ $item['title'] }}"
-                                         style="width:100%; height:200px; object-fit:cover; border-radius:15px;">
-                                </div>
-                                <span class="destinations-title d-block mt-2" style="font-size:18px;">
-                                    {{ $item['title'] }}
-                                </span>
-                            </div>
-                        </div>
-                    @endforeach
-                @endif
-            </div>
-            <div class="swiper-pagination"></div>
-        </div>
-    </div>
-</div>
- -->
 <!-- Why Choose Us Section -->
 <section class="our-service pt-5 pb-5">
     <div class="custom-container">
@@ -366,12 +275,14 @@
                 @if (isset($galleryImages) && $galleryImages->count())
                     @foreach ($galleryImages as $image)
                         <div class="swiper-slide">
-                            <div class="destinations-block text-center" style="background:none;">
-                                <div class="destinations-figure d-flex align-items-center justify-content:center" style="max-height:200px">
-                                    <img src="{{ url($image->local_image) }}" alt="Gallery Image"
-                                         style="width:100%; height:250px; object-fit:contain; border-radius:20px;">
+                            <a href="{{ url('/gallery') }}" class="text-decoration-none">
+                                <div class="destinations-block text-center" style="background:none;">
+                                    <div class="destinations-figure d-flex align-items-center justify-content-center" style="max-height:200px">
+                                        <img src="{{ url($image->local_image) }}" alt="Gallery Image"
+                                             style="width:100%; height:250px; object-fit:contain; border-radius:20px;">
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     @endforeach
                 @else
@@ -387,12 +298,14 @@
 
                     @foreach ($fallbackImages as $img)
                         <div class="swiper-slide">
-                            <div class="destinations-block text-center" style="background:none;">
-                                <div class="destinations-figure d-flex align-items-center justify-content-center">
-                                    <img src="{{ asset($img) }}" alt="Gallery Image"
-                                         style="width:100%; height:250px; object-fit:cover; border-radius:20px;">
+                            <a href="{{ url('/gallery') }}" class="text-decoration-none">
+                                <div class="destinations-block text-center" style="background:none;">
+                                    <div class="destinations-figure d-flex align-items-center justify-content-center">
+                                        <img src="{{ asset($img) }}" alt="Gallery Image"
+                                             style="width:100%; height:250px; object-fit:cover; border-radius:20px;">
+                                    </div>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                     @endforeach
                 @endif
@@ -401,6 +314,7 @@
         </div>
     </div>
 </div>
+
 
 
 
@@ -436,6 +350,109 @@
 }
 
     </style>
+
+    @if($blog->isNotEmpty())
+<div id="home-articles" class="pt-5 pb-4">
+    <div class="custom-container">
+        <div class="site-title pb-3">
+            <h2 class="text-center">Our Articles</h2>
+        </div>
+        <div class="blog-container midd-content">
+            <div class="row">
+                @foreach ($blog as $BlogRow)
+                    <div class="col-md-6 col-lg-4 mb-4">
+                        <div class="blog-card h-100" onclick="window.location.href='{{ url('/blog/' . $BlogRow['slug']) }}'">
+                            <div class="blog-card-image">
+                                <img src="{{ url($BlogRow['image']) }}" class="img-fluid" alt="{{ $BlogRow['title'] }}" />
+                            </div>
+                            <div class="blog-card-content">
+                                <h3 class="blog-title">{{ $BlogRow['title'] }}</h3>
+                                <div class="blog-meta">
+                                    <span class="blog-date">{{ \Carbon\Carbon::parse($BlogRow['blog_date'])->format('M d, Y') }}</span>
+                                </div>
+                                <a href="{{ route('blogDetails', $BlogRow['slug']) }}" class="btn btn-primary blog-details-btn">Read More</a>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </div>
+</div>
+@endif
+
+
+<style>
+.blog-card {
+    background: #fff !important;
+    border-radius: 10px !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+    overflow: hidden !important;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    cursor: pointer !important;
+}
+.blog-card:hover {
+    transform: translateY(-5px) !important;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2) !important;
+}
+.blog-card-image {
+    width: 100% !important;
+    height: 200px !important;
+    overflow: hidden !important;
+}
+.blog-card-image img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    transition: transform 0.3s ease !important;
+}
+.blog-card:hover .blog-card-image img {
+    transform: scale(1.05) !important;
+}
+.blog-card-content {
+    padding: 20px !important;
+}
+.blog-title {
+    font-size: 1.25rem !important;
+    font-weight: 600 !important;
+    margin-bottom: 10px !important;
+    color: #333 !important;
+}
+.blog-meta {
+    margin-bottom: 15px !important;
+}
+.blog-date {
+    color: #666 !important;
+    font-size: 0.9rem !important;
+}
+.blog-details-btn {
+    background-color: navy !important;
+    border: none !important;
+    padding: 8px 20px !important;
+    border-radius: 5px !important;
+    color: white !important;
+    text-decoration: none !important;
+    font-weight: 500 !important;
+    transition: background-color 0.3s ease !important;
+}
+.blog-details-btn:hover {
+    background-color: #000066 !important;
+    color: white !important;
+}
+.blog-container .row {
+    margin: 0 -15px !important;
+}
+.blog-container .row > div {
+    padding: 0 15px !important;
+}
+@media (max-width: 768px) {
+    .col-md-6 {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    }
+}
+
+</style>
 
     <section class="simple-newsletter py-4 bg-light">
   <div class="container">
@@ -1009,8 +1026,6 @@
         line-height: 20px;
     }
 </style>
-
-
 
 
 @section('script')

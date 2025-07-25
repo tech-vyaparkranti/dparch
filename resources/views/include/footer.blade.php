@@ -57,10 +57,14 @@
                         <div class="footer-logo-inner">
     <img src="{{ asset($Logo ?? './assets/img/logo.png') }}" class="img-fluid" width="130" height="86" alt="DP Arch">
 </div>
-<p><b>{!! $footer_logo_name ?? 'Design Park Architecture'!!}</b></p>
-<p class="footer-tagline mt-2" style="font-size: 1.05rem; font-weight: 500; color: #333; text-align: left; margin-left: 0;">
-    Where architecture meets innovation to shape tomorrow’s landmarks.
+<p style="margin-left: 24px;"><b>{!! $footer_logo_name ?? 'Design Park Architects'!!}</b></p>
+<p class="footer-tagline mt-2" style="font-size: 1.05rem; font-weight: 500; color: #333; text-align: left; margin-left: 23px;">
+    Beyond the Blueprint <br>SIMPLE . STRONG . MEMORABLE
 </p>
+
+<a href="#" class="compact-enquiry-btn" data-bs-toggle="modal" data-bs-target="#compactEnquiryModal" style="margin-left: 23px;color:#fff !important;">
+                            <i class="fas fa-envelope me-2"></i> <span>Enquire now</span>
+                        </a>
                         {{-- <ul class="social-media mt-4">
                         <li><a href="{!! $facebook_link ?? 'https://www.facebook.com/DP Arch' !!}" aria-label="Read more about DP Arch  facebook"><i class="fa-brands fa-facebook"></i></a></li>
                         <li><a href="{!! $linkedin_link ?? '/' !!}" aria-label="Read more about DP Arch  Linkedin"><i class="fab fa-linkedin"></i></a></li>
@@ -96,7 +100,7 @@
                     <div class="footer-contact">
                         <div class="footer-item pb-3">
                             <label>Company E-mail:</label>
-                            <p class="footer-email"><i class="fa-solid fa-envelope"></i>&nbsp;<a  href="mailto:{!! $email_2??"sales@DP Arch.com" !!}" style="font-size:16px;">{!! $email_2??"sales@DP Arch.com" !!}</a>
+                            <p class="footer-email"><i class="fa-solid fa-envelope"></i>&nbsp;<a  href="mailto:{!! $email_2??"info@dparch.co.in" !!}" style="font-size:16px;">{!! $email_2??"info@dparch.co.in" !!}</a>
                         </div>
                         <div class="footer-item pb-3">
                             <label>Contact No:</label>
@@ -104,7 +108,7 @@
                         </div>
                         <div class="footer-item pb-3">
                             <label>Address:</label>
-                            <p><i class="fa fa-map-marker" aria-hidden="false"></i>
+                            <p><i class="fa-solid fa-location-dot"></i>
 {!! $address ?? 'najafgarh' !!}</p>
                         </div>
                     </div>
@@ -113,11 +117,6 @@
         </div>
     </div>
 
-    <a href="#" class="compact-enquiry-btn" data-bs-toggle="modal" data-bs-target="#compactEnquiryModal">
-        <i class="fas fa-envelope" style="height:10px"></i>
-        <span style=" display: inline-block;
-    transform: rotate(180deg);">Enquire now</span>
-    </a>
 
     <!-- Right-Sliding Enquiry Modal -->
     <div class="modal slide-right fade" id="compactEnquiryModal" tabindex="-1" aria-labelledby="compactEnquiryModalLabel" aria-hidden="true">
@@ -137,55 +136,56 @@
                 <div class="modal-body compact-modal-body">
                   <form enctype="multipart/form-data" method="POST" id="compactContactUsForm" action="{{ route('saveContactUsDetails') }}">
     @csrf
-
     <input type="hidden" name="country_code" value="IN" id="country_code_id">
 
-    <div class="row">
-        <div class="col-md-6 mb-3">
-            <label for="first_name">First name</label>
-            <input type="text" class="form-control" id="first_name" name="first_name" placeholder="First name" required>
+    <div class="row g-3">
+        <!-- First & Last Name -->
+        <div class="col-md-6">
+            <label for="first_name" class="form-label">First Name <span class="text-danger">*</span></label>
+            <input type="text" class="form-control shadow-sm" id="first_name" name="first_name" placeholder="John" required>
+        </div>
+        <div class="col-md-6">
+            <label for="last_name" class="form-label">Last Name <span class="text-danger">*</span></label>
+            <input type="text" class="form-control shadow-sm" id="last_name" name="last_name" placeholder="Doe" required>
         </div>
 
-        <div class="col-md-6 mb-3">
-            <label for="last_name">Last name</label>
-            <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Last name" required>
+        <!-- Email & Phone -->
+        <div class="col-md-6">
+            <label for="email" class="form-label">Email Address <span class="text-danger">*</span></label>
+            <input type="email" class="form-control shadow-sm" id="email" name="email" placeholder="example@email.com" required>
+        </div>
+        <div class="col-md-6">
+            <label for="phone_number" class="form-label">Phone Number <span class="text-danger">*</span></label>
+            <input type="tel" class="form-control shadow-sm" id="phone_number" name="phone_number" placeholder="9876543210" required>
         </div>
 
-        <div class="col-md-6 mb-3">
-            <label for="email">Email</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="Email ID" required>
+        <!-- Message -->
+        <div class="col-12">
+            <label for="message" class="form-label">Message <span class="text-danger">*</span></label>
+            <textarea class="form-control shadow-sm" id="message" name="message" rows="4" placeholder="Write your message here..." required></textarea>
         </div>
 
-        <div class="col-md-6 mb-3">
-            <label for="phone_number">Phone</label>
-            <input type="tel" class="form-control" id="phone_number" name="phone_number" placeholder="Phone Number" required>
+        <!-- Captcha -->
+        <div class="col-md-6">
+            <label for="captcha" class="form-label">Captcha <span class="text-danger">*</span></label>
+            <input type="text" class="form-control shadow-sm" id="captcha" name="captcha" placeholder="Enter the captcha" required>
         </div>
-
-        <div class="col-md-12 mb-3">
-            <label for="message">Message</label>
-            <textarea class="form-control" id="message" name="message" maxlength="1000" minlength="10" required rows="3" placeholder="Your message here..."></textarea>
-        </div>
-
-        <div class="col-md-6 mb-3">
-            <label for="captcha">Captcha</label>
-            <input type="text" class="form-control" name="captcha" id="captcha" placeholder="Enter captcha" required>
-        </div>
-
-        <div class="col-md-6 mb-3">
-            <label>&nbsp;</label>
+        <div class="col-md-6 d-flex align-items-end">
             <div class="d-flex align-items-center">
-                <img src="{{ captcha_src() }}" id="enquiry_captcha_img" class="img-thumbnail me-2" alt="captcha">
-                <button type="button" onclick="refreshCaptcha()" class="btn btn-secondary btn-sm">
-                    Refresh
-                </button>
+                <img src="{{ captcha_src() }}" id="enquiry_captcha_img" class="img-thumbnail me-2" alt="captcha" style="height: 45px;">
+                <button type="button" onclick="refreshCaptcha()" class="btn btn-outline-secondary btn-sm">Refresh</button>
             </div>
         </div>
 
-        <div class="col-12 mt-3">
-            <button type="submit" class="btn btn-primary" id="submitButton">Submit</button>
+        <!-- Submit -->
+        <div class="col-12 text-center pt-2">
+            <button type="submit" class="btn btn-primary w-100 fw-semibold py-2" id="submitButton">
+                Submit
+            </button>
         </div>
     </div>
 </form>
+
 
 <div id="formResponse" class="mt-3"></div>
 
@@ -379,47 +379,59 @@ $('#compactContactUsForm').on('submit', function (e) {
 
 
         /* Floating Enquiry Button */
-   .compact-enquiry-btn {
-    position: fixed;
-    top: 60%;
-    right: 0;
-    transform: translateY(-50%);
+ .compact-enquiry-btn {
+    /* REMOVE the following properties that made it fixed and vertical: */
+    /* position: fixed; */
+    /* top: 60%; */
+    /* right: 0; */
+    /* transform: translateY(-50%); */
+    /* z-index: 1000; */
+    /* width: 38px; */
+    /* height: 130px; */
+    /* writing-mode: vertical-rl; */
+    /* text-orientation: mixed; */
+    /* white-space: nowrap; */
 
-   background:#000080;
-    z-index: 1000;
+    /* NEW OR MODIFIED PROPERTIES FOR IN-FLOW BUTTON: */
+    display: inline-flex; /* Use flex to align icon and text horizontally */
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 20px; /* Add some space above the button */
+    /* margin-left: 23px; -> Removed from CSS, added inline to HTML for precise alignment */
+
+    background: #000080;
     color: white;
     font-weight: bold;
-    font-size: 12px;
+    font-size: 14px; /* Slightly adjusted font size for better button look */
     text-transform: uppercase;
-    border:1px solid black;
-    padding: 10px 6px;
-    width: 38px;
-    height: 130px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    white-space: nowrap;
+    border: 1px solid black;
+    padding: 10px 20px; /* Standard button padding */
+    border-radius: 5px; /* Add slight rounded corners for a button feel */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Standard shadow */
     cursor: pointer;
     transition: all 0.3s ease;
-    text-align: center;
-    text-decoration: none;
+    text-decoration: none; /* Ensure no underline */
     letter-spacing: 0.5px;
 }
 
-
-
-
 .compact-enquiry-btn:hover {
     background: #a54c37;
-    right: 4px;
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+    /* Removed 'right: 4px;' as it's no longer fixed */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px); /* Keep a slight lift on hover */
 }
 
+/* Ensure the icon within the button looks correct horizontally */
+.compact-enquiry-btn i {
+    /* If you had transform: rotate(180deg) on the span, remove it. */
+    /* If you want space between icon and text, use me-2 class from Bootstrap or add margin-right: 5px; here */
+}
 
-/* Optional: Adjust icon positioning */
-.compact-enquiry-btn .icon {
+/* You can remove the .compact-enquiry-btn .icon rule if you're using Bootstrap's me-2 */
+/* .compact-enquiry-btn .icon {
     transform: rotate(90deg);
-}
+} */
 
         /* .compact-enquiry-btn:hover {
             transform: translateY(-50%) scale(1.05);
