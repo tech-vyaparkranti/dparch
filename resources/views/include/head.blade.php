@@ -4,10 +4,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
 
 <link rel="shortcut icon" href="{{ asset('assets/img/logo.png') }}" type="image/x-icon">
-<link href="https://torna.in/" rel="canonical" />
+<link href="https://dparch.co.in" rel="canonical" />
 
 <!-- Site Metas -->
-<title>@yield('title')</title>
+<title>Design Park Architects</title>
 
 <!-- Google Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
