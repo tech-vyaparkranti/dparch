@@ -36,7 +36,7 @@
                                         <div class="blog-meta">
                                             <span class="blog-date">{{ \Carbon\Carbon::parse($BlogRow['blog_date'])->format('M d, Y') }}</span>
                                         </div>
-                                        <a href="{{ route('blogDetails', $BlogRow['slug']) }}" class="btn btn-primary blog-details-btn" style="background-color: navy; border-color: navy;">
+                                        <a href="{{ route('blogDetails', $BlogRow['slug']) }}" class="btn btn-primary blog-details-btn" style="background-color: #070736fc; border-color: #070736fc;">
     Read More
 </a>
 
@@ -55,7 +55,7 @@
                                     <div class="blog-meta">
                                         <span class="blog-date">Sample Post</span>
                                     </div>
-                                    <a class="btn btn-primary blog-details-btn" style="background-color: navy; border-color: navy;">
+                                    <a class="btn btn-primary blog-details-btn" style="background-color: #070736fc; border-color: #070736fc;">
     Read More
 </a>
 
@@ -123,7 +123,7 @@
 }
 
 .blog-details-btn {
-    background-color: navy;
+    background-color: #070736fc;
     border: none;
     padding: 8px 20px;
     border-radius: 5px;

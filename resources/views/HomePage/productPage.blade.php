@@ -26,24 +26,26 @@
         <div class="custom-container">
             <div class="site-title pb-3">
                 <h2 class="text-center">Our Projects</h2>
-                <p class="text-center pb-3">
+               <!-- <p class="text-center pb-3">
                     {!! $project_content ?? "From basic treks to high-altitude mountaineering expeditions, we cater to adventurers of all levels." !!}
-                </p>
+                </p>!-->
             </div>
 
             <div class="services-grid mt-3">
                 @if (isset($services) && $services->count() > 0)
                     @foreach ($services as $index => $item)
                         <div class="service-card" data-aos="fade-up" data-aos-delay="{{ $index * 100 }}">
-                            <div class="card-image">
+                            
+                               <h4 style="text-align:center"><a href="{{ route('productDetails', $item->slug) }}" style="color:black" >{{ $item->project_name }}</a></h4>
+                            <div class="card-image" style="">
+
                                 @if (!empty($item->main_image))
-                                    <img src="{{ asset($item->main_image) }}" alt="{{ $item->project_name }}">
+                                    <img src="{{ asset($item->main_image) }}" style="border-radius:10px 10px 0px 0px"  alt="{{ $item->project_name }}">
                                 @else
                                     <img src="{{ asset('assets/img/default-image.jpg') }}" alt="Default Image">
                                 @endif
                             </div>
                             <div class="card-content">
-                                <h4><a href="{{ route('productDetails', $item->slug) }}">{{ $item->project_name }}</a></h4>
                                 <p>{!! Str::limit($item->description, 300, '...') !!}</p>
                                <a href="{{ route('productDetails', $item->slug) }}" class="theme-btn">
     <span>View Details</span>
@@ -152,8 +154,8 @@
 
 .theme-btn {
     padding: 10px 30px;
-    border-radius: 30px;
-    background: navy;
+    border-radius: 10px;
+    background: #070736fc;
     color: #fff;
     text-decoration: none;
     font-weight: 600;

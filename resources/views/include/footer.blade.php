@@ -100,7 +100,7 @@
                     <div class="footer-contact">
                         <div class="footer-item pb-3">
                             <label>Company E-mail:</label>
-                            <p class="footer-email"><i class="fa-solid fa-envelope"></i>&nbsp;<a  href="mailto:{!! $email_2??"info@dparch.co.in" !!}" style="font-size:16px;">{!! $email_2??"info@dparch.co.in" !!}</a>
+                            <p class="footer-email"><i class="fa-solid fa-envelope"></i>&nbsp;<a  href="mailto:{!! $email_2??"info@dparch.co.in" !!}" style="font-size:20px;">{!! $email_2??"info@dparch.co.in" !!}</a>
                         </div>
                         <div class="footer-item pb-3">
                             <label>Contact No:</label>
@@ -402,7 +402,7 @@ $('#compactContactUsForm').on('submit', function (e) {
     margin-top: 20px; /* Add some space above the button */
     /* margin-left: 23px; -> Removed from CSS, added inline to HTML for precise alignment */
 
-    background: #000080;
+    background: #070736fc;
     color: white;
     font-weight: bold;
     font-size: 14px; /* Slightly adjusted font size for better button look */

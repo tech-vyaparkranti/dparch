@@ -222,7 +222,7 @@
 <section class="our-service pt-5 pb-5">
     <div class="custom-container">
         <div class="site-title pb-4">
-            <h2 class="text-center">Why Choose Us</h2>
+            <h2 class="text-center">Our Resolutions</h2>
         </div>
 
         <div class="row">
@@ -334,7 +334,16 @@
 </div>
 
 
+<style>
+    @media (max-width: 576px) {
+    .our-block {
+        width: 260px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
 
+</style>
 
     {{-- <!DOCTYPE html>
 <html lang="en">
@@ -369,7 +378,7 @@
 
     </style>
 
-    @if($blog->isNotEmpty())
+    <!-- @if($blog->isNotEmpty())
 <div id="home-articles" class="pt-5 pb-4">
     <div class="custom-container">
         <div class="site-title pb-3">
@@ -396,12 +405,12 @@
         </div>
     </div>
 </div>
-@endif
+@endif -->
 
 
-<style>
+<!-- <style>
     .blog-details-btn {
-    background-color: navy; /* Initial background color */
+    background-color: #070736fc; /* Initial background color */
     color: white; /* Initial text color */
     border: none; /* Ensure no border */
     padding: 10px 20px; /* Example padding, adjust as needed */
@@ -460,7 +469,7 @@
     font-size: 0.9rem !important;
 }
 .blog-details-btn {
-    background-color: navy !important;
+    background-color: #070736fc !important;
     border: none !important;
     padding: 8px 20px !important;
     border-radius: 5px !important;
@@ -486,7 +495,7 @@
     }
 }
 
-</style>
+</style> -->
 
     <section class="simple-newsletter py-4 bg-light">
   <div class="container">
@@ -509,7 +518,7 @@
   <input type="text" class="form-control form-control-sm" placeholder="Enter code" id="simpleCaptchaInput" required style="max-width:120px;">
   
   <!-- Subscribe -->
-<button class="btn btn-sm subscribe-btn" style="background-color: navy; color: white;" type="submit">
+<button class="btn btn-sm subscribe-btn" style="background-color: #070736fc; color: white;" type="submit">
     <i class="fas fa-paper-plane me-1"></i>Subscribe
 </button></form>
 

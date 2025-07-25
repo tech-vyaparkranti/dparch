@@ -95,7 +95,7 @@ a {
     max-width: 83px;
     height: 100%;
     border-radius: 50%;
-    margin-left: 20px;
+    margin-left: 60px;
 }
 
 /* view more */
@@ -1901,7 +1901,7 @@ section.chairperson {
     }
 
     .logo-section>a>img {
-        margin-top: 6px;
+        margin-top: 50px;
         max-width: 80px !important;
         margin-right: 108px;
 
