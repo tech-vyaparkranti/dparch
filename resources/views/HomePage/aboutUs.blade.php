@@ -431,7 +431,7 @@ Over the years, we’ve had the privilege of transforming ideas into enduring la
 
 </script>
 
-<div id="services" class="destinations pt-5 pb-4" data-aos="fade-up">
+<div class="destinations pt-5 pb-4 expertise-section" data-aos="fade-up">
     <div class="custom-container">
         <div class="site-title pb-4">
             <h2 class="text-center">What We Do</h2>
@@ -439,21 +439,21 @@ Over the years, we’ve had the privilege of transforming ideas into enduring la
 
         {{-- Standard Bootstrap Row and Columns (no Swiper) --}}
         <div class="row justify-content-center">
+            {{-- Check if $services is set and has items --}}
             @if (isset($services) && $services->count() > 0)
                 @foreach ($services as $item)
                     {{-- Each service item is now a Bootstrap column --}}
                     <div class="col-md-4 col-sm-6 mb-4">
                         {{-- This is the 'destinations-block' structure from your Gallery Swiper slide --}}
-                        <div class="destinations-block text-center" style="background:none;">
-                            <div class="destinations-figure d-flex align-items-center justify-content-center">
-                                {{-- Image with initial inline styles, we'll override in CSS --}}
-                                <img src="{{ asset($item->image) }}" class="img-fluid" alt="{{ $item->service_name }}"
-                                     style="width:100%; height:250px; object-fit:contain; border-radius:20px;">
-                            </div>
-                            <span class="destinations-title d-block mt-2" style="font-size:20px;">
-                                {{ $item->service_name }}
-                            </span>
-                        </div>
+                        <a href="{{ route('productPage') }}" class="destinations-block text-center text-decoration-none" style="background:none; display:block;height:300px !important;">
+    <div class="destinations-figure d-flex align-items-center justify-content-center">
+        <img src="{{ asset($item->image) }}" class="img-fluid" alt="{{ $item->service_name }}"
+             style="width:100%; height:250px; object-fit:contain; border-radius:20px;">
+    </div>
+    <span class="destinations-title d-block " style="font-size:20px;">
+        {{ $item->service_name }}
+    </span>
+</a>
                     </div>
                 @endforeach
             @else
@@ -485,8 +485,8 @@ Over the years, we’ve had the privilege of transforming ideas into enduring la
         </div>
     </div>
 </div>
-@push('styles')
-<style>
+{{-- @push('styles') --}}
+{{-- <style>
 /* ------------------------------------------- */
 /* OUR EXPERTISE SECTION STYLES (Gallery-like Grid) */
 /* ------------------------------------------- */
@@ -577,7 +577,7 @@ Over the years, we’ve had the privilege of transforming ideas into enduring la
     }
 }
 </style>
-@endpush
+@endpush --}}
 
 
 
