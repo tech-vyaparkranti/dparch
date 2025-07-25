@@ -93,17 +93,18 @@
 
         {{-- Standard Bootstrap Row and Columns (no Swiper) --}}
         <div class="row justify-content-center">
+            {{-- Check if $services is set and has items --}}
             @if (isset($services) && $services->count() > 0)
                 @foreach ($services as $item)
                     {{-- Each service item is now a Bootstrap column --}}
                     <div class="col-md-4 col-sm-6 mb-4">
                         {{-- This is the 'destinations-block' structure from your Gallery Swiper slide --}}
-                        <a href="{{ route('productPage') }}" class="destinations-block text-center text-decoration-none" style="background:none; display:block;">
+                        <a href="{{ route('productPage') }}" class="destinations-block text-center text-decoration-none" style="background:none; display:block;height:300px !important;">
     <div class="destinations-figure d-flex align-items-center justify-content-center">
         <img src="{{ asset($item->image) }}" class="img-fluid" alt="{{ $item->service_name }}"
              style="width:100%; height:250px; object-fit:contain; border-radius:20px;">
     </div>
-    <span class="destinations-title d-block mt-2" style="font-size:20px;">
+    <span class="destinations-title d-block " style="font-size:20px;">
         {{ $item->service_name }}
     </span>
 </a>
@@ -263,14 +264,14 @@
 </section>
 
 <!-- Gallery Slider Section -->
-<div class="destinations pt-5 pb-4" data-aos="fade-up">
+<div class="destinations pt-5 pb-4" data-aos="fade-up" >
     <div class="custom-container">
         <div class="site-title pb-4">
             <h2 class="text-center">Gallery</h2>
         </div>
 
         <div class="swiper we-offer">
-            <div class="swiper-wrapper" style="max-height:250px;">
+            <div class="swiper-wrapper" style="max-height:250px; margin-bottom: 20px;">
                 {{-- Check if $galleryImages is set and has images --}}
                 @if (isset($galleryImages) && $galleryImages->count())
                     @foreach ($galleryImages as $image)
