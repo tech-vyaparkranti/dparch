@@ -1907,7 +1907,7 @@ section.chairperson {
         top: 100%;
         left: 0;
         right: 0;
-        background: rgb(var(--yellow-color) / 30%);
+        background: #a038384f; 
         width: 100%;
         height: auto;
         margin: 0 0;

@@ -93,23 +93,24 @@ var togglemenu = document.querySelector('.mobile-bars');
 togglemenu.addEventListener("click", function(){
 	document.body.classList.toggle('open-menu');
 })
-var swiper = new Swiper(".main-slider", {
-  spaceBetween: 30,
-  effect: "fade",
-  loop: true,
-  autoplay: {
-    delay: 4500,
-    disableOnInteraction: false,
-  },
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-  pagination: {
-    el: ".swiper-pagination",
-    clickable: true,
-  },
-});
+// var swiper = new Swiper(".main-slider", {
+//   spaceBetween: 30,
+//   effect: "fade",
+//   loop: true,
+//   autoplay: {
+//     delay: 9000,
+//     disableOnInteraction: false,
+//   },
+//   navigation: {
+//     nextEl: ".swiper-button-next",
+//     prevEl: ".swiper-button-prev",
+//   },
+//   pagination: {
+//     el: ".swiper-pagination",
+//     clickable: true,
+//   },
+// });
+
 var swiper = new Swiper(".glimpse", {
   spaceBetween: 10,
   // effect: "fade",

@@ -11,10 +11,13 @@
 <header class="main-header">
     <div class="header-contaner">
         <div class="logo-section">
-            <div class="mobile-bars" hidden></div>
+            <div class="mobile-bars" id="mobileToggle"></div>
+    <span></span>
+    <span></span>
+    <span></span>
             <a href="{{ url('/') }}" aria-level="Main logo"><img src="{{ asset($Logo??"./assets/img/logo.png") }}" class="img-fluid site-logo" width="120" height="90" alt="Home Styler"></a>
         </div>
-        <div class="slide-navigation">
+        <div class="slide-navigation" id="mainNav">
             <div class="navbar-wrapper">
                 <ul class="navbar-block">
                     <li><a href="{{ url('/') }}" style="font-weight: bolder;
@@ -63,7 +66,7 @@
 .navbar-block .has-dropdown > a::after {
   font-size: 0.6rem;
   margin-left: 4px;
-  color: #ccc;
+  color: #0f0c0c;
 }
 
 .navbar-block .dropdown {
@@ -108,27 +111,25 @@
   }
 }
 
-/* Mobile Click Toggle */
-@media (max-width: 991px) {
-  .navbar-block .dropdown.open {
-    display: flex !important;
-    position: relative;
-    background:#21252900;
-;
-    border: none;
-    box-shadow: none;
+.mobile-bars {
+    display: none;
     flex-direction: column;
-    padding-left: 1rem;
-  }
-
-  .navbar-block .dropdown li a {
-    color: #000;
-  }
-
-  .navbar-block .dropdown li a:hover {
-    background-color: #f2f2f2;
-  }
+    cursor: pointer;
+    margin-right: 15px;
+    z-index: 10001;
 }
+
+@media (max-width: 991px) {
+    .mobile-bars {
+        display: flex;
+    }
+}
+/* .navbar-block .has-dropdown > a::after {
+  content: "▼";
+  font-size: 0.6rem;
+  margin-left: 4px;
+  color: #ccc;
+} */
 
 /* Smooth fade-in */
 @keyframes fadeInUp {
@@ -142,7 +143,49 @@
   }
 }
 
+/* ADD these hamburger animation styles - keeps your original positioning */
+.mobile-bars span {
+    width: 25px;
+    height: 3px;
+    background: #fff;
+    margin: 3px 0;
+    transition: 0.3s;
+    transform-origin: center;
+    display: block;
+}
 
+.mobile-bars.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+}
+
+.mobile-bars.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-bars.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+}
+
+/* FIX dropdown visibility - UPDATE your existing mobile dropdown CSS */
+@media (max-width: 991px) {
+  .navbar-block .dropdown.open {
+    display: flex !important;
+    position: relative;
+    background: rgba(255, 255, 255, 0.15) !important; /* Changed from transparent */
+    border: none;
+    box-shadow: none;
+    flex-direction: column;
+    padding-left: 1rem;
+  }
+
+  .navbar-block .dropdown li a {
+    color: #fff !important; /* Changed from #000 to white */
+  }
+
+  .navbar-block .dropdown li a:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Changed from #f2f2f2 */
+  }
+}
 </style>
 
 <script>
@@ -156,10 +199,9 @@ document.addEventListener("DOMContentLoaded", function () {
     dropdowns.forEach(link => {
         link.addEventListener("click", function (e) {
             if (window.innerWidth <= 991) {
-                e.preventDefault(); // prevent redirect
+                e.preventDefault();
                 const dropdownMenu = this.nextElementSibling;
 
-                // Close other dropdowns
                 document.querySelectorAll(".has-dropdown .dropdown").forEach(menu => {
                     if (menu !== dropdownMenu) menu.classList.remove("open");
                 });
@@ -169,20 +211,38 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Auto-close menu on any link click (even dropdowns)
+    // Auto-close menu on link click
     navLinks.forEach(link => {
-        link.addEventListener("click", function () {
-            if (window.innerWidth <= 991) {
+        link.addEventListener("click", function (e) {
+            if (window.innerWidth <= 991 && !this.parentElement.classList.contains('has-dropdown')) {
                 mainNav.classList.remove("active");
-                document.body.classList.remove("no-scroll"); // Optional
+                mobileToggle.classList.remove("active");
+                document.body.classList.remove("no-scroll");
             }
         });
     });
 
     // Toggle hamburger menu
-    mobileToggle.addEventListener("click", function () {
-        mainNav.classList.toggle("active");
-        document.body.classList.toggle("no-scroll");
+    if (mobileToggle && mainNav) {
+        mobileToggle.addEventListener("click", function () {
+            mainNav.classList.toggle("active");
+            mobileToggle.classList.toggle("active");
+            document.body.classList.toggle("no-scroll");
+        });
+    }
+
+    // Close menu when clicking outside
+    document.addEventListener("click", function(e) {
+        if (window.innerWidth <= 991) {
+            if (!mainNav.contains(e.target) && !mobileToggle.contains(e.target)) {
+                mainNav.classList.remove("active");
+                mobileToggle.classList.remove("active");
+                document.body.classList.remove("no-scroll");
+                document.querySelectorAll(".has-dropdown .dropdown").forEach(menu => {
+                    menu.classList.remove("open");
+                });
+            }
+        }
     });
 });
 </script>
