@@ -93,7 +93,7 @@ Over the years, we’ve had the privilege of transforming ideas into enduring la
     >
 </div>
   <span class="destinations-title mh-auto text-center" style="font-size:20px">{{ $member->name }}</span>
-                                <span class="destinations-title mh-auto text-center" style="font-size:16px">{{ $member->designation }}</span>
+                                <span class="destinations-title mh-auto text-center" style="font-size:20px">{{ $member->designation }}</span>
                                                         <span class="text-justify" style="font-size:15px">{{ $member->short_description }}</span>
         
                             </div>
@@ -149,25 +149,6 @@ Over the years, we’ve had the privilege of transforming ideas into enduring la
 
 
 <style>
-  .image-hover-container {
-    overflow: hidden;
-    /* (Optional) Define container size if needed */
-}
-
-.image-hover-container img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-.image-hover-container img:hover {
-    transform: scale(1.03); /* Scales up slightly */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Adds a shadow */
-}
 
   html {
     scroll-behavior: smooth; /* Optional: Makes scrolling smooth */
@@ -314,6 +295,7 @@ Over the years, we’ve had the privilege of transforming ideas into enduring la
   
 
 <div class="card-container">
+    <!-- Card 1 -->
     <div class="card">
       <img src="{{ $phylosophy_image1 ?? 'https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?cs=srgb&dl=pexels-souvenirpixels-414612.jpg&fm=jpg'}}" alt="Nature">
       <div class="card-body">
@@ -321,6 +303,7 @@ Over the years, we’ve had the privilege of transforming ideas into enduring la
       </div>
     </div>
 
+    <!-- Card 2 -->
     <div class="card">
       <img src="{{ $phylosophy_image2 ?? 'https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?cs=srgb&dl=pexels-souvenirpixels-414612.jpg&fm=jpg'}}" alt="Technology">
       <div class="card-body">
@@ -328,94 +311,15 @@ Over the years, we’ve had the privilege of transforming ideas into enduring la
       </div>
     </div>
 
+    <!-- Card 3 -->
     <div class="card">
       <img src="{{ $phylosophy_image3 ?? 'https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?cs=srgb&dl=pexels-souvenirpixels-414612.jpg&fm=jpg'}}" alt="Adventure">
       <div class="card-body">
         <p class="card-text">{!! $phylosophy_content3 ?? "This is a wider card with supporting text below as a natural lead-in to additional content."!!}</p>
       </div>
     </div>
-</div>
-</div>
-<style>
-  /* --- Card Container Styling (for layout and responsiveness) --- */
-.card-container {
-    display: grid; /* Use CSS Grid for responsive layout */
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Cards will adapt to screen size, min 280px wide */
-    gap: 30px; /* Space between cards */
-    padding: 20px; /* Padding around the entire card section */
-    max-width: 1200px; /* Max width for the container */
-    margin: 0 auto; /* Center the container on the page */
-}
-
-/* --- Base Card Styling --- */
-.card {
-    background-color: #fff;
-    border-radius: 12px; /* Soft rounded corners for the card */
-    overflow: hidden; /* Crucial for clipping the image when it scales */
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle initial shadow */
-    display: flex; /* Use flexbox to organize image and body vertically */
-    flex-direction: column;
-    height: 100%; /* Ensures cards in a grid/flex layout maintain consistent height */
-    cursor: pointer; /* Indicates it's interactive */
-
-    /* For 3D effect: Sets up a 3D rendering context */
-    transform-style: preserve-3d;
-    transform: perspective(1000px); /* Gives a sense of depth */
-
-    /* Smooth transitions for all hover effects */
-    transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
-}
-
-/* --- Card Image Styling --- */
-.card img {
-    width: 100%;
-    height: 200px; /* Fixed height for consistent image size, adjust as needed */
-    object-fit: cover; /* Ensures images cover the area without distortion */
-    object-position: center;
-    display: block;
-    border-top-left-radius: 12px; /* Match card's top border-radius */
-    border-top-right-radius: 12px; /* Match card's top border-radius */
-
-    /* Smooth transition for the image zoom effect */
-    transition: transform 0.4s ease-out;
-}
-
-/* --- Card Body Styling --- */
-.card .card-body {
-    padding: 20px;
-    flex-grow: 1; /* Allows the body to take up available space, pushing content nicely */
-    display: flex;
-    flex-direction: column;
-}
-
-.card .card-text {
-    color: #555;
-    line-height: 1.6;
-    font-size: 0.95rem;
-    /* You can add text overflow ellipsis here if text content is very long */
-}
-
-/* --- 3D Hover Effect for the Card --- */
-.card:hover {
-    /* Lift the card up and slightly forward */
-    transform: translateY(-12px) rotateX(2deg) scale(1.02);
-    /* Make the shadow larger and more diffused for a "lifted" 3D look */
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
-    z-index: 1; /* Bring the hovered card slightly to the front if cards are close */
-}
-
-/* --- Optional: Subtle Image Zoom within the Hovered Card --- */
-.card:hover img {
-    transform: scale(1.05); /* The image zooms slightly more than the card itself */
-}
-
-/* --- Responsive Adjustments (for smaller screens) --- */
-@media (max-width: 768px) {
-    .card-container {
-        grid-template-columns: 1fr; /* Stack cards vertically on small screens */
-    }
-}
-</style>
+  </div>
+                </div>
 <!-- team section !-->
 <!-- team section !-->
 
