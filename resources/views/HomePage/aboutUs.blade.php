@@ -82,7 +82,7 @@ Over the years, we’ve had the privilege of transforming ideas into enduring la
 </div>
   <span class="destinations-title mh-auto text-center" style="font-size:20px">{{ $member->name }}</span>
                                 <span class=" mh-auto text-center"  style="font-size:15px;font-weight:bold">{{ $member->designation }}</span>
-                                                        <span class="text-justify" style="font-size:15px;margin-top:10px">{{ $member->short_description }}</span>
+                                                        <span class="text-justify" style="font-size:15px;padding-top:10px">{{ $member->short_description }}</span>
         
                             </div>
                         </div>
@@ -319,6 +319,7 @@ Over the years, we’ve had the privilege of transforming ideas into enduring la
  <div class="site-title pb-5">
       <h2 class="text-center">Our Foundation</h2>
     </div>
+</div>
   
 
 <div class="card-container">
