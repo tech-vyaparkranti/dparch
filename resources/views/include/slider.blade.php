@@ -1,5 +1,5 @@
 <!-- main Video Section -->
-<div class="video-banner">
+<div class="video-banner" >
   <div class="video-block">
     <div class="swiper main-slider">
       <div class="swiper-wrapper">
@@ -9,9 +9,9 @@
           <img class="img-fluid banner-img" width="" height=""  alt="Image" src="{{ asset($slide->image) }}" />
           <div class="video-content">
             <!-- Dynamic content from the database -->
-            <h2 style="padding-top:100px">{!!$slide->heading_top !!}</h2>
-            <h3>{!! $slide->heading_middle !!}</h3>
-            <h3>{!! $slide->heading_bottom !!}</h3>
+            {{-- <h2 style="padding-top:100px">{!!$slide->heading_top !!}</h2>
+            <h3>{!! $slide->heading_middle !!}</h3> --}}
+            <h3 style="padding-top:210px">{!! $slide->heading_bottom !!}</h3>
             {{-- Uncomment the following line if you have a contact route for each slide --}}
             {{-- <a href="{{ route('contactUs') }}" aria-label="Explore The World">Get in touch</a> --}}
           </div>

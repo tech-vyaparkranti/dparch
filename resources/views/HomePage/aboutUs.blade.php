@@ -64,21 +64,25 @@ Over the years, we’ve had the privilege of transforming ideas into enduring la
       <h2 class="text-center">Our Core Team</h2>
     </div>
 
-        <div class="swiper we-offer">
-            <div class="swiper-wrapper">
+        <div class="swiper we-offer"  >
+            <div class="swiper-wrapper"  >
+                {{-- Static fallback for team members --}}
+                {{-- Dynamic team members from the database --}}
+                {{-- Static fallback for team members --}}
+                {{-- Dynamic team members from the database --}}
                 @if(isset($teamMembers) && count($teamMembers))
                     @foreach($teamMembers as $member)
-                        <div class="swiper-slide">
-                            <div class="destinations-block" style="border:none">
-                              <div class="team-member-image-wrapper">
+                        <div class="swiper-slide"  >
+                            <div class="destinations-block"   >
+                              <div class="team-member-image-wrapper" >
     <img
         src="{{ asset($member->image ?? 'assets/img/default-profile.png') }}"
         alt="{{ $member->name }}"
     >
 </div>
   <span class="destinations-title mh-auto text-center" style="font-size:20px">{{ $member->name }}</span>
-                                <span class="destinations-title mh-auto text-center" style="font-size:16px">{{ $member->designation }}</span>
-                                                        <span class="text-justify" style="font-size:15px">{{ $member->short_description }}</span>
+                                <span class=" mh-auto text-center"  style="font-size:15px;font-weight:bold">{{ $member->designation }}</span>
+                                                        <span class="text-justify" style="font-size:15px;padding-top:10px">{{ $member->short_description }}</span>
         
                             </div>
                         </div>
@@ -172,30 +176,26 @@ Over the years, we’ve had the privilege of transforming ideas into enduring la
   height: 200px;
   border-radius: 50%;
   overflow: hidden;
-  margin: 0 auto 10px;
   position: relative;
   background-color: #f0f0f0;
 }
 
 .team-member-image-wrapper {
     width: 200px; /* Fixed width for the circle */
-    height: 200px; /* Fixed height for the circle */
     border-radius: 50%; /* Makes it circular */
-    overflow: hidden; /* Hides parts of the image outside the circle */
-    margin: 0 auto 10px; /* Centers and adds space below */
-    display: flex; /* Use flexbox to center the image inside */
-    align-items: center; /* Vertically center image */
-    justify-content: center; /* Horizontally center image */
     background-color: #f0f0f0; /* Fallback background for empty space */
 }
+
 
 /* NEW/UPDATED: Image inside the circular wrapper */
 .team-member-image-wrapper img {
     width: 100%; /* Image takes full width of its wrapper */
-    height: 100%; /* Image takes full height of its wrapper */
+    height: 200px; /* Image takes full height of its wrapper */
     object-fit: cover; /* KEY: Scales image to cover the entire area, cropping if necessary */
     object-position: center; /* Centers the image content */
     display: block; /* Ensures it behaves as a block element */
+    border-radius: 50%; /* Ensures the image itself is also circular */
+    
 }
 
 
@@ -206,6 +206,7 @@ Over the years, we’ve had the privilege of transforming ideas into enduring la
   object-fit: cover;
   object-position: center;
   display: block;
+  
 }
 
 /* Overlay on hover */
@@ -313,10 +314,12 @@ Over the years, we’ve had the privilege of transforming ideas into enduring la
 </style>
 
 
-<div id="philosophy" class="container">
+<div id="philosophy" class="container" style="margin-top: 50px;">
+  <div class="custom-container">
  <div class="site-title pb-5">
       <h2 class="text-center">Our Foundation</h2>
     </div>
+</div>
   
 
 <div class="card-container">

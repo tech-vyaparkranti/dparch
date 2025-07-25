@@ -45,10 +45,10 @@
                             <div class="card-content">
                                 <h4><a href="{{ route('productDetails', $item->slug) }}">{{ $item->project_name }}</a></h4>
                                 <p>{!! Str::limit($item->description, 300, '...') !!}</p>
-                                <a href="{{ route('productDetails', $item->slug) }}" class="theme-btn">
-                                    <span>View Details</span>
-                                    <i class="fa fa-link" aria-hidden="true"></i>
-                                </a>
+                               <a href="{{ route('productDetails', $item->slug) }}" class="theme-btn">
+    <span>View Details</span>
+    <i class="fa fa-link" aria-hidden="true"></i>
+</a>
                             </div>
                         </div>
                     @endforeach
@@ -75,6 +75,10 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
+}
+.theme-btn:hover {
+    background-color: red; /* Change to red on hover */
+    color: white; /* Keep text white on hover */
 }
 
 .service-card {
@@ -160,11 +164,11 @@
     width: max-content;
 }
 
-.theme-btn:hover {
+/* .theme-btn:hover {
     transform: translateY(-2px);
     background-color: #001f5f;
     box-shadow: 0 8px 15px rgba(0, 0, 80, 0.3);
-}
+} */
 
 /* Responsive */
 @media (max-width: 1024px) {
