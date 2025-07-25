@@ -416,7 +416,7 @@ $('#compactContactUsForm').on('submit', function (e) {
 }
 
 .compact-enquiry-btn:hover {
-    background: #a54c37;
+    background:red;
     /* Removed 'right: 4px;' as it's no longer fixed */
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
     transform: translateY(-2px); /* Keep a slight lift on hover */

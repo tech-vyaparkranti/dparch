@@ -78,7 +78,7 @@ standards of purity and freshness. For any inquiries,support or feedback,feel fr
                                                     id="captcha_img_id">
                                             </div>
                                             <div class="col-md-6 pt-4 view-button">
-                                                <button type="button" class="btn default-btn btn-block font-weight-bold"
+                                                <button type="button" class="btn default-btn btn-block font-weight-bold refresh-btn"
     onclick="refreshCapthca('captcha_img_id','captcha')"
     style="background-color: navy; color: white; border: none;">
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -103,9 +103,9 @@ standards of purity and freshness. For any inquiries,support or feedback,feel fr
                                     </div>
                                 </div>
                                 <div class="view-button">
-    <button class="default-btn" id="submitButton" type="submit" style="background-color: navy; color: white; border: none;">
-        Submit
-    </button>
+    <button class="default-btn form-submit-btn" id="submitButton" type="submit" style="background-color: navy; color: white; border: none;">
+        Submit
+    </button>
 </div>
                             </form>
 
@@ -132,6 +132,22 @@ standards of purity and freshness. For any inquiries,support or feedback,feel fr
         </div>
     </div>
 @endsection
+<style>
+    .refresh-btn:hover {
+    background-color: red !important; /* Change to red on hover, use !important to override inline */
+    color: white !important; /* Keep text white on hover, use !important to override inline */
+}
+
+.form-submit-btn:hover {
+    background-color: red !important; /* Change to red on hover, overriding inline style */
+    color: white !important; /* Keep text white on hover, overriding inline style */
+}
+
+/* Ensure the SVG icon also inherits the color change on hover */
+.refresh-btn:hover svg {
+    fill: white !important; /* Make sure the SVG icon also turns white on hover */
+}
+</style>
 @section('script')
     <script>
         $("#contactUsForm").on("submit", function() {
