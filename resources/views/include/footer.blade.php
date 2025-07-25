@@ -104,12 +104,14 @@
                         </div>
                         <div class="footer-item pb-3">
                             <label>Contact No:</label>
-                            <p><i class="fa-solid fa-phone"></i>&nbsp;<a href="tel:+91{!! isset($contact_us_contact_number)?str_replace(" ","",$contact_us_contact_number):"+91987654321" !!}">{!! $contact_us_contact_number??"+91-987654321" !!}</a></p>
+                            <p><i class="fa-solid fa-phone"></i>&nbsp;<a href="tel:+91{!! isset($contact_us_contact_number)?str_replace(" ","",$contact_us_contact_number):"+919958298515" !!}">{!! $contact_us_contact_number??"+919958298515" !!}</a></p>
                         </div>
                         <div class="footer-item pb-3">
                             <label>Address:</label>
                             <p><i class="fa-solid fa-location-dot"></i>
-{!! $address ?? 'najafgarh' !!}</p>
+{!! $address ?? 'Block K, Birbal Road, Jangpura Ext.
+
+New Delhi - 110014' !!}</p>
                         </div>
                     </div>
                 </div>

@@ -27,7 +27,7 @@ class HomePageController extends Controller
     public function homePage(){
         try{
             $sliders=SliderModel::where([[SliderModel::SLIDE_STATUS,SliderModel::SLIDE_STATUS_LIVE],
-            [SliderModel::SLIDE_STATUS,1]])->orderBy(SliderModel::SLIDE_SORTING,"desc")->get();
+            [SliderModel::SLIDE_STATUS,1]])->orderBy(SliderModel::SLIDE_SORTING,"asc")->get();
             $home_products=HomeProductsModel::where('slide_status','live')->get();
             $why_choose_us = WhyChooseUs::where('status', 'live')
             ->orderBy('sorting', 'asc')
