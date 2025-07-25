@@ -1942,6 +1942,7 @@ section.chairperson {
         margin-bottom: 1rem;
     }
 
+    
 
     .footer-section .footer-item {
         text-align: center;
@@ -1996,7 +1997,14 @@ section.chairperson {
     .google-map-area iframe {
         width: 740px;
     }
+
+    .logo-section>a>img {
+        max-width: 70px !important;
+        margin-right: 228px;
+    }
 }
+
+
 
 @media(max-width:1200px) {
 

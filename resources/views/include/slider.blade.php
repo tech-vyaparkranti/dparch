@@ -83,3 +83,32 @@ autoplay: {
   disableOnInteraction: false
 }
 </style>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const swiper = new Swiper('.main-slider', {
+    // Add fade effect
+    effect: 'fade',
+    fadeEffect: {
+      crossFade: true
+    },
+    
+    // Add autoplay
+    autoplay: {
+      delay: 5000, // 5 seconds between slides
+      disableOnInteraction: false
+    },
+    
+    // Keep navigation
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    
+    // Loop through slides
+    loop: true,
+    
+    // Smooth transitions
+    speed: 800
+  });
+});
+</script>

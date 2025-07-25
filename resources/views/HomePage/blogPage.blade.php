@@ -123,7 +123,7 @@
 }
 
 .blog-details-btn {
-    background-color: #28a745;
+    background-color: navy;
     border: none;
     padding: 8px 20px;
     border-radius: 5px;
@@ -134,9 +134,9 @@
 }
 
 .blog-details-btn:hover {
-    background-color: #218838;
-    color: white;
-    text-decoration: none;
+    background-color:red !important;
+    color: white !important;
+    text-decoration: none !important;
 }
 
 .blog-container .row {

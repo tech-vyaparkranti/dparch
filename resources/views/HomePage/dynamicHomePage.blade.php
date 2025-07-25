@@ -32,11 +32,28 @@
                         ) !!}
                     </p>
 
-          <a href="{{ route('aboutUs') }}" 
-   class="btn" 
-   style="background-color:navy; color:white; padding:10px 20px; border:none;">
+          <a href="{{ route('aboutUs') }}"
+   class="btn about-us-btn"
+   style="padding:10px 20px; border:none; background-color:navy; color:white;">
    Know More
 </a>
+
+{{-- Add this style block right after the button, or in a central <style> section --}}
+<style>
+    /* Specific style for this button */
+    .about-us-btn {
+        transition: background-color 0.3s ease, color 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+        text-align: center;
+        border-radius: 5px; /* Optional */
+    }
+
+    .about-us-btn:hover {
+        background-color: red !important; /* Use !important if other styles are overriding */
+        color: white !important; /* Use !important if other styles are overriding */
+    }
+</style>
       </div>
             </div>
 
@@ -371,8 +388,7 @@
                                 <div class="blog-meta">
                                     <span class="blog-date">{{ \Carbon\Carbon::parse($BlogRow['blog_date'])->format('M d, Y') }}</span>
                                 </div>
-                                <a href="{{ route('blogDetails', $BlogRow['slug']) }}" class="btn btn-primary blog-details-btn">Read More</a>
-                            </div>
+<a href="{{ route('blogDetails', $BlogRow['slug']) }}" class="btn btn-primary blog-details-btn">Read More</a>                            </div>
                         </div>
                     </div>
                 @endforeach
@@ -384,6 +400,23 @@
 
 
 <style>
+    .blog-details-btn {
+    background-color: navy; /* Initial background color */
+    color: white; /* Initial text color */
+    border: none; /* Ensure no border */
+    padding: 10px 20px; /* Example padding, adjust as needed */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Essential for padding/sizing */
+    text-align: center;
+    border-radius: 5px; /* Optional: adds slight rounded corners */
+}
+
+/* Hover effect for the "Read More" button */
+.blog-details-btn:hover {
+    background-color: red !important; /* Change to red on hover, use !important if btn-primary overrides */
+    color: white !important; /* Keep text white on hover, use !important if btn-primary overrides */
+}
 .blog-card {
     background: #fff !important;
     border-radius: 10px !important;
@@ -436,10 +469,10 @@
     font-weight: 500 !important;
     transition: background-color 0.3s ease !important;
 }
-.blog-details-btn:hover {
+/* .blog-details-btn:hover {
     background-color: #000066 !important;
     color: white !important;
-}
+} */
 .blog-container .row {
     margin: 0 -15px !important;
 }
@@ -476,8 +509,8 @@
   <input type="text" class="form-control form-control-sm" placeholder="Enter code" id="simpleCaptchaInput" required style="max-width:120px;">
   
   <!-- Subscribe -->
-<button class="btn btn-sm" style="background-color: navy; color: white;" type="submit">
-    <i class="fas fa-paper-plane me-1"></i>Subscribe
+<button class="btn btn-sm subscribe-btn" style="background-color: navy; color: white;" type="submit">
+    <i class="fas fa-paper-plane me-1"></i>Subscribe
 </button></form>
 
         <small class="text-muted d-block mt-2">We respect your privacy. Unsubscribe anytime.</small>
@@ -716,6 +749,18 @@
     <!-- {{-- Testimonial Section End  --}} -->
 
      <style>
+
+        .subscribe-btn {
+    /* Initial background and color are already set inline, but add transition here */
+    transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: pointer; /* Indicate it's clickable */
+}
+
+/* Hover effect for the Subscribe button */
+.subscribe-btn:hover {
+    background-color: red !important; /* Change to red on hover, use !important to override inline */
+    color: white !important; /* Keep text white on hover, use !important to override inline */
+}
         .custom-modal .modal-dialog {
             max-width: 60% !important;
             height: 500px;
