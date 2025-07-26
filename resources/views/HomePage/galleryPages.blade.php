@@ -40,7 +40,7 @@
                     </div>
                     <div class="gallery-caption mt-2">
                         <h3 class="h6 mb-1">
-                            {{ $GalleryImage->title ?: $GalleryImage->alternate_text ?: 'Untitled' }}
+                            {{ $GalleryImage->title ?: $GalleryImage->alternate_text ?: '' }}
                         </h3>
                         <p class="text-muted small">
                             {{ $GalleryImage->description }}
