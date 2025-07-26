@@ -153,8 +153,8 @@
 }
 
 .theme-btn {
-    padding: 10px 30px;
-    border-radius: 10px;
+    padding: 10px 5px;
+    border-radius: 5px;
     background: #070736fc;
     color: #fff;
     text-decoration: none;

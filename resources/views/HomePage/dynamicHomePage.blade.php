@@ -518,7 +518,7 @@
   <input type="text" class="form-control form-control-sm" placeholder="Enter code" id="simpleCaptchaInput" required style="max-width:120px;">
   
   <!-- Subscribe -->
-<button class="btn btn-sm subscribe-btn" style="background-color: #070736fc; color: white;" type="submit">
+<button class="btn btn-sm subscribe-btn" style="background-color: #070736fc; color: white; padding:10px 0px; font-size:15px;border-radius:5px;text-align:justify;width:113px" type="submit">
     <i class="fas fa-paper-plane me-1"></i>Subscribe
 </button></form>
 
@@ -763,6 +763,7 @@
     /* Initial background and color are already set inline, but add transition here */
     transition: background-color 0.3s ease, color 0.3s ease;
     cursor: pointer; /* Indicate it's clickable */
+
 }
 
 /* Hover effect for the Subscribe button */

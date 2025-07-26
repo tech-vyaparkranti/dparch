@@ -5,27 +5,23 @@
         <x-card>
             <x-card-header>Add Gallery Items</x-card-header>
             <x-card-body>
-                <x-form>
+                <x-form id="submit_form"> {{-- Added id to the form --}}
                     <x-input type="hidden" name="id" id="id" value=""></x-input>
                     <x-input type="hidden" name="action" id="action" value="insert"></x-input>
 
-                    <x-input-with-label-element name="local_image[]" id="local_image" type="file" required
-                        label="Upload Images" placeholder="Images" accept="image/*"
+                    {{-- Section to display current image on edit --}}
+                    <div id="current_media_display" style="margin-bottom: 20px;">
+                        {{-- This area will be populated by JavaScript when editing --}}
+                    </div>
+
+                    <x-input-with-label-element name="local_image[]" id="local_image" type="file"
+                        label="Upload Images (Optional)" placeholder="Images" accept="image/*"
                         multiple></x-input-with-label-element>
 
-                    {{-- <x-input-with-label-element type="url" name="image_link" id="image_link" placeholder="Image Link"
-                        label="Image Link"></x-input-with-label-element> --}}
+                    <x-input-with-label-element name="alternate_text" id="alternate_text"
+                        placeholder="Alternate Text For Image" label="Alternate Text"></x-input-with-label-element>
 
-                    <x-input-with-label-element required name="alternate_text" id="alternate_text"
-                        placeholder="Alernate Text For Image" label="Alternate Text"></x-input-with-label-element>
-
-                    {{-- <x-input-with-label-element type="file" name="local_video" id="local_video" placeholder="Video"
-                        label="Upload Video"></x-input-with-label-element>
-
-                    <x-input-with-label-element type="url"  name="video_link" id="video_link" placeholder="Video Link"
-                        label="Video Link"></x-input-with-label-element> --}}
-
-                    <x-input-with-label-element type="text" id="title" name="title" required
+                    <x-input-with-label-element type="text" id="title" name="title"
                         placeholder="Gallery Item Title" label="Title"></x-input-with-label-element>
 
                     <x-text-area-with-label id="description" name="description" placeholder="Gallery Item Description"
@@ -35,7 +31,7 @@
                         label="Position"></x-input-with-label-element>
 
                     <x-select-label-group required name="view_status" id="view_status" label_text="View Status">
-                        <option value="visible">Visibile</option>
+                        <option value="visible">Visible</option>
                         <option value="hidden">Hidden</option>
                     </x-select-label-group>
                     <x-select-label-group required name="filter_category" id="filter_category_id" label_text="Filter Category">
@@ -48,7 +44,7 @@
             </x-card-body>
         </x-card>
         <x-card>
-            <x-card-header>Menu Category Data</x-card-header>
+            <x-card-header>Gallery Data</x-card-header>
             <x-card-body>
                 <x-data-table></x-data-table>
             </x-card-body>
@@ -61,7 +57,6 @@
         let site_url = '{{ url('/') }}';
         var table = "";
         $(function() {
-
             table = $('.data-table').DataTable({
                 processing: true,
                 serverSide: true,
@@ -114,7 +109,7 @@
                             let image = '';
                             if (data) {
                                 image += '<img alt="Stored Image" src="' + site_url + data +
-                                    '" class="img-thumbnail">';
+                                    '" class="img-thumbnail" style="max-width:100px;">';
                             }
                             return image;
                         },
@@ -122,51 +117,6 @@
                         searchable: false,
                         title: "Image Local"
                     },
-                    {
-                        data: '{{ \App\Models\GalleryItem::IMAGE_LINK }}',
-                        render: function(data, type) {
-
-                            let image = '';
-                            if (data) {
-                                image += '<img alt="Image Link" src="' + data +
-                                    '" class="img-thumbnail">';
-                            }
-                            return image;
-                        },
-                        orderable: false,
-                        searchable: false,
-                        title: "Image Link"
-                    },
-                    // {
-                    //     data: '{{ \App\Models\GalleryItem::LOCAL_VIDEO }}',
-                    //     render: function(data, type) {
-                    //         let video = '';
-                    //         if (data) {
-                    //             video += '<video width="100" height="100" controls><source src="' +
-                    //                 site_url + data + '" type="video/mp4">' +
-                    //                 'Your browser does not support the video tag.</video>';
-                    //         }
-                    //         return video;
-                    //     },
-                    //     orderable: false,
-                    //     searchable: false,
-                    //     title: "Video Local"
-                    // },
-                    // {
-                    //     data: '{{ \App\Models\GalleryItem::VIDEO_LINK }}',
-                    //     render: function(data, type) {
-                    //         let video = '';
-                    //         if (data) {
-                    //             video += '<video width="100" height="100" controls><source src="' +
-                    //                 data + '" type="video/mp4">' +
-                    //                 'Your browser does not support the video tag.</video>';
-                    //         }
-                    //         return video;
-                    //     },
-                    //     orderable: false,
-                    //     searchable: false,
-                    //     title: "Video Link"
-                    // },
                     {
                         data: '{{ \App\Models\GalleryItem::POSITION }}',
                         name: '{{ \App\Models\GalleryItem::POSITION }}',
@@ -177,33 +127,50 @@
                         name: '{{ \App\Models\GalleryItem::VIEW_STATUS }}',
                         title: "View Status"
                     },
-
                 ]
             });
-
         });
+
+        // Function to scroll to the form when editing
+        function scrollToDiv() {
+            $('html, body').animate({
+                scrollTop: $("#submit_form").offset().top
+            }, 500);
+        }
+
         $(document).on("click", ".edit", function() {
             let row = $.parseJSON(atob($(this).data("row")));
             if (row['id']) {
                 $("#id").val(row['id']);
-                // $("#image_link").val(row['image_link']);
                 $("#alternate_text").val(row['alternate_text']);
-                // $("#video_link").val(row['video_link']);
                 $("#title").val(row['title']);
                 $("#description").val(row['description']);
                 $("#position").val(row['position']);
                 $("#view_status").val(row['view_status']);
                 $("#filter_category_id").val(row['filter_category']);
-                $("#action").val("update");
+                $("#action").val("update"); // Set action to update
+
+                // Display current local image only
+                let currentMediaHtml = '';
+                if (row['local_image']) {
+                    currentMediaHtml += '<p><strong>Current Local Image:</strong></p>';
+                    currentMediaHtml += '<img src="' + site_url + row['local_image'] + '" alt="Current Local Image" class="img-thumbnail" style="max-width:150px; margin-right: 10px;">';
+                    currentMediaHtml += '<br>File: ' + row['local_image'].split('/').pop() + '<br>';
+                }
+
+                $('#current_media_display').html(currentMediaHtml);
+
                 scrollToDiv();
             }
         });
+
         $(document).ready(function() {
-            $("#submit_form").on("submit", function() {
+            $("#submit_form").on("submit", function(e) {
+                e.preventDefault(); // Prevent default form submission
                 var form = new FormData(this);
                 $.ajax({
                     type: 'POST',
-                    url: '{{ route('addGalleryItems') }}',
+                    url: '{{ route('addGalleryItems') }}', // This route should handle both add and update
                     data: form,
                     cache: false,
                     contentType: false,
@@ -212,6 +179,10 @@
                         if (response.status) {
                             successMessage(response.message, true);
                             table.ajax.reload();
+                            $("#submit_form")[0].reset(); // Reset the form after success
+                            $("#id").val(''); // Clear ID
+                            $("#action").val("insert"); // Reset action to insert
+                            $('#current_media_display').html(''); // Clear current media display
                         } else {
                             errorMessage(response.message);
                         }
@@ -237,7 +208,7 @@
                     if (result.isConfirmed) {
                         $.ajax({
                             type: 'POST',
-                            url: '{{ route('addGalleryItems') }}',
+                            url: '{{ route('addGalleryItems') }}', // Same route to handle delete
                             data: {
                                 id: id,
                                 action: "delete",
@@ -257,7 +228,6 @@
                         });
                     }
                 });
-
             } else {
                 errorMessage("Something went wrong. Code 102");
             }

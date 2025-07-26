@@ -181,10 +181,10 @@ public function logout(Request $req){
             $validation = [
                 GalleryItem::LOCAL_IMAGE=>"bail|nullable|required_without_all:image_link,local_video,video_link|array",
                 GalleryItem::LOCAL_IMAGE.".*"=>"image",
-                GalleryItem::IMAGE_LINK=>"bail|nullable|url|required_without_all:local_image,local_video,video_link",
-                GalleryItem::ALTERNATE_TEXT=>"bail|string",
-                GalleryItem::LOCAL_VIDEO=>"bail|nullable|mimetypes:video/avi,video/x-matroska,video/mp4,video/mpeg,video/quicktime|required_without_all:image_link,local_image,video_link",
-                GalleryItem::VIDEO_LINK=>"bail|nullable|url|required_without_all:image_link,local_video,video_link,local_image",
+                // GalleryItem::IMAGE_LINK=>"bail|nullable|url|required_without_all:local_image,local_video,video_link",
+                GalleryItem::ALTERNATE_TEXT => "bail|nullable|string", // Made nullable
+                // GalleryItem::LOCAL_VIDEO=>"bail|nullable|mimetypes:video/avi,video/x-matroska,video/mp4,video/mpeg,video/quicktime|required_without_all:image_link,local_image,video_link",
+                // GalleryItem::VIDEO_LINK=>"bail|nullable|url|required_without_all:image_link,local_video,video_link,local_image",
                 GalleryItem::TITLE=>"bail|nullable|string",
                 GalleryItem::DESCRIPTION=>"bail|nullable|string",
                 GalleryItem::POSITION=>"bail|nullable|numeric",
@@ -199,10 +199,10 @@ public function logout(Request $req){
                     GalleryItem::LOCAL_IMAGE=>"bail|nullable|array",
                     GalleryItem::LOCAL_IMAGE.".*"=>"image",
                     GalleryItem::IMAGE_LINK=>"bail|nullable|url",
-                    GalleryItem::ALTERNATE_TEXT=>"bail|string",
+                GalleryItem::ALTERNATE_TEXT => "bail|nullable|string", // Made nullable
                     GalleryItem::LOCAL_VIDEO=>"bail|nullable",
                     GalleryItem::VIDEO_LINK=>"bail|nullable|url",
-                    GalleryItem::TITLE=>"bail|nullable|string",
+                GalleryItem::ALTERNATE_TEXT => "bail|nullable|string", // Made nullable
                     GalleryItem::DESCRIPTION=>"bail|nullable|string",
                     GalleryItem::POSITION=>"bail|nullable|numeric",
                     GalleryItem::VIEW_STATUS=>"required|in:visible,hidden",
@@ -303,3 +303,4 @@ public function logout(Request $req){
     }
 
 }
+

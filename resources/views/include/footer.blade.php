@@ -62,8 +62,8 @@
     Beyond the Blueprint <br>SIMPLE . STRONG . MEMORABLE
 </p>
 
-<a href="#" class="compact-enquiry-btn" data-bs-toggle="modal" data-bs-target="#compactEnquiryModal" style="margin-left: 23px;color:#fff !important;">
-                            <i class="fas fa-envelope me-2"></i> <span>Enquire now</span>
+<a href="#" class="compact-enquiry-btn" data-bs-toggle="modal" data-bs-target="#compactEnquiryModal" style="margin-left: 23px;color:#fff !important; border:none; background-color:#070736fc; color:white;padding:15px 10px; ">
+                         <span style="font-size:13px">Enquire now</span>
                         </a>
                         {{-- <ul class="social-media mt-4">
                         <li><a href="{!! $facebook_link ?? 'https://www.facebook.com/DP Arch' !!}" aria-label="Read more about DP Arch  facebook"><i class="fa-brands fa-facebook"></i></a></li>
