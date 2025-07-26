@@ -1,5 +1,5 @@
 @extends('layouts.webSite')
-@section('title', 'Dp Arch ')
+@section('title', 'Design Park Architects ')
 @section('content')
     {{-- @include('include.navigation') --}}
     @include('include.slider')
