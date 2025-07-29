@@ -107,6 +107,7 @@
   z-index: 9999;
   border: 1px solid rgba(255, 255, 255, 0.3);
   transition: all 0.3s ease;
+   will-change: transform;
 }
 
 
@@ -151,8 +152,24 @@
   }
 }
 /* Default nav link style */
+.site-logo {
+  transition: opacity 0.3s ease;
+}
 
 </style>
+<script>
+  const mainLogo = document.getElementById("mainLogo");
+
+window.addEventListener("scroll", function () {
+    if (window.scrollY > 50) {
+        mainLogo.style.opacity = "0";
+        mainLogo.style.transition = "opacity 0.3s ease";
+    } else {
+        mainLogo.style.opacity = "1";
+    }
+});
+
+</script>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
     const dropdowns = document.querySelectorAll(".has-dropdown > a");
