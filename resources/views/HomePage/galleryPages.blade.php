@@ -10,9 +10,9 @@
 <div id="about">
     <div class="default-content pt-5 pb-5">
         <div class="custom-container">
-            <div class="site-title mb-4">
+            <!-- <div class="site-title mb-4">
                 <h2 class="text-center">Glimpse of Achievements</h2>
-            </div>
+            </div> -->
 
             {{-- DYNAMIC FILTER BUTTONS --}}
             @php

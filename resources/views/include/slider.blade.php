@@ -68,7 +68,7 @@
 <style>
 
 .slide-heading {
-  padding-top: 700px;
+  padding-top: 600px;
 }
 
 @media (max-width: 640px) {

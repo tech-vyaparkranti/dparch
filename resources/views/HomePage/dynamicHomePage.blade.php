@@ -328,7 +328,6 @@
                     @endforeach
                 @endif
             </div>
-            <div class="swiper-pagination" style="padding:0px;margin:0px"></div>
         </div>
     </div>
 </div>
@@ -504,18 +503,18 @@
         <h5 class="fw-semibold mb-2">Subscribe to Our Newsletter</h5>
         <p class="text-muted small mb-3">Get the latest updates, straight to your inbox.</p>
        <form class="d-flex flex-column flex-md-row align-items-center justify-content-center gap-2" id="simpleNewsletterForm" autocomplete="off">
-  <input type="email" class="form-control form-control-sm w-100 w-md-auto" placeholder="Your email" id="simpleEmail" required style="max-width:250px;">
+  <input type="email" class="form-control form-control-sm w-100 w-md-auto" placeholder="Your email" id="simpleEmail" required style="max-width:250px;border: 1px solid black;">
 
   <!-- CAPTCHA canvas -->
   <canvas id="simpleCaptcha" width="100" height="34" style="border-radius:5px; background:#f8f9fa;"></canvas>
 
   <!-- Refresh button -->
-  <button type="button" class="btn btn-outline-secondary btn-sm px-2" onclick="drawSimpleCaptcha()" title="Refresh Captcha">
+  <button type="button" class="btn btn-outline-secondary btn-sm px-2" style="border: 1px solid black;" onclick="drawSimpleCaptcha()" title="Refresh Captcha">
     <i class="fas fa-sync-alt"></i>
   </button>
 
   <!-- CAPTCHA input -->
-  <input type="text" class="form-control form-control-sm" placeholder="Enter code" id="simpleCaptchaInput" required style="max-width:120px;">
+  <input type="text" class="form-control form-control-sm" placeholder="Enter code" id="simpleCaptchaInput" required style="max-width:120px;border: 1px solid black;">
   
   <!-- Subscribe -->
 <button class="btn btn-sm subscribe-btn" style="background-color: #070736fc; color: white; padding:10px 0px; font-size:15px;border-radius:5px;text-align:justify;width:113px" type="submit">

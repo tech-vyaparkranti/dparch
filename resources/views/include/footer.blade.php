@@ -127,13 +127,13 @@ New Delhi - 110014' !!}</p>
                 <div class="modal-header compact-modal-header">
                     <div>
                         <div class="compact-section-subtitle">
-                            <h6>Get In Touch</h6>
+                            <h6 style="color:black">Get In Touch</h6>
                         </div>
                         <div>
                             <h5 class="modal-title compact-modal-title" id="compactEnquiryModalLabel">Quick Enquiry</h5>
                         </div>
                     </div>
-                    <button type="button" class="btn-close compact-close-btn" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close compact-close-btn" style="color:black" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body compact-modal-body">
                   <form enctype="multipart/form-data" method="POST" id="compactContactUsForm" action="{{ route('saveContactUsDetails') }}">
@@ -181,7 +181,7 @@ New Delhi - 110014' !!}</p>
 
         <!-- Submit -->
         <div class="col-12 text-center pt-2">
-            <button type="submit" class="btn btn-primary w-100 fw-semibold py-2" id="submitButton">
+            <button type="submit" class="btn btn-primary w-100 fw-semibold py-2" style="background:#070736fc;" id="submitButton">
                 Submit
             </button>
         </div>
@@ -202,7 +202,7 @@ New Delhi - 110014' !!}</p>
     {{-- <div class="alert alert-success alert-dismissible fade compact-success-alert" role="alert" id="compactSuccessAlert">
         <i class="fas fa-check-circle me-2"></i>
         <strong>Success!</strong> Your enquiry has been submitted.
-        <button type="button" class="btn-close" onclick="hideCompactAlert()"></button>
+        <button type="button" class="btn-close" style="" onclick="hideCompactAlert()"></button>
     </div> --}}
 
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script> --}}
@@ -348,7 +348,7 @@ $('#compactContactUsForm').on('submit', function (e) {
 </script>
 </footer>
 
-<div class="copyright-section text-center p-3">&copy; <script>document.write( new Date().getFullYear() );</script>{{ isset($WebSetting['0']->copyright_txt) ? $WebSetting['0']->copyright_txt : ' All Rights Reserved by DP Arch ' }}   & Developed by <a href="https://vyaparkranti.com/" class="text-white" aria-label="Digital Markating" alt="Vyapar Kranti">Vyapar kranti</a></div>
+<div class="copyright-section text-center p-3">&copy; <script>document.write( new Date().getFullYear() );</script>{{ isset($WebSetting['0']->copyright_txt) ? $WebSetting['0']->copyright_txt : ' All Rights Reserved by Design Park Architects ' }}   & Developed by <a href="https://vyaparkranti.com/" class="text-white" aria-label="Digital Markating" alt="Vyapar Kranti">Vyapar kranti</a></div>
 <!-- Footer Section End-->
 <style>
         /* Demo content */
@@ -480,7 +480,9 @@ $('#compactContactUsForm').on('submit', function (e) {
         }
 
         .compact-modal-header {
-            background: linear-gradient(135deg, #ff6b35, #f7931e);
+            background: #a038384f;
+           
+        transition:var(--transition)
             color: white;
             border-bottom: none;
             padding: 20px;
@@ -498,6 +500,7 @@ $('#compactContactUsForm').on('submit', function (e) {
         .compact-close-btn {
             filter: invert(1);
             font-size: 1.2rem;
+            color:black;
         }
 
         .compact-modal-body {
@@ -613,6 +616,7 @@ $('#compactContactUsForm').on('submit', function (e) {
 
         .compact-submit-btn:hover {
             transform: translateY(-2px);
+            
             box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
         }
 

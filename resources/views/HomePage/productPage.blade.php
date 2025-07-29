@@ -24,12 +24,12 @@
 <div id="about">
     <div class="default-content products-page pt-5 pb-3">
         <div class="custom-container">
-            <div class="site-title pb-3">
+            <!-- <div class="site-title pb-3">
                 <h2 class="text-center">Our Projects</h2>
-               <!-- <p class="text-center pb-3">
+               <p class="text-center pb-3">
                     {!! $project_content ?? "From basic treks to high-altitude mountaineering expeditions, we cater to adventurers of all levels." !!}
-                </p>!-->
-            </div>
+                </p>
+            </div> -->
 
             <div class="services-grid mt-3">
                 @if (isset($services) && $services->count() > 0)
@@ -153,7 +153,7 @@
 }
 
 .theme-btn {
-    padding: 10px 5px;
+    padding: 10px 10px;
     border-radius: 5px;
     background: #070736fc;
     color: #fff;

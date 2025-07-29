@@ -1,78 +1,68 @@
-<!-- <div class="sticky-navigation">
-    <div class="custom-container">
-    <ul class="sticky-content p-0 m-0">
-            <li><a href="mailto:{!! $email_2??"info@dparch.co.in" !!}"><i class="fa fa-envelope"></i>&nbsp;<span>{!! $email_1??"info@dparch.co.in" !!}</span></a></li>
-            <li><a href="tel:+91{!! isset($contact_us_contact_number)?str_replace(" ","",$contact_us_contact_number):"+919958298515" !!}"><i class="fa fa-phone"></i>&nbsp;<span>{!! $contact_us_contact_number??"+919958298515" !!}</span></a></li>
-        </ul>
-        {{-- <div class="gtranslate_wrapper"></div> --}}
-    </div>
-</div> 
- --><!-- Header section Start -->
+<!-- Header section Start -->
 <header class="main-header" style=" position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
-  height:100px;
-  ">
-    <div class="header-contaner">
+  height:100px;">
+    <div class="header-contaner" style="padding-top:10px">
         <div class="logo-section">
-            <div class="mobile-bars" id="mobileToggle"></div>
-    <span></span>
-    <span></span>
-    <span></span>
-            <a href="{{ url('/') }}" aria-level="Main logo"><img src="{{ asset($Logo??"./assets/img/logo.png") }}" class="img-fluid site-logo" width="120" height="90" alt="Home Styler"></a>
+            <div class="mobile-bars" id="mobileToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <a href="{{ url('/') }}" aria-level="Main logo">
+                <img id="mainLogo" src="{{ asset($Logo ?? './assets/img/logo.png') }}" class="img-fluid site-logo" width="120" height="90" alt="Home Styler">
+            </a>
         </div>
         <div class="slide-navigation" id="mainNav">
             <div class="navbar-wrapper">
-                <ul class="navbar-block" style="line-height:150px;">
-                    <li><a href="{{ url('/') }}" style="font-weight: bolder;
-    font-size: 17px;">Home</a></li>
+                <ul class="navbar-block">
+                    <li><a href="{{ url('/') }}" style="font-weight: bolder; font-size: 17px;">Home</a></li>
                     <li class="has-dropdown">
-            <a href="{{ route('aboutUs') }}"style="font-weight: bolder;
-    font-size: 17px;">About Us</a>
-            <ul class="dropdown">
-              <li><a href="{{ route('aboutUs') }}#about">Introduction</a></li>
-              <li><a href="{{ route('aboutUs') }}#team">The Team</a></li>
-              <li><a href="{{ route('aboutUs') }}#philosophy">Our Foundation</a></li>
-              <li><a href="{{ route('aboutUs') }}#services">What We Do</a></li>
-            </ul>
-          </li>
-                    <li><a href="{{ route('productPage') }}"style="font-weight: bolder;
-    font-size: 17px;">Projects</a></li> 
-                    <li><a href="{{ route('galleryPages') }}"style="font-weight: bolder;
-    font-size: 17px;">Gallery</a></li>
-                     <li><a href="{{ route('blogPage') }}"style="font-weight: bolder;
-    font-size: 17px;">Articles</a></li>
-                    <li><a href="{{ route('contactUs') }}"style="font-weight: bolder;
-    font-size: 17px;">Contact Us</a></li>
-                   
-                    
-                    
+                        <a href="{{ route('aboutUs') }}" style="font-weight: bolder; font-size: 17px;">About Us</a>
+                        <ul class="dropdown">
+                            <li><a href="{{ route('aboutUs') }}#about">Introduction</a></li>
+                            <li><a href="{{ route('aboutUs') }}#team">The Team</a></li>
+                            <li><a href="{{ route('aboutUs') }}#philosophy">Our Foundation</a></li>
+                            <li><a href="{{ route('aboutUs') }}#services">What We Do</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="{{ route('productPage') }}" style="font-weight: bolder; font-size: 17px;">Projects</a></li> 
+                    <li><a href="{{ route('galleryPages') }}" style="font-weight: bolder; font-size: 17px;">Gallery</a></li>
+                    <li><a href="{{ route('blogPage') }}" style="font-weight: bolder; font-size: 17px;">Articles</a></li>
+                    <li><a href="{{ route('contactUs') }}" style="font-weight: bolder; font-size: 17px;">Contact Us</a></li>
                 </ul>
-                
             </div>
             <ul class="sticky-content">
-                {{-- <li><a href="{!! $facebook_link ?? 'https://www.facebook.com/RNcommunication' !!}" aria-label="Read more about RNcommunication  facebook"><i class="fa-brands fa-facebook"></i></a></li>
-                <li><a href="{!! $linkedin_link ?? '/' !!}" aria-label="Read more about RNcommunication  Linkedin"><i class="fab fa-linkedin"></i></a></li>
-                <li><a href="{!! $instagram_link ?? 'https://www.instagram.com/adiyogi_global/' !!}" aria-label="Read more about RNcommunication  Instagram"><i class="fa-brands fa-instagram"></i></a></li>
-                <li><a href="{!! $youtube_link ?? 'https://www.youtube.com/@RNcommunication' !!}" aria-label="Read more about RNcommunication  Youtube"><i class="fa-brands fa-youtube"></i></a></li> --}}
-                
+                {{-- Social links could go here --}}
             </ul>
-            
         </div>
     </div>
 </header>
 
-<style>
-    .navbar-block .has-dropdown {
-  position: relative;
-}
+<script>
+let lastScrollTop = 0;
+const logo = document.getElementById("mainLogo");
 
-.navbar-block .has-dropdown > a::after {
-  font-size: 0.6rem;
-  margin-left: 4px;
-  color: #0f0c0c;
+window.addEventListener("scroll", function () {
+    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (scrollTop > lastScrollTop) {
+        logo.style.opacity = "0";
+        logo.style.transition = "opacity 0.5s ease";
+    } else {
+        logo.style.opacity = "1";
+    }
+    lastScrollTop = scrollTop;
+});
+</script>
+
+<style>
+  /* Dropdown styles */
+.navbar-block .has-dropdown {
+  position: relative;
 }
 
 .navbar-block .dropdown {
@@ -83,14 +73,13 @@
   flex-direction: column;
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
   border-radius: 12px;
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
   padding: 8px 0;
   min-width: 200px;
   z-index: 9999;
   border: 1px solid rgba(255, 255, 255, 0.3);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .navbar-block .dropdown li a {
@@ -100,7 +89,6 @@
   text-decoration: none;
   display: block;
   white-space: nowrap;
-  transition: all 0.3s ease;
   border-radius: 6px;
 }
 
@@ -109,7 +97,7 @@
   color: #222;
 }
 
-/* Desktop Hover */
+/* ✅ Show dropdown on hover for desktop only */
 @media (min-width: 992px) {
   .navbar-block .has-dropdown:hover .dropdown {
     display: flex;
@@ -117,83 +105,20 @@
   }
 }
 
-.mobile-bars {
-    display: none;
-    flex-direction: column;
-    cursor: pointer;
-    margin-right: 15px;
-    z-index: 10001;
-}
-
-@media (max-width: 991px) {
-    .mobile-bars {
-        display: flex;
-    }
-}
-/* .navbar-block .has-dropdown > a::after {
-  content: "▼";
-  font-size: 0.6rem;
-  margin-left: 4px;
-  color: #ccc;
-} */
-
-/* Smooth fade-in */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* ADD these hamburger animation styles - keeps your original positioning */
-.mobile-bars span {
-    width: 25px;
-    height: 3px;
-    background: #fff;
-    margin: 3px 0;
-    transition: 0.3s;
-    transform-origin: center;
-    display: block;
-}
-
-.mobile-bars.active span:nth-child(1) {
-    transform: rotate(45deg) translate(6px, 6px);
-}
-
-.mobile-bars.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.mobile-bars.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
-}
-
-/* FIX dropdown visibility - UPDATE your existing mobile dropdown CSS */
+/* ✅ Force dropdown to show on click for mobile */
 @media (max-width: 991px) {
   .navbar-block .dropdown.open {
     display: flex !important;
     position: relative;
-    background: rgba(255, 255, 255, 0.15) !important; /* Changed from transparent */
+    background: rgba(255, 255, 255, 0.15) !important;
     border: none;
     box-shadow: none;
     flex-direction: column;
     padding-left: 1rem;
   }
-
-  .navbar-block .dropdown li a {
-    color: #fff !important; /* Changed from #000 to white */
-  }
-
-  .navbar-block .dropdown li a:hover {
-    background-color: rgba(255, 255, 255, 0.1); /* Changed from #f2f2f2 */
-  }
 }
-</style>
 
+</style>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
     const dropdowns = document.querySelectorAll(".has-dropdown > a");
@@ -201,7 +126,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const mobileToggle = document.getElementById("mobileToggle");
     const mainNav = document.getElementById("mainNav");
 
-    // Mobile dropdown toggle
     dropdowns.forEach(link => {
         link.addEventListener("click", function (e) {
             if (window.innerWidth <= 991) {
@@ -217,7 +141,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Auto-close menu on link click
     navLinks.forEach(link => {
         link.addEventListener("click", function (e) {
             if (window.innerWidth <= 991 && !this.parentElement.classList.contains('has-dropdown')) {
@@ -228,7 +151,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
-    // Toggle hamburger menu
     if (mobileToggle && mainNav) {
         mobileToggle.addEventListener("click", function () {
             mainNav.classList.toggle("active");
@@ -237,7 +159,6 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Close menu when clicking outside
     document.addEventListener("click", function(e) {
         if (window.innerWidth <= 991) {
             if (!mainNav.contains(e.target) && !mobileToggle.contains(e.target)) {
@@ -252,5 +173,3 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 </script>
-
-
