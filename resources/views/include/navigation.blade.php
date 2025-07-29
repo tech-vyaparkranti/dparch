@@ -184,6 +184,11 @@
     padding: 10px 15px !important;
   }
 }
+/* Default nav link style */
+.site-logo {
+  transition: opacity 0.3s ease;
+}
+
 
 /* ✅ Animation */
 @keyframes fadeInUp {
@@ -202,6 +207,19 @@
   color: #ffffff !important;
 }
 </style>
+<script>
+  const mainLogo = document.getElementById("mainLogo");
+
+window.addEventListener("scroll", function () {
+    if (window.scrollY > 50) {
+        mainLogo.style.opacity = "0";
+        mainLogo.style.transition = "opacity 0.3s ease";
+    } else {
+        mainLogo.style.opacity = "1";
+    }
+});
+
+</script>
 <script>
 document.addEventListener("DOMContentLoaded", function () {
     const dropdowns = document.querySelectorAll(".has-dropdown > a");
