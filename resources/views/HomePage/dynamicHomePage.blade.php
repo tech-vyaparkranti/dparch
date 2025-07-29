@@ -13,16 +13,8 @@
             </div>
 
             <div class="row align-items-center">
-                <!-- Image Column (50%) -->
-                <div class="col-md-6 mb-3" data-aos="fade-right">
-                    <img src="{{ isset($home_about_image) ? asset($home_about_image) : asset('assets/img/Random Pics.jpeg') }}"
-                         alt="About Us"
-                         class="img-fluid rounded w-100"
-                         style="height:300px; object-fit:cover;">
-                </div>
-
-                <!-- Content Column (50%) -->
-                <div class="col-md-6" data-aos="fade-left">
+                <!-- Content Column (first on small devices) -->
+                <div class="col-md-6 order-1 order-md-2" data-aos="fade-left">
                     <p class="text-justify mb-4" style="font-size:16px; line-height:1.8;">
                         {!! Str::limit(
                             $home_about_content ??
@@ -32,13 +24,28 @@
                         ) !!}
                     </p>
 
-          <a href="{{ route('aboutUs') }}"
-   class="btn about-us-btn"
-   style="padding:10px 20px; border:none; background-color:#070736fc; color:white;">
-   Know More
-</a>
+                    <!-- ✅ Spacing only on small devices -->
+                    <a href="{{ route('aboutUs') }}"
+                       class="btn about-us-btn mb-4 mb-md-0 d-inline-block"
+                       style="padding:10px 20px; border:none; background-color:#070736fc; color:white;">
+                       Know More
+                    </a>
+                </div>
 
-{{-- Add this style block right after the button, or in a central <style> section --}}
+                <!-- Image Column (second on small devices) -->
+                <div class="col-md-6 mb-3 order-2 order-md-1" data-aos="fade-right">
+                    <img src="{{ isset($home_about_image) ? asset($home_about_image) : asset('assets/img/Random Pics.jpeg') }}"
+                         alt="About Us"
+                         class="img-fluid rounded w-100"
+                         style="height:300px; object-fit:cover;">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 <style>
     /* Specific style for this button */
     .about-us-btn {
@@ -54,12 +61,7 @@
         color: white !important; /* Use !important if other styles are overriding */
     }
 </style>
-      </div>
-            </div>
-
-        </div>
-    </div>
-</div>
+  
 <style>
 .custom-container, .offerings-container {
     overflow-x: hidden;

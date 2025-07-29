@@ -82,8 +82,8 @@
                                                 <a class="lightgallery-item"
                                                    href="{{ asset($img) }}"
                                                    data-src="{{ asset($img) }}"
-                                                   data-sub-html="<h4>Section Image {{ $index + 1 }}</h4>"> {{-- Optional caption --}}
-                                                    <img src="{{ asset($img) }}" alt="Section Image {{ $index + 1 }}">
+                                                   > 
+                                                    <img src="{{ asset($img) }}" >
                                                 </a>
                                             </div>
                                         @endforeach

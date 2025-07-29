@@ -18,25 +18,57 @@
         </div>
         <div class="slide-navigation" id="mainNav">
             <div class="navbar-wrapper">
-                <ul class="navbar-block" >
-                    <li><a href="{{ url('/') }}" style="font-weight: bolder; font-size: 17px;">Home</a></li>
-                    <li class="has-dropdown" >
-                        <a href="{{ route('aboutUs') }}" style="font-weight: bolder; font-size: 17px;">About Us</a>
-                        <ul class="dropdown" style="background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  ">
-                            <li><a href="{{ route('aboutUs') }}#about">Introduction</a></li>
-                            <li><a href="{{ route('aboutUs') }}#team">The Team</a></li>
-                            <li><a href="{{ route('aboutUs') }}#philosophy">Our Foundation</a></li>
-                            <li><a href="{{ route('aboutUs') }}#services">What We Do</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="{{ route('productPage') }}" style="font-weight: bolder; font-size: 17px;">Projects</a></li> 
-                    <li><a href="{{ route('galleryPages') }}" style="font-weight: bolder; font-size: 17px;">Gallery</a></li>
-                    <li><a href="{{ route('blogPage') }}" style="font-weight: bolder; font-size: 17px;">Articles</a></li>
-                    <li><a href="{{ route('contactUs') }}" style="font-weight: bolder; font-size: 17px;">Contact Us</a></li>
-                </ul>
+                <ul class="navbar-block">
+
+  <!-- ✅ Home -->
+  <li>
+    <a href="{{ url('/') }}" class="{{ request()->is('/') ? 'active-link' : '' }}" style="font-weight: bolder; font-size: 17px;">
+      Home
+    </a>
+  </li>
+
+  <!-- ✅ About Us with Dropdown -->
+  <li class="has-dropdown">
+    <a href="{{ route('aboutUs') }}" class="{{ request()->is('about-us') ? 'active-link' : '' }}" style="font-weight: bolder; font-size: 17px;">
+      About Us
+    </a>
+    <ul class="dropdown">
+      <li><a href="{{ route('aboutUs') }}#about">Introduction</a></li>
+      <li><a href="{{ route('aboutUs') }}#team">The Team</a></li>
+      <li><a href="{{ route('aboutUs') }}#philosophy">Our Foundation</a></li>
+      <li><a href="{{ route('aboutUs') }}#services">What We Do</a></li>
+    </ul>
+  </li>
+
+  <!-- ✅ Projects -->
+  <li>
+    <a href="{{ route('productPage') }}" class="{{ request()->is('projects') ? 'active-link' : '' }}" style="font-weight: bolder; font-size: 17px;">
+      Projects
+    </a>
+  </li>
+
+  <!-- ✅ Gallery -->
+  <li>
+    <a href="{{ route('galleryPages') }}" class="{{ request()->is('gallery') ? 'active-link' : '' }}" style="font-weight: bolder; font-size: 17px;">
+      Gallery
+    </a>
+  </li>
+
+  <!-- ✅ Articles -->
+  <li>
+    <a href="{{ route('blogPage') }}" class="{{ request()->is('articles') ? 'active-link' : '' }}" style="font-weight: bolder; font-size: 17px;">
+      Articles
+    </a>
+  </li>
+
+  <!-- ✅ Contact Us -->
+  <li>
+    <a href="{{ route('contactUs') }}" class="{{ request()->is('contact-us') ? 'active-link' : '' }}" style="font-weight: bolder; font-size: 17px;">
+      Contact Us
+    </a>
+  </li>
+
+</ul>
             </div>
             <ul class="sticky-content">
                 {{-- Social links could go here --}}
@@ -45,31 +77,20 @@
     </div>
 </header>
 
-<script>
-let lastScrollTop = 0;
-const logo = document.getElementById("mainLogo");
-
-window.addEventListener("scroll", function () {
-    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-    if (scrollTop > lastScrollTop) {
-        logo.style.opacity = "0";
-        logo.style.transition = "opacity 0.5s ease";
-    } else {
-        logo.style.opacity = "1";
-    }
-    lastScrollTop = scrollTop;
-});
-</script>
 
 <style>
-  header.fixed-header, .common-home header.dropdown{
-    background:red;
-  }
   /* Dropdown styles */
 .navbar-block .has-dropdown {
   position: relative;
 }
+/* Default nav link style */
+
+
+/* Highlight active menu item */
+.navbar-block a.active-link {
+  border-bottom: 3px solid red; /* White underline or any color */
+}
+
 
 .navbar-block .dropdown {
   display: none;
@@ -77,17 +98,15 @@ window.addEventListener("scroll", function () {
   top: 100%;
   left: 0;
   flex-direction: column;
-  background:rgba(255, 255, 255, 0.1) /* More solid for consistency */
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px); /* For Safari */
   border-radius: 12px;
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
   padding: 8px 0;
   min-width: 200px;
-  z-index: 99999; /* <- BOOST Z-INDEX */
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  z-index: 9999;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   transition: all 0.3s ease;
-  will-change: transform, opacity; /* Improves rendering */
 }
 
 
@@ -112,6 +131,7 @@ window.addEventListener("scroll", function () {
   .navbar-block .has-dropdown:hover .dropdown {
     display: flex;
     animation: fadeInUp 0.3s ease forwards;
+    color: #fff;
   }
 }
 
@@ -125,8 +145,10 @@ window.addEventListener("scroll", function () {
     box-shadow: none;
     flex-direction: column;
     padding-left: 1rem;
+     color: #fff !important;
   }
 }
+/* Default nav link style */
 
 </style>
 <script>
