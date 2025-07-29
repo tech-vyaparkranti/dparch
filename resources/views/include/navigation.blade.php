@@ -131,7 +131,7 @@
   .navbar-block .has-dropdown:hover .dropdown {
     display: flex;
     animation: fadeInUp 0.3s ease forwards;
-    color: #fff;
+  
   }
 }
 
@@ -141,6 +141,8 @@
     display: flex !important;
     position: relative;
     background: rgba(255, 255, 255, 0.15) !important;
+     backdrop-filter: blur(12px);
+  border-radius: 12px;
     border: none;
     box-shadow: none;
     flex-direction: column;
