@@ -46,8 +46,8 @@ for choosing Adiyogi Global.'  !!}</p>
       <div class="col-md-4 text-center mb-4 mb-md-0">
 <img src="{{ isset($director_image) ? asset($director_image) : asset('assets/img/Random Pics.jpeg') }}"
                          alt="About Us"
-                         class="img-fluid rounded w-100"
-                         style="height:300px; object-fit:cover;">      </div>
+                         class="img-fluid rounded-3 w-100"
+                         style="height:400px; object-fit:cover;">      </div>
       <div class="col-md-8">
         {!! $director_message ?? 'At DP Architect, we don’t just design buildings — we craft experiences, emotions, and environments that shape lives. Every structure we create reflects our commitment to design excellence, functional integrity, and a deep respect for space, context, and culture.
 
