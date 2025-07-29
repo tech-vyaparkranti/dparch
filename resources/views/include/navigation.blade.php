@@ -18,11 +18,14 @@
         </div>
         <div class="slide-navigation" id="mainNav">
             <div class="navbar-wrapper">
-                <ul class="navbar-block">
+                <ul class="navbar-block" >
                     <li><a href="{{ url('/') }}" style="font-weight: bolder; font-size: 17px;">Home</a></li>
-                    <li class="has-dropdown">
+                    <li class="has-dropdown" >
                         <a href="{{ route('aboutUs') }}" style="font-weight: bolder; font-size: 17px;">About Us</a>
-                        <ul class="dropdown">
+                        <ul class="dropdown" style="background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  ">
                             <li><a href="{{ route('aboutUs') }}#about">Introduction</a></li>
                             <li><a href="{{ route('aboutUs') }}#team">The Team</a></li>
                             <li><a href="{{ route('aboutUs') }}#philosophy">Our Foundation</a></li>
@@ -60,6 +63,9 @@ window.addEventListener("scroll", function () {
 </script>
 
 <style>
+  header.fixed-header, .common-home header.dropdown{
+    background:red;
+  }
   /* Dropdown styles */
 .navbar-block .has-dropdown {
   position: relative;
@@ -71,16 +77,19 @@ window.addEventListener("scroll", function () {
   top: 100%;
   left: 0;
   flex-direction: column;
-  background: rgba(255, 255, 255, 0.1);
+  background:rgba(255, 255, 255, 0.1) /* More solid for consistency */
   backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px); /* For Safari */
   border-radius: 12px;
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
   padding: 8px 0;
   min-width: 200px;
-  z-index: 9999;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  z-index: 99999; /* <- BOOST Z-INDEX */
+  border: 1px solid rgba(255, 255, 255, 0.2);
   transition: all 0.3s ease;
+  will-change: transform, opacity; /* Improves rendering */
 }
+
 
 .navbar-block .dropdown li a {
   padding: 10px 20px;
@@ -95,6 +104,7 @@ window.addEventListener("scroll", function () {
 .navbar-block .dropdown li a:hover {
   background-color: rgba(255, 255, 255, 0.2);
   color: #222;
+  
 }
 
 /* ✅ Show dropdown on hover for desktop only */

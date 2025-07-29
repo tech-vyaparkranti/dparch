@@ -40,7 +40,7 @@ for choosing Adiyogi Global.'  !!}</p>
 <div id="team" class="pt-5 pb-5" style="background-color:#f9f9f9;">
   <div class="custom-container">
     <div class="site-title pb-4">
-      <h2 class="text-center">Principel Architect</h2>
+      <h2 class="text-center">Principal Architect</h2>
     </div>
     <div class="row align-items-center">
       <div class="col-md-4 text-center mb-4 mb-md-0">

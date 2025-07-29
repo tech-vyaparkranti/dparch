@@ -95,10 +95,11 @@ class HomePageController extends Controller
     }
     
     public function galleryPages(){
+        $data = $this->getElement();
     $galleryImages = GalleryItem::where('view_status', 'visible')
         ->where('status', 1)
         ->get();
-    return view('HomePage.galleryPages', compact('galleryImages'));
+    return view('HomePage.galleryPages', compact('galleryImages'),$data);
 }
     public function contactUs(){
         
