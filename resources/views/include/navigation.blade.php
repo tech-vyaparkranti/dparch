@@ -34,9 +34,9 @@
     </a>
     <ul class="dropdown">
       <li><a href="{{ route('aboutUs') }}#about" onclick="refreshToSection('about')">Introduction</a></li>
-      <li><a href="{{ route('aboutUs') }}#team" onclick="refreshToSection('about')">The Team</a></li>
-      <li><a href="{{ route('aboutUs') }}#philosophy" onclick="refreshToSection('about')">Our Foundation</a></li>
-      <li><a href="{{ route('aboutUs') }}#services" onclick="refreshToSection('about')">What We Do</a></li>
+      <li><a href="{{ route('aboutUs') }}#team" onclick="refreshToSection('team')">The Team</a></li>
+      <li><a href="{{ route('aboutUs') }}#philosophy" onclick="refreshToSection('philosophy')">Our Foundation</a></li>
+      <li><a href="{{ route('aboutUs') }}#services" onclick="refreshToSection('services')">What We Do</a></li>
     </ul>
   </li>
 
