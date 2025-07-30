@@ -33,7 +33,7 @@
       About Us
     </a>
     <ul class="dropdown">
-      <li><a href="{{ route('aboutUs') }}#about">Introduction</a></li>
+      <li><a href="{{ route('aboutUs') }}#about" >Introduction</a></li>
       <li><a href="{{ route('aboutUs') }}#team" >The Team</a></li>
       <li><a href="{{ route('aboutUs') }}#philosophy" >Our Foundation</a></li>
       <li><a href="{{ route('aboutUs') }}#services" >What We Do</a></li>
@@ -77,13 +77,58 @@
     </div>
 </header>
 <script>
-function refreshToSection(id) {
-  const currentUrl = window.location.href.split('#')[0];
-  window.location.href = currentUrl + '#' + id;
-  window.location.reload(); // hard reload
-}
+document.addEventListener("DOMContentLoaded", function () {
+  const dropdownLinks = document.querySelectorAll(".has-dropdown .dropdown a");
+  const mobileToggle = document.getElementById("mobileToggle");
+  const mainNav = document.getElementById("mainNav");
+
+  dropdownLinks.forEach(link => {
+    link.addEventListener("click", function () {
+      // ✅ Close dropdown on ALL devices
+      document.querySelectorAll(".has-dropdown .dropdown").forEach(menu => {
+        menu.classList.remove("open"); // mobile
+      });
+
+      // ✅ Temporarily disable hover dropdown on desktop
+      const parent = this.closest(".has-dropdown");
+      if (parent) {
+        parent.classList.add("dropdown-clicked");
+        setTimeout(() => {
+          parent.classList.remove("dropdown-clicked");
+        }, 500); // restore hover after half a second
+      }
+
+      // ✅ Close mobile menu if open
+      if (window.innerWidth <= 991) {
+        mainNav?.classList.remove("active");
+        mobileToggle?.classList.remove("active");
+        document.body.classList.remove("no-scroll");
+      }
+    });
+  });
+});
 </script>
 <style>
+@media (min-width: 992px) {
+  .navbar-block .has-dropdown:hover .dropdown {
+    display: flex;
+  }
+
+  /* ✅ Disable hover when dropdown-clicked is added */
+  .navbar-block .has-dropdown.dropdown-clicked:hover .dropdown {
+    display: none !important;
+  }
+}
+
+@media (max-width: 991px) {
+  .navbar-block .dropdown.open {
+    display: flex !important;
+    position: relative;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.15);
+    padding-left: 1rem;
+  }
+}
 
   /* Dropdown styles */
 .navbar-block .has-dropdown {
