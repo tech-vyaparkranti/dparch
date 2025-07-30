@@ -89,72 +89,105 @@ function refreshToSection(id) {
 .navbar-block .has-dropdown {
   position: relative;
 }
-/* Default nav link style */
-
 
 /* Highlight active menu item */
 .navbar-block a.active-link {
   border-bottom: 3px solid red; /* White underline or any color */
 }
 
-
-.navbar-block .dropdown {
+/* ✅ SUPER STRONG - Dropdown that resists ALL scroll changes */
+.navbar-block .dropdown,
+.main-header .navbar-block .dropdown,
+.main-header.scrolled .navbar-block .dropdown,
+.main-header[style] .navbar-block .dropdown {
   display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  flex-direction: column;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(12px);
-  border-radius: 12px;
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
-  padding: 8px 0;
-  min-width: 200px;
-  z-index: 9999;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  transition: all 0.3s ease;
-   will-change: transform;
+  position: absolute !important;
+  top: 100% !important;
+  left: 0 !important;
+  flex-direction: column !important;
+  background: rgba(13, 13, 13, 0.42) !important; /* ✅ Your custom dark transparent background */
+  backdrop-filter: blur(15px) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.4) !important;
+  padding: 8px 0 !important;
+  min-width: 200px !important;
+  z-index: 99999 !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  transition: all 0.3s ease !important;
+  isolation: isolate !important;
+  /* ✅ Extra protection against inheritance */
+  color: inherit !important;
+  font-family: inherit !important;
 }
 
-
-.navbar-block .dropdown li a {
-  padding: 10px 20px;
-  font-size: 0.95rem;
-  color: #fff;
-  text-decoration: none;
-  display: block;
-  white-space: nowrap;
-  border-radius: 6px;
+/* ✅ MAXIMUM STRENGTH - Text color that never changes */
+.navbar-block .dropdown li a,
+.main-header .navbar-block .dropdown li a,
+.main-header.scrolled .navbar-block .dropdown li a,
+.main-header[style] .navbar-block .dropdown li a,
+.navbar-block .dropdown li a[style] {
+  padding: 12px 20px !important;
+  font-size: 0.95rem !important;
+  color: #ffffff !important; /* ✅ Maximum strength white text */
+  text-decoration: none !important;
+  display: block !important;
+  white-space: nowrap !important;
+  border-radius: 6px !important;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+  font-weight: normal !important;
 }
 
-.navbar-block .dropdown li a:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  color: #222;
-  
+/* ✅ MAXIMUM STRENGTH - Hover state */
+.navbar-block .dropdown li a:hover,
+.main-header .navbar-block .dropdown li a:hover,
+.main-header.scrolled .navbar-block .dropdown li a:hover,
+.main-header[style] .navbar-block .dropdown li a:hover {
+  background-color: rgba(255, 255, 255, 0.15) !important;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
 }
 
 /* ✅ Show dropdown on hover for desktop only */
 @media (min-width: 992px) {
   .navbar-block .has-dropdown:hover .dropdown {
-    display: flex;
+    display: flex !important;
     animation: fadeInUp 0.3s ease forwards;
-  
   }
 }
 
-/* ✅ Force dropdown to show on click for mobile */
+/* ✅ MAXIMUM STRENGTH - Mobile dropdown styling */
 @media (max-width: 991px) {
-  .navbar-block .dropdown.open {
+  .navbar-block .dropdown.open,
+  .main-header .navbar-block .dropdown.open,
+  .main-header.scrolled .navbar-block .dropdown.open,
+  .main-header[style] .navbar-block .dropdown.open {
     display: flex !important;
-    position: relative;
-    background: rgba(255, 255, 255, 0.15) !important;
-     backdrop-filter: blur(12px);
-  border-radius: 12px;
-    border: none;
-    box-shadow: none;
-    flex-direction: column;
-    padding-left: 1rem;
-     color: #fff !important;
+    position: relative !important;
+    background: rgba(13, 13, 13, 0.42) !important; /* ✅ Your custom mobile background */
+    border: none !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+    flex-direction: column !important;
+    padding-left: 1rem !important;
+    border-radius: 8px !important;
+    margin-top: 5px !important;
+  }
+  
+  /* ✅ MAXIMUM STRENGTH - Mobile dropdown text color */
+  .navbar-block .dropdown.open li a,
+  .main-header .navbar-block .dropdown.open li a,
+  .main-header.scrolled .navbar-block .dropdown.open li a,
+  .main-header[style] .navbar-block .dropdown.open li a {
+    color: #ffffff !important;
+    background: transparent !important;
+    padding: 10px 15px !important;
   }
 }
 /* Default nav link style */
@@ -162,6 +195,23 @@ function refreshToSection(id) {
   transition: opacity 0.3s ease;
 }
 
+
+/* ✅ Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ✅ NUCLEAR OPTION - If still having issues, add this */
+.navbar-block .dropdown * {
+  color: #ffffff !important;
+}
 </style>
 <script>
   const mainLogo = document.getElementById("mainLogo");
