@@ -52,7 +52,7 @@ for choosing Adiyogi Global.'  !!}</p>
         {!! $director_message ?? 'At DP Architect, we don’t just design buildings — we craft experiences, emotions, and environments that shape lives. Every structure we create reflects our commitment to design excellence, functional integrity, and a deep respect for space, context, and culture.
 
 Over the years, we’ve had the privilege of transforming ideas into enduring landmarks, blending innovation with timeless principles of architecture. Whether it’s a residence, a commercial complex, or an urban masterplan, our goal remains constant: to deliver thoughtful, sustainable, and inspiring design.' !!}
-        <p class="text-end mt-3" style="font-weight: bold;">— Mr. Anil Kalra <br><span style="font-weight: normal;">Founder & Principal Architect</span></p>
+        <!-- <p class="text-end mt-3" style="font-weight: bold;">— Mr. Anil Kalra <br><span style="font-weight: normal;">Founder & Principal Architect</span></p> -->
       </div>
     </div>
   </div>
@@ -323,22 +323,22 @@ Over the years, we’ve had the privilege of transforming ideas into enduring la
   
 
 <div class="card-container">
-    <div class="card">
-      <img src="{{ $phylosophy_image1 ?? 'https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?cs=srgb&dl=pexels-souvenirpixels-414612.jpg&fm=jpg'}}" alt="Nature">
+    <div class="card ">
+      <img src="{{ $phylosophy_image1 ?? 'https://dparch.co.in/website/uploads/WesiteElements/file_1753796204VALUE.jpg'}}" alt="Nature">
       <div class="card-body">
         <p class="card-text">{!! $phylosophy_content1 ?? "This is a longer card with supporting text below as a natural lead-in to additional content.This is a longer card with supporting text below as a natural lead-in to additional contentThis is a longer card with supporting text below as a natural lead-in to additional content."!!}</p>
       </div>
     </div>
 
     <div class="card">
-      <img src="{{ $phylosophy_image2 ?? 'https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?cs=srgb&dl=pexels-souvenirpixels-414612.jpg&fm=jpg'}}" alt="Technology">
+      <img src="{{ $phylosophy_image2 ?? 'https://dparch.co.in/website/uploads/WesiteElements/file_1753795861VISION.jpg'}}" alt="Technology">
       <div class="card-body">
         <p class="card-text">{!! $phylosophy_content2 ?? "This card has supporting text below as a natural lead-in to additional content." !!}</p>
       </div>
     </div>
 
     <div class="card">
-      <img src="{{ $phylosophy_image3 ?? 'https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?cs=srgb&dl=pexels-souvenirpixels-414612.jpg&fm=jpg'}}" alt="Adventure">
+      <img src="{{ 'https://dparch.co.in/website/uploads/WesiteElements/file_1753796170MISSION.jpg'}}" alt="Adventure">
       <div class="card-body">
         <p class="card-text">{!! $phylosophy_content3 ?? "This is a wider card with supporting text below as a natural lead-in to additional content."!!}</p>
       </div>
@@ -355,7 +355,11 @@ Over the years, we’ve had the privilege of transforming ideas into enduring la
     max-width: 1200px; /* Max width for the container */
     margin: 0 auto; /* Center the container on the page */
 }
-
+@media (max-width: 639px) {
+  .card img {
+    padding: 10px;
+  }
+}
 /* --- Base Card Styling --- */
 .card {
     background-color: #fff;
@@ -422,6 +426,7 @@ Over the years, we’ve had the privilege of transforming ideas into enduring la
 @media (max-width: 768px) {
     .card-container {
         grid-template-columns: 1fr; /* Stack cards vertically on small screens */
+        
     }
 }
 </style>
@@ -431,7 +436,7 @@ Over the years, we’ve had the privilege of transforming ideas into enduring la
 
 </script>
 
-<div class="destinations pt-5 pb-4 expertise-section" data-aos="fade-up">
+<div id="services" class="destinations pt-5 pb-4 expertise-section" data-aos="fade-up">
     <div class="custom-container">
         <div class="site-title pb-4">
             <h2 class="text-center">What We Do</h2>

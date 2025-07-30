@@ -154,19 +154,19 @@
                         @csrf
                         <input type="hidden" name="country_code" value="IN" id="country_code_id">
 
-                        <div class="row g-3">
+                        <div class="row g-3 " style="margin-top:20px" >
                             <!-- First & Last Name -->
                             <div class="col-md-6">
                                 <label for="first_name" class="form-label">First Name <span
                                         class="text-danger">*</span></label>
                                 <input type="text" class="form-control shadow-sm" id="first_name"
-                                    name="first_name" placeholder="John" required>
+                                    name="first_name" placeholder="Enter first name..." required>
                             </div>
                             <div class="col-md-6">
                                 <label for="last_name" class="form-label">Last Name <span
                                         class="text-danger">*</span></label>
                                 <input type="text" class="form-control shadow-sm" id="last_name" name="last_name"
-                                    placeholder="Doe" required>
+                                    placeholder="Enter last name.." required>
                             </div>
 
                             <!-- Email & Phone -->
@@ -174,13 +174,13 @@
                                 <label for="email" class="form-label">Email Address <span
                                         class="text-danger">*</span></label>
                                 <input type="email" class="form-control shadow-sm" id="email" name="email"
-                                    placeholder="example@email.com" required>
+                                    placeholder="Enter Email..." required>
                             </div>
                             <div class="col-md-6">
                                 <label for="phone_number" class="form-label">Phone Number <span
                                         class="text-danger">*</span></label>
                                 <input type="tel" class="form-control shadow-sm" id="phone_number"
-                                    name="phone_number" placeholder="9876543210" required>
+                                    name="phone_number" placeholder="Enter phone number..." required>
                             </div>
 
                             <!-- Message -->

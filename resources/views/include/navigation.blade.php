@@ -29,14 +29,14 @@
 
   <!-- ✅ About Us with Dropdown -->
   <li class="has-dropdown">
-    <a href="{{ route('aboutUs') }}" class="{{ request()->is('about-us') ? 'active-link' : '' }}" style="font-weight: bolder; font-size: 17px;">
+    <a href="{{ route('aboutUs') }}"  class="{{ request()->is('about-us') ? 'active-link' : '' }}" style="font-weight: bolder; font-size: 17px;">
       About Us
     </a>
     <ul class="dropdown">
-      <li><a href="{{ route('aboutUs') }}#about">Introduction</a></li>
-      <li><a href="{{ route('aboutUs') }}#team">The Team</a></li>
-      <li><a href="{{ route('aboutUs') }}#philosophy">Our Foundation</a></li>
-      <li><a href="{{ route('aboutUs') }}#services">What We Do</a></li>
+      <li><a href="{{ route('aboutUs') }}#about" onclick="refreshToSection('about')">Introduction</a></li>
+      <li><a href="{{ route('aboutUs') }}#team" onclick="refreshToSection('team')">The Team</a></li>
+      <li><a href="{{ route('aboutUs') }}#philosophy" onclick="refreshToSection('philosophy')">Our Foundation</a></li>
+      <li><a href="{{ route('aboutUs') }}#services" onclick="refreshToSection('services')">What We Do</a></li>
     </ul>
   </li>
 
@@ -76,9 +76,15 @@
         </div>
     </div>
 </header>
-
-
+<script>
+function refreshToSection(id) {
+  const currentUrl = window.location.href.split('#')[0];
+  window.location.href = currentUrl + '#' + id;
+  window.location.reload(); // hard reload
+}
+</script>
 <style>
+
   /* Dropdown styles */
 .navbar-block .has-dropdown {
   position: relative;
