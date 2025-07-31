@@ -328,7 +328,7 @@ a {
 }
 
 .header-contaner ul li a {
-    font: 500 14px/normal var(--font-josefin);
+    font: 1000 1.0625rem/normal var(--font-josefin);
     color: rgb(var(--black-color));
     text-transform: uppercase;
     transition: var(--transition);
@@ -415,8 +415,25 @@ li.dropdown-list:hover:after {
 .header-contaner ul.sublist li a:hover {
     background-color: rgb(var(--gold-bg));
 }
-
+@media (max-width: 425px) {
+    .logo-section>a>img {
+        /* margin-top: 50px; */
+        max-width: 80px !important;
+        margin-right: 108px;
+    }
+    .slide-navigation, .header-contaner{
+        margin-top
+        : -51px;
+    }
+}
 @media (max-width: 768px) {
+    .header-contaner ul li a {
+        font: 1000 0.9rem/normal var(--font-josefin);
+        color: rgb(var(--black-color));
+        text-transform: uppercase;
+        transition: var(--transition);
+        /* text-shadow: var(--text-shadow) rgb(var(--blue-color) / 40%); */
+    }
     i.drop-plus {
         display: block !important;
         position: absolute;
@@ -784,11 +801,11 @@ section.chairperson {
     }
 }
 
-@media (min-width: 992px) {
+/* @media (min-width: 992px) {
     .video-block>.main-slider .swiper-slide img.img-fluid {
         height: 800px;
     }
-}
+} */
 
 .video-block .swiper-slide:before {
     content: '';
@@ -2005,11 +2022,12 @@ section.chairperson {
         display: flex;
         justify-content: space-around;
         grid-gap: 0px;
-        margin-top: -51px;
+        /* margin-top: -51px; */
         justify-items: center;
         align-items: center;
         width: 100%;
-        margin-left: 20px;
+        margin-left: 30px;
+        margin-right: 30px;
     }
 
     .google-map-area iframe {
@@ -2018,20 +2036,25 @@ section.chairperson {
 
     .logo-section>a>img {
         max-width: 70px !important;
-        margin-right: 280px;
+        margin-right: 30px;
     }
 }
 
 
 
 @media(max-width:1200px) {
-
+    .logo-section>a>img {
+        max-width: 77px;
+        border-radius: 50%;
+        padding: 5px 0;
+        justify-content: flex-start;
+    }
     .slide-navigation,
     .header-contaner {
         display: flex;
         justify-content: space-around;
         grid-gap: 0px;
-        margin-top: -51px;
+        /* margin-top: -51px; */
         justify-items: center;
         align-items: center;
         width: 100%;

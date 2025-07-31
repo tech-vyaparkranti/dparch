@@ -22,14 +22,14 @@
 
   <!-- ✅ Home -->
   <li>
-    <a href="{{ url('/') }}" class="{{ request()->is('/') ? 'active-link' : '' }}" style="font-weight: bolder; font-size: 17px;">
+    <a href="{{ url('/') }}" class="{{ request()->is('/') ? 'active-link' : '' }}" >
       Home
     </a>
   </li>
 
   <!-- ✅ About Us with Dropdown -->
   <li class="has-dropdown">
-    <a href="{{ route('aboutUs') }}"  class="{{ request()->is('about-us') ? 'active-link' : '' }}" style="font-weight: bolder; font-size: 17px;">
+    <a href="{{ route('aboutUs') }}"  class="{{ request()->is('about-us') ? 'active-link' : '' }}" >
       About Us
     </a>
     <ul class="dropdown">
@@ -42,28 +42,28 @@
 
   <!-- ✅ Projects -->
   <li>
-    <a href="{{ route('productPage') }}" class="{{ request()->is('projects') ? 'active-link' : '' }}" style="font-weight: bolder; font-size: 17px;">
+    <a href="{{ route('productPage') }}" class="{{ request()->is('projects') ? 'active-link' : '' }}" >
       Projects
     </a>
   </li>
 
   <!-- ✅ Gallery -->
   <li>
-    <a href="{{ route('galleryPages') }}" class="{{ request()->is('gallery') ? 'active-link' : '' }}" style="font-weight: bolder; font-size: 17px;">
+    <a href="{{ route('galleryPages') }}" class="{{ request()->is('gallery') ? 'active-link' : '' }}" >
       Gallery
     </a>
   </li>
 
   <!-- ✅ Articles -->
   <li>
-    <a href="{{ route('blogPage') }}" class="{{ request()->is('articles') ? 'active-link' : '' }}" style="font-weight: bolder; font-size: 17px;">
+    <a href="{{ route('blogPage') }}" class="{{ request()->is('articles') ? 'active-link' : '' }}" >
       Articles
     </a>
   </li>
 
   <!-- ✅ Contact Us -->
   <li>
-    <a href="{{ route('contactUs') }}" class="{{ request()->is('contact-us') ? 'active-link' : '' }}" style="font-weight: bolder; font-size: 17px;">
+    <a href="{{ route('contactUs') }}" class="{{ request()->is('contact-us') ? 'active-link' : '' }}" >
       Contact Us
     </a>
   </li>

@@ -1,5 +1,5 @@
-<!-- main Video Section -->
-<div class="video-banner" style="">
+<!-- main Video Section video-banner -->
+<div class="" style="">
   <div class="video-block" style="">
     <div class="swiper main-slider" >
       <div class="swiper-wrapper">
@@ -95,7 +95,7 @@
     
     // Smooth autoplay and transitions
     autoplay: {
-      delay: 9000, // 9 seconds between slides
+      delay: 9000000, // 9 seconds between slides
       disableOnInteraction: false,
       pauseOnMouseEnter: true // Pause on hover for better UX
     },
