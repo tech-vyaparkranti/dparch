@@ -67,15 +67,6 @@
 </div>
 <style>
 
-.slide-heading {
-  padding-top: 600px;
-}
-
-@media (max-width: 640px) {
-  .slide-heading {
-    padding-top: 200px;
-  }
-}
 .swiper-button-prev, .swiper-button-next {
   position: absolute;
   top: 400px;

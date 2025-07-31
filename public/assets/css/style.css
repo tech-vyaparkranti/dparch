@@ -547,13 +547,13 @@ section.chairperson {
     bottom: 0;
     left: 0;
     right: 0;
-    background: rgb(17 38 58 / 40%);
+    /* background: rgb(17 38 58 / 40%); */
     z-index: 1;
 }
 
 .video-banner {
     position: relative;
-    max-height: 100vh;
+    max-height: 100vh !important;
     overflow: hidden;
     z-index: 0;
 }
@@ -588,7 +588,7 @@ section.chairperson {
     text-align: left;
     z-index: 2;
     justify-content: center;
-    top: 0;
+    top: 80%;
     bottom: 0;
     left: 10%;
     right: 10%;
@@ -596,11 +596,16 @@ section.chairperson {
     padding: 20px 0;
 }
 
+
+
+
+
 /* Mobile video content positioning */
 @media (max-width: 768px) {
     .video-content {
         left: 5%;
         right: 5%;
+        top: 90% !important;
         justify-content: center;
         padding: 15px 0;
     }
@@ -609,7 +614,7 @@ section.chairperson {
 @media (max-width: 576px) {
     .video-content {
         position: absolute;
-        top: 50%;
+        top: 90%;
         transform: translateY(-50%);
         /* Center vertically */
         left: 20px;

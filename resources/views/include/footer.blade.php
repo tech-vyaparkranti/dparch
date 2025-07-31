@@ -48,7 +48,7 @@
 {{-- Recognitions End --}}
 <!-- Footer Section -->
 
-<footer class="footer-section pt-4 pb-4">
+<footer class="footer-section " style="padding-top:10px">
     <div class="custom-container">
         <div class="row">
             <div class="col-md-5 mb-4">
@@ -60,7 +60,7 @@
                         </div>
                         <p style="margin-left: 24px;"><b>{!! $footer_logo_name ?? 'Design Park Architects' !!}</b></p>
                         <p class="footer-tagline mt-2"
-                            style="font-size: 1.05rem; font-weight: 500; color: #333; text-align: left; margin-left: 23px;">
+                            style="">
                             Beyond the Blueprint <br>SIMPLE . STRONG . MEMORABLE
                         </p>
 
@@ -386,7 +386,25 @@
 </div>
 <!-- Footer Section End-->
 <style>
+    .footer-tagline{
+        font-size: 1.05rem; font-weight: 500; color: #333; text-align: left; margin-left: 25px !important;margin-bottom: 2px;
+        color:black !important;
+    }
     /* Demo content */
+    @media (max-width: 768px) {
+  .footer-tagline {
+ padding-left:50px;
+ text-align: center ;
+  }
+}
+
+/* Small devices (≤ 480px) */
+@media (max-width: 480px) {
+  .footer-tagline {
+    padding-left:50px;
+    text-align: center;
+  }
+}
     .demo-page-content {
         height: 120vh;
         background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
@@ -435,7 +453,7 @@
         align-items: center;
         justify-content: center;
 
-        margin-top: 20px;
+        /* margin-top: 20px; */
         /* Add some space above the button */
         /* margin-left: 23px; -> Removed from CSS, added inline to HTML for precise alignment */
 
