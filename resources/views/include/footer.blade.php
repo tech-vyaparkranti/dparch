@@ -55,11 +55,11 @@
                 <div class="footer-item">
                     <div class="footer-logo">
                         <div class="footer-logo-inner">
-                            <img src="{{ asset('./assets/img/dparch1.png') }}" class="img-fluid" width="130"
+                            <img src="{{ asset('./assets/img/dparch1.png') }}" class="img-fluid img-a" width="130"
                                 height="86" alt="DP Arch">
                         </div>
-                        <p style="margin-left: 24px;"><b>{!! $footer_logo_name ?? 'Design Park Architects' !!}</b></p>
-                        <p class="footer-tagline mt-2"
+                        <p style="margin-left: 24px;margin-bottom:0px;padding:0px"><b style="margin-bottom:0px">{!! $footer_logo_name ?? 'Design Park Architects' !!}</b></p>
+                        <p class="footer-tagline "
                             style="">
                             Beyond the Blueprint <br>SIMPLE . STRONG . MEMORABLE
                         </p>
@@ -137,7 +137,7 @@
                     <div class="d-flex flex-column align-items-center w-100">
         {{-- Logo section --}}
         {{-- <div class="mb-2"> 
-            <img src="{{ asset('./assets/img/dparch.png') }}" class="img-fluid"style="max-height: 60px; max-width: 120px;"alt="DP Arch">
+            <img src="{{ asset('./assets/img/dparch.png') }}" class="img-fluid "style="max-height: 60px; max-width: 120px;"alt="DP Arch">
         </div> --}}
         {{-- End Logo section --}}
 
@@ -393,17 +393,23 @@
     /* Demo content */
     @media (max-width: 768px) {
   .footer-tagline {
- padding-left:50px;
+ padding-left:20px;
  text-align: center ;
+  }
+  .img-a{
+    margin-left:30px;
   }
 }
 
 /* Small devices (≤ 480px) */
 @media (max-width: 480px) {
   .footer-tagline {
-    padding-left:50px;
     text-align: center;
   }
+   .img-a{
+    margin-left:30px;
+  }
+
 }
     .demo-page-content {
         height: 120vh;
