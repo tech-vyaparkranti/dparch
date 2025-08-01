@@ -10,7 +10,7 @@
             alt="Slide Image"
             class="slide-image"
           />
-          <div class="video-content text-white text-center">
+          <div class="video-content text-white ">
             <h3 class="slide-heading">{!! $slide->heading_bottom !!}</h3>
           </div>
         </div>
@@ -48,20 +48,25 @@
 
 .video-content {
   position: absolute !important;
-  left: 15% !important;
-  transform: translateX(-50%) !important;
+  left:50px;
   z-index: 10 !important;
   color: #fff !important;
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.6) !important;
-  text-align: center !important;
 }
 
 .swiper-button-prev,
 .swiper-button-next {
-  color: white !important;
+  color: red !important;
   top: 50% !important;
   transform: translateY(-50%) !important;
   z-index: 11 !important;
+  border-radius:50%;
+  background:white;
+  padding:20px;
+  font-size:20px;
+  height:20px;
+  width:20px;
+  
 }
 
 /* Mobile + Tablet Responsiveness */
@@ -84,10 +89,11 @@
   }
   .swiper-button-prev,
 .swiper-button-next {
-  color: white !important;
-  top: 100px !important;
+  color: red !important;
+  top: 150px !important;
   transform: translateY(-50%) !important;
   z-index: 11 !important;
+  padding:15px;
 }
 
 }
