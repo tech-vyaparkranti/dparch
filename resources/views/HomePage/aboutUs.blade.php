@@ -338,7 +338,7 @@ Over the years, we’ve had the privilege of transforming ideas into enduring la
     </div>
 
     <div class="card">
-      <img src="{{ $phylosophy_content3 ?? 'https://dparch.co.in/website/uploads/WesiteElements/file_1753796170MISSION.jpg'}}" alt="Adventure">
+      <img src="{{ $phylosophy_image3 ?? 'https://dparch.co.in/website/uploads/WesiteElements/file_1753796170MISSION.jpg'}}" alt="Adventure">
       <div class="card-body">
         <p class="card-text">{!! $phylosophy_content3 ?? "This is a wider card with supporting text below as a natural lead-in to additional content."!!}</p>
       </div>
