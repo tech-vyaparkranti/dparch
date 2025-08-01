@@ -48,8 +48,7 @@
 
 .video-content {
   position: absolute !important;
-  bottom: 10% !important;
-  left: 50% !important;
+  left: 15% !important;
   transform: translateX(-50%) !important;
   z-index: 10 !important;
   color: #fff !important;
