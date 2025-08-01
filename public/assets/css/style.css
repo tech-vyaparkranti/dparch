@@ -415,9 +415,9 @@ li.dropdown-list:hover:after {
 .header-contaner ul.sublist li a:hover {
     background-color: rgb(var(--gold-bg));
 }
-@media (max-width: 425px) {
+@media (max-width: 430px) {
     .logo-section>a>img {
-        /* margin-top: 50px; */
+        margin-top: 50px !important;
         max-width: 80px !important;
         margin-right: 108px;
     }
@@ -1924,7 +1924,7 @@ section.chairperson {
     }
 
     .logo-section>a>img {
-        margin-top: 50px;
+        /* margin-top: 50px; */
         max-width: 80px !important;
         margin-right: 108px;
 
@@ -2035,8 +2035,8 @@ section.chairperson {
     }
 
     .logo-section>a>img {
-        max-width: 70px !important;
-        margin-right: 30px;
+        max-width: 50px !important;
+        margin-right: 83vw;
     }
 }
 
