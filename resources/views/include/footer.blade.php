@@ -51,22 +51,22 @@
 <footer class="footer-section " style="padding-top:10px">
     <div class="custom-container">
         <div class="row">
-            <div class="col-md-5 mb-4">
+            <div class="col-lg-5 col-md-6 col-sm-12 mb-4 ">
                 <div class="footer-item">
                     <div class="footer-logo">
                         <div class="footer-logo-inner">
-                            <img src="{{ asset('./assets/img/dparch1.png') }}" class="img-fluid img-a" width="130"
+                            <img src="{{ asset('./assets/img/dparch1.png') }}" class="img-fluid image-class" width="130"
                                 height="86" alt="DP Arch">
                         </div>
-                        <p style="margin-left: 24px;margin-bottom:0px;padding:0px"><b style="margin-bottom:0px">{!! $footer_logo_name ?? 'Design Park Architects' !!}</b></p>
+                        <p style="margin-left: 24px;margin-bottom:0px;padding:0px;text-lg-center"><b style="margin-bottom:0px">{!! $footer_logo_name ?? 'Design Park Architects' !!}</b></p>
                         <p class="footer-tagline "
                             style="">
                             Beyond the Blueprint <br>SIMPLE . STRONG . MEMORABLE
                         </p>
 
-                        <a href="#" class="compact-enquiry-btn" data-bs-toggle="modal"
+                        <a href="#" class="compact-enquiry-btn " data-bs-toggle="modal"
                             data-bs-target="#compactEnquiryModal"
-                            style="margin-left: 23px;color:#fff !important; border:none; background-color:#070736fc; color:white;padding:15px 10px; ">
+                            style="margin-left: 25px;color:#fff !important; border:none; background-color:#070736fc; color:white;padding:15px 10px; ">
                             <span style="font-size:13px">Enquire now</span>
                         </a>
                         {{-- <ul class="social-media mt-4">
@@ -79,7 +79,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 mb-4">
+            <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
                 <div class="footer-item">
                     <h5 class="footer-title">Quick Link</h5>
                     <ul>
@@ -98,7 +98,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-md-4 mb-4">
+            <div class="col-lg-4 col-md-6 col-sm-6 mb-4">
                 <div class="footer-item">
                     <h5 class="footer-title">Contact Information</h5>
                     <div class="footer-contact">
@@ -386,14 +386,19 @@
 </div>
 <!-- Footer Section End-->
 <style>
+     @media (max-width: 575.98px) {
+    .image-class {
+      margin-left: 20px !important;
+    }
+  }
     .footer-tagline{
-        font-size: 1.05rem; font-weight: 500; color: #333; text-align: left; margin-left: 25px !important;margin-bottom: 2px;
+        font-size: 1.05rem; font-weight: 500; color: #333; text-align: left; margin-bottom: 2px;
         color:black !important;
+        margin-left:25px !important;
     }
     /* Demo content */
     @media (max-width: 768px) {
   .footer-tagline {
- padding-left:20px;
  text-align: center ;
   }
   .img-a{
@@ -729,7 +734,13 @@
             right: 15px;
             padding: 10px 16px;
             font-size: 12px;
+ 
+}
         }
+                   @media (max-width: 576px) {
+    .compact-enquiry-btn {
+        margin-left: -8px !important;
+    }
 
         .compact-modal-content {
             min-width: 100vw;
