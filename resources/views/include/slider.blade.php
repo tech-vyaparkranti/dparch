@@ -95,7 +95,7 @@
     
     // Smooth autoplay and transitions
     autoplay: {
-      delay: 9000000, // 9 seconds between slides
+      delay: 9000, // 9 seconds between slides
       disableOnInteraction: false,
       pauseOnMouseEnter: true // Pause on hover for better UX
     },
