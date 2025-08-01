@@ -1,120 +1,117 @@
-<!-- main Video Section video-banner -->
-<div class="" style="">
-  <div class="video-block" style="">
-    <div class="swiper main-slider" >
+<!-- Fullscreen Swiper Slider -->
+<div class="video-banner">
+  <div class="video-block">
+    <div class="swiper main-slider">
       <div class="swiper-wrapper">
-        @foreach ($sliders as $slide )
-        <div class="swiper-slide"  >
-          
-          <img class="img-fluid banner-img" width="" height=""  alt="Image" src="{{ asset($slide->image) }}" />
-          <div class="video-content">
-            <!-- Dynamic content from the database -->
-            {{-- <h2 style="padding-top:100px">{!!$slide->heading_top !!}</h2>
-            <h3>{!! $slide->heading_middle !!}</h3> --}}
+        @forelse ($sliders as $slide)
+        <div class="swiper-slide">
+          <img
+            src="{{ asset($slide->image) }}"
+            alt="Slide Image"
+            class="slide-image"
+          />
+          <div class="video-content text-white text-center">
             <h3 class="slide-heading">{!! $slide->heading_bottom !!}</h3>
-            {{-- Uncomment the following line if you have a contact route for each slide --}}
-            {{-- <a href="{{ route('contactUs') }}" aria-label="Explore The World">Get in touch</a> --}}
           </div>
         </div>
-        @endforeach
-
-        {{--
-            This block will only render if the $sliders collection is empty.
-            This ensures that either dynamic slides OR static slides are shown, but not both.
-        --}}
-        @unless (count($sliders) > 0)
-        <!-- Static slides - example content added for structure, currently commented out -->
+        @empty
         <div class="swiper-slide">
-          <img class="img-fluid" width="" height="" alt="Image" src="./assets/img/3 Emperium Prime .JPG" style="height:560px" />
-          <div class="video-content">
-            {{--
-            <h2>Adiyogi Global</h2>
-            <h3>Grow with Innovation: Solutions for Sustainable Farming</h3>
-            <p>A short descriptive text for Banner Pic 1.</p>
-            <a href="{{ route('contactUs') }}" aria-label="Explore The World">Get in touch</a>
-            --}}
-          </div>
+          <img
+            src="./assets/img/3 Emperium Prime .JPG"
+            alt="Fallback"
+            class="slide-image"
+          />
         </div>
-        <div class="swiper-slide">
-          <img class="img-fluid" width="" height="" alt="Image" src="./assets/img/1 Skyom city lucknow (1).jpg" style="height:560px" />
-          <div class="video-content">
-            {{--
-            <h2>Adiyogi Global</h2>
-            <h3>Grow with Innovation: Solutions for Sustainable Farming</h3>
-            <p>A short descriptive text for Banner Pic 2.</p>
-            <a href="{{ route('contactUs') }}" aria-label="Explore The World">Get in touch</a>
-            --}}
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <img class="img-fluid" width="" height="" alt="Image" src="./assets/img/2 INR heights karnal.jpg" style="height:560px" />
-          <div class="video-content">
-            {{--
-            <h2>Adiyogi Global</h2>
-            <h3>Grow with Innovation: Solutions for Sustainable Farming</h3>
-            <p>A short descriptive text for Banner Pic 3.</p>
-            <a href="{{ route('contactUs') }}" aria-label="Explore The World">Get in touch</a>
-            --}}
-          </div>
-        </div>
-        
-        @endunless
+        @endforelse
       </div>
-      <div class="swiper-button-prev" ></div>
-      <div class="swiper-button-next" ></div>
+
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
     </div>
   </div>
 </div>
-<style>
 
-.swiper-button-prev, .swiper-button-next {
-  position: absolute;
-  top: 400px;
-  color:red;
-  
+<!-- Internal CSS with !important -->
+<style>
+.video-banner,
+.video-block,
+.main-slider,
+.swiper-slide {
+  position: relative !important;
 }
-@media (max-width: 640px) { 
-  .swiper-button-prev, .swiper-button-next {
-    top: 120px;
+
+.slide-image {
+  width: 100% !important;
+  height: 100% !important;
+  display: block !important;
+}
+
+.video-content {
+  position: absolute !important;
+  bottom: 10% !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  z-index: 10 !important;
+  color: #fff !important;
+  text-shadow: 0 2px 5px rgba(0, 0, 0, 0.6) !important;
+  text-align: center !important;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: white !important;
+  top: 50% !important;
+  transform: translateY(-50%) !important;
+  z-index: 11 !important;
+}
+
+/* Mobile + Tablet Responsiveness */
+@media (max-width: 768px) {
+  .video-banner,
+  .video-block,
+  .main-slider,
+  .swiper-slide {
   }
+
+  .slide-image {
+    height: 30vh;
+    max-height: 80vh !important;
+  }
+
+  .video-content {
+    font-size: 14px !important;
+    bottom: 5% !important;
+    
+  }
+  .swiper-button-prev,
+.swiper-button-next {
+  color: white !important;
+  top: 100px !important;
+  transform: translateY(-50%) !important;
+  z-index: 11 !important;
 }
-.autoplay: {
-  delay: 9000, // 9 seconds between slides
-  disableOnInteraction: false
+
 }
 </style>
+
+<!-- Swiper Script -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-  const swiper = new Swiper('.main-slider', {
-    // Add fade effect with smooth crossfade
+document.addEventListener('DOMContentLoaded', function () {
+  new Swiper('.main-slider', {
     effect: 'fade',
-    fadeEffect: {
-      crossFade: true
-    },
-    
-    // Smooth autoplay and transitions
+    fadeEffect: { crossFade: true },
     autoplay: {
-      delay: 9000, // 9 seconds between slides
+      delay: 9000,
       disableOnInteraction: false,
-      pauseOnMouseEnter: true // Pause on hover for better UX
+      pauseOnMouseEnter: true,
     },
-    
-    // Keep navigation
     navigation: {
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
     },
-    
-    // Loop through slides
     loop: true,
-    
-    // Smooth transitions
-    speed: 1200, // Smooth transition duration
-    
-    // Enable smooth scrolling behavior
-    freeMode: false,
-    watchSlidesProgress: true
+    speed: 1000,
   });
 });
 </script>
